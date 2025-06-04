@@ -4,17 +4,17 @@
 #### Toisin sanoen, standardi määrittelee yhteiset mittarit sille, kuinka "vihreä" tai tehokas datakeskus on,
 #### jotta eri keskuksia voidaan vertailla samalla perusteella.
 #### Keskeiset mittarit (KPI:t): Tärkeimmät EN 50600-4 -standardin määrittämät mittarit:
-### PUE (Power Usage Effectiveness)
+#### PUE (Power Usage Effectiveness)
 #### PUE on datakeskuksen kokonaisenergiankulutus jaettuna sen IT- laitteistojen energiankulutuksella. 
 #### Standardi varmistaa, että kaikki laskevat PUE-arvon samalla tavalla, mikä on olennaista vertailukelpoisuuden kannalta.
-### ERF (Energy Reuse Factor)
+#### ERF (Energy Reuse Factor)
 #### ERF kuvaa, kuinka suuri osa datakeskuksen käyttämästä energiasta hyödynnetään uudelleen muualla. 
 #### Arvo ilmoitetaan esimerkiksi välillä 0–1 (tai prosentteina): mitä lähempänä 1, sitä enemmän datakeskuksen kuluttamasta energiasta saadaan kierrätettyä hyötykäyttöön (esim. kaukolämpönä).
 #### Renewable Energy Factor (joskus kutsuttu uusiutuvan energian osuus, EN 50600-4-3) mittaa, kuinka suuri osa datakeskuksen käyttämästä
 #### sähköstä on peräisin uusiutuvista lähteistä – tämä kertoo suoraan datakeskuksen sähkönhankinnan vihreyden.
-### CUE (Carbon Usage Effectiveness)
+#### CUE (Carbon Usage Effectiveness)
 #### joka ilmoittaa kuinka paljon hiilidioksidipäästöjä syntyy suhteessa IT-tehon käyttöön.
-### WUE (Water Usage Effectiveness) 
+#### WUE (Water Usage Effectiveness) 
 #### on (vesitehokkuus, käytetyn veden määrä suhteessa IT-tehoon), vaikkei se välttämättä ole EN 50600-4:n virallinen osa, se on alan 
 #### tunnusluku kestävyyden arviointiin. 
 #### näiden mittareiden avulla datakeskuksen ympäristötehokkuutta voidaan arvioida monesta näkökulmasta: 
