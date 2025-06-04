@@ -12,8 +12,8 @@
 #### Geneerinen kuvaus todentamisesta ja seurannasta: Vaatimuksen toteutumista ei tarvitse seurata, jos datakeskusta ei vaihdeta tai jos datakeskuksen hukkalämmön hyödyntämisestä ei luovuta.
 #### Toimittajalta vaaditaan kuvaus seuraavasta:
 #### a) Ohjelmiston käyttämän datakeskuksen virrankäytön mittauksen järjestelyt käyttäen datakeskuksen määritelmää EN50600-standardin mukaisesti
-#### a. Datakeskuksen kokonaisenergiankulutus kilowattitunteina (perustaso)
-#### b. Uudelleenkäytetyn energian määrä kilowattitunteina (perustaso)
+##### a. Datakeskuksen kokonaisenergiankulutus kilowattitunteina (perustaso)
+##### b. Uudelleenkäytetyn energian määrä kilowattitunteina (perustaso)
 #### b) Mittaustulokset datakeskuksen virrankulutuksesta ja uudelleenkäytetystä energiasta kohdan a) mukaisesti
 #### Toimittajan antama kuvaus ja dokumentaatio yllä olevan kohdan mukaisesti päivitetään mahdollisten tilanteeseen vaikuttavien muutosten yhteydessä. Mahdollisista sanktioista sovitaan erikseen.
 #### Edellytykset mittarin hyödyntämiselle | Ohjelmisto toimii datakeskuksessa tai pilvipalvelussa
