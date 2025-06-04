@@ -3,7 +3,7 @@
 Tervetuloa! Valitse alta aihe:
 
 1. [Vihreän datakeskuksen elementit ja periaatteet](vihrean-datakeskuksen-elementit-ja-perusperiaatteet.md)
-2. [Energian kulutus ja uudelleenkäyttö](energian-kulutus.md)
+2. [Energian kulutus ja uudelleenkäyttö](Energian-kulutus-ja-uudelleenkäyttö.md)
 3. [EN 50600-4 -standardi ja mittarit](EN-50600-4-standardi-ja-mittarit.md)
     - [Mittarikortti_EN50600_4-2_PUE](Mittarikortti_EN50600_4-2_PUE.md)
     - [Mittarikortti_EN50600-4-3-REF](Mittarikortti_EN50600_4-3_REF.md)
