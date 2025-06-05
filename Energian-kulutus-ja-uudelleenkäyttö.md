@@ -14,7 +14,7 @@ jos PUE on vaikkapa 2, se tarkoittaa että jokaista palvelinten käyttämää ki
 toinen kilowattitunti kuluu tukitoimintoihin. Modernit hyvin suunnitellut datakeskukset voivat
 saavuttaa PUE-lukuja lähellä 1,1–1,2.
 
-## Datakeskuksen energiankulutuken vähentäminen:
+## Datakeskuksen energiankulutuksen vähentäminen:
 Virtualisoinnin avulla sama laitemäärä palvelee useampia käyttäjiä (parannetaan käyttöastetta, ettei palvelimet seiso tyhjän panttina),
 Lämpötilaolosuhteiden optimointi (kaikkien tilojen ei tarvitse olla jääkaappikylmiä – nykylaitteet
 kestävät hieman korkeampia lämpötiloja turvallisesti, mikä voi vähentää jäähdytystarvetta), 
