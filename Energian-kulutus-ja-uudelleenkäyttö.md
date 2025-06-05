@@ -36,9 +36,8 @@ Jäähdytyksen energiatehokkuusratkaisut (vapaajäähdytys ulkoilmalla kylminä 
 lämpimän ja kylmän ilmankierron erottelu palvelinsaleissa, jotta jäähdytys kohdistuu tehokkaasti oikeisiin paikkoihin).
 
 ## Hukkalämmön talteenotto:
-Kun palvelimet käyvät, ne muuttavat sähköenergian lämmöksi. 
-Normaalisti tämä lämpö johdetaan pois (esim. puhalletaan ulkoilmaan tai jäähdytysveden mukana mereen), 
-mutta vihreässä ajattelussa lämpö on arvokas sivutuote.
+Palvelimen suorittaessa laskenta- ja tietoliikennetehtäviä, ne muuttavat sähköenergian lämmöksi. 
+Tämä lämpö johdetaan pois (esim. puhalletaan ulkoilmaan tai jäähdytysveden mukana mereen), tai sitä hyödynnetään arvokkaana sivutuotteena.
 Lämmön talteenottojärjestelmät (kuten lämpöpumput ja lämmönvaihtimet) voivat siirtää palvelinsalin hukkalämmön esimerkiksi
 kaukolämpöverkkoon tai lähirakennusten lämmitykseen. 
 Tällöin sama energia hyödynnetään kahdesti: ensin digipalveluiden pyörittämiseen ja sitten rakennusten lämmittämiseen.
