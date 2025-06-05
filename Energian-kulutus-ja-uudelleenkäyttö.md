@@ -11,14 +11,13 @@ Yhteensä nämä muodostavat datakeskuksen kokonaiskulutuksen:
 
 **E = Eₛ + Eₛₜ + Eₚ + Eᵢ**
 
-Jaottelu auttaa hahmottamaan, että datakeskuksen sähköenergian kulutus jakautuu palvelimiin, tallennuslaitteisiin, verkkolaitteisiin ja tukijärjestelmiin (kuten jäähdytys ja varavirtaratkaisut). Tukijärjestelmien osuus voi kasvaa merkittäväksi, erityisesti silloin kun niiden toiminnan energiatehokkuuteen ei ole kiinnitetty huomiota [Shehabi et al., 2018].
+Jaottelu auttaa hahmottamaan, että datakeskuksen sähköenergian kulutus jakautuu palvelimiin, tallennuslaitteisiin, verkkolaitteisiin ja tukijärjestelmiin (kuten jäähdytys ja varavirtaratkaisut). Tukijärjestelmien osuus voi kasvaa merkittäväksi, erityisesti silloin kun niiden toiminnan energiatehokkuuteen ei ole kiinnitetty huomiota [1].
 
+Palvelimissa suorittimet (CPU, GPU), levyt (I/O) ja verkkolaitteet (NIC) suorittavat datakeskuksen varsinaiset laskenta- ja tietoliikennetehtävät.
 
-Pääasiassa energiaa kuluttavat IT-laitteet (palvelinten suorittimet, levyt,
-verkkolaitteet, jotka suorittavat varsinaiset laskentatehtävät) sekä tukijärjestelmät kuten
-jäähdytys ja ilmanvaihto, varavirtajärjestelmät (UPS-akut, dieselgeneraattorit) ja valaistus.
-Havainnollista, että merkittävä osa (jopa yli puolet) kokonaisenergiasta voi mennä muuhun kuin
-varsinaiseen laskentaan, jos datakeskus ei ole energiatehokas.
+Suurin yksittäinen energiankuluttaja on palvelimissa suoritin, jonka kulutus kasvaa laskentakuorman, ytimien määrän ja kellotaajuuden myötä ~50-60%. Levylaitteistot kuluttavat merkittävästi energiaa erityisesti kirjoitusoperaatioissa ~20-30%, ja verkkolaitteiden kulutus riippuu voimakkaasti siirtonopeudesta ja pakettikoon hallinnasta ~10-20%, lisäksi palvelimella on muuta esimerkiksi käyttöjärjestelmän aiheuttamaa taustakulutusta ~10-20. [2]
+~
+
 
 ## Energiatehokkuuden mittaaminen (PUE):
 Keskeinen energiatehokkuuden mittari on PUE (Power Usage Effectiveness)
@@ -72,6 +71,8 @@ Pohdintatehtävä (vapaaehtoinen):
 Miksi luulet, ettei kaikissa datakeskuksissa vielä kierrätetä hukkalämpöä? 
 Pohdi, millaisia esteitä tai haasteita hukkalämmön hyödyntämiseen voi liittyä (taloudelliset kustannukset, sijainti, tekniset rajoitteet jne.).
 
+[1] Arman Shehabi et al. 2018 Environ. Res.Lett. 13 124030.
+[2] Arjona et al., "A Measurement-based Analysis of the Energy Consumption of Datacenter Services", arXiv:1402.0804v1 (2014).
 
 
 
