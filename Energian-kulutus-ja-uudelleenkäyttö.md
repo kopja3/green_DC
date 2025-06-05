@@ -71,8 +71,8 @@ Pohdintatehtävä (vapaaehtoinen):
 Miksi luulet, ettei kaikissa datakeskuksissa vielä kierrätetä hukkalämpöä? 
 Pohdi, millaisia esteitä tai haasteita hukkalämmön hyödyntämiseen voi liittyä (taloudelliset kustannukset, sijainti, tekniset rajoitteet jne.).
 
-[1] Arman Shehabi et al. 2018 Environ. Res.Lett. 13 124030.
-[2] Arjona et al., "A Measurement-based Analysis of the Energy Consumption of Datacenter Services", arXiv:1402.0804v1 (2014).
+-[1] Arman Shehabi et al. 2018 Environ. Res.Lett. 13 124030.
+-[2] Arjona et al., "A Measurement-based Analysis of the Energy Consumption of Datacenter Services", arXiv:1402.0804v1 (2014).
 
 
 
