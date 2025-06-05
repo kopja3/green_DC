@@ -16,7 +16,6 @@ Jaottelu auttaa hahmottamaan, että datakeskuksen sähköenergian kulutus jakaut
 Palvelimissa suorittimet (CPU, GPU), levyt (I/O) ja verkkolaitteet (NIC) suorittavat datakeskuksen varsinaiset laskenta- ja tietoliikennetehtävät.
 
 Suurin yksittäinen energiankuluttaja on palvelimissa suoritin, jonka kulutus kasvaa laskentakuorman, ytimien määrän ja kellotaajuuden myötä ~50-60%. Levylaitteistot kuluttavat merkittävästi energiaa erityisesti kirjoitusoperaatioissa ~20-30%, ja verkkolaitteiden kulutus riippuu voimakkaasti siirtonopeudesta ja pakettikoon hallinnasta ~10-20%, lisäksi palvelimella on muuta esimerkiksi käyttöjärjestelmän aiheuttamaa taustakulutusta ~10-20. [2]
-~
 
 
 ## Energiatehokkuuden mittaaminen (PUE):
