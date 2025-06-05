@@ -1,4 +1,19 @@
 # Energian kulutus datakeskuksessa:
+
+Datakeskuksen sähköenergiankulutuksen neljä pääkategoriaa:
+
+- **Eₛ (servers)** – palvelinten energiankulutus  
+- **Eₛₜ (storage)** – tallennuslaitteiden energiankulutus  
+- **Eₚ (network)** – verkkolaitteiden energiankulutus  
+- **Eᵢ (infrastructure)** – tukijärjestelmien, kuten jäähdytyksen, UPS-järjestelmien ja valaistuksen, energiankulutus  
+
+Yhteensä nämä muodostavat datakeskuksen kokonaiskulutuksen:
+
+**E = Eₛ + Eₛₜ + Eₚ + Eᵢ**
+
+Jaottelu auttaa hahmottamaan, että datakeskuksen sähköenergian kulutus jakautuu palvelimiin, tallennuslaitteisiin, verkkolaitteisiin ja tukijärjestelmiin (kuten jäähdytys ja varavirtaratkaisut). Tukijärjestelmien osuus voi kasvaa merkittäväksi, erityisesti silloin kun niiden toiminnan energiatehokkuuteen ei ole kiinnitetty huomiota [Shehabi et al., 2018].
+
+
 Pääasiassa energiaa kuluttavat IT-laitteet (palvelinten suorittimet, levyt,
 verkkolaitteet, jotka suorittavat varsinaiset laskentatehtävät) sekä tukijärjestelmät kuten
 jäähdytys ja ilmanvaihto, varavirtajärjestelmät (UPS-akut, dieselgeneraattorit) ja valaistus.
