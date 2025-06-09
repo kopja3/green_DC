@@ -1,8 +1,9 @@
 # Vihreän datakeskuksen elementit ja perusperiaatteet 🌱💡
 
-Vihreä datakeskus (green data center) on datakeskus, joka on suunniteltu, rakennettu ja operoitu siten, että sen ympäristövaikutukset minimoidaan koko elinkaaren aikana
+## Vihreä datakeskus (green data center) on datakeskus, joka on suunniteltu, rakennettu ja operoitu siten, että sen ympäristövaikutukset minimoidaan koko elinkaaren aikana
 (https://www.device42.com/data-center-infrastructure-management-guide/green-data-center/)
-Se ei rajoitu vain energiatehokkuuteen, vaan kattaa kokonaisvaltaisesti useita kestävyyden osa-alueita – uusiutuvan energian käytöstä vedenkulutuksen hallintaan ja kiertotalouteen. Tavoitteena on luoda palvelinkeskus, joka on energia- ja resurssitehokas, ympäristövastuullinen sekä yhteiskunnallisesti hyödyllinen
+
+## Se ei rajoitu vain energiatehokkuuteen, vaan kattaa kokonaisvaltaisesti useita kestävyyden osa-alueita – uusiutuvan energian käytöstä vedenkulutuksen hallintaan ja kiertotalouteen. Tavoitteena on luoda palvelinkeskus, joka on energia- ja resurssitehokas, ympäristövastuullinen sekä yhteiskunnallisesti hyödyllinen
 (https://www.ironmountain.com/resources/blogs-and-articles/d/data-centers-the-importance-of-sustainable-data-centers)
 
 # Vihreän datakeskuksen tarkistuslista Suomessa: 
