@@ -27,7 +27,8 @@ Yhteensä nämä muodostavat datakeskuksen kokonaiskulutuksen:
 **E = Eₛ + Eₛₜ + Eₚ + Eᵢ**
 
 Jaottelu auttaa hahmottamaan, että datakeskuksen sähköenergian kulutus jakautuu palvelimiin, tallennuslaitteisiin, verkkolaitteisiin ja tukijärjestelmiin (kuten jäähdytys ja varavirtaratkaisut). Tukijärjestelmien osuus voi kasvaa merkittäväksi, erityisesti silloin kun niiden toiminnan energiatehokkuuteen ei ole kiinnitetty huomiota [1].
-[📊 Näytä kuva datakeskuksen kokonaisenergiankulutuksesta](kuvat/datakeskuksen_energiankulutus.png)
+
+[📊 Näytä kuva datakeskuksen kokonaisenergiankulutuksen neljästä pääkategoriasta:](kuvat/datakeskuksen_energiankulutus.png)
 
 Palvelimissa suorittimet (CPU, GPU), levyt (I/O) ja verkkolaitteet (NIC) suorittavat datakeskuksen varsinaiset laskenta- ja tietoliikennetehtävät.
 
