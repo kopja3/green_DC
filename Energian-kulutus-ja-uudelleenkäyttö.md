@@ -10,6 +10,9 @@
 > ➤ **100 MW:n datakeskus kuluttaa siis saman verran sähköä vuodessa kuin yli 43 000 omakotitaloa yhteensä.**
 >  
 > Tämä konkretisoi, miksi energiatehokkuus, uusiutuvan energian käyttö ja hukkalämmön hyödyntäminen ovat kriittisiä vihreän datakeskuksen toteutuksessa.
+> Datakeskuksen sähkönkulutus massiivinen vakio — ja jos tämä energia tuotetaan fossiilisilla polttoaineilla, jokainen kilowattitunti kasvattaa suoraan ilmakehän hiilidioksidipitoisuutta.
+> Samalla valtavat määrät syntynyttä hukkalämpöä johdetaan ulkoilmaan tai vesistöihin, mikä lämmittää ympäristöämme – aivan kirjaimellisesti.
+> 
 
 Datakeskuksen sähköenergiankulutuksen neljä pääkategoriaa:
 
