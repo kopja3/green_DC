@@ -1,6 +1,18 @@
 # Energian kulutus datakeskuksessa:
 
+> 💡 **Havainnollistus mittasuhteesta:**
+>
+> Yhden suuren datakeskuksen sähköteho voi olla jopa **100 megawattia (MW)**, mikä tarkoittaa vuositason kulutuksena noin  
+> **876 000 000 kilowattituntia (kWh)** (*= 100 MW × 24 h × 365 vrk*).  
+> 
+> Vertailun vuoksi: sähkölämmitteisen omakotitalon vuotuinen sähkönkulutus on keskimäärin noin **20 000 kWh**.  
+> 
+> ➤ **100 MW:n datakeskus kuluttaa siis saman verran sähköä vuodessa kuin yli 43 000 omakotitaloa yhteensä.**
+>  
+> Tämä konkretisoi, miksi energiatehokkuus, uusiutuvan energian käyttö ja hukkalämmön hyödyntäminen ovat kriittisiä vihreän datakeskuksen toteutuksessa.
+
 Datakeskuksen sähköenergiankulutuksen neljä pääkategoriaa:
+
 
 - **Eₛ (servers)** – palvelinten energiankulutus  
 - **Eₛₜ (storage)** – tallennuslaitteiden energiankulutus  
