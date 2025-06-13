@@ -27,21 +27,6 @@ Tämä kuluttaa merkittävästi sähköä ja tuottaa lämpöä, joka poistetaan 
 
 ---
 
-## ⚡ 4. Kokonaissähköenergiankulutus
-
-![Kokonaissähkönkulutus](kuvat/datakeskus_vaihe4_kokonaissahkonkulutus.png)
-
-Datakeskuksen sähkönkulutus jakautuu:
-
-- **Eₛ:** palvelimet
-- **Eₛₜ:** tallennuslaitteet
-- **Eₚ:** verkkolaitteet
-- **Eᵢ:** tukijärjestelmät (jäähdytys, valaistus, UPS)
-
-Yhteensä nämä muodostavat **kokonaissähköenergiankulutuksen**, josta merkittävä osa muuttuu hukkalämmöksi.
-
----
-
 ### 💭 Pohdintatehtävä
 
 > Miksi palvelimet ovat suurin sähkönkuluttaja datakeskuksessa?  
