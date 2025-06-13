@@ -2,7 +2,7 @@
 
 ## 🔌 1. Sähkönsyöttö ja jäähdytys
 
-![Sähkönsyöttö ja jäähdytys](kuvat/datakeskus_vaihe1_sahkonsyotto.png)
+![Sähkönsyöttö ja jäähdytys](Sähkönsyöttö_ja_jäähdytys.png)
 
 Datakeskus ei toimi ilman jatkuvaa sähkönsyöttöä ja toimivaa jäähdytystä.  
 Palvelimien toiminta perustuu keskeytymättömään sähköön, ja jäähdytys – usein vesikiertoinen – poistaa syntyvän lämmön.
@@ -11,7 +11,7 @@ Palvelimien toiminta perustuu keskeytymättömään sähköön, ja jäähdytys �
 
 ## 🌐 2. Palvelupyynnöt internetistä palvelimille
 
-![Internet ja palvelupyynnöt](kuvat/datakeskus_vaihe2_palvelupyynnot.png)
+![Internet ja palvelupyynnöt](kuvat/Palvelupyynnöt.png)
 
 Käyttäjien verkkopalvelupyynnöt saapuvat internetin kautta datakeskukseen.  
 Verkkolaitteet ohjaavat ne oikeille palvelimille, jotka käsittelevät niitä tehokkaasti.
@@ -20,7 +20,7 @@ Verkkolaitteet ohjaavat ne oikeille palvelimille, jotka käsittelevät niitä te
 
 ## 🖥️ 3. Palvelinten toiminta ja lämmöntuotanto
 
-![Operointi ja kuormitus](kuvat/datakeskus_vaihe3_operointi.png)
+![Operointi ja kuormitus](kuvat/Datakeskuksen_operoointi_ja_käyttö.png)
 
 Palvelimet suorittavat pyydettyjä tehtäviä: laskentaa, tietojen käsittelyä ja tallennusta.  
 Tämä kuluttaa merkittävästi sähköä ja tuottaa lämpöä, joka poistetaan jäähdytyksellä.
