@@ -59,3 +59,9 @@ Valitse alta aihe, josta haluat aloittaa:
 ---
 
 📄 [Itseopiskelutehtävät (kaikki moduulit)](tehtavat.md)
+
+
+
+
+
+📄 [Tehtävien vastaukset](tehtavat_vastaukset.md)
