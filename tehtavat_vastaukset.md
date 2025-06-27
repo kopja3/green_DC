@@ -53,7 +53,7 @@ Uusiutuva sähkö → Muuntaja/UPS → Virtalähteet → Prosessorit/Muistit/Lev
 ## 🔹 Moduuli 4 – Energian kulutus ja uudelleenkäyttö
 
 1. **PUE‑lasku:**
-   \(\text{Kokonaisenergia} = 800\,\text{kWh} \times 1.5 = 1200\,\text{kWh/vrk}\)
+Kokonaisenergia = IT-energia × PUE = 800 kWh × 1,5 = 1200 kWh/vrk
 
 2. **Nestejäähdytyksen etu:** Suora komponenttikontakti → tehokas lämmönpoisto, korkea menolämpö (>55 °C) → lämpö hyödynnettävissä ilman lisäkompressoria ⇒ parempi ERF.
 
