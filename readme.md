@@ -56,3 +56,6 @@ Valitse alta aihe, josta haluat aloittaa:
 
 📬 *Jos haluat jakaa materiaalia PDF- tai Word-muodossa esimerkiksi sähköpostitse, käytä kutakin moduulitiedostoa erikseen tai pyydä tiivistetyistä versioista erilliset liitteet.*
 
+---
+
+📄 [Itseopiskelutehtävät (kaikki moduulit)](tehtavat.md)
