@@ -10,7 +10,8 @@ Valitse alta aihe, josta haluat aloittaa:
 
 ## 🔹 1. Datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet  
 Miksi datakeskus rakennetaan ja mihin se kannattaa sijoittaa?
-  [Datakeskusten rakentamisen syyt ja sijaintipäätösten perusteet] (Datakeskusten-rakentamisen-syyt-ja-sijaintipäätösten-perusteet.md)
+  [Datakeskusten rakentamisen syyt ja sijaintipäätösten perusteet](datakeskusten-rakentamisen-syyt-ja-sijaintipäätösten-perusteet.md)
+  
 
 ## 🔹 1. Vihreän datakeskuksen peruselementit ja periaatteet  
 🧩 Mitä vihreä datakeskus tarkoittaa? Millaisia arvoja ja teknisiä ratkaisuja siihen sisältyy?
