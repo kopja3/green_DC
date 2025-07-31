@@ -62,6 +62,7 @@
 
 ---
 [1] (https://www.device42.com/data-center-infrastructure-management-guide/green-data-center/)
+
 [2] (https://www.ironmountain.com/resources/blogs-and-articles/d/data-centers-the-importance-of-sustainable-data-centers)
 
 
