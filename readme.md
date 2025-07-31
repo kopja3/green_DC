@@ -2,7 +2,7 @@
 
 **Tervetuloa vihreän datakeskuksen itseopiskelumateriaaliin!**
 
-Tämä materiaali on suunnattu erityisesti abiturientille tai muulle itsenäiselle oppijalle, joka haluaa ymmärtää, miten digitaalisen infrastruktuurin energiankulutusta voidaan vähentää ja uudelleenkäyttää kestävästi.
+Tämä materiaali on suunnattu erityisesti abiturientille tai muulle itsenäiselle oppijalle, joka haluaa ymmärtää, miten datakeskuksen energiatehokkuutta voidaan parantaa ja sen ympäristövaikutuksia minimoida.
 
 Valitse alta aihe, josta haluat aloittaa:
 
