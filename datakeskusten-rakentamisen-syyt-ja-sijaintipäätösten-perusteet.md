@@ -49,7 +49,7 @@ Kun päätetään minne datakeskus rakennetaan, otetaan huomioon useita tekijöi
 
 Alla on eritelty nämä tekijät:
 
-### **1. Sähköenergian saatavuus ja hinta**
+### **Sähköenergian saatavuus ja hinta**
 
 Sähkön saatavuus ja hinta ovat ehkä tärkein yksittäinen sijaintipäätöstä ohjaava tekijä datakeskuksille. Koska suuret datakeskukset kuluttavat valtavasti sähköä (yksi iso keskus voi käyttää yhtä paljon sähköä kuin kymmeniätuhansia kotitalouksia ), on elintärkeää, että sijaintipaikassa on riittävästi sähkökapasiteettia ja mieluiten edullista energiaa. Alueet, joilla on ylimääräistä sähköntuotantoa tai halpaa energiaa, houkuttelevat datakeskuksia. Esimerkiksi Pohjois-Ruotsin Luleåssa on Euroopan halvimpia sähköhintoja johtuen runsaasta vesivoimasta – tämä oli yksi syy Facebookin datakeskuksen sijoittumiseen sinne [6]. Vastaavasti monet teknologiajätit suosivat Pohjoismaita, koska uusiutuvaa energiaa (vesi-, tuuli- ja ydinvoimaa) on runsaasti tarjolla kohtuuhintaan.
 
