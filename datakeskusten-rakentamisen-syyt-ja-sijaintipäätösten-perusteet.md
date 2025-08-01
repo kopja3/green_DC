@@ -10,6 +10,16 @@ Datakeskukset ovat sähköisiä tietovarastoja ja laskentakeskuksia, joissa suur
 
 Käytännössä moderni yhteiskunta nojaa datakeskuksiin: **Ne muodostavat digitaalisen infrastruktuurin selkärangan**, joka mahdollistaa internet-palveluiden toiminnan ympäri vuorokauden [1]. Ilman datakeskuksia esimerkiksi sosiaalinen media, verkkokauppa, pilvitallennus ja etätyösovellukset eivät toimisi yhtä luotettavasti.
 
+
+![Data Center](CommScope_moduuli.jpg)  
+*Konesali CSC:n Kajaanin datakeskusalueella. Modulaarisia yksiköitä voidaan lisätä tarpeen mukaan, ja ne ovat osa LUMI-infrastruktuuria, jossa yhdistyy pysyvä rakennus ja joustava modulaarinen laajennus.*
+
+![LUMI tekninen kerros](LUMI_whitespace_tekninen_kerros.jpg)  
+*Datakeskuksen tekninen kerros: täällä kulkevat kaapeloinnit ja jäähdytysjärjestelmät. Palvelinkaappirivit sijaitsevat tämän kerroksen päällä.*
+
+
+
+
 ## Miksi datakeskusten tarve kasvaa?
 
 Datakeskusten tarve kasvaa jatkuvasti useista syistä. Yhteiskunnan digitalisoituminen on kiihtynyt, ja yhä suurempi osa viestinnästä, viihteestä ja liiketoiminnasta tapahtuu verkossa. Verkkosisältöjen ja -palveluiden määrän sekä käyttäjien datankulutuksen kasvu (esim. 4K-videoiden suoratoisto, IoT-laitteet, pilvipelipalvelut) lisäävät datankäsittelyn ja tallennuksen tarvetta. Esimerkiksi COVID-19-pandemian aikana verkkopalveluiden käytön kasvu (mm. etäostaminen ja -työskentely) pakotti yritykset laajentamaan tietojenkäsittelykapasiteettiaan merkittävästi. Myös tekoäly, big data -analytiikka ja koneoppiminen lisäävät laskentatehon tarvetta: uusien AI-mallien koulutus ja käyttö tapahtuu suurissa datakeskuksissa, mikä vauhdittaa niiden rakentamista [1]. Kansainvälisen energiajärjestön (IEA) mukaan datakeskukset (yhdessä kryptovaluuttalouhinnan ja tekoälyn kanssa) kuluttivat vuonna 2022 noin 460 TWh sähköä (lähes 2 % koko maailman sähköstä), ja digitaalisen datan määrän nopea kasvu edellyttää datakeskusinfrastruktuurin laajentamista ja kehittämistä. Toisin sanoen, digitaalisen tiedon räjähdysmäinen kasvu pakottaa rakentamaan lisää datakeskustilaa sen tallentamiseksi ja käsittelemiseksi. Alan asiantuntijat arvioivatkin, että globaali datakeskuskapasiteetti saattaa jopa kaksinkertaistua muutamassa vuodessa räjähdysmäisesti kasvavan laskentakysynnän vuoksi [1].
