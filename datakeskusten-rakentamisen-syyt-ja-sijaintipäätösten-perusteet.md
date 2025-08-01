@@ -12,7 +12,7 @@ Käytännössä moderni yhteiskunta nojaa datakeskuksiin: **Ne muodostavat digit
 
 
 ![Data Center](kuvat/Kansallinen%20konsali.jpg)  
-*Konesali CSC:n Kajaanin datakeskusalueella. Modulaarisia yksiköitä voidaan lisätä tarpeen mukaan, ja ne ovat osa LUMI-infrastruktuuria, jossa yhdistyy pysyvä rakennus ja joustava modulaarinen laajennus.*
+*Konesali CSC:n Kajaanin datakeskusalueella.*
 
 ![LUMI tekninen kerros](kuvat/LUMIwhitespacetekninenkerros.jpg)
 *Datakeskuksen tekninen kerros: täällä kulkevat kaapeloinnit ja jäähdytysjärjestelmät. Palvelinkaappirivit sijaitsevat tämän kerroksen päällä.*
