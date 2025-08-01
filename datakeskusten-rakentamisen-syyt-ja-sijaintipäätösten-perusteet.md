@@ -11,7 +11,7 @@ Datakeskukset ovat sähköisiä tietovarastoja ja laskentakeskuksia, joissa suur
 Käytännössä moderni yhteiskunta nojaa datakeskuksiin: **Ne muodostavat digitaalisen infrastruktuurin selkärangan**, joka mahdollistaa internet-palveluiden toiminnan ympäri vuorokauden [1]. Ilman datakeskuksia esimerkiksi sosiaalinen media, verkkokauppa, pilvitallennus ja etätyösovellukset eivät toimisi yhtä luotettavasti.
 
 
-![Data Center](kuvat/CommScope_moduuli.jpg)  
+![Data Center](kuvat/Kansallinen%20konsali.jpg)  
 *Konesali CSC:n Kajaanin datakeskusalueella. Modulaarisia yksiköitä voidaan lisätä tarpeen mukaan, ja ne ovat osa LUMI-infrastruktuuria, jossa yhdistyy pysyvä rakennus ja joustava modulaarinen laajennus.*
 
 ![LUMI tekninen kerros](kuvat/LUMI_whitespace_tekninen_kerros.jpg)  
