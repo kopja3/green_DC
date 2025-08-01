@@ -15,7 +15,7 @@ Käytännössä moderni yhteiskunta nojaa datakeskuksiin: **Ne muodostavat digit
 *Konesali CSC:n Kajaanin datakeskusalueella.*
 
 ![LUMI tekninen kerros](kuvat/LUMIwhitespacetekninenkerros.jpg)
-*Datakeskuksen tekninen kerros: täällä kulkevat kaapeloinnit ja jäähdytysjärjestelmät. Palvelinkaappirivit sijaitsevat tämän kerroksen päällä.*
+*Datakeskuksen tekninen kerros: täällä kulkevat kaapeloinnit. Palvelinkaappirivit sijaitsevat tämän kerroksen päällä.*
 
 
 
