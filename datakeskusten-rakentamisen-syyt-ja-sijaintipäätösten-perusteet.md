@@ -12,13 +12,10 @@ Käytännössä moderni yhteiskunta nojaa datakeskuksiin: **Ne muodostavat digit
 
 
 ![Data Center](kuvat/Kansallinen%20konsali.jpg)  
-*Konesali CSC:n Kajaanin datakeskusalueella.(Kuva: CSC – Tieteen tietotekniikan keskus Oy).*
+*Konesali CSC:n Kajaanin datakeskusalueella. *Kuva CSC:n luvalla (CSC – Tieteen tietotekniikan keskus Oy)*.
 
 ![LUMI tekninen kerros](kuvat/LUMIwhitespacetekninenkerros.jpg)
-*Datakeskuksen tekninen kerros: täällä kulkevat kaapeloinnit. Palvelinkaappirivit sijaitsevat tämän kerroksen päällä.(Kuva: CSC – Tieteen tietotekniikan keskus Oy).*
-
-
-
+*Datakeskuksen tekninen kerros: täällä kulkevat kaapeloinnit. Palvelinkaappirivit sijaitsevat tämän kerroksen päällä. *Kuva CSC:n luvalla (CSC – Tieteen tietotekniikan keskus Oy)*
 
 ## Miksi datakeskusten tarve kasvaa?
 
