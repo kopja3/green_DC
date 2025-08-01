@@ -12,10 +12,10 @@ Käytännössä moderni yhteiskunta nojaa datakeskuksiin: **Ne muodostavat digit
 
 
 ![Data Center](kuvat/Kansallinen%20konsali.jpg)  
-*Konesali CSC:n Kajaanin datakeskusalueella.*
+*Konesali CSC:n Kajaanin datakeskusalueella.(Kuva: CSC – Tieteen tietotekniikan keskus Oy).*
 
 ![LUMI tekninen kerros](kuvat/LUMIwhitespacetekninenkerros.jpg)
-*Datakeskuksen tekninen kerros: täällä kulkevat kaapeloinnit. Palvelinkaappirivit sijaitsevat tämän kerroksen päällä.*
+*Datakeskuksen tekninen kerros: täällä kulkevat kaapeloinnit. Palvelinkaappirivit sijaitsevat tämän kerroksen päällä.(Kuva: CSC – Tieteen tietotekniikan keskus Oy).*
 
 
 
