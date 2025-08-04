@@ -9,7 +9,7 @@ Klikkaamalla alla olevia otsikoita voit tarkastella kutakin vaihetta erikseen.
 <details>
 <summary>🔢 Vaihe 1: Tarvekartoitus ja esiselvitys</summary>
 
-![Vaihe 1](assets/images/vaihe1.png)
+![Vaihe 1](assets/kuvat/vaihe1.png)
 </details>
 
 ---
@@ -17,7 +17,7 @@ Klikkaamalla alla olevia otsikoita voit tarkastella kutakin vaihetta erikseen.
 <details>
 <summary>🛠️ Vaihe 2: Suunnittelu</summary>
 
-![Vaihe 2](assets/images/vaihe2.png)
+![Vaihe 2](assets/kuvat/vaihe2.png)
 </details>
 
 ---
@@ -25,7 +25,7 @@ Klikkaamalla alla olevia otsikoita voit tarkastella kutakin vaihetta erikseen.
 <details>
 <summary>⚖️ Vaihe 3: Päätöksenteko ja luvitus</summary>
 
-![Vaihe 3](assets/images/vaihe3.png)
+![Vaihe 3](assets/kuvat/vaihe3.png)
 </details>
 
 ---
@@ -33,7 +33,7 @@ Klikkaamalla alla olevia otsikoita voit tarkastella kutakin vaihetta erikseen.
 <details>
 <summary>🏗️ Vaihe 4: Rakentaminen</summary>
 
-![Vaihe 4](assets/images/vaihe4.png)
+![Vaihe 4](assets/kuvat/vaihe4.png)
 </details>
 
 ---
@@ -50,5 +50,5 @@ Klikkaamalla alla olevia otsikoita voit tarkastella kutakin vaihetta erikseen.
 <details>
 <summary>♻️ Vaihe 6: Käytöstä poisto ja uudelleenkäyttö</summary>
 
-![Vaihe 6](assets/images/vaihe6.png)
+![Vaihe 6](assets/kuvat/vaihe6.png)
 </details>
