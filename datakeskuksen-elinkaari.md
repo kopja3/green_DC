@@ -41,7 +41,7 @@ Klikkaamalla alla olevia otsikoita voit tarkastella kutakin vaihetta erikseen.
 <details>
 <summary>🖥️ Vaihe 5: Operatiivinen toiminta</summary>
 
-![Vaihe 5](kuvat/Vaihe5.png)
+![Vaihe 5](kuvat/vaihe5_2.png)
 > 💡 *Huom: Johdotus on esitetty vain yhdessä palvelinkaappirivissä visuaalisen selkeyden vuoksi.*
 </details>
 
