@@ -20,7 +20,7 @@ Verkkolaitteet ohjaavat ne oikeille palvelimille, jotka käsittelevät niitä te
 
 ## 🖥️ 3. Palvelinten toiminta ja lämmöntuotanto
 
-![Operointi ja kuormitus](kuvat/datakeskus_vaihe3_operointi_ja_kaytto.png)
+![Operointi ja kuormitus](kuvat/Datakeskuksen_operointi_ja_käyttö.png)
 
 Palvelimet suorittavat pyydettyjä tehtäviä: laskentaa, tietojen käsittelyä ja tallennusta.  
 Tämä kuluttaa merkittävästi sähköä ja tuottaa lämpöä, joka poistetaan jäähdytyksellä.
