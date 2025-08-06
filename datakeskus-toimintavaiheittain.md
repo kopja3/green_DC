@@ -2,7 +2,7 @@
 
 ## 🔌 1. Sähkönsyöttö ja jäähdytys
 
-![Sähkönsyöttö ja jäähdytys](kuvat/datakeskus_vaihe1_sahkonsyotto_jahdytys.png)
+![Sähkönsyöttö ja jäähdytys](kuvat/datakeskus_vaihe1_sahkonsyotto_jaahdytys.png)
 
 Datakeskus ei toimi ilman jatkuvaa sähkönsyöttöä ja toimivaa jäähdytystä.  
 Palvelimien toiminta perustuu keskeytymättömään sähköön, ja jäähdytys – usein vesikiertoinen – poistaa syntyvän lämmön.
