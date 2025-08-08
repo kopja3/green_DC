@@ -58,7 +58,10 @@ Tämä lämpö johdetaan pois (esim. puhalletaan ulkoilmaan tai jäähdytysveden
 Lämmön talteenottojärjestelmät (kuten lämpöpumput ja lämmönvaihtimet) voivat siirtää palvelinsalin hukkalämmön esimerkiksi
 kaukolämpöverkkoon tai lähirakennusten lämmitykseen. 
 Tällöin sama energia hyödynnetään kahdesti: ensin digipalveluiden pyörittämiseen ja sitten rakennusten lämmittämiseen.
-
+<p align="center">
+  <img src="kuvat/datakeskus_ei_hukkalammon_hyod.png" alt="Perinteinen datakeskus – lämpö hukkaan" width="45%">
+  <img src="kuvat/datakeskus_hyod_hukkalampoa.png" alt="Hukkalämpöä hyödyntävä datakeskus" width="45%">
+</p>
 Hukkalämmön hyödyntäminen parantaa kokonaishyötysuhdetta ja vähentää yhteiskunnan primäärienergian tarvetta. 
 Jokainen kilowattitunti, joka saadaan talteen datakeskuksesta ja käytetään vaikkapa talojen lämmitykseen, on kilowattitunti vähemmän
 polttoaineita kattiloissa tai sähköä erillisissä lämpölaitoksissa. 
@@ -67,11 +70,6 @@ Samalla datakeskuksen toimintaa voidaan perustella ympäristöystävällisempän
 Hukkalämmön hyödyntäminen ei ole aivan triviaalia: se vaatii investointeja (esim. lämpöpumppuihin, putkistoihin) ja edellyttää, että lähettyvillä on
 lämmön tarvetta (esimerkiksi kaupunki tai teollisuuslaitos, joka voi hyödyntää lämpöä). 
 Aina tämä ei toteudu – tästä syystä kaikki datakeskukset eivät vielä kierrätä lämpöään.
-
-kaavio, jossa on kaksi rinnakkaista kuvaa: perinteinen datakeskus vs. hukkalämpöä hyödyntävä datakeskus. 
-Ensimmäisessä sähkö syötetään datakeskukseen ja lopputuloksena lämpö menee harakoille (piirrä nuoli lämpönä ulos ympäristöön). 
-Toisessa kuvassa sähkö (mieluiten uusiutuva) menee datakeskukseen ja syntyvä lämpö ohjataan lämpöpumppujen kautta kaukolämpöverkkoon tai kasvihuoneille tms. 
-Kuvaan voi merkitä, kuinka sama energia palvelee kahta tarkoitusta. (Tämän kuvan avulla opiskelija hahmottaa konkreettisesti, miten datakeskuksen tuottama lämpö voidaan muuttaa ongelmasta resurssiksi.)
 
 Esimerkki: Telia Helsinki Data Center Pitäjänmäellä. 
 Telian suuri datakeskus Helsingissä on kytketty energiayhtiö Helenin kaukolämpöverkkoon.
