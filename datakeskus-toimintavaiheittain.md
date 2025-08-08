@@ -14,7 +14,7 @@ Palvelimien toiminta perustuu keskeytymättömään sähköön, ja jäähdytys �
 ![Internet ja palvelupyynnöt](kuvat/datakeskus_vaihe2_verkkopalvelupyynnot2.png)
 
 Käyttäjien verkkopalvelupyynnöt saapuvat internetin kautta datakeskukseen.  
-Verkkolaitteet ohjaavat ne oikeille palvelimille, jotka käsittelevät niitä tehokkaasti.
+Verkkolaitteet ohjaavat ne oikeille palvelimille, jotka käsittelevät ne.
 
 ---
 
