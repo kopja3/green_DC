@@ -8,9 +8,9 @@ hiilijalanjälkensä (magiccloud.fi)
 Niiden merkitys kasvaa, sillä digitaalisten palveluiden laajeneminen ja ilmastotavoitteet edellyttävät entistä vastuullisempaa infrastruktuuria (webhosting.de)
 Vihreän datakeskuksen suunnittelu ja ylläpito vaativat huomiota energiatehokkuuteen, uusiutuvaan energiaan ja jäähdytysratkaisuihin sekä toiminnan jatkuvaa mittaamista erilaisten tunnuslukujen (esimerkiksi energiankulutuksen ja hiilijalanjäljen) avulla (magiccloud.fi)
 
-<small>[Magic Cloud - Vihreän pilven hyödyt energiatehokkuudesta skaalautuvuuteen](https://magiccloud.fi/vihrean-pilven-hyodyt-energiatehokkuudesta-skaalautuvuuteen/#:~:text=Pilvipalveluiden%20vastuullisuuden%20raportointi%20on%20keskeinen,palveluntarjoaja%20on%20tehnyt%20hiilineutraaliuden%20saavuttamiseksi)</small>
+<small>[Magic Cloud](https://magiccloud.fi/vihrean-pilven-hyodyt-energiatehokkuudesta-skaalautuvuuteen/#:~:text=Pilvipalveluiden%20vastuullisuuden%20raportointi%20on%20keskeinen,palveluntarjoaja%20on%20tehnyt%20hiilineutraaliuden%20saavuttamiseksi)</small>
 
-<small>[Webhosting.de - Vihreä hosting: kestävät datakeskukset](https://webhosting.de/fi/vihreae-hosting-kestaeaevat-datakeskukset/#:~:text=Vihre%C3%A4n%20is%C3%A4nn%C3%B6innin%20merkitys%20on%20paljon,kun%20digitaalista%20muutosta%20muokataan%20ymp%C3%A4rist%C3%B6yst%C3%A4v%C3%A4llisesti)</small>
+<small>[Webhosting.de](https://webhosting.de/fi/vihreae-hosting-kestaeaevat-datakeskukset/#:~:text=Vihre%C3%A4n%20is%C3%A4nn%C3%B6innin%20merkitys%20on%20paljon,kun%20digitaalista%20muutosta%20muokataan%20ymp%C3%A4rist%C3%B6yst%C3%A4v%C3%A4llisesti)</small>
 
 
 
