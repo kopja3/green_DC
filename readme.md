@@ -3,9 +3,12 @@
 **Tervetuloa vihreän datakeskuksen itseopiskelumateriaaliin!**
 
 Tämä materiaali on suunnattu erityisesti abiturientille tai muulle itsenäiselle oppijalle, joka haluaa ymmärtää, miten datakeskuksen energiatehokkuutta voidaan parantaa ja sen ympäristövaikutuksia minimoida. 
+
 Vihreä datakeskus tarkoittaa ympäristöystävällistä datakeskusta, joka käyttää mahdollisimman vähän energiaa ja hyödyntää uusiutuvaa energiaa toiminnassaan minimoidakseen
 hiilijalanjälkensä [1]
+
 Niiden merkitys kasvaa, sillä digitaalisten palveluiden laajeneminen ja ilmastotavoitteet edellyttävät entistä vastuullisempaa infrastruktuuria [2]
+
 Vihreän datakeskuksen suunnittelu ja ylläpito vaativat huomiota energiatehokkuuteen, uusiutuvaan energiaan ja jäähdytysratkaisuihin sekä toiminnan jatkuvaa mittaamista erilaisten tunnuslukujen (esimerkiksi energiankulutuksen ja hiilijalanjäljen) avulla [1]
 
 Valitse alta aihe, josta haluat aloittaa:
