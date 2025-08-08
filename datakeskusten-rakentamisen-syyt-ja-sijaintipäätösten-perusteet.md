@@ -48,7 +48,7 @@ Kun päätetään minne datakeskus rakennetaan, otetaan huomioon useita tekijöi
 
 -Imasto
 
--Mmaantiede ja tietoliikenneyhteydet
+-Maantiede ja tietoliikenneyhteydet
 
 -Toimintaympäristön vakaus 
 
@@ -103,7 +103,7 @@ Muut esimerkit: Yhdysvalloissa Loudoun County Virginiassa (lempinimeltään “D
 ________________________________________
 
 ### *** Yhteenvetona***: 
-Datakeskusten rakentaminen on olennainen osa digitaalisen yhteiskunnan infrastruktuuria, ja niiden tarve kasvaa dataintensiivisen tulevaisuuden myötä. Rakentamispäätöksiin vaikuttavat niin teknologian trendit (pilvipalvelut, AI), liiketoimintatarpeet (kustannustehokkuus, palvelun laatu) kuin yhteiskunnalliset tekijät (taloushyödyt, regulaatio). Sijaintia valitessa punnitaan huolellisesti energian hinta ja lähde, ilmaston tarjoamat edut, sijainnin tarjoamat tietoliikenneyhteydet, alueen vakaus ja säännökset sekä tarvittavan infrastruktuurin ja osaajien olemassaolo. Parhaat datakeskusten sijaintipaikat tarjoavat optimaalisen yhdistelmän näitä tekijöitä – niissä data virtaa nopeasti ja turvallisesti, palvelimet pysyvät viileinä uusiutuvan energian voimalla, toimintaympäristö on vakaa ja kustannukset hallinnassa. Tällaisissa paikoissa rakennetut datakeskukset auttavat vastaamaan maailman kasvavaan digitaalisen tiedonkäsittelyn tarpeeseen tehokkaasti ja kestävästi.
+Datakeskusten rakentaminen on olennainen osa digitaalisen yhteiskunnan infrastruktuuria, ja niiden tarve kasvaa dataintensiivisen tulevaisuuden myötä. Rakentamispäätöksiin vaikuttavat niin teknologian trendit (pilvipalvelut, AI), liiketoimintatarpeet (kustannustehokkuus, palvelun laatu) kuin yhteiskunnalliset tekijät (taloushyödyt, regulaatio). Sijaintia valitessa punnitaan huolellisesti energian hinta ja lähde, ilmaston tarjoamat edut, sijainnin tarjoamat tietoliikenneyhteydet, alueen vakaus ja säännökset sekä tarvittavan infrastruktuurin ja osaajien olemassaolo. Parhaat datakeskusten sijaintipaikat tarjoavat optimaalisen yhdistelmän näitä tekijöitä – niissä data virtaa nopeasti ja turvallisesti, palvelimet pysyvät viileinä uusiutuvan energian tuottaman sähkön avulla toimivilla energiatehokkailla jäähdytysjärjestelmillä, toimintaympäristö on vakaa ja kustannukset hallinnassa. Tällaisissa paikoissa rakennetut datakeskukset auttavat vastaamaan maailman kasvavaan digitaalisen tiedonkäsittelyn tarpeeseen tehokkaasti ja kestävästi.
 
 Lähteet:
 [1] GPRS – Understanding the Data Center Construction Boom,  https://www.gp-radar.com/article/understanding-the-data-center-construction-boom
