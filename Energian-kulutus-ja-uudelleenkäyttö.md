@@ -34,7 +34,7 @@ Palvelimissa suorittimet (CPU, GPU), levyt (I/O) ja verkkolaitteet (NIC) suoritt
 
 Suurin yksittäinen energiankuluttaja on palvelimissa suoritin, jonka kulutus kasvaa laskentakuorman, ytimien määrän ja kellotaajuuden myötä ~50-60%. Levylaitteistot kuluttavat merkittävästi energiaa erityisesti kirjoitusoperaatioissa ~20-30%, ja verkkolaitteiden kulutus riippuu voimakkaasti siirtonopeudesta ja pakettikoon hallinnasta ~10-20%, lisäksi palvelimella on muuta esimerkiksi käyttöjärjestelmän aiheuttamaa taustakulutusta ~10-20 [2].
 
-Nykyisissä (vuoden 2025) järjestelmissä GPU:n (tai NPU:n) osuus on noussut merkittävästi erityisesti tekoälysovelluksissa, mutta CPU on edelleen monissa palvelinsovelluksissa suurin yksittäinen kuluttaja.
+Nykyisissä (vuoden 2025) järjestelmissä GPU:n (tai TPU:n) osuus on noussut merkittävästi erityisesti tekoälysovelluksissa, mutta CPU on edelleen monissa palvelinsovelluksissa suurin yksittäinen kuluttaja.
 
 ## Energiatehokkuuden mittaaminen (PUE):
 Keskeinen energiatehokkuuden mittari on PUE (Power Usage Effectiveness)
