@@ -7,7 +7,7 @@ Tämä materiaali on suunnattu erityisesti abiturientille tai muulle itsenäisel
 Vihreä datakeskus tarkoittaa ympäristöystävällistä datakeskusta, joka käyttää mahdollisimman vähän energiaa ja hyödyntää uusiutuvaa energiaa toiminnassaan minimoidakseen
 hiilijalanjälkensä [1]
 
-Niiden merkitys kasvaa, sillä digitaalisten palveluiden laajeneminen ja ilmastotavoitteet edellyttävät entistä vastuullisempaa infrastruktuuria [2]
+Sen merkitys kasvaa, sillä digitaalisten palveluiden laajeneminen ja ilmastotavoitteet edellyttävät entistä vastuullisempaa infrastruktuuria [2]
 
 Vihreän datakeskuksen suunnittelu ja ylläpito vaativat huomiota energiatehokkuuteen, uusiutuvaan energiaan ja jäähdytysratkaisuihin sekä toiminnan jatkuvaa mittaamista erilaisten tunnuslukujen (esimerkiksi energiankulutuksen ja hiilijalanjäljen) avulla [1]
 
