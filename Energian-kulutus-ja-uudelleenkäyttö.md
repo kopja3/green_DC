@@ -60,7 +60,7 @@ kaukolämpöverkkoon tai lähirakennusten lämmitykseen.
 Tällöin sama energia hyödynnetään kahdesti: ensin digipalveluiden pyörittämiseen ja sitten rakennusten lämmittämiseen.
 <p align="center">
   <img src="kuvat/datakeskus_ei_hukkalammon_hyod.png" alt="Perinteinen datakeskus – lämpö hukkaan" width="45%">
-  <img src="kuvat/datakeskus_hyod_hukkalampoa.png" alt="Hukkalämpöä hyödyntävä datakeskus" width="45%">
+  <img src="kuvat/datakeskus_hyod_hukkalampöa.png" alt="Hukkalämpöä hyödyntävä datakeskus" width="45%">
 </p>
 Hukkalämmön hyödyntäminen parantaa kokonaishyötysuhdetta ja vähentää yhteiskunnan primäärienergian tarvetta. 
 Jokainen kilowattitunti, joka saadaan talteen datakeskuksesta ja käytetään vaikkapa talojen lämmitykseen, on kilowattitunti vähemmän
