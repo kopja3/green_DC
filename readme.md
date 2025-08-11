@@ -21,35 +21,35 @@ Miksi datakeskus rakennetaan ja mihin se kannattaa sijoittaa?
 📄 [Datakeskusten rakentamisen syyt ja sijaintipäätösten perusteet](datakeskusten-rakentamisen-syyt-ja-sijaintipäätösten-perusteet.md)
   
 
-## 🔹 1. Vihreän datakeskuksen peruselementit ja periaatteet  
+## 🔹 2. Vihreän datakeskuksen peruselementit ja periaatteet  
 🧩 Mitä vihreä datakeskus tarkoittaa? Millaisia arvoja ja teknisiä ratkaisuja siihen sisältyy?
 
 📄 [Vihreän datakeskuksen elementit ja periaatteet](vihrean-datakeskuksen-elementit-ja-perusperiaatteet.md)
 
 ---
 
-## 🔹 2. Datakeskuksen elinkaaren vaiheet  
+## 🔹 3. Datakeskuksen elinkaaren vaiheet  
 🔁 Miten datakeskus suunnitellaan, rakennetaan, käytetään ja lopulta puretaan tai kierrätetään?
 
 📄 [Datakeskuksen elinkaaren vaiheet](datakeskuksen-elinkaari.md)
 
 ---
 
-## 🔹 3. Datakeskuksen toiminta vaiheittain  
+## 🔹 4. Datakeskuksen toiminta vaiheittain  
 ⚙️ Miten sähkö kulkee laitteisiin ja mitä tapahtuu, kun se muuttuu takaisin lämmöksi?
 
 📄 [Datakeskuksen toiminta vaiheittain – sähköstä palveluun ja takaisin lämpönä](datakeskus-toimintavaiheittain.md)
 
 ---
 
-## 🔹 4. Energian kulutus ja uudelleenkäyttö  
+## 🔹 5. Energian kulutus ja uudelleenkäyttö  
 🌡️ Mihin sähköä kuluu, miten sitä voidaan säästää ja miten lämpö voidaan hyödyntää?
 
 📄 [Energian kulutus ja uudelleenkäyttö](Energian-kulutus-ja-uudelleenkäyttö.md)
 
 ---
 
-## 🔹 5. EN 50600-4 -standardi ja mittarit  
+## 🔹 6. EN 50600-4 -standardi ja mittarit  
 📐 Eurooppalainen EN 50600 -standardi määrittelee, miten datakeskusten energiatehokkuutta mitataan ja kehitetään.
 
 📄 [EN 50600-4 -standardi ja mittarit](EN-50600-4-standardi-ja-mittarit.md)
