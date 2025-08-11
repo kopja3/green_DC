@@ -5,11 +5,11 @@
 Tämä materiaali on suunnattu erityisesti abiturientille tai muulle itsenäiselle oppijalle, joka haluaa ymmärtää, miten datakeskuksen energiatehokkuutta voidaan parantaa ja sen ympäristövaikutuksia minimoida. 
 
 Vihreä datakeskus tarkoittaa ympäristöystävällistä datakeskusta, joka käyttää mahdollisimman vähän energiaa ja hyödyntää uusiutuvaa energiaa toiminnassaan minimoidakseen
-hiilijalanjälkensä [1]
+hiilijalanjälkensä[1].
 
-Sen merkitys kasvaa, sillä digitaalisten palveluiden laajeneminen ja ilmastotavoitteet edellyttävät entistä vastuullisempaa infrastruktuuria [2]
+- Sen merkitys kasvaa, sillä digitaalisten palveluiden laajeneminen ja ilmastotavoitteet edellyttävät entistä vastuullisempaa infrastruktuuria. Tämä perustuu kasvavaan näyttöön siitä, että datakeskusten energiankulutus ja hiilijalanjälki kasvaa nopeasti, ja ilmastoneutraaliuden saavuttaminen vaatii toimintamallien muutosta[2].
 
-Vihreän datakeskuksen suunnittelu ja ylläpito vaativat huomiota energiatehokkuuteen, uusiutuvaan energiaan ja jäähdytysratkaisuihin sekä toiminnan jatkuvaa mittaamista erilaisten tunnuslukujen (esimerkiksi energiankulutuksen ja hiilijalanjäljen) avulla [1]
+Vihreän datakeskuksen suunnittelu ja ylläpito vaativat huomiota energiatehokkuuteen, uusiutuvaan energiaan ja jäähdytysratkaisuihin sekä toiminnan jatkuvaa mittaamista erilaisten tunnuslukujen (esimerkiksi energiankulutuksen ja hiilijalanjäljen) avulla[1].
 
 Valitse alta aihe, josta haluat aloittaa:
 
@@ -69,8 +69,7 @@ Miksi datakeskus rakennetaan ja mihin se kannattaa sijoittaa?
 
 <sub>[1]https://magiccloud.fi/vihrean-pilven-hyodyt-energiatehokkuudesta-skaalautuvuuteen/#:~:text=Pilvipalveluiden%20vastuullisuuden%20raportointi%20on%20keskeinen,palveluntarjoaja%20on%20tehnyt%20hiilineutraaliuden%20saavuttamiseksi</sub>
 
-<sub>[2]https://webhosting.de/fi/vihreae-hosting-kestaeaevat-datakeskukset/#:~:text=Vihre%C3%A4n%20is%C3%A4nn%C3%B6innin%20merkitys%20on%20paljon,kun%20digitaalista%20muutosta%20muokataan%20ymp%C3%A4rist%C3%B6yst%C3%A4v%C3%A4llisesti</sub>
-
+<sub>[2]Cao, Z., Zhou, X., Hu, H., Wang, Z. ym. (2021). Towards a roadmap for carbon-neutral data centers. 
 
 
 ---
