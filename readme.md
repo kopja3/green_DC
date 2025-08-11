@@ -67,7 +67,7 @@ Miksi datakeskus rakennetaan ja mihin se kannattaa sijoittaa?
 
 💡 *Muista edetä omaan tahtiisi. Voit aloittaa mistä tahansa aiheesta ja palata takaisin tähän etusivuun milloin tahansa.*
 
-<sub>[1]https://magiccloud.fi/vihrean-pilven-hyodyt-energiatehokkuudesta-skaalautuvuuteen/#:~:text=Pilvipalveluiden%20vastuullisuuden%20raportointi%20on%20keskeinen,palveluntarjoaja%20on%20tehnyt%20hiilineutraaliuden%20saavuttamiseksi</sub>
+<sub>[1]Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). Green Data Centers: A Survey, Perspectives, and Future Directions. arXiv preprint arXiv:1608.00687.
 
 <sub>[2]Cao, Z., Zhou, X., Hu, H., Wang, Z. ym. (2021). Towards a roadmap for carbon-neutral data centers. 
 
