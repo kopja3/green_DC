@@ -2,7 +2,7 @@ Itseopiskelutehtävät: Vihreä datakeskus
 
 Tämä tiedosto sisältää täsmällisiä, oppimistavoitteisiin sidottuja tehtäviä kaikista moduuleista. Tehtävät auttavat sinua ymmärtämään vihreän datakeskuksen perusperiaatteita, rakenteita ja energiatehokkuutta elinkaariajattelun näkökulmasta.
 
-## **Moduuli  – Datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet**
+## **Moduuli 1 – Datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet**
 
 🎯 Oppimistavoite: Ymmärtää, miksi datakeskus rakennetaan ja mitkä tekijät vaikuttavat sijainnin valintaan.
 
