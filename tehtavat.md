@@ -5,11 +5,12 @@ Tämä tiedosto sisältää täsmällisiä, oppimistavoitteisiin sidottuja teht�
 ## **Moduuli  – Datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet**
 
 🎯 Oppimistavoite: Ymmärtää, miksi datakeskus rakennetaan ja mitkä tekijät vaikuttavat sijainnin valintaan.
+
 🧠 Tehtävät:
 
-Listaa kolme keskeistä syytä datakeskuksen rakentamiseen.
-Nimeä neljä sijaintiin vaikuttavaa tekijää (esim. ilmasto, infrastruktuuri, sähkön hinta, turvallisuus).
-Valitse yksi todellinen datakeskus ja selvitä, miksi se on rakennettu juuri siihen paikkaan.
+Listaa kolme keskeistä syytä datakeskuksen rakentamiseen?
+Nimeä neljä sijaintiin vaikuttavaa tekijää (esim. ilmasto, infrastruktuuri, sähkön hinta, turvallisuus)?
+Valitse yksi todellinen datakeskus ja selvitä, miksi se on rakennettu juuri siihen paikkaan?
 
 
 ## **Moduuli 2 – Vihreän datakeskuksen elementit ja periaatteet**
