@@ -2,7 +2,8 @@ Itseopiskelutehtävät: Vihreä datakeskus
 
 Tämä tiedosto sisältää täsmällisiä, oppimistavoitteisiin sidottuja tehtäviä kaikista moduuleista. Tehtävät auttavat sinua ymmärtämään vihreän datakeskuksen perusperiaatteita, rakenteita ja energiatehokkuutta elinkaariajattelun näkökulmasta.
 
- Moduuli 1 – Vihreän datakeskuksen elementit ja periaatteet
+## **Moduuli 1 – Vihreän datakeskuksen elementit ja periaatteet**
+
 
 🎯 Oppimistavoite: Ymmärtää datakeskuksen perusrakenne, komponentit ja vihreän suunnittelun periaatteet.
 
@@ -31,7 +32,7 @@ Miksi datakeskuksen sijoittaminen kylmään ilmastoon voi tukea energiatehokkuut
 
 Mitä tarkoittaa modulaarinen rakenne datakeskuksessa? Miten se tukee vihreyttä?
 
-Moduuli 2 – Datakeskuksen elinkaaren vaiheet
+## **Moduuli 2 – Datakeskuksen elinkaaren vaiheet**
 
 🎯 Oppimistavoite: Tunnistaa datakeskuksen eri vaiheet suunnittelusta purkuun ja niihin liittyvät ympäristövaikutukset.
 
@@ -43,7 +44,7 @@ Valitse yksi vaihe ja kuvaa, miten siihen voisi sisällyttää kiertotalouden pe
 
 Mikä vaiheista on mielestäsi tärkein vihreyden näkökulmasta? Perustele.
 
-Moduuli 3 – Datakeskuksen toiminta vaiheittain
+## **Moduuli 3 – Datakeskuksen toiminta vaiheittain**
 
 🎯 Oppimistavoite: Ymmärtää, miten sähkö kulkee datakeskuksessa ja muuttuu takaisin hukkalämmöksi.
 
@@ -55,7 +56,7 @@ Missä kohdissa tämä prosessi tuottaa eniten lämpöä? Anna kaksi esimerkkiä
 
 Mikä ero on prosessorin ja muistin sähkönkulutuksessa ja lämmöntuotossa? Tukeudu taulukkoon (moduulissa).
 
-Moduuli 4 – Energian kulutus ja uudelleenkäyttö
+## **Moduuli 4 – Energian kulutus ja uudelleenkäyttö**
 
 🎯 Oppimistavoite: Ymmärtää energiatehokkuuden mittarit ja hukkalämmön hyödyntämisen mahdollisuudet.
 
