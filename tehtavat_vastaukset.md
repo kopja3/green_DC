@@ -4,9 +4,55 @@ Tämä liite sisältää suuntaa‑antavat, oikeiksi katsottavat vastaukset teht
 
 > **Huom.** Vastaukset ovat tiiviitä. Opettaja tai ohjaaja voi täydentää esimerkein tai ajankohtaisin luvuilla.
 
+## 🔹 Moduuli 2 – Vihreän datakeskuksen elementit ja periaatteet
+
+Kolme keskeistä syytä datakeskuksen rakentamiseen
+
+1.Digitaalisen palvelukapasiteetin tarve
+Yritysten ja julkisen sektorin kasvava datankäsittelytarve (pilvipalvelut, tekoäly, big data) vaatii luotettavaa ja skaalautuvaa infrastruktuuria. Tutkimusten mukaan globaalin datankulutuksen kasvu ohjaa voimakkaasti uusien datakeskusten rakentamista (Shehabi et al., 2018).
+
+2.Alhaiset viive- ja yhteysvaatimukset
+Reaaliaikaisia sovelluksia (esim. finanssiteknologia, pelipalvelut, etäterveydenhuolto) varten tarvitaan paikallisia datakeskuksia, jotta viive pysyy minimissä (Cisco, 2022).
+
+3.Tietoturva ja lainsäädännön noudattaminen
+Monet toimialat edellyttävät, että dataa säilytetään tietyssä maassa tai tietyin suojausmenetelmin (GDPR, kansallinen lainsäädäntö).
+ 
+Neljä sijaintiin vaikuttavaa tekijää
+
+1.Ilmasto – Viileä ulkoilma vähentää jäähdytyksen energiankulutusta (Jin et al., 2016).
+
+2.Sähkön hinta ja saatavuus – Halpa, luotettava ja mieluiten uusiutuva sähkö pienentää käyttökustannuksia ja hiilijalanjälkeä.
+
+3.Infrastruktuuri – Hyvä verkkoyhteyksien saavutettavuus (valokuitu), logistinen sijainti ja vakaa sähköverkko.
+
+4.Riskitekijät ja turvallisuus – Pieni luonnonkatastrofiriski (tulvat, maanjäristykset) ja poliittinen vakaus.
+
+
+Esimerkkidatakeskus ja sijainnin perustelut
+
+Google Hamina Data Center (Suomi)
+
+Sijainti: Vanha paperitehdas Haminassa, lähellä merenrantaa.
+
+Perustelut:
+
+Viileä ilmasto → vähentää jäähdytysenergian tarvetta.
+
+Merivesijäähdytys → mahdollistaa energiatehokkaan ja ympäristöystävällisen jäähdytyksen.
+
+Luotettava sähköverkko ja uusiutuvan energian saatavuus → Suomessa korkea uusiutuvan energian osuus.
+
+Hyvät kansainväliset tietoliikenneyhteydet → Itämeren merenalaiset kaapelit yhdistävät Suomen Eurooppaan ja Aasiaan.
+
+Viitteet
+<sub>Cisco. (2022). *Cisco Annual Internet Report (2018–2023).*  
+Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). Green Data Centers: A Survey, Perspectives, and Future Directions. *IEEE Communications Surveys & Tutorials*, 18(1), 732–794. Shehabi, A., et al. (2018). *United States Data Center Energy Usage Report.* Lawrence Berkeley National Laboratory.  
+</sub>
+
+
 ---
 
-## 🔹 Moduuli 1 – Vihreän datakeskuksen elementit ja periaatteet
+## 🔹 Moduuli 2 – Vihreän datakeskuksen elementit ja periaatteet
 
 | Kohta | Mallivastaus |
 |-------|--------------|
@@ -21,7 +67,7 @@ Tämä liite sisältää suuntaa‑antavat, oikeiksi katsottavat vastaukset teht
 
 ---
 
-## 🔹 Moduuli 2 – Datakeskuksen elinkaaren vaiheet
+## 🔹 Moduuli 3 – Datakeskuksen elinkaaren vaiheet
 
 | Vaihe | Ympäristöön vaikuttava päätösesimerkki |
 |-------|----------------------------------------|
@@ -37,7 +83,7 @@ Tämä liite sisältää suuntaa‑antavat, oikeiksi katsottavat vastaukset teht
 
 ---
 
-## 🔹 Moduuli 3 – Datakeskuksen toiminta vaiheittain
+## 🔹 Moduuli 4 – Datakeskuksen toiminta vaiheittain
 
 **Energian ketju (tekstimuodossa):**
 Uusiutuva sähkö → Muuntaja/UPS → Virtalähteet → Prosessorit/Muistit/Levyt → Lämmöksi komponenteissa → Puhaltimet/Nestekierto → Lämmönvaihdin → Kaukolämpö tai ulkoilma.
@@ -50,7 +96,7 @@ Uusiutuva sähkö → Muuntaja/UPS → Virtalähteet → Prosessorit/Muistit/Lev
 
 ---
 
-## 🔹 Moduuli 4 – Energian kulutus ja uudelleenkäyttö
+## 🔹 Moduuli 5 – Energian kulutus ja uudelleenkäyttö
 
 1. **PUE‑lasku:**
 Kokonaisenergia = IT-energia × PUE = 800 kWh × 1,5 = 1200 kWh/vrk
@@ -61,7 +107,7 @@ Kokonaisenergia = IT-energia × PUE = 800 kWh × 1,5 = 1200 kWh/vrk
 
 ---
 
-## 🔹 Moduuli 5 – EN 50600‑4‑mittarit
+## 🔹 Moduuli 6 – EN 50600‑4‑mittarit
 
 | Mittari | Kuvaus |
 |---------|--------|
