@@ -57,18 +57,22 @@ Tieteellinen näkökulma korostaa, että pelkän operatiivisen energiatehokkuude
 
 ![Vaihe 3](kuvat/Vaihe3.png)
 
-Tässä vaiheessa tehdään keskeiset päätökset datakeskuksen toteutuksesta ja varmistetaan, että kaikki viranomaissäädökset ja ympäristövaatimukset täyttyvät. Kuvan osa-alueet kuvaavat tätä monivaiheista ja monitahoista prosessia:
+Tässä vaiheessa tehdään datakeskuksen toteutuksen kannalta ratkaisevat päätökset ja varmistetaan, että hankkeen eteneminen täyttää sekä viranomaismääräykset että kestävän kehityksen tavoitteet. Prosessi on luonteeltaan monivaiheinen ja monialainen, ja siihen sisältyy neljä keskeistä osa-aluetta.
 
-- **EU- ja kansallinen sääntely** – Datakeskuksen suunnittelussa ja toiminnassa on huomioitava EU-tason direktiivit (kuten IED/päästölupa), kansallinen lainsäädäntö ja energiatehokkuusvaatimukset (esim. energiatodistus, EHS-standardit).  
-- **Lupaprosessi ja päätöksenteko** – Sisältää viranomaiselle toimitettavat dokumentit, kaavoituksen koordinoinnin, lupahakemukset ja investointipäätökset sijainnista ja teknologiasta.  
-- **Infrastruktuurin suunnittelu ja sijainti** – Liittyminen sähköverkkoon, maankäytön määrittely, tietoliikenne-(verkko)yhdytykset ja kaupungin/alueen suunnittelun edellytysten huomioiminen.  
-- **Ympäristövastuu ja -vaikutukset** – On tärkeää arvioida ympäristövaikutusten lisäksi sidosryhmien osallistaminen ja paikallisyhteisön näkökulmien huomioiminen. Lisäksi ympäristöluvat, melu-, vesi- ja ilmanlaaturajoitukset liittyvät tähän vaiheeseen.
+1. **EU- ja kansallisen tason sääntelykehys** – Toimintaa ohjaavat EU:n ja kansallisen tason määräykset. Näistä keskeinen on EU:n teollisuuspäästödirektiivi (*Industrial Emissions Directive*, IED), joka määrittää suurten teollisuuslaitosten – mukaan lukien merkittävästi energiaa kuluttavat datakeskukset – vähimmäistasoiset ympäristönsuojeluvaatimukset. Direktiivin tavoitteena on ehkäistä ja vähentää ilman, veden ja maaperän pilaantumista hyödyntämällä parasta käyttökelpoista tekniikkaa (BAT, *Best Available Techniques*). Kansallinen lainsäädäntö ja energiatehokkuusvaatimukset, kuten energiatodistus ja ympäristö-, terveys- ja turvallisuusstandardit (EHS), täydentävät sääntelykehystä.
 
-Tieteellinen tutkimus korostaa, että kokonaisvaltainen elinkaarilähtöinen arviointi on välttämätön, jotta ei painoteta vain operatiivisia tavoitteita, vaan huomioidaan myös rakentamisen ja päästöjen seuranta (Tozzi, 2025). Lisäksi käytännön kokemukset osoittavat, että ympäristölupien (esim. generaattoreiden käyttö, ilmapäästöt) hallinta on ajoitettava huolellisesti, sillä lupa- ja kaavoitusviiveet voivat pahimmillaan viivästyttää koko hanketta merkittävästi (RPS, 2025).
+2. **Lupaprosessi ja päätöksenteko** – Tähän sisältyvät investointipäätökset, sijainti- ja teknologiavalinnat sekä näihin liittyvien lupahakemusten ja viranomaisdokumenttien valmistelu ja toimittaminen. Prosessiin kuuluu myös kaavoituksen koordinointi.
+
+3. **Infrastruktuurin suunnittelu ja sijainnin määrittely** – Kattaa liittymisen sähköverkkoon ja kapasiteettivaatimusten varmistamisen, tietoliikenneyhteyksien toteutuksen sekä maankäytön ja alueellisen suunnittelun reunaehtojen huomioimisen.
+
+4. **Ympäristövastuu ja vaikutusten hallinta** – Sisältää ilmasto- ja luontovaikutusten arvioinnin sekä sidosryhmien, erityisesti paikallisyhteisöjen, osallistamisen suunnitteluprosessiin. Tässä yhteydessä huomioidaan myös ympäristöluvat ja niihin liittyvät rajoitukset, kuten melu-, vesi- ja ilmanlaadun sääntely.
+
+Tutkimuskirjallisuus korostaa, että elinkaarilähtöinen arviointimalli on välttämätön, jotta päätöksenteossa ei rajoituta pelkästään operatiivisten tavoitteiden optimointiin, vaan huomioidaan myös rakentamisen ympäristökuormitus ja päästöjen seuranta (Tozzi, 2025). Käytännön kokemukset osoittavat, että ympäristölupien – esimerkiksi varavoimajärjestelmien käytön tai päästöjen hallinnan – käsittely vaatii tarkkaa ajoitusta, sillä kaavoitus- ja lupaprosessien viivästykset voivat merkittävästi hidastaa hankkeen etenemistä (RPS, 2025).
 
 **Lähteet:**
 - Tozzi, C. (2025, kesä 11). *Data Center Life Cycle Assessments: A New Sustainability Standard*. *Data Center Knowledge*. [Linkki](https://www.datacenterknowledge.com/data-center-construction/data-center-life-cycle-assessments-the-new-sustainability-standard?utm_source=chatgpt.com)  
 - RPS Group. (2025). *Environmental permitting for data centres: What you need and when to apply*. [Linkki](https://www.rpsgroup.com/insights/consulting-uki/environmental-permitting-for-data-centres-what-you-need-and-when-to-apply)  
+
 
 </details>
 
