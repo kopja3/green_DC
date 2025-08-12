@@ -70,6 +70,8 @@ Tieteellinen tutkimus korostaa, että kokonaisvaltainen elinkaarilähtöinen arv
 - Tozzi, C. (2025, kesä 11). *Data Center Life Cycle Assessments: A New Sustainability Standard*. *Data Center Knowledge*. [Linkki](https://www.datacenterknowledge.com/data-center-construction/data-center-life-cycle-assessments-the-new-sustainability-standard?utm_source=chatgpt.com)  
 - RPS Group. (2025). *Environmental permitting for data centres: What you need and when to apply*. [Linkki](https://www.rpsgroup.com/insights/consulting-uki/environmental-permitting-for-data-centres-what-you-need-and-when-to-apply)  
 
+<details>
+
 ---
 
 <details>
