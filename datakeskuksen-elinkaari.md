@@ -86,7 +86,7 @@ Elinkaarilähtöinen arviointimalli on välttämätön, jotta päätöksenteossa
 
 Rakentamisvaihe merkitsee datakeskuksen elinkaaressa siirtymistä suunnitelmista konkreettiseen toteutukseen. Tässä vaiheessa fyysinen infrastruktuuri luodaan, ja sen valinnat vaikuttavat merkittävästi sekä rakennusvaiheen että koko käyttöiän aikaiseen ympäristökuormitukseen. Rakentamisvaihe voidaan jäsentää neljään pääosa-alueeseen:
 
-1. **Rakennustekniset ratkaisut** – Käsittää datakeskusrakennuksen runkorakenteet, kuormat ja modulaarisuuden. Rakennusmateriaalien valinnalla (esim. vähähiilinen betoni, kierrätetyt teräsrakenteet) voidaan vähentää merkittävästi rakentamisen hiilijalanjälkeä (Cooper ym., 2021).
+1. **Rakennustekniset ratkaisut** – Käsittää datakeskusrakennuksen runkorakenteet, kuormat ja modulaarisuuden. Rakennusmateriaalien valinnalla (esim. vähähiilinen betoni, kierrätetyt teräsrakenteet) voidaan vähentää merkittävästi rakentamisen hiilijalanjälkeä. Elinkaarianalyysit osoittavat, että materiaalivalintojen optimointi voi pienentää sekä valmistuksen että purun aikaisia päästöjä, ja modulaarinen suunnittelu mahdollistaa tilojen joustavan laajentamisen ilman merkittäviä lisärakennustöitä (Vanderbauwhede & Wadenstein, 2025).
 
 2. **Teknisen infrastruktuurin asennus** – Sisältää sähkö- ja jäähdytysjärjestelmien, varavoimalaitteiden, kaapeloinnin sekä IT-räkkien ja konesalivarusteiden asennuksen. Näiden energiatehokkuus ja huollettavuus vaikuttavat pitkän aikavälin operatiivisiin kustannuksiin ja päästöihin (Shehabi ym., 2016).
 
@@ -97,7 +97,7 @@ Rakentamisvaihe merkitsee datakeskuksen elinkaaressa siirtymistä suunnitelmista
 Rakentamisvaiheen päästöt ja energiankulutus voivat muodostaa huomattavan osuuden koko datakeskuksen elinkaaren ympäristövaikutuksista, erityisesti jos käytetään paljon energiaintensiivisiä materiaaleja ja tekniikoita (Whitehead ym., 2015). Siksi rakennusvaiheen optimointi – esimerkiksi modulaarisen rakentamisen ja uusiomateriaalien avulla – on olennainen osa kestävää datakeskussuunnittelua.
 
 **Lähteet:**
-- Cooper, S., Hammond, G., & Norman, J. (2021). *Environmental assessment of building materials and technologies for sustainable data centres*. *Journal of Cleaner Production, 315*, 128172. https://doi.org/10.1016/j.jclepro.2021.128172  
+- Vanderbauwhede, W., & Wadenstein, M. (2025). Life Cycle Analysis for Emissions of Scientific Computing Centres. arXiv. https://doi.org/10.48550/arXiv.2506.14365
 - Shehabi, A., Smith, S., Sartor, D., Brown, R., Herrlin, M., Koomey, J., ... & Lintner, W. (2016). *United States Data Center Energy Usage Report*. Lawrence Berkeley National Laboratory. [Linkki](https://eta.lbl.gov/publications/united-states-data-center-energy)  
 - Whitehead, B., Andrews, D., & Shah, A. (2015). *The life cycle assessment of a UK data centre*. *International Journal of Life Cycle Assessment, 20*, 332–349. https://doi.org/10.1007/s11367-014-0838-7  
 - Lawrence Berkeley National Laboratory (2025). *Best Practices Guide for Energy-Efficient Data Center Design*. [Linkki](https://datacenters.lbl.gov/sites/default/files/2025-07/best_practice-guide-data-center-design.pdf)
@@ -141,16 +141,18 @@ Datakeskuksen elinkaaren viimeisessä vaiheessa infrastruktuuri ja laitteet pois
 
 Keskeisiä osa-alueita ovat:  
 1. **Tietoturvallinen datan poistaminen** – Tallennuslaitteet (esim. HDD, SSD) käsitellään niin, että kaikki asiakas- ja yritysdata tuhoutuu palautumattomasti, mikä voi sisältää ylikirjoituksen, magnetoinnin (degaussing) tai fyysisen tuhoamisen (NIST SP 800-88).  
-2. **Komponenttien uudelleenkäyttö ja kierrätys** – Toimintakelpoiset laitteet ja komponentit voidaan ohjata uudelleenkäyttöön, kun taas käyttöikänsä loppuun tulleet osat kierrätetään materiaalien, kuten kuparin, alumiinin ja harvinaisten maametallien talteenottamiseksi (Choi ym., 2020).  
+2. **Komponenttien uudelleenkäyttö ja kierrätys** – Toimintakelpoiset laitteet ja komponentit ohjataan uudelleenkäyttöön; käyttöikänsä päähän tulleet osat kierrätetään materiaalien, kuten kuparin, alumiinin ja harvinaisten maametallien talteenottamiseksi. (Li et al., 2020).  
 3. **Ympäristövaikutusten minimointi** – Elektroniikkajätteen käsittelyssä on huomioitava haitallisten aineiden, kuten lyijyn ja elohopean, turvallinen käsittely, jotta vältetään maaperän ja vesistöjen saastuminen (Balde ym., 2017).  
 4. **Elinkaaren päättymisen optimointi** – Laitteiden modulaarinen suunnittelu ja standardoidut komponentit voivat helpottaa purkamista ja kierrätystä, vähentäen jätteen määrää ja parantaen resurssitehokkuutta (Deng ym., 2021).
 
 Käytöstä poiston ja uudelleenkäytön vaihe on olennainen osa kiertotalousstrategiaa datakeskusympäristöissä, sillä se mahdollistaa materiaalien ja komponenttien palauttamisen tuotantoketjuun sekä vähentää merkittävästi hiilijalanjälkeä ja luonnonvarojen kulutusta (Balde ym., 2017; Choi ym., 2020).
 
 **Lähteet:**  
-- Balde, C.P., Forti, V., Gray, V., Kuehr, R., & Stegmann, P. (2017). *The Global E-waste Monitor 2017: Quantities, Flows, and Resources*. United Nations University, International Telecommunication Union, and International Solid Waste Association. [Linkki](https://ewastemonitor.info/)  
-- Choi, J., Lee, H., & Song, H. (2020). Recovery of valuable metals from waste electrical and electronic equipment: A review of current methods and technologies. *Journal of Cleaner Production*, 252, 119676. https://doi.org/10.1016/j.jclepro.2019.119676  
-- Deng, L., Babbitt, C.W., & Williams, E.D. (2021). Economic-balance hybrid LCA extended with uncertainty analysis: End-of-life management of data center IT equipment. *Resources, Conservation and Recycling*, 174, 105770. https://doi.org/10.1016/j.resconrec.2021.105770  
 - National Institute of Standards and Technology (NIST). (2014). *NIST Special Publication 800-88 Revision 1: Guidelines for Media Sanitization*. [Linkki](https://doi.org/10.6028/NIST.SP.800-88r1)  
+- Li, J., Zeng, X., Chen, M., Ogunseitan, O.A. & Stevels, A. (2015). Control-Alt-Delete: rebooting solutions for the e-waste problem. Environmental Science & Technology, 49(12), 7095–7102. https://doi.org/10.1021/es5053009
+- Balde, C.P., Forti, V., Gray, V., Kuehr, R., & Stegmann, P. (2017). *The Global E-waste Monitor 2017: Quantities, Flows, and Resources*. United Nations University, International Telecommunication Union, and International Solid Waste Association. [Linkki](https://ewastemonitor.info/)  
+- Deng, L., Babbitt, C.W., & Williams, E.D. (2021). Economic-balance hybrid LCA extended with uncertainty analysis: case study of a laptop computer. Journal of Cleaner Production,
+Volume 19, Issue 11,2011,Pages 1198-1206,ISSN 0959-6526,https://doi.org/10.1016/j.jclepro.2011.03.004.(https://www.sciencedirect.com/science/article/pii/S0959652611000801)
+
 
 </details>
