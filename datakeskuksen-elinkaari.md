@@ -41,7 +41,7 @@ Datakeskuksen suunnitteluvaiheessa tehdään ratkaisevat valinnat, jotka vaikutt
 - **Moniammatillinen tiimityö ja simulointi** – Monialainen yhteistyö (insinöörit, ympäristöasiantuntijat, IT-suunnittelijat) sekä simulointimallit (esim. airflow, energiajärjestelmät) mahdollistavat optimoidut ratkaisut.  
 - **Kiertotalous ja elinkaari** – Suunnittelun tulisi huomioida elinkaariajattelu: komponenttien kierrätettävyys, modulaarisuus ja tulevat päivitysmahdollisuudet.
 
-Tieteellinen näkökulma korostaa, että pelkän operatiivisen energiatehokkuuden optimoinnin (kuten alhainen PUE) sijaan suunnittelun tulee ottaa huomioon koko elinkaaren ympäristövaikutukset (Whitehead ym., 2015). Lisäksi parhaat käytännöt (esim. LBNL:n ohjeistus) sisältävät kattavat suositukset ilmastointijärjestelmien, sähkönsyötön, jäähdytyksen ja lämmön talteenoton yhteensovittamisesta energiatehokkuuden parantamiseksi (LBNL, 2025).
+Pelkän operatiivisen energiatehokkuuden optimoinnin (kuten alhainen PUE) sijaan suunnittelun tulee ottaa huomioon koko elinkaaren ympäristövaikutukset (Whitehead ym., 2015). Lisäksi parhaat käytännöt (esim. LBNL:n ohjeistus) sisältävät kattavat suositukset ilmastointijärjestelmien, sähkönsyötön, jäähdytyksen ja lämmön talteenoton yhteensovittamisesta energiatehokkuuden parantamiseksi (LBNL, 2025).
 
 **Lähteet:**
 - Whitehead, B., Andrews, D., & Shah, A. (2015). *The life cycle assessment of a UK data centre*. *International Journal of Life Cycle Assessment, 20*, 332–349. [Linkki](https://link.springer.com/article/10.1007/s11367-014-0838-7?utm_source=chatgpt.com)  
@@ -67,7 +67,7 @@ Tässä vaiheessa tehdään datakeskuksen toteutuksen kannalta ratkaisevat pää
 
 4. **Ympäristövastuu ja vaikutusten hallinta** – Sisältää ilmasto- ja luontovaikutusten arvioinnin sekä sidosryhmien, erityisesti paikallisyhteisöjen, osallistamisen suunnitteluprosessiin. Tässä yhteydessä huomioidaan myös ympäristöluvat ja niihin liittyvät rajoitukset, kuten melu-, vesi- ja ilmanlaadun sääntely.
 
-Tutkimuskirjallisuus korostaa, että elinkaarilähtöinen arviointimalli on välttämätön, jotta päätöksenteossa ei rajoituta pelkästään operatiivisten tavoitteiden optimointiin, vaan huomioidaan myös rakentamisen ympäristökuormitus ja päästöjen seuranta (Tozzi, 2025). Käytännön kokemukset osoittavat, että ympäristölupien – esimerkiksi varavoimajärjestelmien käytön tai päästöjen hallinnan – käsittely vaatii tarkkaa ajoitusta, sillä kaavoitus- ja lupaprosessien viivästykset voivat merkittävästi hidastaa hankkeen etenemistä (RPS, 2025).
+Elinkaarilähtöinen arviointimalli on välttämätön, jotta päätöksenteossa ei rajoituta pelkästään operatiivisten tavoitteiden optimointiin, vaan huomioidaan myös rakentamisen ympäristökuormitus ja päästöjen seuranta (Tozzi, 2025). Käytännön kokemukset osoittavat, että ympäristölupien – esimerkiksi varavoimajärjestelmien käytön tai päästöjen hallinnan – käsittely vaatii tarkkaa ajoitusta, sillä kaavoitus- ja lupaprosessien viivästykset voivat merkittävästi hidastaa hankkeen etenemistä (RPS, 2025).
 
 **Lähteet:**
 - Tozzi, C. (2025, kesä 11). *Data Center Life Cycle Assessments: A New Sustainability Standard*. *Data Center Knowledge*. [Linkki](https://www.datacenterknowledge.com/data-center-construction/data-center-life-cycle-assessments-the-new-sustainability-standard?utm_source=chatgpt.com)  
@@ -94,7 +94,7 @@ Rakentamisvaihe merkitsee datakeskuksen elinkaaressa siirtymistä suunnitelmista
 
 4. **Käyttöönottovaiheen valmistelu** – Sisältää laitteistojen testaukset, järjestelmien validoinnin ja infrastruktuurin optimoinnin ennen operatiivisen toiminnan aloitusta. Tämä vaihe on kriittinen, jotta suunnitellut energiatehokkuus- ja luotettavuustavoitteet voidaan saavuttaa heti käyttöönotosta lähtien (LBNL, 2025).
 
-Tutkimuskirjallisuuden mukaan rakentamisvaiheen päästöt ja energiankulutus voivat muodostaa huomattavan osuuden koko datakeskuksen elinkaaren ympäristövaikutuksista, erityisesti jos käytetään paljon energiaintensiivisiä materiaaleja ja tekniikoita (Whitehead ym., 2015). Siksi rakennusvaiheen optimointi – esimerkiksi modulaarisen rakentamisen ja uusiomateriaalien avulla – on olennainen osa kestävää datakeskussuunnittelua.
+Rakentamisvaiheen päästöt ja energiankulutus voivat muodostaa huomattavan osuuden koko datakeskuksen elinkaaren ympäristövaikutuksista, erityisesti jos käytetään paljon energiaintensiivisiä materiaaleja ja tekniikoita (Whitehead ym., 2015). Siksi rakennusvaiheen optimointi – esimerkiksi modulaarisen rakentamisen ja uusiomateriaalien avulla – on olennainen osa kestävää datakeskussuunnittelua.
 
 **Lähteet:**
 - Cooper, S., Hammond, G., & Norman, J. (2021). *Environmental assessment of building materials and technologies for sustainable data centres*. *Journal of Cleaner Production, 315*, 128172. https://doi.org/10.1016/j.jclepro.2021.128172  
@@ -121,7 +121,7 @@ Operatiivinen vaihe muodostaa datakeskuksen elinkaaren pisimmän ja usein ympär
 
 4. **Ympäristötehokkuuden seuranta** – Operatiivisessa vaiheessa hyödynnetään mittareita, kuten PUE (Power Usage Effectiveness) ja WUE (Water Usage Effectiveness), joilla seurataan energiankäytön ja vedenkulutuksen tehokkuutta. Näiden mittareiden avulla voidaan optimoida järjestelmiä ja vähentää pitkän aikavälin ympäristövaikutuksia.
 
-Tutkimusten mukaan operatiivinen vaihe voi muodostaa yli 80 % datakeskuksen koko elinkaaren energiankulutuksesta (Shehabi ym., 2016), mikä tekee tästä vaiheesta keskeisen kohteen energiatehokkuus- ja päästövähennystoimille. Yhdistämällä uusiutuvan energian käyttö, kehittyneet jäähdytysratkaisut ja jatkuva optimointi voidaan merkittävästi pienentää operatiivisen toiminnan hiilijalanjälkeä.
+Operatiivinen vaihe voi muodostaa yli 80 % datakeskuksen koko elinkaaren energiankulutuksesta (Shehabi ym., 2016), mikä tekee tästä vaiheesta keskeisen kohteen energiatehokkuus- ja päästövähennystoimille. Yhdistämällä uusiutuvan energian käyttö, kehittyneet jäähdytysratkaisut ja jatkuva optimointi voidaan merkittävästi pienentää operatiivisen toiminnan hiilijalanjälkeä.
 
 **Lähteet:**
 - Shehabi, A., Smith, S., Sartor, D., Brown, R., Herrlin, M., Koomey, J., ... & Lintner, W. (2016). *United States Data Center Energy Usage Report*. Lawrence Berkeley National Laboratory. [Linkki](https://eta.lbl.gov/publications/united-states-data-center-energy)  
