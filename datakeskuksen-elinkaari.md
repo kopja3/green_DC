@@ -33,6 +33,21 @@ Tämä vaihe on keskeinen siksi, että pelkkä operatiivisen energian tarkastelu
 <summary>🛠️ Vaihe 2: Suunnittelu</summary>
 
 ![Vaihe 2](kuvat/Vaihe2.png)
+
+Datakeskuksen suunnitteluvaiheessa tehdään ratkaisevat valinnat, jotka vaikuttavat sekä energiatehokkuuteen että pitkän aikavälin ympäristövaikutuksiin. Kuvastoon on koottu keskeisiä teemoja:
+
+- **Energiatehokkuus (PUE < 1,2)** – PUE eli Power Usage Effectiveness on keskeinen mittari, joka kuvaa, kuinka paljon energiaa kuluu IT-laitteiden lisäksi jäähdytykseen ja muuhun infrastruktuuriin. Mitä lähempänä arvo on 1, sitä parempi.  
+- **Uusiutuva energia ja hukkalämmön talteenotto** – Suunnittelussa kannattaa huomioida mahdollisuudet käyttää aurinko-, tuuli- tai hukkalämpöenergiaa, mikä vähentää operatiivisia päästöjä ja energian kokonaiskulutusta.  
+- **Moniammatillinen tiimityö ja simulointi** – Monialainen yhteistyö (insinöörit, ympäristöasiantuntijat, IT-suunnittelijat) sekä simulointimallit (esim. airflow, energiajärjestelmät) mahdollistavat optimoidut ratkaisut.  
+- **Kiertotalous ja elinkaari** – Suunnittelun tulisi huomioida elinkaariajattelu: komponenttien kierrätettävyys, modulaarisuus ja tulevat päivitysmahdollisuudet.
+
+Tieteellinen näkökulma korostaa, että pelkän operatiivisen energiatehokkuuden optimoinnin (kuten alhainen PUE) sijaan suunnittelun tulee ottaa huomioon koko elinkaaren ympäristövaikutukset (Whitehead ym., 2015). Lisäksi parhaat käytännöt (esim. LBNL:n ohjeistus) sisältävät kattavat suositukset ilmastointijärjestelmien, sähkönsyötön, jäähdytyksen ja lämmön talteenoton yhteensovittamisesta energiatehokkuuden parantamiseksi (LBNL, 2025).
+
+**Lähteet:**
+- Whitehead, B., Andrews, D., & Shah, A. (2015). *The life cycle assessment of a UK data centre*. *International Journal of Life Cycle Assessment, 20*, 332–349. [Linkki](https://link.springer.com/article/10.1007/s11367-014-0838-7?utm_source=chatgpt.com)  
+- Lawrence Berkeley National Laboratory (2025). *Best Practices Guide for Energy-Efficient Data Center Design*. [Linkki](https://datacenters.lbl.gov/sites/default/files/2025-07/best_practice-guide-data-center-design.pdf)
+
+
 </details>
 
 ---
