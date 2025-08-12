@@ -137,4 +137,20 @@ Operatiivinen vaihe voi muodostaa yli 80 % datakeskuksen koko elinkaaren energia
 <summary>♻️ Vaihe 6: Käytöstä poisto ja uudelleenkäyttö</summary>
 
 ![Vaihe 6](kuvat/Vaihe6.png)
+Datakeskuksen elinkaaren viimeisessä vaiheessa infrastruktuuri ja laitteet poistetaan käytöstä hallitusti, ja niiden osat joko kierrätetään, uudelleenkäytetään tai hävitetään ympäristön kannalta turvallisesti. Prosessi sisältää fyysisen infrastruktuurin purkamisen, palvelin- ja tallennuslaitteiden poistamisen, sekä tietoturvallisen datan tuhoamisen, esimerkiksi tallennusmedioiden fyysisen murskauksen avulla.  
+
+Keskeisiä osa-alueita ovat:  
+1. **Tietoturvallinen datan poistaminen** – Tallennuslaitteet (esim. HDD, SSD) käsitellään niin, että kaikki asiakas- ja yritysdata tuhoutuu palautumattomasti, mikä voi sisältää ylikirjoituksen, magnetoinnin (degaussing) tai fyysisen tuhoamisen (NIST SP 800-88).  
+2. **Komponenttien uudelleenkäyttö ja kierrätys** – Toimintakelpoiset laitteet ja komponentit voidaan ohjata uudelleenkäyttöön, kun taas käyttöikänsä loppuun tulleet osat kierrätetään materiaalien, kuten kuparin, alumiinin ja harvinaisten maametallien talteenottamiseksi (Choi ym., 2020).  
+3. **Ympäristövaikutusten minimointi** – Elektroniikkajätteen käsittelyssä on huomioitava haitallisten aineiden, kuten lyijyn ja elohopean, turvallinen käsittely, jotta vältetään maaperän ja vesistöjen saastuminen (Balde ym., 2017).  
+4. **Elinkaaren päättymisen optimointi** – Laitteiden modulaarinen suunnittelu ja standardoidut komponentit voivat helpottaa purkamista ja kierrätystä, vähentäen jätteen määrää ja parantaen resurssitehokkuutta (Deng ym., 2021).
+
+Käytöstä poiston ja uudelleenkäytön vaihe on olennainen osa kiertotalousstrategiaa datakeskusympäristöissä, sillä se mahdollistaa materiaalien ja komponenttien palauttamisen tuotantoketjuun sekä vähentää merkittävästi hiilijalanjälkeä ja luonnonvarojen kulutusta (Balde ym., 2017; Choi ym., 2020).
+
+**Lähteet:**  
+- Balde, C.P., Forti, V., Gray, V., Kuehr, R., & Stegmann, P. (2017). *The Global E-waste Monitor 2017: Quantities, Flows, and Resources*. United Nations University, International Telecommunication Union, and International Solid Waste Association. [Linkki](https://ewastemonitor.info/)  
+- Choi, J., Lee, H., & Song, H. (2020). Recovery of valuable metals from waste electrical and electronic equipment: A review of current methods and technologies. *Journal of Cleaner Production*, 252, 119676. https://doi.org/10.1016/j.jclepro.2019.119676  
+- Deng, L., Babbitt, C.W., & Williams, E.D. (2021). Economic-balance hybrid LCA extended with uncertainty analysis: End-of-life management of data center IT equipment. *Resources, Conservation and Recycling*, 174, 105770. https://doi.org/10.1016/j.resconrec.2021.105770  
+- National Institute of Standards and Technology (NIST). (2014). *NIST Special Publication 800-88 Revision 1: Guidelines for Media Sanitization*. [Linkki](https://doi.org/10.6028/NIST.SP.800-88r1)  
+
 </details>
