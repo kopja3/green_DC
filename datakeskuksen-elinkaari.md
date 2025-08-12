@@ -110,6 +110,25 @@ Tutkimuskirjallisuuden mukaan rakentamisvaiheen päästöt ja energiankulutus vo
 <summary>🖥️ Vaihe 5: Operatiivinen toiminta</summary>
 
 ![Vaihe 5](kuvat/vaihe5_2.png)
+
+Operatiivinen vaihe muodostaa datakeskuksen elinkaaren pisimmän ja usein ympäristövaikutuksiltaan merkittävimmän ajanjakson. Tässä vaiheessa varmistetaan, että tietojenkäsittelypalvelut toimivat luotettavasti, tehokkaasti ja ympäristön kannalta kestävällä tavalla. Operatiivinen toiminta sisältää seuraavat keskeiset osa-alueet:
+
+1. **Sähkönsyöttö** – Sähköenergia mahdollistaa palvelimien ja muun infrastruktuurin toiminnan. Jatkuva sähkönsyöttö on varmistettu useilla redundanssijärjestelmillä, kuten varavoimakoneilla ja UPS-laitteilla. Sähkönkulutus muodostaa merkittävän osuuden koko elinkaaren hiilijalanjäljestä, mikä korostaa uusiutuvan energian hyödyntämisen ja energiatehokkuuden merkitystä (Shehabi ym., 2016).
+
+2. **Verkko- ja palvelinresurssien hallinta** – Verkkokytkimet yhdistävät palvelimet lähiverkkoon ja internetiin, ohjaten verkon kautta saapuvat palvelupyynnöt oikeille palvelimille. Palvelimet käsittelevät pyynnöt ja palauttavat tulokset internetin kautta takaisin pyynnön lähettäjälle. Resurssien hallinta vaikuttaa sekä palvelun laatuun että energiankulutukseen (Zhang ym., 2021).
+
+3. **Lämmönhallinta ja jäähdytys** – Palvelinten toiminta tuottaa lämpöä, joka poistetaan jäähdytysjärjestelmien avulla. Nämä voivat sisältää vesi- ja ilmajäähdytysratkaisuja, kuten chillereitä ja lämmönvaihtimia. Veden käyttö jäähdytyksessä on merkittävä kestävyyshaaste erityisesti alueilla, joilla vesivarat ovat rajalliset (Masanet ym., 2020). Hukkalämmön talteenotto ja hyödyntäminen esimerkiksi kaukolämpöverkossa vähentää kokonaisympäristökuormitusta (Oró ym., 2015).
+
+4. **Ympäristötehokkuuden seuranta** – Operatiivisessa vaiheessa hyödynnetään mittareita, kuten PUE (Power Usage Effectiveness) ja WUE (Water Usage Effectiveness), joilla seurataan energiankäytön ja vedenkulutuksen tehokkuutta. Näiden mittareiden avulla voidaan optimoida järjestelmiä ja vähentää pitkän aikavälin ympäristövaikutuksia.
+
+Tutkimusten mukaan operatiivinen vaihe voi muodostaa yli 80 % datakeskuksen koko elinkaaren energiankulutuksesta (Shehabi ym., 2016), mikä tekee tästä vaiheesta keskeisen kohteen energiatehokkuus- ja päästövähennystoimille. Yhdistämällä uusiutuvan energian käyttö, kehittyneet jäähdytysratkaisut ja jatkuva optimointi voidaan merkittävästi pienentää operatiivisen toiminnan hiilijalanjälkeä.
+
+**Lähteet:**
+- Shehabi, A., Smith, S., Sartor, D., Brown, R., Herrlin, M., Koomey, J., ... & Lintner, W. (2016). *United States Data Center Energy Usage Report*. Lawrence Berkeley National Laboratory. [Linkki](https://eta.lbl.gov/publications/united-states-data-center-energy)  
+- Masanet, E., Shehabi, A., Lei, N., Smith, S., & Koomey, J. (2020). *Recalibrating global data center energy-use estimates*. *Science, 367*(6481), 984–986. https://doi.org/10.1126/science.aba3758  
+- Oró, E., Depoorter, V., Garcia, A., & Salom, J. (2015). *Energy efficiency and renewable energy integration in data centres. Strategies and modelling review*. *Renewable and Sustainable Energy Reviews, 42*, 429–445. https://doi.org/10.1016/j.rser.2014.10.058  
+- Zhang, Q., Cheng, L., & Boutaba, R. (2021). *Cloud data centers: Energy efficiency and sustainable design*. *ACM Computing Surveys, 54*(7), 1–36. https://doi.org/10.1145/3453154  
+
 </details>
 
 ---
