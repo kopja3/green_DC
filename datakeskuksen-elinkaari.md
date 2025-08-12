@@ -83,6 +83,25 @@ Tutkimuskirjallisuus korostaa, että elinkaarilähtöinen arviointimalli on väl
 <summary>🏗️ Vaihe 4: Rakentaminen</summary>
 
 ![Vaihe 4](kuvat/Vaihe4.png)
+
+Rakentamisvaihe merkitsee datakeskuksen elinkaaressa siirtymistä suunnitelmista konkreettiseen toteutukseen. Tässä vaiheessa fyysinen infrastruktuuri luodaan, ja sen valinnat vaikuttavat merkittävästi sekä rakennusvaiheen että koko käyttöiän aikaiseen ympäristökuormitukseen. Rakentamisvaihe voidaan jäsentää neljään pääosa-alueeseen:
+
+1. **Rakennustekniset ratkaisut** – Käsittää datakeskusrakennuksen runkorakenteet, kuormat ja modulaarisuuden. Rakennusmateriaalien valinnalla (esim. vähähiilinen betoni, kierrätetyt teräsrakenteet) voidaan vähentää merkittävästi rakentamisen hiilijalanjälkeä (Cooper ym., 2021).
+
+2. **Teknisen infrastruktuurin asennus** – Sisältää sähkö- ja jäähdytysjärjestelmien, varavoimalaitteiden, kaapeloinnin sekä IT-räkkien ja konesalivarusteiden asennuksen. Näiden energiatehokkuus ja huollettavuus vaikuttavat pitkän aikavälin operatiivisiin kustannuksiin ja päästöihin (Shehabi ym., 2016).
+
+3. **Työmaan turvallisuus ja aikataulun hallinta** – Rakentaminen edellyttää tiukkojen turvallisuusstandardien noudattamista sekä tarkkaa projektinhallintaa, jotta aikatauluviiveet eivät johda kustannusten ja ympäristövaikutusten kasvuun.
+
+4. **Käyttöönottovaiheen valmistelu** – Sisältää laitteistojen testaukset, järjestelmien validoinnin ja infrastruktuurin optimoinnin ennen operatiivisen toiminnan aloitusta. Tämä vaihe on kriittinen, jotta suunnitellut energiatehokkuus- ja luotettavuustavoitteet voidaan saavuttaa heti käyttöönotosta lähtien (LBNL, 2025).
+
+Tutkimuskirjallisuuden mukaan rakentamisvaiheen päästöt ja energiankulutus voivat muodostaa huomattavan osuuden koko datakeskuksen elinkaaren ympäristövaikutuksista, erityisesti jos käytetään paljon energiaintensiivisiä materiaaleja ja tekniikoita (Whitehead ym., 2015). Siksi rakennusvaiheen optimointi – esimerkiksi modulaarisen rakentamisen ja uusiomateriaalien avulla – on olennainen osa kestävää datakeskussuunnittelua.
+
+**Lähteet:**
+- Cooper, S., Hammond, G., & Norman, J. (2021). *Environmental assessment of building materials and technologies for sustainable data centres*. *Journal of Cleaner Production, 315*, 128172. https://doi.org/10.1016/j.jclepro.2021.128172  
+- Shehabi, A., Smith, S., Sartor, D., Brown, R., Herrlin, M., Koomey, J., ... & Lintner, W. (2016). *United States Data Center Energy Usage Report*. Lawrence Berkeley National Laboratory. [Linkki](https://eta.lbl.gov/publications/united-states-data-center-energy)  
+- Whitehead, B., Andrews, D., & Shah, A. (2015). *The life cycle assessment of a UK data centre*. *International Journal of Life Cycle Assessment, 20*, 332–349. https://doi.org/10.1007/s11367-014-0838-7  
+- Lawrence Berkeley National Laboratory (2025). *Best Practices Guide for Energy-Efficient Data Center Design*. [Linkki](https://datacenters.lbl.gov/sites/default/files/2025-07/best_practice-guide-data-center-design.pdf)
+
 </details>
 
 ---
