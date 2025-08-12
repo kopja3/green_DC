@@ -36,7 +36,7 @@ Tämä vaihe on keskeinen siksi, että pelkkä operatiivisen energian tarkastelu
 
 Datakeskuksen suunnitteluvaiheessa tehdään ratkaisevat valinnat, jotka vaikuttavat sekä energiatehokkuuteen että pitkän aikavälin ympäristövaikutuksiin. Kuvastoon on koottu keskeisiä teemoja:
 
-- **Energiatehokkuus (PUE < 1,2)** – PUE eli Power Usage Effectiveness on keskeinen mittari, joka kuvaa, kuinka paljon energiaa kuluu IT-laitteiden lisäksi jäähdytykseen ja muuhun infrastruktuuriin. Mitä lähempänä arvo on 1, sitä parempi.  
+- **Energiatehokkuus** – PUE eli Power Usage Effectiveness on keskeinen mittari, joka kuvaa, kuinka paljon energiaa kuluu IT-laitteiden lisäksi jäähdytykseen ja muuhun infrastruktuuriin. Mitä lähempänä arvo on 1, sitä parempi.  
 - **Uusiutuva energia ja hukkalämmön talteenotto** – Suunnittelussa kannattaa huomioida mahdollisuudet käyttää aurinko-, tuuli- tai hukkalämpöenergiaa, mikä vähentää operatiivisia päästöjä ja energian kokonaiskulutusta.  
 - **Moniammatillinen tiimityö ja simulointi** – Monialainen yhteistyö (insinöörit, ympäristöasiantuntijat, IT-suunnittelijat) sekä simulointimallit (esim. airflow, energiajärjestelmät) mahdollistavat optimoidut ratkaisut.  
 - **Kiertotalous ja elinkaari** – Suunnittelun tulisi huomioida elinkaariajattelu: komponenttien kierrätettävyys, modulaarisuus ja tulevat päivitysmahdollisuudet.
