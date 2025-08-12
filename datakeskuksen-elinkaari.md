@@ -56,7 +56,19 @@ Tieteellinen näkökulma korostaa, että pelkän operatiivisen energiatehokkuude
 <summary>⚖️ Vaihe 3: Päätöksenteko ja luvitus</summary>
 
 ![Vaihe 3](kuvat/Vaihe3.png)
-</details>
+
+Tässä vaiheessa tehdään keskeiset päätökset datakeskuksen toteutuksesta ja varmistetaan, että kaikki viranomaissäädökset ja ympäristövaatimukset täyttyvät. Kuvan osa-alueet kuvaavat tätä monivaiheista ja monitahoista prosessia:
+
+- **EU- ja kansallinen sääntely** – Datakeskuksen suunnittelussa ja toiminnassa on huomioitava EU-tason direktiivit (kuten IED/päästölupa), kansallinen lainsäädäntö ja energiatehokkuusvaatimukset (esim. energiatodistus, EHS-standardit).  
+- **Lupaprosessi ja päätöksenteko** – Sisältää viranomaiselle toimitettavat dokumentit, kaavoituksen koordinoinnin, lupahakemukset ja investointipäätökset sijainnista ja teknologiasta.  
+- **Infrastruktuurin suunnittelu ja sijainti** – Liittyminen sähköverkkoon, maankäytön määrittely, tietoliikenne-(verkko)yhdytykset ja kaupungin/alueen suunnittelun edellytysten huomioiminen.  
+- **Ympäristövastuu ja -vaikutukset** – On tärkeää arvioida ympäristövaikutusten lisäksi sidosryhmien osallistaminen ja paikallisyhteisön näkökulmien huomioiminen. Lisäksi ympäristöluvat, melu-, vesi- ja ilmanlaaturajoitukset liittyvät tähän vaiheeseen.
+
+Tieteellinen tutkimus korostaa, että kokonaisvaltainen elinkaarilähtöinen arviointi on välttämätön, jotta ei painoteta vain operatiivisia tavoitteita, vaan huomioidaan myös rakentamisen ja päästöjen seuranta (Tozzi, 2025). Lisäksi käytännön kokemukset osoittavat, että ympäristölupien (esim. generaattoreiden käyttö, ilmapäästöt) hallinta on ajoitettava huolellisesti, sillä lupa- ja kaavoitusviiveet voivat pahimmillaan viivästyttää koko hanketta merkittävästi (RPS, 2025).
+
+**Lähteet:**
+- Tozzi, C. (2025, kesä 11). *Data Center Life Cycle Assessments: A New Sustainability Standard*. *Data Center Knowledge*. [Linkki](https://www.datacenterknowledge.com/data-center-construction/data-center-life-cycle-assessments-the-new-sustainability-standard?utm_source=chatgpt.com)  
+- RPS Group. (2025). *Environmental permitting for data centres: What you need and when to apply*. [Linkki](https://www.rpsgroup.com/insights/consulting-uki/environmental-permitting-for-data-centres-what-you-need-and-when-to-apply)  
 
 ---
 
