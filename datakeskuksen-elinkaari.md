@@ -9,6 +9,7 @@ Klikkaamalla alla olevia otsikoita voit tarkastella kutakin vaihetta erikseen.
 <details>
 <summary>🔢 Vaihe 1: Tarvekartoitus ja esiselvitys</summary>
 
+![Vaihe 1](kuvat/Vaihe1.png)
 
 Tässä tärkeässä alkuvaiheessa laaditaan perusta koko datakeskuksen kehittämiselle. Tarkoitus on luoda kokonaisvaltainen ymmärrys hankkeen toteutettavuudesta ja ympäristövaikutuksista. Vaihe sisältää viisi keskeistä osa-aluetta:
 
