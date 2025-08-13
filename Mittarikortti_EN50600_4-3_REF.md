@@ -1,26 +1,53 @@
-## EN50600-4-3-REF Datakeskuksen uusiutuvan energian käyttösuhteen eurooppalainen standardi.
-## Kategoria ja vaatimustaso: Uusiutuvan energian käyttö, laatuvaatimus.
-#### Mittarin lyhyt kuvaus
-#### REF on datakeskuksen tuottaman uusiutuvan energian ja sen kokonaisenergiankulutuksen suhdeluku.
-#### REF = r / x, jossa:
-#### r = datakeskuksen tuottaman ja hallinnoiman uusiutuvan energian määrä kilowattitunteina (kWh)
-#### x = datakeskuksen kokonaisenergiankulutus kilowattitunteina (kWh)
+## EN 50600-4-3 (REF) – Renewable Energy Factor
 
-#### Miten paljon datakeskuksen energiantuotannosta on uusiutuvaa energiaa? Onko datakeskuksen REF-arvoa laskettu? Jos on, voidaanko sitä parantaa?
-#### Ohjelmiston käyttämän palvelimen tai pilvipalvelun datakeskuksen REF-arvo EN50600-4 standardin mukaisesti.
-#### Datakeskuksen hiilijalanjäljen suurin osatekijä on sen energiantuotanto.
-#### Arvio kriteerin toteutuksen hinnasta: Mittari voidaan sisällyttää osaksi ohjelmiston toiminnallisia vaatimuksia, joten se on helppo toteuttaa.
-#### Arvio kriteerin toteutuksen ympäristövaikutuksista | Käyttämällä uusiutuvaa energiaa, pienentää datakeskus hiilijalanjälkeään samassa suhteessa. Kun energia on itse tuotettua, voidaan olla varmoja sen ympäristövaikutuksista.
-#### Mittarin toteutumisen seuranta hankinnan aikana | Vaatimuksen toteutumista ei tarvitse seurata hankinnan aikana, mikäli datakeskuksen energiantuotannossa ei tapahdu muutoksia.
-#### Edellytykset mittarin hyödyntämiselle | Järjestelmä toimii datakeskuksessa tai pilvipalvelussa.
+**Kategoria ja vaatimustaso:** Uusiutuvan energian käyttö – *laatuvaatimus*
 
-#### Esimerkki: Datakeskuksen tuottaman uusiutuvan energian määrä	99 kWh (r)
-#### Datakeskuksen kokonaisenergiankulutus	147 kWh (x)
-#### REF-arvo	0,67
+### Mittarin lyhyt kuvaus
+**Renewable Energy Factor (REF)** on EN 50600-4-3 -standardin mukainen tunnusluku, joka kuvaa datakeskuksen **tuottaman ja hallinnoiman uusiutuvan energian** osuutta sen **kokonaisenergiankulutuksesta**.
 
-#### Kriteeriin liittyvä mittaus ja viitearvot | Datakeskuksen uusiutuvan energian tuotanto ja kokonaisenergiankulutus kilowattitunteina.
-#### REF-arvo on sitä parempi mitä lähempänä se on lukua 1, referenssiviitearvoja ei ole määritelty.
-#### Kytkeytyvät mittarit | Muut EN50600-4 standardin avainlukuindikaattorit: PUE, CER, WUE, ERF, CUE
+**Laskentakaava:**  
 
+REF = r / x
 
+- **r** = datakeskuksen tuottaman ja hallinnoiman uusiutuvan energian määrä (kWh)  
+- **x** = datakeskuksen kokonaisenergiankulutus (kWh)  
 
+REF-arvo vaihtelee välillä 0–1. Mitä lähempänä arvo on 1, sitä suurempi osa energiasta on uusiutuvaa.
+
+---
+
+### Mitä mittari kertoo ja miten sitä käytetään?
+- **Merkitys:** REF kertoo, kuinka suuri osuus datakeskuksen energiantuotannosta on uusiutuvaa. Tämä vaikuttaa suoraan hiilijalanjälkeen.  
+- **Käyttö päätöksenteossa:** Korkea REF-arvo on tavoiteltava, sillä se tarkoittaa, että datakeskus on vähemmän riippuvainen fossiilisista energialähteistä.  
+- **Optimointimahdollisuudet:** REF-arvoa voi parantaa lisäämällä omaa uusiutuvan energian tuotantoa (aurinko-, tuuli- tai vesivoima) tai hankkimalla uusiutuvaa energiaa luotettavista lähteistä.
+
+---
+
+### Toteutuksen kustannus ja ympäristövaikutus
+- **Kustannus:** Mittari voidaan sisällyttää osaksi ohjelmiston tai datakeskuksen toiminnallisia vaatimuksia, joten toteutus on usein helppo ja edullinen.  
+- **Ympäristövaikutus:** Käyttämällä uusiutuvaa energiaa datakeskus pienentää hiilijalanjälkeään samassa suhteessa. Kun energia on itse tuotettua, sen ympäristövaikutukset ovat varmimmin hallinnassa.
+
+---
+
+### Seuranta hankinnan aikana
+REF-arvon toteutumista ei yleensä tarvitse seurata jatkuvasti hankinnan aikana, ellei datakeskuksen energiantuotannossa tapahdu muutoksia.
+
+---
+
+### Edellytykset mittarin hyödyntämiselle
+Mittari voidaan ottaa käyttöön, kun järjestelmä toimii datakeskuksessa tai pilvipalvelussa, jossa energiantuotannon lähteet ja kokonaiskulutus ovat mitattavissa.
+
+---
+
+### Esimerkki
+- **Tuotettu uusiutuva energia (r):** 99 kWh  
+- **Kokonaisenergiankulutus (x):** 147 kWh  
+- **REF = 0,67**
+
+*Tulkinta:* Datakeskus tuottaa itse 67 % kuluttamastaan energiasta uusiutuvilla lähteillä.
+
+---
+
+### Kriteeriin liittyvä mittaus ja viitearvot
+- **Mittaus:** Datakeskuksen uusiutuvan energian tuotanto (kWh) ja kokonaisenergiankulutus (kWh).  
+- **Viitearvot:** Mitä lähempänä REF-arvo on 1, sitä parempi. Virallisia referenssiviitearvoja ei ole määritelty.
