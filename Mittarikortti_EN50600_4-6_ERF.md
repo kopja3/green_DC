@@ -54,8 +54,4 @@ Mittari voidaan ottaa käyttöön, kun ohjelmisto toimii datakeskuksessa tai pil
 - **Mittaus:** Kokonaisenergiankulutus (kWh) ja uudelleenkäytetyn energian määrä (kWh).  
 - **Viitearvot:** Mitä lähempänä ERF-arvo on 1, sitä parempi. Virallisia referenssiviitearvoja ei ole määritelty.
 
----
-
-### Kytkeytyvät mittarit
-Muut EN 50600-4 -standardin avainlukuindikaattorit: **CER**, **CUE**, **PUE**, **REF**, **WUE**
 
