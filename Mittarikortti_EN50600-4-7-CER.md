@@ -1,25 +1,61 @@
-## EN50600-4-7-CER Datakeskuksen jäähdytyksen tehokkuussuhteen eurooppalainen standardi.
-## Kategoria ja vaatimustaso | Jäähdytyksen tehokkuus, laatuvaatimus.
-#### Mittarin lyhyt kuvaus 
-#### CER on datakeskuksen toiminnassa poistetun lämpöenergian ja jäähdytykseen käytetyn energian suhdeluku.
-#### CER = e / x, jossa:
-#### e = poistetun lämmön määrä kilowattitunteina (kWh)
-#### x = datakeskuksen jäähdyttämisen energiankulutus kilowattitunteina (kWh)
-#### Työkalussa esitetyt kysymykset hankkijan suuntaan | Miten energiatehokas datakeskuksen jäähdytysjärjestelmä on? Onko datakeskuksen CER-arvoa laskettu? Jos on, voidaanko sitä parantaa?
-#### Copy-paste vaatimus | Ohjelmiston käyttämän palvelimen tai pilvipalvelun datakeskuksen CER-arvo EN50600-4 standardin mukaisesti.
-#### Ohjeistus kriteerin käytöstä hankinnan aikana | Jäähdytyksen energiankulutus on tyypillisesti hieman alle kolmannes datakeskuksen kokonaisenergiankulutuksesta.
-#### Arvio kriteerin toteutuksen hinnasta | Mittari voidaan sisällyttää osaksi ohjelmiston toiminnallisia vaatimuksia, joten se on helppo toteuttaa.
-#### Arvio kriteerin toteutuksen ympäristövaikutuksista | Mitä energiatehokkaampi jäähdytysjärjestelmä on, sitä pienempi on datakeskuksen kokonaisenergiankulutus.
-#### Mittarin toteutumisen seuranta hankinnan aikana | Toimittajalta vaaditaan kuvaus seuraavasta:
-#### a)  Ohjelmiston käyttämän datakeskuksen jäähdytysjärjestelmän energiankäytön mittauksen järjestelyt (kWh).
-#### b)  Ohjelmiston käyttämän datakeskuksen jäähdyttämisessä poistetun lämmön mittauksen järjestelyt (kWh).
-#### c)  Kohtien a ja b mukaiset mittaustulokset.
-#### Toimittajan antama kuvaus ja dokumentaatio yllä olevan kohdan mukaisesti päivitetään mahdollisten tilanteeseen vaikuttavien muutosten yhteydessä. Mahdollisista sanktioista sovitaan erikseen
-#### Edellytykset mittarin hyödyntämiselle | Järjestelmä toimii datakeskuksessa tai pilvipalvelussa
-#### Esimerkki: 
-#### Datakeskuksen poistetun lämmön määrä	95 kWh (e) 
-#### Datakeskuksen jäähdytysjärjestelmän energiankulutus	44 kWh (x)
-#### CER-arvo	2,16
-#### Kriteeriin liittyvä mittaus ja viitearvot | Datakeskuksen jäähdytetyn lämmön määrä ja jäähdytysjärjestelmän energiankulutus kilowattitunteina.
-#### CER-arvo on sitä parempi mitä suurempi se on, referenssiviitearvoja ei ole määritelty.
-#### Kytkeytyvät mittarit | Muut EN50600-4 standardin avainlukuindikaattorit: PUE, REF, WUE, ERF, CUE
+## EN 50600-4-7 (CER) – Cooling Efficiency Ratio
+
+**Kategoria ja vaatimustaso:** Jäähdytyksen tehokkuus – *laatuvaatimus*
+
+### Mittarin lyhyt kuvaus
+**Cooling Efficiency Ratio (CER)** on EN 50600-4-7 -standardin mukainen tunnusluku, joka kuvaa datakeskuksen jäähdytyksen energiatehokkuutta.
+
+**Laskentakaava:**  
+
+CER = e / x
+
+- **e** = poistetun lämmön määrä (kWh)  
+- **x** = jäähdytysjärjestelmän energiankulutus (kWh)  
+
+Arvo voi vaihdella suuresti riippuen jäähdytysratkaisusta ja olosuhteista. Mitä suurempi arvo, sitä energiatehokkaampi jäähdytys.
+
+---
+
+### Mitä mittari kertoo ja miten sitä käytetään?
+- **Merkitys:** CER kertoo, kuinka monta kilowattituntia lämpöä poistetaan jokaista jäähdytysjärjestelmän kuluttamaa kilowattituntia kohti.  
+- **Käyttö päätöksenteossa:** Korkea CER-arvo on tavoiteltava, koska se kertoo tehokkaasta jäähdytyksestä.  
+- **Optimointimahdollisuudet:** Arvoa voidaan parantaa mm. hyödyntämällä ulkoilma- ja vapaajäähdytystä, optimoimalla ilmavirtoja ja säätämällä jäähdytysjärjestelmän kapasiteettia kuormitustilanteen mukaan.
+
+---
+
+### Toteutuksen kustannus ja ympäristövaikutus
+- **Kustannus:** Mittari voidaan ottaa käyttöön osana datakeskuksen tai ohjelmiston toiminnallisia vaatimuksia. Usein toteutus on helppo ja kustannus pieni, jos mittausjärjestelmät ovat jo käytössä.  
+- **Ympäristövaikutus:** Energiatehokkaampi jäähdytys pienentää suoraan datakeskuksen kokonaisenergiankulutusta ja siten sen hiilijalanjälkeä.
+
+---
+
+### Seuranta hankinnan aikana
+Mittarin käyttöön liittyy seuraavat vaatimukset toimittajalle:
+1. Kuvaus datakeskuksen jäähdytysjärjestelmän energiankulutuksen mittauksesta (kWh).  
+2. Kuvaus poistetun lämmön mittauksesta (kWh).  
+3. Mittaustulokset molemmista edellä mainituista.  
+
+Toimittajan tulee päivittää dokumentaatio, jos olosuhteet muuttuvat. Mahdollisista sanktioista sovitaan erikseen.
+
+---
+
+### Edellytykset mittarin hyödyntämiselle
+Mittari voidaan ottaa käyttöön, kun järjestelmä toimii datakeskuksessa tai pilvipalvelussa, jossa voidaan mitata:
+- jäähdytysjärjestelmän energiankulutus (kWh)  
+- poistetun lämmön määrä (kWh)
+
+---
+
+### Esimerkki
+- **Poistetun lämmön määrä (e):** 95 kWh  
+- **Jäähdytysjärjestelmän energiankulutus (x):** 44 kWh  
+- **CER = 2,16**
+
+*Tulkinta:* Jokaista jäähdytysjärjestelmän kuluttamaa kilowattituntia kohti poistetaan 2,16 kWh lämpöä. Tämä viittaa hyvään jäähdytystehokkuuteen.
+
+---
+
+### Kriteeriin liittyvä mittaus ja viitearvot
+- **Mittaus:** Poistetun lämmön määrä (kWh) ja jäähdytysjärjestelmän energiankulutus (kWh).  
+- **Viitearvot:** Mitä suurempi arvo, sitä parempi. Virallisia referenssiviitearvoja ei ole määritelty.
+
