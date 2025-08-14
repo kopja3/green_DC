@@ -82,3 +82,11 @@ Miksi datakeskus rakennetaan ja mihin se kannattaa sijoittaa?
 
 
 📄 [Tehtävien vastaukset](tehtavat_vastaukset.md)
+
+
+---
+
+<p align="center">
+  <img src="https://profile-counter.glitch.me/green_DC/count.svg" alt="Kävijälaskuri" />
+</p>
+
