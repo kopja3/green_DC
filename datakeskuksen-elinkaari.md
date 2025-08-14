@@ -152,7 +152,7 @@ Käytöstä poiston ja uudelleenkäytön vaihe on olennainen osa kiertotalousstr
 - Li, J., Zeng, X., Chen, M., Ogunseitan, O.A. & Stevels, A. (2015). Control-Alt-Delete: rebooting solutions for the e-waste problem. Environmental Science & Technology, 49(12), 7095–7102. https://doi.org/10.1021/es5053009
 - Balde, C.P., Forti, V., Gray, V., Kuehr, R., & Stegmann, P. (2017). *The Global E-waste Monitor 2017: Quantities, Flows, and Resources*. United Nations University, International Telecommunication Union, and International Solid Waste Association. [Linkki](https://ewastemonitor.info/)  
 - Deng, L., Babbitt, C.W., & Williams, E.D. (2021). Economic-balance hybrid LCA extended with uncertainty analysis: case study of a laptop computer. Journal of Cleaner Production,
-Volume 19, Issue 11,2011,Pages 1198-1206,ISSN 0959-6526,https://doi.org/10.1016/j.jclepro.2011.03.004.(https://www.sciencedirect.com/science/article/pii/S0959652611000801)
+Volume 19, Issue 11,2011,Pages 1198-1206,ISSN 0959-6526,https://doi.org/10.1016/j.jclepro.2011.03.004.
 
 
 </details>
