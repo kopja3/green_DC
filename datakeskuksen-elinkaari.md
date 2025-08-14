@@ -145,7 +145,7 @@ Keskeisiä osa-alueita ovat:
 3. **Ympäristövaikutusten minimointi** – Elektroniikkajätteen käsittelyssä on huomioitava haitallisten aineiden, kuten lyijyn ja elohopean, turvallinen käsittely, jotta vältetään maaperän ja vesistöjen saastuminen (Balde et. al., 2017).  
 4. **Elinkaaren päättymisen optimointi** – Laitteiden modulaarinen suunnittelu ja standardoidut komponentit voivat helpottaa purkamista ja kierrätystä, vähentäen jätteen määrää ja parantaen resurssitehokkuutta (Deng et. al., 2021).
 
-Käytöstä poiston ja uudelleenkäytön vaihe on olennainen osa kiertotalousstrategiaa datakeskusympäristöissä, sillä se mahdollistaa materiaalien ja komponenttien palauttamisen tuotantoketjuun sekä vähentää merkittävästi hiilijalanjälkeä ja luonnonvarojen kulutusta (Balde et. al., 2017.
+Käytöstä poiston ja uudelleenkäytön vaihe on olennainen osa kiertotalousstrategiaa datakeskusympäristöissä, sillä se mahdollistaa materiaalien ja komponenttien palauttamisen tuotantoketjuun sekä vähentää merkittävästi hiilijalanjälkeä ja luonnonvarojen kulutusta (Balde et. al., 2017).
 
 **Lähteet:**  
 - National Institute of Standards and Technology (NIST). (2014). *NIST Special Publication 800-88 Revision 1: Guidelines for Media Sanitization*. [Linkki](https://doi.org/10.6028/NIST.SP.800-88r1)  
