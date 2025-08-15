@@ -50,7 +50,7 @@ Miksi datakeskus rakennetaan ja mihin se kannattaa sijoittaa?
 
 ---
 
-## 🔹 6. EN 50600-4 -standardi ja mittarit  
+## 🔹 6. Datakeskusten energiatehokkuuden mittaaminen 
 📐 Eurooppalainen EN 50600 -standardi määrittelee, miten datakeskusten energiatehokkuutta mitataan ja kehitetään.
 
 📄 [EN 50600-4 -standardi ja mittarit](EN-50600-4-standardi-ja-mittarit.md)
