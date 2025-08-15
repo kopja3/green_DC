@@ -44,7 +44,7 @@ On kuitenkin hyvä todeta, että datakeskusten yleistyminen tuo myös haasteita,
 
 Kun päätetään minne datakeskus rakennetaan, otetaan huomioon useita tekijöitä, jotta keskus olisi taloudellisesti kannattava, tehokas ja turvallinen. Tärkeitä sijaintikriteereitä ovat mm.:
 
--Energia 
+-Sähköeneregian saatavuus ja hinta 
 
 -Imasto
 
