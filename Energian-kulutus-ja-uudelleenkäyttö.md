@@ -1,4 +1,4 @@
-# Energian kulutus datakeskuksessa:
+# Energian kulutus ja uudelleenkäyttö datakeskuksessa:
 
 > 💡 **Havainnollistus mittasuhteesta:**
 >
