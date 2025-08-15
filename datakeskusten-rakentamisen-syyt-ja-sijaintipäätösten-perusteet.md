@@ -54,7 +54,7 @@ On kuitenkin hyvä todeta, että datakeskusten yleistyminen tuo myös haasteita,
 
 ## Datakeskuksen sijaintipäätökseen vaikuttavat tekijät
 
-Kun päätetään minne datakeskus rakennetaan, otetaan huomioon useita tekijöitä, jotta keskus olisi taloudellisesti kannattava, tehokas ja turvallinen. Tärkeitä sijaintikriteereitä ovat mm.:
+Datakeskuksen sijantia suunniteltaessa tulisi ottaa huomioon useita tekijöitä, jotta keskus olisi taloudellisesti kannattava, tehokas ja turvallinen. Tärkeitä sijaintikriteereitä ovat mm.:
 
 -Sähköeneregian saatavuus ja hinta 
 
