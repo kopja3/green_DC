@@ -5,11 +5,12 @@
 ![Sähkönsyöttö ja jäähdytys](kuvat/datakeskus_vaihe1_sahkonsyotto_jaahdytys.png)
 
 Datakeskus ei toimi ilman jatkuvaa sähkönsyöttöä ja toimivaa jäähdytystä.  
-Palvelimien toiminta perustuu keskeytymättömään sähköön, ja jäähdytys – usein vesikiertoinen – poistaa syntyvän lämmön.
+Palvelimien toiminta perustuu keskeytymättömään sähköön, ja jäähdytys – usein vesikiertoinen – poistaa syntyvän lämmön. 
+Jäähdytykseen voidaan käyttää useita eri tekniikoita. Ilma- ja vesijäähdytystekniikoihin kuuluvat chillerit ja lämmönvaihtimet. Chiller (jäähdytyskone) siirtää lämpöä nesteestä toiseen jäähdyttämällä kiertävää jäähdytysnestettä, jota käytetään palvelinten ja muun IT-infrastruktuurin lämpötilan hallintaan. Lämmönvaihtimet puolestaan mahdollistavat lämpöenergian siirron kahden nesteen tai ilman välillä ilman suoraa kosketusta, mikä tehostaa jäähdytysprosessia ja mahdollistaa esimerkiksi hukkalämmön talteenoton. 
 
 ---
 
-## 🌐 2. Palvelupyynnöt internetistä palvelimille
+## 🌐 2. Verkkopalvelupyynnöt internetistä palvelimille
 
 ![Internet ja palvelupyynnöt](kuvat/datakeskus_vaihe2_verkkopalvelupyynnot2.png)
 
