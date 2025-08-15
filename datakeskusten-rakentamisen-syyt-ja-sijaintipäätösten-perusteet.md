@@ -140,16 +140,22 @@ Datakeskusten rakentaminen on olennainen osa digitaalisen yhteiskunnan infrastru
 Lähteet:
 [1] GPRS – Understanding the Data Center Construction Boom,  https://www.gp-radar.com/article/understanding-the-data-center-construction-boom
 
-[2] Golden Shovel Agency – Top Benefits of Attracting a Data Center to Your Community 
+[2]
+Golden Shovel Agency. (2023, March 21). Uncovering the top benefits of attracting a data center to your community. Golden Shovel Agency. https://www.goldenshovelagency.com/news/p/item/52422/uncovering-the-top-benefits-of-attracting-a-data-center-to-your-community
 
-[3] Flexential – Data Center Site Selection Considerations 
+[3]
+Flexential. (2021, August 17). Essential considerations for effective data center site selection. Flexential. https://flexential.com/resources/blog/essential-considerations-effective-data-center-site-selection
 
-[4] DC Byte – Choosing a Data Centre Location (APAC) 
+[4]
+DC Byte. (n.d.). Choosing a data centre location (APAC). DC Byte. https://www.dcbyte.com
 
-[5] Telia Finland – Vakaa kotimaa datakeskuksille 
+[5]
+Telia Finland. (n.d.). Vakaa kotimaa datakeskuksille – 4 syytä miksi kannattaa sijoittaa Suomeen. Telia Finland. https://www.telia.fi/yrityksille/artikkelit/artikkeli/vakaa-kotimaa-datakeskuksille-4-syyta-miksi-kannattaa-sijoittaa-suomeen
 
-[6] The Guardian – Facebook builds ‘green’ datacentre in Sweden 
+[6]
+Vaughan, A. (2011, October 27). Facebook builds ‘green’ datacentre in Sweden. The Guardian. https://www.theguardian.com/environment/2011/oct/27/facebook-green-datacentre-sweden
 
-[7] Pexapark – Data center surge in the Nordics 
+[7]
+Pexapark. (2023, April 13). Breaking down the data center surge in the Nordics: Key players, trends, and PPAs. Pexapark. https://pexapark.com/blog/prmc-breaking-down-the-data-center-surge-in-the-nordics-key-players-trends-and-ppas/
 
 Jarmo Koponen
