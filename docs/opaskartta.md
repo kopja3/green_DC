@@ -1,4 +1,3 @@
-
 # Vihreä datakeskus – oppaiden ristiinviittausmuistio
 
 Tällä muistilapulla pidetään kirjaa siitä,
@@ -11,6 +10,46 @@ syväoppimista hyödynnetään mm. sähkönkulutuksen ja CO₂-päästöjen
 pienentämiseen, palvelinkuorman ja jäähdytyksen yhteentoimivuuden
 optimointiin, hukkalämmön älykkääseen hyödyntämiseen sekä käytön ja
 operoinnin jatkuvaan parantamiseen.
+
+---
+
+## Mitä teen seuraavaksi? (työsuunnitelma)
+
+### Vaihe 1 – Perusoppaan (P) jäsentely nykyisestä tekstistä
+
+- [ ] Avaa nykyinen Perusopas ja lisää siihen nämä pääluvut otsikoiksi: **P1–P7** (ks. alla oleva sisällysluettelo).
+- [ ] Jaa olemassa oleva sisältö näiden otsikoiden alle:
+  - P1: yleinen johdanto ja vihreän konesalin idea
+  - P2: tehtävä + sijainti (tarve, sijaintipäätös, liitynnät)
+  - P3: vihreän datakeskuksen elementit
+  - P4: elinkaaren vaiheet
+  - P5: toiminta (sähkö → palvelin → lämpö)
+  - P6: energian kulutus ja hukkalämpö
+  - P7: EN 50600-4 ja muut mittarit (PUE, CUE, WUE, REF/ERF, CER…)
+- [ ] Tarkista, että P7:ssä on selkeä ja yhtenäinen mittariosio (voit käyttää nykyistä PUE/REF/ERF/WUE-tekstiä lähes sellaisenaan).
+- [ ] Kirjoita jokaisen luvun alkuun lyhyt lause tyyliin:
+  - *"Tämä luku (P3) syventää Itseopiskelijan oppaan moduuleja M2 ja M5."*
+
+### Vaihe 2 – Optimointioppaan (O) käynnistäminen
+
+- [ ] Kirjoita **O1 – Johdanto data- ja tekoälyohjattuun optimointiin** (1–2 sivua):
+  - mitä käytönaikainen optimointi tarkoittaa
+  - tavoitteet: CO₂, kWh, kustannus, palvelun laatu, riskit
+  - miten O-opas liittyy Itseopiskelijan oppaan moduuleihin (M1–M6) ja Perusoppaaseen (P1–P7)
+- [ ] Luonnostele **O2 – Datakeskus tekoälyn näkökulmasta: mittauspisteet ja mitattavat suureet**:
+  - tee lista mittauspisteistä: sähkö, jäähdytys, IT-kuorma, vesi, hukkalämpö, ulkoiset signaalit (sää, hinnat…)
+  - kuvaa lyhyesti datatyypit (aikasarjat, tapahtumat) ja datan laatu / mittaustiheys
+- [ ] Lisää O1:n ja O2:n alkuun muistilauseet:
+  - O1: *"Tämä luku tukee kaikkia moduuleja M1–M6."*
+  - O2: *"Tämä luku syventää erityisesti moduuleja M2, M4, M5 ja M6."*
+
+### Vaihe 3 – Tarkista ristiinviittaukset
+
+- [ ] Tämä `opas.md` toimii “master-karttana”. Kun muokkaat tekstiä, merkitse marginaaliin / kommentteihin:
+  - **P-koodi** (mihin Perusoppaan lukuun kappale kuuluu)
+  - **O-koodi** (jos kappale liittyy optimointiin)
+- [ ] Kun P1–P7 ja O1–O2 ovat luonnosvaiheessa valmiit, palaa tähän tiedostoon ja tarkista, että
+  - Taulukko 1 ja tarkemmat kartat vastaavat sitä, mitä olet oikeasti kirjoittanut.
 
 ---
 
