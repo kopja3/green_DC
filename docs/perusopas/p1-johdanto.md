@@ -46,7 +46,7 @@ Oppaassa käsitellään muun muassa seuraavia kysymyksiä:
 - Mitkä teknologiat parantavat energiatehokkuutta sähkönsyötössä, jäähdytyksessä ja laitteistossa?
 - Miten tekoäly ja data-analytiikka tukevat energiankulutuksen reaaliaikaista hallintaa?
 
-## P1.4 Mitä vihreä datakeskus tavoittelee (lyhyt)
+## P1.4 Mitä vihreä datakeskus tavoittelee. 
 
 Vihreä datakeskus on suunniteltu siten, että sen mekaaniset, sähköiset ja tietojärjestelmät on optimoitu yhdessä maksimaalisen energiatehokkuuden ja vähäisen ympäristövaikutuksen saavuttamiseksi (Gowri, 2005).
 
