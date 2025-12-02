@@ -673,9 +673,21 @@ Päästöarvio saadaan:
 
 Hiilidioksidipäästöjen määrä riippuu datakeskuksen kuluttamasta sähköenergiasta ja siitä, miten sähkö tuotetaan. Datakeskukset toimivat ympäri vuorokauden ja vaativat jatkuvan energiantuotannon, mikä lisää sähkön kulutusta ja edelleen hiilidioksidipäästöjä, jos energialähteet eivät ole uusiutuvia.
 
-Suuri määrä palvelimia, jäähdytysjärjestelmiä ja muita infrastruktuurilaitteita vaatii jatkuvaa sähköä toimiakseen. Jos sähkö tuotetaan fossiilisilla polttoaineilla, kuten kivihiilellä, maakaasulla tai öljyllä, syntyy merkittävästi hiilidioksidipäästöjä (Kuva 3).
+Suuri määrä palvelimia, jäähdytysjärjestelmiä ja muita infrastruktuurilaitteita vaatii jatkuvaa sähköä toimiakseen. Jos sähkö tuotetaan fossiilisilla polttoaineilla, kuten kivihiilellä, maakaasulla tai öljyllä, syntyy merkittävästi hiilidioksidipäästöjä (Kuvat 3a, 3b).
 
-*Kuva 3. Hiilivoimala aiheuttaa merkittäviä hiilidioksidipäästöjä (vasemmalla), kun taas aurinko-, tuuli- ja vesivoimalat tuottavat sähköenergiaa vähäisin päästöin (oikealla).*
+<p>
+  <img src="./img/p6-kuva3a-hiilivoimala.png"
+       alt="Kuva 3a. Hiilivoimala."
+       style="width:100%;height:auto;">
+</p>
+
+<p>
+  <img src="./img/p6-kuva3b-uusiutuvat-energialahteet.png"
+       alt="Kuva 3b. Uusiutuvat energianlähteet."
+       style="width:100%;height:auto;">
+</p>
+
+*Kuvat 3a ja 3b. Hiilivoimala aiheuttaa merkittäviä hiilidioksidipäästöjä (vasemmalla), kun taas aurinko-, tuuli- ja vesivoimalat tuottavat sähköenergiaa vähäisin päästöin (oikealla).*
 
 Suomen sähköenergiasta tuotetaan ydinvoimalla noin 30 %. Uusiutuvista energialähteistä tuulivoiman osuus kasvaa jatkuvasti, ja sen arvioidaan tuottavan jopa 50 % maan sähköstä vuoteen 2030 mennessä. Myös aurinkoenergiaa käytetään kasvavassa määrin, mutta sen osuus on edelleen verrattain pieni. Fossiiliset polttoaineet ja maakaasu ovat pienentyvä osa Suomen sähköntuotantoa, mutta niitä käytetään edelleen erityisesti kulutushuippujen aikana [2, 3].
 
