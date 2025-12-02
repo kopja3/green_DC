@@ -284,15 +284,15 @@ Data-analytiikka voi tukea jatkuvaa hiilijalanjäljen mittaamista. Esimerkiksi M
 
 Yhdistämällä tekoälyn kyvyn analysoida valtavia tietomääriä ja optimoida energiankulutus tehokkaasti datakeskukset voivat merkittävästi pienentää ympäristövaikutuksiaan ja saavuttaa parempaa energiatehokkuutta.
 
-Automaattinen datankeruu on olennainen osa tätä kokonaisuutta. Datakeskuksen tehokkuuden ja ympäristöystävällisyyden kehittämiseksi on tärkeää automatisoida keskeisten mittapisteiden tiedonkeruu. Tähän sisältyy datakeskuksen jäähdytysjärjestelmän sähkönkulutuksen, hukkalämmön määrän (jos talteenotto on käytössä), sekä datakeskuksen ja palvelimien lämpötilojen jatkuva seuranta. Lisäksi mitataan datakeskuksen, palvelimien ja jäähdytysjärjestelmän sähkönkulutus, palvelimien käyttöaste ja kuormitus sekä uusiutuvan energian osuudet datakeskuksen energiankäytössä (Kuva x). 
+Automaattinen datankeruu on olennainen osa tätä kokonaisuutta. Datakeskuksen tehokkuuden ja ympäristöystävällisyyden kehittämiseksi on tärkeää automatisoida keskeisten mittapisteiden tiedonkeruu. Tähän sisältyy datakeskuksen jäähdytysjärjestelmän sähkönkulutuksen, hukkalämmön määrän (jos talteenotto on käytössä), sekä datakeskuksen ja palvelimien lämpötilojen jatkuva seuranta. Lisäksi mitataan datakeskuksen, palvelimien ja jäähdytysjärjestelmän sähkönkulutus, palvelimien käyttöaste ja kuormitus sekä uusiutuvan energian osuudet datakeskuksen energiankäytössä (Kuva 3). 
 
 <p>
   <img src="./img/p3-kuva3-datakeskuksen-mittaus-jarjestelma.png"
-       alt="Kuva x. Datakeskuksen automaattinen mittaus- ja seurantajärjestelmä energiatehokkuuden ja ympäristövaikutusten optimointia varten."
+       alt="Kuva 3. Datakeskuksen automaattinen mittaus- ja seurantajärjestelmä energiatehokkuuden ja ympäristövaikutusten optimointia varten."
        style="width:100%;height:auto;">
 </p>
 
-*Kuva x. Datakeskuksen automaattinen mittaus- ja seurantajärjestelmä energiatehokkuuden ja ympäristövaikutusten optimointia varten.*
+*Kuva 3. Datakeskuksen automaattinen mittaus- ja seurantajärjestelmä energiatehokkuuden ja ympäristövaikutusten optimointia varten.*
 
 Tämä automaattinen datankeruu mahdollistaa PUE (Power Usage Effectiveness), REF (Renewable Energy Factor), ERF (Energy Reuse Factor) ja WUE (Water Usage Effectiveness) -arvojen laskentaan tarvittavien ominaisuuksien keräämisen. Se tukee myös syväoppivien ja koneoppimista hyödyntävien järjestelmien käyttöä, joiden avulla voidaan ennakoida energiantarvetta ja optimoida järjestelmien tehokkuutta. Näin datankeruu edistää merkittävästi datakeskuksen ympäristöystävällisyyden parantamista pitkällä aikavälillä.
 
