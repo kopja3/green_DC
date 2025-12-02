@@ -1,5 +1,3 @@
-# Opas vihreän datakeskuksen rakentamiseksi – yhdistetty versio
-
 # Opas vihreän datakeskuksen rakentamiseksi
 
 **Tekijä:** Jarmo Koponen  
