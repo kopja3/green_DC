@@ -675,17 +675,21 @@ Hiilidioksidipäästöjen määrä riippuu datakeskuksen kuluttamasta sähköene
 
 Suuri määrä palvelimia, jäähdytysjärjestelmiä ja muita infrastruktuurilaitteita vaatii jatkuvaa sähköä toimiakseen. Jos sähkö tuotetaan fossiilisilla polttoaineilla, kuten kivihiilellä, maakaasulla tai öljyllä, syntyy merkittävästi hiilidioksidipäästöjä (Kuvat 3a, 3b).
 
-<p>
-  <img src="./img/p6-kuva3a-hiilivoimala.png"
-       alt="Kuva 3a. Hiilivoimala."
-       style="width:100%;height:auto;">
-</p>
+<table>
+  <tr>
+    <td>
+      <img src="./img/p6-kuva3a-hiilivoimala.png"
+           alt="Kuva 3a. Hiilivoimala."
+           style="width:100%;height:auto;">
+    </td>
+    <td>
+      <img src="./img/p6-kuva3b-uusiutuvat-energialahteet.png"
+           alt="Kuva 3b. Uusiutuvat energianlähteet."
+           style="width:100%;height:auto;">
+    </td>
+  </tr>
+</table>
 
-<p>
-  <img src="./img/p6-kuva3b-uusiutuvat-energialahteet.png"
-       alt="Kuva 3b. Uusiutuvat energianlähteet."
-       style="width:100%;height:auto;">
-</p>
 
 *Kuvat 3a ja 3b. Hiilivoimala aiheuttaa merkittäviä hiilidioksidipäästöjä (vasemmalla), kun taas aurinko-, tuuli- ja vesivoimalat tuottavat sähköenergiaa vähäisin päästöin (oikealla).*
 
