@@ -435,155 +435,266 @@ Hyvin suunniteltu vihreä datakeskus ei ole vain tämän päivän tarpeisiin rak
 
 # P5 – Datakeskuksen toiminta: sähköstä palveluksi ja takaisin lämmöksi
 
-Tavoite: kuvata, miten energia kulkee datakeskuksessa vaiheesta toiseen – sähköverkosta palvelimille, verkoon ja jäähdytykseen, edelleen hukkalämmöksi ja lopulta takaisin hyötykäyttöön. Luku vastaa M4-moduulia: sähkö → palvelimet → verkko → jäähdytys → hukkalämpö → mittaus.
+**Tavoite:** kuvata, miten energia kulkee datakeskuksessa vaiheesta toiseen – sähköverkosta palvelimille, verkoon ja jäähdytykseen, edelleen hukkalämmöksi ja lopulta takaisin hyötykäyttöön.  
+Luku vastaa M4-moduulia: **sähkö → palvelimet → verkko → jäähdytys → hukkalämpö → mittaus**.
 
-## P5.1 Sähkönsyöttö ja virranjakelu
+## P5.0 Mitä tässä luvussa tapahtuu – ketju sähköstä lämpöön
 
-Datakeskuksen toiminta alkaa sähkön saannista. Tyypillinen sähköketju etenee seuraavasti:
+Datakeskus näyttää ulospäin tavalliselta rakennukselta, mutta sen sisällä toistuu koko ajan sama perusketju:
 
-1. **Sähköverkko ja muuntajat**  
-   Datakeskus liitetään paikalliseen jakelu- tai kantaverkkoon. Korkeajännite muunnetaan datakeskuksen tarvitsemalle tasolle muuntajilla (esim. 110/20 kV → 400 V).
+1. **Sähkö** saapuu sähköverkosta datakeskukseen.
+2. Sähkö kulkee **muuntajien, UPS-laitteiden, jakelukeskusten ja PDU-yksiköiden** kautta palvelinkaappeihin.
+3. **Palvelimet ja tallennuslaitteet** muuttavat sähkön laskentatehoksi, datan käsittelyksi ja verkkoliikenteeksi – eli palvelupyynnöiksi ja vastauksiksi.
+4. Käytetty sähkö muuntuu lähes kokonaan **lämmöksi** palvelimissa ja muissa laitteissa.
+5. **Jäähdytysjärjestelmä** kerää tämän lämmön ja siirtää sen pois palvelinsalista – joko ympäristöön tai **hukkalämpönä hyötykäyttöön**.
+6. Koko ketjua seurataan ja ohjataan **mittauksen ja automaation** avulla.
 
-2. **Pääkeskus ja UPS-järjestelmät**  
-   Sähkö johdetaan pääkeskuksen kautta keskeytymättömille virtalähteille (UPS), jotka tasoittavat jännitevaihtelut ja turvaavat sähkönsaannin lyhyissä katkoksissa. UPS-laitteet käyttävät akkuja tai muita energian varastointiratkaisuja.
+Tässä luvussa tarkastelemme tätä ketjua ensin **ylätasolla** (P5.1) ja sen jälkeen vaihe vaiheelta:
 
-3. **Jakelukeskukset ja PDU-yksiköt**  
-   UPS-laitteilta sähkö jaetaan edelleen konesalin jakelukeskuksiin ja **PDU-yksiköihin** (Power Distribution Unit), jotka syöttävät virtaa palvelinkaappeihin. PDU:issa voidaan mitata virran kulutusta kaappitasolla.
+- P5.2 – miten sähkö liikkuu verkosta palvelinkaappiin  
+- P5.3 – mitä palvelimessa ja tallennusjärjestelmissä tapahtuu  
+- P5.4 – miten jäähdytys ja lämpötilanhallinta toimivat käytännössä  
+- P5.5 – miten verkko kuljettaa palvelupyynnöt ja vastaukset  
+- P5.6 – miten lämpö otetaan talteen ja voidaan hyödyntää  
+- P5.7 – miten energiankulutusta ja hukkalämpöä mitataan ja optimoidaan.
 
-4. **Varavoima**  
-   Pidemmissä sähkökatkoissa varavoimajärjestelmät (esim. diesel- tai kaasugeneraattorit) käynnistyvät automaattisesti. UPS-laitteet pitävät järjestelmät käynnissä siihen saakka, kunnes generaattori on noussut kuormaan.
+## P5.1 Sähköstä palveluksi – ketjun ylätason kuvaus
 
-Päivittäisessä toiminnassa sähkönsyöttöä valvotaan jatkuvasti: jännite, virta, lämpötila ja kuormitus seurataan, jotta mahdollisiin häiriöihin voidaan reagoida nopeasti.
+Arjen tasolla datakeskus tekee yhden perusasian:  
+se **muuttaa tasaisesti saapuvan sähköenergian** käyttäjien tarvitsemiksi **digitaalisiksi palveluiksi** ja **lämmöksi**.
 
-## P5.2 Jäähdytys ja lämpötilanhallinta
+Yksinkertaistettuna ketju näyttää tältä:
 
-Palvelimet muuttavat sähkön lämmöksi, joka on poistettava luotettavasti. Jäähdytysjärjestelmä huolehtii siitä, että:
+1. **Sähkö** saapuu kantaverkosta tai paikallisesta sähköverkosta datakeskuksen pääkeskukseen.
+2. **Muuntajat, UPS-järjestelmät ja jakelukeskukset** varmistavat, että sähkö on oikeaa jännitettä, suojattua ja katkeamatonta.
+3. **Palvelimet ja tallennuslaitteet** käyttävät sähköä laskentaan, datan tallennukseen ja siirtoon.
+4. **Verkkolaitteet** (kytkimet, reitittimet, kuormantasaimet) välittävät palvelupyynnöt ja vastaukset käyttäjien suuntaan.
+5. Käytetty sähkö muuttuu **lämmöksi**, joka kerätään jäähdytysjärjestelmään.
+6. Lämpö poistetaan ympäristöön tai ohjataan **kaukolämpöverkkoon tai muuhun lämmönkulutuskohteeseen**.
+7. Koko prosessia seurataan **mittareilla** (PUE, ERF/REF, WUE, CUE) ja automaatiolla.
 
-- palvelinsalin **lämpötila ja ilmankosteus** pysyvät asetetuissa rajoissa (setpointit)  
-- ilmavirrat ohjataan **kylmien ja kuumien käytävien** mukaisesti  
-- jäähdytysjärjestelmän oma energiankulutus pysyy mahdollisimman pienenä.
+Tämän luvun lopussa lukijalla on selkeä käsitys siitä, **missä kohdissa ketjua energiaa kuluu**, missä syntyy **hukkalämpöä**, ja miten nämä vaiheet liittyvät oppaan myöhempiin **energia- ja päästölukuihin (P6)** sekä **mittareihin ja sääntelyyn (P7)**.
 
-Tyypillisiä ratkaisuja ovat:
+---
 
-- **Ilmajäähdytys**, jossa kylmä ilma puhalletaan palvelimien etupuolelle ja kuuma ilma kerätään takaa pois.  
-- **Nestejäähdytys**, jossa lämpö siirretään suoraan nesteeseen (esim. rack- tai prosessorikohtaiset ratkaisut), mikä mahdollistaa suuremman tehopakon pienemmällä ilmavirralla.  
-- **Vapaajäähdytys**, jossa hyödynnetään ulkoilmaa tai viileää vettä silloin, kun ulkolämpötila on matala.
+## P5.2 Sähkönsyöttö ja virranjakelu: verkosta palvelinkaappiin
 
-Järjestelmä toimii automaattisesti: anturit mittaavat lämpötilaa ja ilmankosteutta, ja ohjausjärjestelmä säätää puhaltimien nopeuksia, venttiilejä ja pumppuja asetettujen arvojen perusteella.
+Datakeskuksen toiminta alkaa luotettavasta sähkön saannista. Tyypillinen sähköketju etenee seuraavasti:
 
-## P5.3 Palvelimet ja tallennus
+### P5.2.1 Sähköverkko ja muuntajat
 
-Palvelimet ja tallennuslaitteet muuttavat sähkön **digitaalisiksi palveluiksi** – verkkosivuiksi, sovelluksiksi ja tietokannoiksi. Ne kuluttavat suurimman osan datakeskuksen IT-energiasta.
+Datakeskus liitetään paikalliseen jakelu- tai kantaverkkoon.  
+Korkeajännite muunnetaan datakeskuksen tarvitsemalle tasolle **muuntajilla** (esimerkiksi 110/20 kV → 400 V).
+
+### P5.2.2 Pääkeskus ja UPS-järjestelmät
+
+Muuntajilta sähkö johdetaan **pääkeskuksen** kautta **keskeytymättömille virtalähteille (UPS)**, jotka:
+
+- tasoittavat jännitevaihtelut  
+- turvaavat sähkönsaannin lyhyissä katkoksissa  
+- käyttävät **akkuja tai muita energian varastointiratkaisuja** sillan rakentamiseen verkon ja varavoiman välille.
+
+UPS-järjestelmistä syntyvät häviöt näkyvät suoraan datakeskuksen **PUE-arvossa**, joten niiden mitoitus ja hyötysuhde ovat tärkeitä.
+
+### P5.2.3 Jakelukeskukset ja PDU-yksiköt
+
+UPS-laitteilta sähkö jaetaan edelleen:
+
+- **jakelukeskuksiin**, joista kaapeloinnit viedään palvelinsaleihin  
+- **PDU-yksiköihin (Power Distribution Unit)**, jotka syöttävät virtaa palvelinkaappeihin.
+
+PDU:issa voidaan mitata virran ja tehon kulutusta **räkkitasolla**, mikä tukee tarkkaa energianseurantaa ja kapasiteettisuunnittelua.
+
+### P5.2.4 Varavoima
+
+Pidemmissä sähkökatkoissa **varavoimajärjestelmät** (esim. diesel- tai kaasugeneraattorit) käynnistyvät automaattisesti.  
+UPS-laitteet pitävät järjestelmät käynnissä siihen saakka, kunnes generaattori on noussut kuormaan.
+
+Päivittäisessä toiminnassa sähkönsyöttöä **valvotaan jatkuvasti**:
+
+- jännite, virta, lämpötila ja kuormitus  
+- mahdolliset häiriöt ja poikkeamat.
+
+Tavoitteena on **estimaattinen sähkökatkoton toiminta**, mutta yhtä tärkeää on, että koko ketju on **energiatehokkaasti mitoitettu**, ei pelkästään “ylivarma”.
+
+---
+
+## P5.3 Palvelimet ja tallennus: virtalähteestä prosessoriin ja palvelupyyntöihin
+
+Palvelimet ja tallennuslaitteet muuttavat sähkön **digitaalisiksi palveluiksi** – verkkosivuiksi, sovelluksiksi ja tietokannoiksi.  
+Ne kuluttavat suurimman osan datakeskuksen **IT-energiasta**.
 
 ### P5.3.1 Fyysiset palvelimet
 
-Fyysiset palvelimet ovat räkkeihin asennettuja laitteita, joissa on:
+Fyysiset palvelimet ovat räkkeihin asennettuja laitteita, joissa on tyypillisesti:
 
-- prosessorit (CPU/GPU)  
-- keskusmuisti  
-- paikallinen tallennus ja verkkoliitännät.
+- **prosessorit (CPU/GPU)**  
+- **keskusmuisti (RAM)**  
+- **paikallinen tallennus**  
+- **verkkoliitännät**.
 
-Palvelimet asennetaan tyypillisesti standardiräkkeihin (esim. 42U), ja niiden tiheys (kW/räkki) vaikuttaa suoraan sekä sähkönsyötön että jäähdytyksen mitoitukseen. Kuormanhallinta ja virransäästöominaisuudet (esim. prosessorien virranhallinta) ovat tärkeä osa energiatehokkuutta.
+Palvelimet asennetaan standardiräkkeihin (esim. 42U).  
+Räkin **tehotiheys (kW/räkki)** vaikuttaa suoraan:
 
-### P5.3.2 Virtuaalipalvelimet
+- sähkönsyötön mitoitukseen  
+- jäähdytyksen tarpeeseen  
+- kaapeloinnin ja ilmankierron suunnitteluun.
 
-Yhä useampi työkuorma ajetaan **virtuaalipalvelimilla** tai konteilla. Yksi fyysinen palvelin voi ajaa kymmeniä tai satoja virtuaalikoneita, jolloin:
+Kuormanhallinta ja virransäästöominaisuudet (esim. prosessorien virranhallinta) ovat tärkeä osa energiatehokkuutta:  
+tyhjäkäynnillä “pyöriviä” palvelimia pyritään välttämään.
 
-- laitteistoa voidaan hyödyntää tehokkaammin  
-- kuormaa voidaan siirtää palvelimelta toiselle tarpeen mukaan  
-- kapasiteettia voidaan kasvattaa ohjelmallisesti ilman välitöntä uusien laitteiden hankintaa.
+### P5.3.2 Virtuaalipalvelimet ja kontit
 
-Hyvä virtualisointialusta auttaa pitämään palvelimet mahdollisimman **täydessä mutta turvallisessa kuormassa**, jolloin turhaa energian käyttöä tyhjäkäynnillä voidaan vähentää.
+Yhä useampi työkuorma ajetaan **virtuaalipalvelimilla** tai **konteilla**. Yksi fyysinen palvelin voi ajaa kymmeniä tai satoja virtuaalikoneita, jolloin:
+
+- laitteistoa voidaan hyödyntää **tehokkaammin**  
+- kuormaa voidaan **siirtää palvelimelta toiselle** tarpeen mukaan  
+- kapasiteettia voidaan **kasvattaa ohjelmallisesti** ilman välitöntä uusien laitteiden hankintaa.
+
+Hyvä virtualisointialusta auttaa pitämään palvelimet mahdollisimman **täydessä mutta turvallisessa kuormassa**.  
+Näin vältytään tilanteelta, jossa suuri määrä fyysisiä palvelimia kuluttaa sähköä **alhaisella käyttöasteella**.
 
 ### P5.3.3 Tallennusratkaisut
 
 Tallennus voi perustua:
 
-- palvelimien omiin levyihin  
-- keskitettyihin tallennusratkaisuihin (SAN/NAS)  
-- ohjelmisto- tai pilvipohjaisiin tallennusratkaisuihin.
+- palvelimien **omiin levyihin**  
+- **keskitettyihin tallennusratkaisuihin** (SAN/NAS)  
+- **ohjelmisto- tai pilvipohjaisiin tallennusratkaisuihin**.
 
-Tallennusjärjestelmät mitoitetaan suorituskyvyn, kapasiteetin ja saatavuuden tarpeen mukaan. SSD-levyt ja tiered storage -ratkaisut voivat parantaa sekä suorituskykyä että energiatehokkuutta.
+Tallennusjärjestelmät mitoitetaan:
 
-## P5.4 Verkko ja yhteydet
+- suorituskyvyn  
+- kapasiteetin  
+- saatavuuden
 
-Verkko ja yhteydet muodostavat polun käyttäjän laitteen ja datakeskuksen välillä. Päivittäisessä toiminnassa verkko:
+tarpeen mukaan.  
+SSD-levyt ja **tiered storage** -ratkaisut voivat parantaa sekä suorituskykyä että energiatehokkuutta, kun harvoin käytetty data voidaan siirtää **energiaa säästävään** tallennusluokkaan.
+
+---
+
+## P5.4 Jäähdytys ja lämpötilanhallinta käytön aikana
+
+Palvelimet muuttavat sähkön **lämmöksi**, joka on poistettava luotettavasti.  
+Jäähdytysjärjestelmä huolehtii siitä, että:
+
+- palvelinsalin **lämpötila ja ilmankosteus** pysyvät asetetuissa rajoissa (setpointit)  
+- ilmavirrat ohjataan **kylmien ja kuumien käytävien** mukaisesti  
+- jäähdytysjärjestelmän **oma energiankulutus** pysyy mahdollisimman pienenä.
+
+Tyypillisiä jäähdytysratkaisuja ovat:
+
+- **Ilmajäähdytys**, jossa kylmä ilma puhalletaan palvelimien etupuolelle ja kuuma ilma kerätään takaa pois.  
+- **Nestejäähdytys**, jossa lämpö siirretään suoraan nesteeseen (esim. rack- tai prosessorikohtaiset ratkaisut). Tämä mahdollistaa suuren tehopakon pienemmällä ilmavirralla.  
+- **Vapaajäähdytys**, jossa hyödynnetään ulkoilmaa tai viileää vettä silloin, kun ulkolämpötila on matala.
+
+Järjestelmä toimii **automaattisesti**:
+
+- anturit mittaavat lämpötilaa ja ilmankosteutta  
+- ohjausjärjestelmä säätää puhaltimien nopeuksia, venttiilejä ja pumppuja asetettujen arvojen perusteella.
+
+Päivittäisessä operoinnissa jäähdytyksen kannalta keskeistä on:
+
+- **hot aisle / cold aisle -konfiguraation** pitäminen tiiviinä (ei “vuotoja”, joissa kuuma ja kylmä ilma sekoittuvat turhaan)  
+- lämpötila-asetusten optimointi: liian matala salilämpötila nostaa PUE-arvoa ilman todellista hyötyä  
+- jäähdytyslaitteiden **hyötysuhteen** ja kunnon seuranta.
+
+Jäähdytyksen suunnitteluperiaatteita käsiteltiin tarkemmin luvussa **P3.4**, tässä luvussa painotus on **päivittäisessä toiminnassa ja energiavirran hallinnassa**.
+
+---
+
+## P5.5 Verkko ja yhteydet: palvelupyynnön reitti käyttäjältä takaisin
+
+Verkko ja yhteydet muodostavat polun käyttäjän laitteen ja datakeskuksen välillä.  
+Päivittäisessä toiminnassa verkko:
 
 - välittää **palvelupyynnöt** internetistä tai yksityisverkoista palvelimille  
-- palauttaa vastaukset käyttäjille mahdollisimman pienellä viiveellä  
+- palauttaa **vastaukset käyttäjille** mahdollisimman pienellä viiveellä  
 - huolehtii siitä, että liikenne on **redundanttia ja suojattua**.
 
 Tärkeimmät tekijät:
 
 - riittävä **runkokapasiteetti** datakeskuksen sisällä (switchit, reitittimet, optiset linkit)  
 - useat **operaattorit ja fyysisesti erilliset reitit**, jotta vikatilanteet eivät katkaise yhteyksiä  
-- kuormantasainratkaisut (load balancerit), jotka jakavat liikenteen palvelimille tasaisesti.
+- **kuormantasainratkaisut (load balancerit)**, jotka jakavat liikenteen palvelimille tasaisesti.
 
-Verkkolaitteiden kuormaa ja virrankulutusta seurataan samalla tavoin kuin palvelimien, ja energiatehokkaat konfiguraatiot (esim. linkkien nopeuden ja määrän säätö kuorman mukaan) tukevat vihreää toimintaa.
+Verkkolaitteiden kuormaa ja virrankulutusta seurataan samalla tavoin kuin palvelimien.  
+Energiatehokkaat konfiguraatiot (esim. linkkien nopeuden ja määrän säätö kuorman mukaan) tukevat vihreää toimintaa: kaikki portit eivät ole turhaan täydellä teholla, jos liikenne ei sitä vaadi.
 
-## P5.5 Lämmöstä hukkalämmöksi ja hyötykäyttöön
+---
 
-Palvelimissa kulutettu sähkö muuttuu lähes kokonaan lämmöksi. Vihreässä datakeskuksessa tämä **hukkalämpö** pyritään ottamaan talteen ja hyödyntämään:
+## P5.6 Lämmöstä hukkalämmöksi ja hyötykäyttöön
 
-- Lämpö kerätään jäähdytysjärjestelmän nesteeseen tai ilmaan.  
-- **Lämmönvaihtimet** siirtävät lämmön kaukolämpöverkkoon tai erilliseen lämmitysjärjestelmään.  
-- **Lämpöpumput** nostavat tarvittaessa lämpötilaa, jotta se sopii rakennusten tai prosessien lämmitykseen.
+Palvelimissa, verkkolaitteissa ja jäähdytysjärjestelmissä kulutettu sähkö muuttuu lähes kokonaan **lämmöksi**.  
+Vihreässä datakeskuksessa tämä **hukkalämpö** pyritään ottamaan talteen ja hyödyntämään.
 
-Esimerkkejä hyötykäytöstä:
+Prosessi etenee tyypillisesti näin:
 
-- asuin- ja toimistorakennusten lämmitys  
-- uimahallit, kasvihuoneet tai muu lämpöä tarvitseva toiminta  
-- teollisuusprosessien esilämmitys.
+1. Lämpö kerätään jäähdytysjärjestelmän **ilmaan tai nesteeseen**.  
+2. **Lämmönvaihtimet** siirtävät lämmön kaukolämpöverkkoon tai erilliseen lämmitysjärjestelmään.  
+3. **Lämpöpumput** nostavat tarvittaessa lämpötilaa, jotta se sopii rakennusten tai prosessien lämmitykseen.
 
-Jos hyötykäyttöä ei ole saatavilla, lämpö johdetaan hallitusti ympäristöön (esim. meriveteen tai ilmaan) voimassa olevien ympäristönormien mukaisesti – mutta vihreän datakeskuksen tavoitteena on, että **mahdollisimman suuri osa lämmöstä päätyy korvaamaan muuta energiantuotantoa**.
+Esimerkkejä hukkalämmön hyötykäytöstä:
 
-## P5.6 Energian kulutus, mittaus ja hukkalämmön hyödyntäminen
+- **asuin- ja toimistorakennusten lämmitys**  
+- **uimahallien, kasvihuoneiden tai muiden lämpöä tarvitsevien kohteiden** lämmitys  
+- **teollisuusprosessien esilämmitys**.
 
-Jotta energiatehokkuutta ja hukkalämmön hyödyntämistä voidaan parantaa, datakeskuksessa tarvitaan **automaattinen ja kattava mittausjärjestelmä**.
+Jos hyötykäyttöä ei ole saatavilla, lämpö johdetaan hallitusti ympäristöön (esimerkiksi ilmaan tai meriveteen) voimassa olevien ympäristönormien mukaisesti – mutta vihreän datakeskuksen tavoitteena on, että **mahdollisimman suuri osa lämmöstä päätyy korvaamaan muuta energiantuotantoa**.
 
-### Mittaus ja valvonta
+Hukkalämmön määrää ja hyötykäyttöä tarkastellaan tarkemmin luvussa **P6** (energiatase ja esimerkkilaskelmat), mutta tässä luvussa on tärkeää ymmärtää, että **lämpö on osa päivittäistä energiavirtaa**, ei pelkkä “haitta”.
 
-Tyypillisesti käytössä ovat:
+---
 
-- **BMS- tai DCIM-järjestelmä** (Building Management System / Data Center Infrastructure Management), joka kerää mittaustietoa sähköstä, jäähdytyksestä, lämpötiloista ja laitteiden tilasta.  
-- älykkäät mittarit UPS-laitteissa, PDU-yksiköissä, pumppupiireissä ja jäähdytyskoneissa.  
-- anturit, jotka mittaavat palvelinsalin lämpötilaa, ilmankosteutta ja paine-eroja.
+## P5.7 Energian kulutus, mittaus ja ketjun ohjaus
 
-Järjestelmät tuottavat reaaliaikaista tietoa esimerkiksi:
+Jotta edellä kuvattua ketjua voidaan johtaa, datakeskuksessa tarvitaan **automaattinen ja kattava mittausjärjestelmä**.
 
-- datakeskuksen kokonaisenergiankulutuksesta  
-- IT-laitteiden kulutuksesta  
-- jäähdytysjärjestelmän ja pumppujen kulutuksesta  
-- hukkalämmön talteenoton tehokkuudesta (esim. kW tai MWh siirrettynä lämpöverkkoon).
+Tyypillisesti mitataan:
 
-Mittaus mahdollistaa myös keskeisten tunnuslukujen laskennan, kuten:
+- datakeskuksen **kokonaisenergiankulutus**  
+- **IT-laitteiden** (palvelimet, tallennus, verkko) kulutus  
+- **jäähdytysjärjestelmän ja pumppujen** kulutus  
+- **varavoiman ja UPS-häviöiden** osuus  
+- **hukkalämmön talteenoton** määrä (kW, MWh).
+
+Mittausdata kerätään esimerkiksi:
+
+- **BMS- tai DCIM-järjestelmään** (Building Management System / Data Center Infrastructure Management)  
+- älykkäisiin mittareihin UPS-laitteissa, PDU-yksiköissä ja jäähdytyskoneissa  
+- vesimittareihin (jos jäähdytys käyttää vettä).
+
+Mittauksen avulla voidaan laskea keskeiset tunnusluvut, kuten:
 
 - **PUE (Power Usage Effectiveness)**  
-- **ERF (Energy Reuse Factor)** ja **REF (Renewable Energy Factor)**  
-- vedenkulutukseen liittyvät tunnusluvut (esim. WUE).
+- **ERF/REF (Energy Reuse Factor / Renewable Energy Factor)**  
+- **WUE (Water Usage Effectiveness)**  
+- ja myöhemmin luvussa P7 esiteltävä **CUE (Carbon Usage Effectiveness)**.
 
-### Automaattinen optimointi
-
-Kun mittausdataa kertyy riittävästi, sitä voidaan hyödyntää:
+Kun mittausdataa kertyy riittävästi, sitä voidaan käyttää:
 
 - hälytysten ja raja-arvojen määrittelyyn (ylikuumeneminen, poikkeava kulutus)  
-- **tekoäly- ja data-analytiikkapohjaiseen optimointiin**, joka säätää jäähdytystä, kuormanjakoa ja varavoimaa kulloisenkin tilanteen mukaan  
-- hukkalämmön hyötykäytön suunnitteluun ja laskennalliseen kannattavuusarvioon.
+- **tekoäly- ja data-analytiikkapohjaiseen optimointiin**, joka säätää jäähdytystä, kuormanjakoa ja varavoimaa tilanteen mukaan  
+- hukkalämmön hyötykäytön suunnitteluun ja kannattavuuden arvioon.
 
-Näin energia ei ole vain kustannus, vaan aktiivisesti johdettu resurssi: tavoitteena on **pienentää kulutusta, lisätä uusiutuvan energian osuutta ja hyödyntää mahdollisimman suuri osa syntyvästä lämmöstä**.
+Näin energia ei ole pelkkä **kustannuserä**, vaan **aktiivisesti johdettu resurssi**: tavoitteena on pienentää kulutusta, lisätä uusiutuvan energian osuutta ja hyödyntää mahdollisimman suuri osa syntyvästä lämmöstä.
 
-## P5.7 Ketjun kokonaiskuva: sähkö → palvelin → lämpö
+---
 
-Datakeskuksen päivittäistä toimintaa voidaan tarkastella yhtenä ketjuna:
+## P5.8 Ketjun kooste: sähkö → palvelin → verkko → jäähdytys → hukkalämpö
+
+Yhteenvetona datakeskuksen päivittäistä toimintaa voidaan tarkastella yhtenä ketjuna:
 
 1. **Sähkö** saapuu verkosta muuntajien ja UPS-järjestelmien kautta palvelinkaappeihin.  
-2. **Palvelimet ja tallennus** käyttävät sähköä laskentaan ja datan käsittelyyn. Tuloksena syntyy digitaalisia palveluita käyttäjille.  
-3. Sähkö muuttuu **lämmöksi**, joka kerätään jäähdytysjärjestelmään.  
-4. **Jäähdytys** pitää palvelinsalin lämpötilan ja kosteuden hallittuna, samalla siirtäen lämmön eteenpäin.  
-5. Lämpö ohjataan **hukkalämpönä hyötykäyttöön** tai poistetaan ympäristöön hallitusti.  
-6. Koko ketjua ohjataan **mittauksen, valvonnan ja analytiikan** avulla, jotta energiatehokkuus ja ympäristövaikutukset pysyvät tavoitteiden mukaisina.
+2. **Palvelimet ja tallennus** käyttävät sähköä laskentaan ja datan käsittelyyn.  
+3. Tuloksena syntyy **digitaalisia palveluita** käyttäjille verkon kautta.  
+4. Sähkö muuttuu samalla **lämmöksi**, joka kerätään jäähdytysjärjestelmään.  
+5. **Jäähdytys** pitää palvelinsalin lämpötilan ja kosteuden hallittuna ja siirtää lämmön eteenpäin.  
+6. Lämpö ohjataan **hukkalämpönä hyötykäyttöön** tai poistetaan ympäristöön hallitusti.  
+7. Koko ketjua ohjataan **mittauksen, automaation ja analytiikan** avulla.
 
-Kun jokainen ketjun osa suunnitellaan ja operoidaan vihreiden periaatteiden mukaisesti, datakeskus voi tuottaa kriittisiä digitaalisia palveluita samalla, kun sen energiankulutus ja hiilijalanjälki pysyvät mahdollisimman pieninä.
+Kun jokainen ketjun osa suunnitellaan ja operoidaan vihreiden periaatteiden mukaisesti, datakeskus voi tuottaa kriittisiä digitaalisia palveluita samalla, kun sen **energiankulutus ja hiilijalanjälki** pysyvät mahdollisimman pieninä.
+
 
 ---
 
