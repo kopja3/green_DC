@@ -218,7 +218,7 @@ EU:n päästöleikkausten ja kiristyvien ympäristövaatimusten ennustetaan merk
 
 **Varavoima ja energian varastointi**
 
-Datakeskuksissa on varavoimajärjestelmiä, kuten dieselgeneraattoreita, jotka aktivoituvat sähkökatkon sattuessa. Jatkuvan sähkönsyötön varmistamiseksi akut ja muut energian varastointitekniikat, kuten pumppuvoimalaitokset ja lämpövarastot, ovat keinoja varmistaa, että energiaa on saatavilla myös silloin, kun esimerkiksi aurinko ei paista tai tuuli ei puhalla [13]. Generaattorit ja UPS-järjestelmät sijoitetaan suojattuihin tiloihin kriittisten järjestelmien jatkuvan toiminnan turvaamiseksi.
+Datakeskuksissa on varavoimajärjestelmiä, kuten dieselgeneraattoreita, jotka aktivoituvat sähkökatkon sattuessa. Jatkuvan sähkönsyötön varmistamiseksi akut ja muut energian varastointitekniikat, kuten pumppuvoimalaitokset ja lämpövarastot, ovat keinoja varmistaa, että energiaa on saatavilla myös silloin, kun esimerkiksi aurinko ei paista tai tuuli ei puhalla [10, 11, 12]). Generaattorit ja UPS-järjestelmät sijoitetaan suojattuihin tiloihin kriittisten järjestelmien jatkuvan toiminnan turvaamiseksi.
 
 Sähkönjakelussa kaapelointireitit suunnitellaan lyhyiksi ja selkeiksi ottaen huomioon kunkin rakenneratkaisun erityispiirteet. Tämä vähentää energiahäviöitä ja parantaa sähkönjakelun tehokkuutta sekä ylläpidettävyyttä.
 
@@ -227,7 +227,7 @@ Sähkönjakelussa kaapelointireitit suunnitellaan lyhyiksi ja selkeiksi ottaen h
 Jäähdytysratkaisut ovat keskeinen osa datakeskuksen energiatehokkuutta. Vihreässä datakeskuksessa hyödynnetään ratkaisuja, jotka minimoivat jäähdytyksen energiankulutuksen ja ympäristövaikutukset.
 
 - **Vapaajäähdytys** hyödyntää ulkoilmaa jäähdytyksessä. Kun ulkolämpötila on riittävän matala, vapaajäähdytys vähentää merkittävästi energiaa kuluttavien jäähdytysjärjestelmien käyttöä ja siten energiankulutusta.
-- **Nestejäähdytys** voi kohdistua suoraan prosessoreihin, mikä poistaa tehokkaasti lämpöä laitteista ja vähentää ilmavirran tarvetta [14].
+- **Nestejäähdytys** voi kohdistua suoraan prosessoreihin, mikä poistaa tehokkaasti lämpöä laitteista ja vähentää ilmavirran tarvetta [13].
 
 **Ilmankierron optimointi**
 
@@ -243,7 +243,7 @@ Sijainti ja ulkolämpötilan vaihtelut vaikuttavat jäähdytyksen tarpeeseen. Po
 
 ## P3.5 Hukkalämmön talteenotto ja hyödyntäminen
 
-Hukkalämmön hyödyntämisen mahdollisuus ja kannattavuus arvioidaan jo esisuunnitteluvaiheessa. Mikäli hukkalämpö hyödynnetään kaukolämpöverkossa, datakeskuksen rakennussuunnittelussa huomioidaan tarvittavat lämmönvaihtimet ja muut infrastruktuuriratkaisut. Palvelimien tuottama hukkalämpö voidaan tehokkaasti ohjata kaukolämpöverkkoon tai käyttää läheisten rakennusten lämmitykseen, mikä vähentää fossiilisten polttoaineiden käyttöä ja pienentää hiilidioksidipäästöjä. Lämmönvaihtimet siirtävät hukkalämmön kaukolämpöverkkoon, ja lämpöpumput nostavat tarvittaessa sen lämpötilaa lämmitystarpeisiin sopivaksi.
+Hukkalämmön hyödyntämisen mahdollisuus ja kannattavuus arvioidaan jo esisuunnitteluvaiheessa. Mikäli hukkalämpö hyödynnetään kaukolämpöverkossa, datakeskuksen rakennussuunnittelussa huomioidaan tarvittavat lämmönvaihtimet ja muut infrastruktuuriratkaisut. Palvelimien tuottama hukkalämpö voidaan tehokkaasti ohjata kaukolämpöverkkoon tai käyttää läheisten rakennusten lämmitykseen, mikä vähentää fossiilisten polttoaineiden käyttöä ja pienentää hiilidioksidipäästöjä [14]. Lämmönvaihtimet siirtävät hukkalämmön kaukolämpöverkkoon, ja lämpöpumput nostavat tarvittaessa sen lämpötilaa lämmitystarpeisiin sopivaksi.
 
 Hukkalämmön hyödyntäminen parantaa datakeskuksen energiatehokkuutta ja pienentää sen ympäristövaikutuksia merkittävästi [Fortum 1]. Mikäli hukkalämmön hyödyntäminen ei ole mahdollista, lämpö johdetaan ympäristönormien mukaisesti esimerkiksi mereen tai ilmakehään haittavaikutusten minimoimiseksi. Esimerkiksi Pariisin alueella datakeskusten hukkalämpöä hyödynnetään jo laajasti kaukolämpöverkossa, mikä vähentää rakennusten energiakustannuksia ja hiilidioksidipäästöjä [15]. Hukkalämmön talteenotto on yksi tehokkaimmista tavoista vähentää datakeskusten ympäristövaikutuksia ja integroida ne osaksi vastuullista ja resurssitehokasta energiainfrastruktuuria.
 
@@ -595,7 +595,7 @@ Tavoite: syventää M5-moduulin sisältöä ja selittää, mistä datakeskuksen 
 
 Datakeskuksessa kulutettu sähköenergia jakautuu useiden komponenttien kesken. Suurimman osan energiasta kuluttavat palvelimet, mutta merkittäviä osuuksia käyttävät myös jäähdytysjärjestelmät, verkkolaitteet ja sähkönsyötön apujärjestelmät (UPS, PDU, muuntajat jne.).
 
-Palvelimet käyttävät yleisesti noin **50–70 %** datakeskuksessa käytettävästä sähköenergiasta, sisältäen prosessorit, muistit ja virtalähteiden häviöt [4]. Loput energiasta jakautuu pääasiassa jäähdytysjärjestelmien, verkkolaitteiden ja UPS-järjestelmien kesken.
+Palvelimet käyttävät yleisesti noin **50–70 %** datakeskuksessa käytettävästä sähköenergiasta, sisältäen prosessorit, muistit ja virtalähteiden häviöt [4]. Loput energiasta jakautuu pääasiassa jäähdytysjärjestelmien, verkkolaitteiden ja UPS-järjestelmien kesken (ks. myös [8, 9]).
 
 ### P6.1.1 Prosessorit (CPU)
 
@@ -691,7 +691,7 @@ Suuri määrä palvelimia, jäähdytysjärjestelmiä ja muita infrastruktuurilai
 
 Suomen sähköenergiasta tuotetaan ydinvoimalla noin 30 %. Uusiutuvista energialähteistä tuulivoiman osuus kasvaa jatkuvasti, ja sen arvioidaan tuottavan jopa 50 % maan sähköstä vuoteen 2030 mennessä. Myös aurinkoenergiaa käytetään kasvavassa määrin, mutta sen osuus on edelleen verrattain pieni. Fossiiliset polttoaineet ja maakaasu ovat pienentyvä osa Suomen sähköntuotantoa, mutta niitä käytetään edelleen erityisesti kulutushuippujen aikana [2, 3].
 
-Useissa datakeskuksissa on varavoimajärjestelmiä, kuten dieselgeneraattoreita, jotka aktivoituvat sähkökatkon sattuessa. Näiden käyttö aiheuttaa lisäpäästöjä erityisesti huoltokatkosten ja hätätilanteiden aikana. Jatkuvan sähkönsyötön varmistamiseksi tarvitaan energian varastointijärjestelmiä, jotka voivat tasata uusiutuvien energianlähteiden vaihtelevaa saatavuutta. Akut ja muut energian varastointitekniikat, kuten pumppuvoimalaitokset ja lämpövarastot, ovat keinoja varmistaa, että energiaa on saatavilla myös silloin, kun esimerkiksi aurinko ei paista tai tuuli ei puhalla [13].  
+Useissa datakeskuksissa on varavoimajärjestelmiä, kuten dieselgeneraattoreita, jotka aktivoituvat sähkökatkon sattuessa. Näiden käyttö aiheuttaa lisäpäästöjä erityisesti huoltokatkosten ja hätätilanteiden aikana. Jatkuvan sähkönsyötön varmistamiseksi tarvitaan energian varastointijärjestelmiä (esim.[10, 11, 12]), jotka voivat tasata uusiutuvien energianlähteiden vaihtelevaa saatavuutta. Akut ja muut energian varastointitekniikat, kuten pumppuvoimalaitokset ja lämpövarastot, ovat keinoja varmistaa, että energiaa on saatavilla myös silloin, kun esimerkiksi aurinko ei paista tai tuuli ei puhalla [13].  
 
 Vihreissä datakeskuksissa hyödynnetään mahdollisimman paljon uusiutuvia energialähteitä, kuten aurinkoa, tuulta tai vesivoimaa. Tämä vähentää riippuvuutta fossiilisista polttoaineista ja tukee hiilidioksidipäästöjen vähentämistä [5, 12].
 
@@ -962,8 +962,7 @@ Näin EN 50600-4 -mittarit, ISO- ja ympäristöstandardit sekä EU-sääntely mu
    Haettu 19. lokakuuta 2024 osoitteesta  
    https://www.fingrid.fi/sivut/fingrids-investments-safeguard-a-reliable-supply-of-electricity/
 
-4. Manganelli, M., Soldati, A., Martirano, L., & Ramakrishna, S. (2021). Strategies for Improving the Sustainability of Data Centers via Energy Mix, Energy Conservation, and Circular Energy. *Sustainability, 13*(11), 6114.  
-   https://doi.org/10.3390/su13116114
+4. Manganelli, M., Soldati, A., Martirano, L., & Ramakrishna, S. (2021). Strategies for Improving the Sustainability of Data Centers via Energy Mix, Energy Conservation, and Circular Energy. *Sustainability,            13*(11), 6114. https://doi.org/10.3390/su13116114
 
 5. Digital Infra. (2021). *Data Center Power: A Comprehensive Overview of Energy.*  
    Haettu osoitteesta https://dgtlinfra.com
@@ -989,29 +988,47 @@ Näin EN 50600-4 -mittarit, ISO- ja ympäristöstandardit sekä EU-sääntely mu
 12. Springer. (2021). *Energy storage techniques, applications, and recent trends: A sustainable solution for power storage.* SpringerLink.  
     https://link.springer.com/article/10.1557/mrs.2021.8
 
-13. Datacenter Knowledge. (2024). *Harnessing waste heat is the latest frontier in data center efficiency.*  
-    https://www.datacenterknowledge.com/sustainability/harnessing-waste-heat-is-the-latest-frontier-in-data-center-efficiency
-
-14. Datacenter Review. (2024). *How energy-efficient cooling and heating can decarbonise data centres.*  
+13. Datacenter Review. (2024). *How energy-efficient cooling and heating can decarbonise data centres.*  
     https://datacentrereview.com/2024/05/how-energy-efficient-cooling-and-heating-can-decarbonise-data-centres/
 
-15. Energy Star. (2021). *5 Simple Ways to Avoid Energy Waste in Your Data Center.*  
+14. Datacenter Knowledge. (2024). *Harnessing waste heat is the latest frontier in data center efficiency.*  
+    https://www.datacenterknowledge.com/sustainability/harnessing-waste-heat-is-the-latest-frontier-in-data-center-efficiency
+
+15 v16. Energy Star. (2021). *5 Simple Ways to Avoid Energy Waste in Your Data Center.*  
     https://www.energystar.gov/products/data_center_equipment/5-simple-ways-avoid-energy-waste-your-data-center/virtualize-servers
 
-16. Google. (2024). *DeepMind AI reduces energy used for cooling Google data centers by 40%.*  
+16. 17. Google. (2024). *DeepMind AI reduces energy used for cooling Google data centers by 40%.*  
     https://blog.google/outreach-initiatives/environment/deepmind-ai-reduces-energy-used-for
 
-17. EdTech Magazine. (2024). *How AI is Affecting Data Center Power Consumption.*  
+17 v18. EdTech Magazine. (2024). *How AI is Affecting Data Center Power Consumption.*  
     https://edtechmagazine.com/higher/article/2024/08/how-ai-affecting-data-center-power-consumption-perfcon
 
-18. Insight. (2024). *Estimating Data Centers’ Carbon Footprint.*  
+18 v19. Insight. (2024). *Estimating Data Centers’ Carbon Footprint.*  
     https://www.insight.com/content/dam/insight/en_US/pdfs/apc/apc-estimating-data-centers-carbon-footprint.pdf
 
-19. Schneider Electric. (2021). *How Modular Data Centers Help Companies Meet Sustainability Goals.*  
+19 v20. Schneider Electric. (2021). *How Modular Data Centers Help Companies Meet Sustainability Goals.*  
     https://blog.se.com/datacenter/2021/06/30/discover-how-modular-data-centers-help-companies-sustainability-goals/
 
-20. Datacenter Dynamics. (2023). *Embracing the future: Modularization, sustainability, and efficiency in data centers.*  
+20 v.21. Datacenter Dynamics. (2023). *Embracing the future: Modularization, sustainability, and efficiency in data centers.*  
     https://www.datacenterdynamics.com/en/opinions/embracing-the-future-modularization-sustainability-and-efficiency-in-data-centers/
+
+21. CENELEC. (2016). EN 50600-4-1/4-2/4-3: Information technology – Data centre facilities and infrastructures – Part 4-1: Overview of
+  and general requirements for key performance indicators; Part 4-2: Power Usage   Effectiveness; Part 4-3: Renewable Energy Factor.
+  Brussels: European Committee for Electrotechnical Standardization (CENELEC).
+  (Ks. esim. BS EN 50600-4-1:2016, BS EN 50600-4-2:2016 ja EN 50600-4-3:2016 standardiesittelyt.)
+
+22. European Parliament & Council. (2023). Directive (EU) 2023/1791 of 13 September 2023 on energy efficiency and amending Regulation (EU)
+  2023/955 (recast). Official Journal of the European Union, L 231, 1–111. Haettu osoitteesta https://eur-lex.europa.eu/eli/dir/2023/1791/oj
+
+23. European Parliament & Council. (2018, as amended 2023). Directive (EU) 2018/2001 of 11 December 2018 on the promotion of the use of energy from
+  renewable sources (recast), as amended by Directive (EU) 2023/2413 of 18 October 2023 amending Directive (EU) 2018/2001, Regulation (EU) 2018/1999
+  and Directive 98/70/EC as regards the promotion of energy from renewable sources, and repealing Council Directive (EU) 2015/652. Official Journal
+  of the European Union, L 328, 82–209; L 2023/2413. Haettu osoitteesta. https://eur-lex.europa.eu/eli/dir/2018/2001/oj ja
+  https://eur-lex.europa.eu/eli/dir/2023/2413/oj
+
+24. European Parliament & Council. (2022). Directive (EU) 2022/2464 of 14 December 2022 amending Regulation (EU) No 537/2014, Directive
+  2004/109/EC, Directive 2006/43/EC and Directive 2013/34/EU, as regards corporate sustainability reporting (Corporate Sustainability Reporting Directive, CSRD).
+  Official Journal of the European Union, L 322, 15–106. Haettu osoitteesta https://eur-lex.europa.eu/eli/dir/2022/2464/oj
 
 ---
 
