@@ -6,14 +6,11 @@ Datakeskuksen suunnitteluvaiheessa (manufacturing phase) suunnittelijan tehtäv�
 
 Perinteinen mitoitus perustuu historialliseen kuormitusdataan ja siitä johdettuun ennusteeseen: työkuorma ryhmitellään k-means-klusteroinnilla eri “työtyyppeihin” (CPU- ja muistitarve, ajoaika) ja tulevat kuormituspyynnöt ennustetaan aikasarja­mallilla (ARIMA). Näin saadaan jokaiselle aikajaksolle arvio työpyyntöjen määrästä ja resurssitarpeesta, joita mitoituksessa on kyettävä vastaamaan.
 
-
 Tämä kapasiteetin mitoitus mallinnetaan matemaattisesti ongelmana, jossa valitaan palvelin­kanta niin, että jokaisella hetkellä palvelimille allokoitujen töiden CPU- ja muistikuorma ei ylitä palvelimen kapasiteettia ja jokainen työ ehtii määräaikaansa (deadline). Wang ym. esittävät tämän kokonaisuutena kokonaislukusuunnitteluongelmana: rajoitteet (2)–(5) varmistavat, että jokainen työ sijoittuu yhdelle palvelimelle, palvelimen CPU- ja muistirajat eivät ylity ja työn määräaika toteutuu. Tavoitefunktio perinteisessä kirjallisuudessa on tyypillisesti palvelinmäärän tai kustannuksen minimointi, kun taas Wang ym. vaihtavat sen valmistuksen hiilijalanjäljen minimointiin.
 
-
-Ppalvelinkapasiteetin mitoitus redusoidaan klassiseen kaksidimensioiseen bin packing -ongelmaan (Two Dimension Variable Size Vector Bin Packing Problem), jossa työt ovat kahden resurssidimensioin (CPU, muisti) “esineitä” ja palvelimet vastaavat eri kokoisia “laatikoita”. Tämä tekee mitoituksesta NP-vaikean, minkä vuoksi käytännössä joudutaan käyttämään heuristiikkoja, kuten deadline- ja tilatietoinen first-fit-algoritmi (NC), joka edustaa hiilijalanjäljestä piittaamatonta perinteistä kapasiteettisuunnittelua.
+Palvelinkapasiteetin mitoitus redusoidaan klassiseen kaksidimensioiseen bin packing -ongelmaan (Two Dimension Variable Size Vector Bin Packing Problem), jossa työt ovat kahden resurssidimensioin (CPU, muisti) “esineitä” ja palvelimet vastaavat eri kokoisia “laatikoita”. Tämä tekee mitoituksesta NP-vaikean, minkä vuoksi käytännössä joudutaan käyttämään heuristiikkoja, kuten deadline- ja tilatietoinen first-fit-algoritmi (NC), joka edustaa hiilijalanjäljestä piittaamatonta perinteistä kapasiteettisuunnittelua.
 
 Perinteinen datakeskuksen energian- ja laitemitoitus pohjaa ennustettuun työkuormaan, CPU- ja muistiresurssien tarpeeseen sekä suorituskykyrajoitteisiin (deadlinet). Mitoitus ratkaistaan matemaattisena optimointina/bin packing -ongelmana, jonka tavoitteena on löytää mahdollisimman pieni (halpa) palvelin- ja siten myös sähkö- ja jäähdytyskapasiteetti, joka pystyy hoitamaan ennustetun kuorman – ilman, että valmistuksen ympäristövaikutuksia huomioidaan erikseen Wang ym. (2020). 
-
 
 
 - Ajan ja tilan käyttöaste: miksi kuormat ovat usein alhaisella käyttöasteella
@@ -21,6 +18,7 @@ Perinteinen datakeskuksen energian- ja laitemitoitus pohjaa ennustettuun työkuo
 Perinteisten datakeskusten alhainen käyttöaste
 
 Perinteisten datakeskusten laskentaresurssien käyttöaste on tyypillisesti hämmästyttävän matala. Useissa empiirisissä tarkasteluissa palvelinten keskimääräinen hyötykäyttö jää noin 7–12 prosenttiin, kun taas suurten pilvitoimijoiden optimoiduissa keskuksissa on raportoitu 20–40 prosentin tasoja (esim. Green Data Centers: A Survey, Perspectives, and Future Directions; Sustainability-aware Resource Provisioning in Data Centers). 
+
 Alhaista käyttöastetta selittää systemaattinen ylikapasiteetin mitoittaminen (over-provisioning), joka on ollut pitkään vallitseva suunnitteluperiaate.
 
 Kapasiteetti mitoitetaan perinteisesti harvinaisten huipputilanteiden, pitkän aikavälin kasvuennusteiden ja vikatilanteissa vaadittavan redundanssin perusteella. Sähkö- ja jäähdytysinfrastruktuuri sekä IT-laitteet suunnitellaan siten, että ne kykenevät kantamaan sekä tulevan kuormakasvun että N+1- tai 2N-redundanssivaatimukset. 
@@ -33,13 +31,7 @@ Kolmanneksi sovelluksia ja asiakkaita eristetään infrastruktuurissa organisato
 
 Neljänneksi laitteet ovat edelleen suurelta osin energiatehottomasti skaalautuvia: palvelin tai verkkolaite kuluttaa merkittävän osuuden nimellistehostaan jo tyhjäkäynnillä. Tutkimusten mukaan 10 prosentin hyötykuorma voi vastata 50–70 prosentin sähkönkulutusta täydestä kuormasta. Tämän vuoksi ylikapasiteetti näkyy suoraan ylimääräisenä energiankulutuksena ja sitä kautta myös kasvaneina hiilidioksidipäästöinä.
 
-
 Perinteisen datakeskuksen alhainen käyttöaste on seurausta suunnittelufilosofiasta, jossa luotettavuus ja tulevaisuuden kasvu on asetettu energiatehokkuuden edelle. 
-
-
--   
-
-Alla on sama sisältö kirjoitettuna tieteellisen artikkelin tyyliin ja varustettuna eksplisiittisillä APA-viittauksilla.
 
 ---
 
@@ -57,8 +49,6 @@ Taloudellisesti sähkö- ja jäähdytyskulut muodostavat huomattavan osan datake
 
 Suomen näkökulmasta kansainvälinen tutkimuskirjallisuus tukee käsitystä, että vihreä datakeskus on erityisen järkevä sijoittaa alueille, joilla sähköntuotanto on pääosin hiilineutraalia, ilmasto mahdollistaa laajan vapaajäähdytyksen käytön ja sähköverkko on luotettava (Jin et al., 2016; LVM, 2020). Tällöin datakeskusinvestointi palvelee samanaikaisesti globaalia digitaalista kysyntää, kansallista vihreän siirtymän strategiaa sekä datakeskustoimijan omia taloudellisia tavoitteita.
 
----
-
 ### Lähteet (APA)
 
 Andrae, A. S. G., & Edler, T. (2015). On global electricity usage of communication technology: Trends to 2030. *Challenges, 6*(1), 117–157.
@@ -74,11 +64,6 @@ Sabree, R. M. S. (2025). Achieving sustainability in computing by minimizing dat
 Shehabi, A., Smith, S. J., Sartor, D., Brown, R., Herrlin, M., Koomey, J. G., Masanet, E., Horner, N., Azevedo, I. L., & Lintner, W. (2016). *United States data center energy usage report*. Lawrence Berkeley National Laboratory.
 
 ---
-
-
-
-
-
 
 
 ## Vihreä datakeskus: määritelmä ja tavoitteet
