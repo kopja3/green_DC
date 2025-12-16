@@ -1,1 +1,159 @@
+# Datakeskus vs. Vihreä datakeskus
+## Mitä datakeskus on ja miksi niitä rakennetaan
+- Perinteisen datakeskuksen energian- ja laitemitoitus  
+
+Datakeskuksen suunnitteluvaiheessa (manufacturing phase) suunnittelijan tehtävä on valita palvelintyyppien kirjo ja lukumäärä, joilla ennustettu pitkäaikainen työkuorma pystytään palvelemaan. Tämä tehdään valitsemalla heterogeenisistä palvelimista (CPU- ja muistiresurssit) sopiva yhdistelmä, joka täyttää odotetun kuormituskysynnän.
+
+Perinteinen mitoitus perustuu historialliseen kuormitusdataan ja siitä johdettuun ennusteeseen: työkuorma ryhmitellään k-means-klusteroinnilla eri “työtyyppeihin” (CPU- ja muistitarve, ajoaika) ja tulevat kuormituspyynnöt ennustetaan aikasarja­mallilla (ARIMA). Näin saadaan jokaiselle aikajaksolle arvio työpyyntöjen määrästä ja resurssitarpeesta, joita mitoituksessa on kyettävä vastaamaan.
+
+
+Tämä kapasiteetin mitoitus mallinnetaan matemaattisesti ongelmana, jossa valitaan palvelin­kanta niin, että jokaisella hetkellä palvelimille allokoitujen töiden CPU- ja muistikuorma ei ylitä palvelimen kapasiteettia ja jokainen työ ehtii määräaikaansa (deadline). Wang ym. esittävät tämän kokonaisuutena kokonaislukusuunnitteluongelmana: rajoitteet (2)–(5) varmistavat, että jokainen työ sijoittuu yhdelle palvelimelle, palvelimen CPU- ja muistirajat eivät ylity ja työn määräaika toteutuu. Tavoitefunktio perinteisessä kirjallisuudessa on tyypillisesti palvelinmäärän tai kustannuksen minimointi, kun taas Wang ym. vaihtavat sen valmistuksen hiilijalanjäljen minimointiin.
+
+
+Ppalvelinkapasiteetin mitoitus redusoidaan klassiseen kaksidimensioiseen bin packing -ongelmaan (Two Dimension Variable Size Vector Bin Packing Problem), jossa työt ovat kahden resurssidimensioin (CPU, muisti) “esineitä” ja palvelimet vastaavat eri kokoisia “laatikoita”. Tämä tekee mitoituksesta NP-vaikean, minkä vuoksi käytännössä joudutaan käyttämään heuristiikkoja, kuten deadline- ja tilatietoinen first-fit-algoritmi (NC), joka edustaa hiilijalanjäljestä piittaamatonta perinteistä kapasiteettisuunnittelua.
+
+Perinteinen datakeskuksen energian- ja laitemitoitus pohjaa ennustettuun työkuormaan, CPU- ja muistiresurssien tarpeeseen sekä suorituskykyrajoitteisiin (deadlinet). Mitoitus ratkaistaan matemaattisena optimointina/bin packing -ongelmana, jonka tavoitteena on löytää mahdollisimman pieni (halpa) palvelin- ja siten myös sähkö- ja jäähdytyskapasiteetti, joka pystyy hoitamaan ennustetun kuorman – ilman, että valmistuksen ympäristövaikutuksia huomioidaan erikseen Wang ym. (2020). 
+
+
+
+- Ajan ja tilan käyttöaste: miksi kuormat ovat usein alhaisella käyttöasteella
+
+Perinteisten datakeskusten alhainen käyttöaste
+
+Perinteisten datakeskusten laskentaresurssien käyttöaste on tyypillisesti hämmästyttävän matala. Useissa empiirisissä tarkasteluissa palvelinten keskimääräinen hyötykäyttö jää noin 7–12 prosenttiin, kun taas suurten pilvitoimijoiden optimoiduissa keskuksissa on raportoitu 20–40 prosentin tasoja (esim. Green Data Centers: A Survey, Perspectives, and Future Directions; Sustainability-aware Resource Provisioning in Data Centers). 
+Alhaista käyttöastetta selittää systemaattinen ylikapasiteetin mitoittaminen (over-provisioning), joka on ollut pitkään vallitseva suunnitteluperiaate.
+
+Kapasiteetti mitoitetaan perinteisesti harvinaisten huipputilanteiden, pitkän aikavälin kasvuennusteiden ja vikatilanteissa vaadittavan redundanssin perusteella. Sähkö- ja jäähdytysinfrastruktuuri sekä IT-laitteet suunnitellaan siten, että ne kykenevät kantamaan sekä tulevan kuormakasvun että N+1- tai 2N-redundanssivaatimukset. 
+
+Normaalikäytössä kuorma on kuitenkin suurimman osan ajasta selvästi mitoitusarvoa pienempi, minkä seurauksena huomattava osa palvelimista, räkkipaikoista ja syöttötehosta jää pysyvästi vajaakäytölle.
+
+Toiseksi kapasiteettisuunnittelu on tyypillisesti staattista. Resursseja lisätään karkeina askelina – esimerkiksi kokonaisina räkkiriveinä tai UPS-yksikköinä – sen sijaan, että kapasiteettia skaalattaisiin dynaamisesti todellisen kysynnän mukaan. Kuorman vuorokausi- ja viikkorytmi, kausivaihtelut sekä palveluiden elinkaarimuutokset eivät heijastu infrastruktuurin mitoitukseen, mikä vahvistaa ylikapasiteettia.
+
+Kolmanneksi sovelluksia ja asiakkaita eristetään infrastruktuurissa organisatorisista ja turvallisuussyistä. Ilman pitkälle vietyä virtualisointia ja kuormien konsolidointia tämä johtaa tilanteisiin, joissa kokonaisia palvelimia tai räkkikokonaisuuksia varataan yksittäisille järjestelmille, vaikka niiden keskimääräinen kuorma olisi hyvin pieni. Palvelimet toimivat tällöin pääosin tyhjäkäynnillä.
+
+Neljänneksi laitteet ovat edelleen suurelta osin energiatehottomasti skaalautuvia: palvelin tai verkkolaite kuluttaa merkittävän osuuden nimellistehostaan jo tyhjäkäynnillä. Tutkimusten mukaan 10 prosentin hyötykuorma voi vastata 50–70 prosentin sähkönkulutusta täydestä kuormasta. Tämän vuoksi ylikapasiteetti näkyy suoraan ylimääräisenä energiankulutuksena ja sitä kautta myös kasvaneina hiilidioksidipäästöinä.
+
+
+Perinteisen datakeskuksen alhainen käyttöaste on seurausta suunnittelufilosofiasta, jossa luotettavuus ja tulevaisuuden kasvu on asetettu energiatehokkuuden edelle. 
+
+
+-   
+
+Alla on sama sisältö kirjoitettuna tieteellisen artikkelin tyyliin ja varustettuna eksplisiittisillä APA-viittauksilla.
+
+---
+
+### Kansainvälinen kasvu: sähkönkulutus, CO₂-päästöt ja kustannukset
+
+Tietoteknisesti datakeskus voidaan määritellä fyysiseksi infrastruktuuriksi, jossa palvelin-, tallennus- ja verkkolaitteet sekä niitä tukeva sähkö-, jäähdytys- ja valvontajärjestelmä on keskitetty yhteen tilaan siten, että laskentateho, tietovarastot ja verkkopalvelut voidaan tuottaa luotettavasti ja skaalautuvasti (Jin, Zhang, Vasilakos, & Liu, 2016). Datakeskuksia rakennetaan ennen kaikkea digitalisaation, pilvipalvelujen ja verkottuneiden sovellusten globaalin kasvun palvelemiseksi: hajallaan olevia, tehottomia konesaleja korvataan keskistetyillä ympäristöillä, joissa kapasiteetti, automaatio ja operointi voidaan optimoida teollisessa mittakaavassa (Jin et al., 2016; Shehabi et al., 2016).
+
+Energiatalouden näkökulmasta datakeskuksista on tullut merkittävä sähkönkuluttaja. Kansainvälinen analyysi osoittaa, että datakeskusten osuus maailman loppusähkönkulutuksesta oli 2010-luvun lopussa suuruusluokkaa 1 %, vaikka laskentakapasiteetti ja käsitellyn datan määrä kasvoivat moninkertaisiksi samana ajanjaksona (Masanet, Shehabi, Lei, Smith, & Koomey, 2020). Yhdysvaltoja koskeva yksityiskohtainen tarkastelu tukee samaa havaintoa: datakeskusten sähkönkulutuksen voimakas kasvu hidastui 2010-luvulla selvästi, kun virtualisointi, palvelinkonsolidointi ja energiatehokkaammat laitteet yleistyivät (Shehabi et al., 2016). Näiden tulosten perusteella uusia datakeskuksia ei rakenneta ainoastaan lisäämään raakaa kuormaa, vaan myös kokoamaan hajautuneita, vajaakäyttöisiä laitteistoja energiatehokkaampiin, korkeaa käyttöastetta tukeviin ympäristöihin (Jin et al., 2016; Masanet et al., 2020).
+
+Useat pitkän aikavälin skenaariot kuitenkin osoittavat, että ilman lisätoimia ICT-sektorin – ja erityisesti datakeskusten – sähkönkäyttö voisi kasvaa useisiin prosentteihin maailman kokonaiskulutuksesta, jos liikennemäärät, datan tallennus ja palveluiden kysyntä jatkavat nykyistä kasvuvauhtiaan (Andrae & Edler, 2015). Viimeaikainen tutkimus on korostanut erityisesti generatiivisen tekoälyn, suurten kielimallien ja muun suuritehoisen laskennan aiheuttamaa uutta kuormitusta: suurten GPU-klustereiden energiatiheys on huomattavasti perinteisiä konesaleja suurempi, ja niiden nopea käyttöönotto uhkaa murtaa 2010-luvulle tyypillisen “tehokkuuden ansiosta tasaisen” kulutuskehityksen (Sabree, 2025; Masanet et al., 2020). Tämä kehityskulku tekee uudesta datakeskushankkeesta paitsi IT-investoinnin myös energia- ja ilmastopoliittisen kysymyksen.
+
+Datakeskuksen hiilijalanjälki määräytyy karkeasti kahden tekijän tulona: käytetty sähköenergia (kWh) ja sähköjärjestelmän päästökerroin (kgCO₂/kWh) (Jin et al., 2016; Sabree, 2025). Kansainväliset analyysit osoittavat, että alueilla, joilla sähkö tuotetaan pääosin fossiilisilla polttoaineilla, datakeskukset muodostavat nopeasti merkittävän osuuden paikallisista energiasektorin päästöistä (Sabree, 2025). Vastaavasti maissa, joissa sähköntuotanto on valmiiksi vähäpäästöistä, datakeskukset voivat toimia tehokkaana tapana tuottaa globaaleja digitaalisia palveluja mahdollisimman pienellä hiilijalanjäljellä: kun kuorma keskitetään moderniin, hyvin mitoitettuun keskukseen, sama palvelukapasiteetti voidaan toteuttaa murto-osalla siitä energiasta ja CO₂-päästöistä, joita hajautetut ja teknisesti vanhentuneet konesalit kuluttaisivat (Masanet et al., 2020; LVM, 2020).
+
+Taloudellisesti sähkö- ja jäähdytyskulut muodostavat huomattavan osan datakeskuksen elinkaarikustannuksista. Empiiriset tutkimukset osoittavat, että energiatehokkuuteen panostaminen – esimerkiksi vapaajäähdytyksen hyödyntäminen, korkeaa hyötysuhdetta tukevat UPS-ratkaisut ja kuorman konsolidointi harvemmille, mutta tehokkaammin käytetyille palvelimille – pienentää kokonaiskustannuksia usein jo muutaman vuoden aikajänteellä (Jin et al., 2016; Shehabi et al., 2016). Samanaikaisesti ilmastotavoitteet, energiatehokkuusdirektiivit ja yritysasiakkaiden vastuullisuusvaatimukset ohjaavat investointeja kohti datakeskuksia, jotka pystyvät osoittamaan matalan PUE-arvon, korkean uusiutuvan energian osuuden ja läpinäkyvät päästöraportit (Sabree, 2025; LVM, 2020). Näin energiatehokkuus ja vähäpäästöinen sähkö toimivat sekä kustannusten leikkaajina että kilpailuetuna datakeskusmarkkinoilla.
+
+Suomen näkökulmasta kansainvälinen tutkimuskirjallisuus tukee käsitystä, että vihreä datakeskus on erityisen järkevä sijoittaa alueille, joilla sähköntuotanto on pääosin hiilineutraalia, ilmasto mahdollistaa laajan vapaajäähdytyksen käytön ja sähköverkko on luotettava (Jin et al., 2016; LVM, 2020). Tällöin datakeskusinvestointi palvelee samanaikaisesti globaalia digitaalista kysyntää, kansallista vihreän siirtymän strategiaa sekä datakeskustoimijan omia taloudellisia tavoitteita.
+
+---
+
+### Lähteet (APA)
+
+Andrae, A. S. G., & Edler, T. (2015). On global electricity usage of communication technology: Trends to 2030. *Challenges, 6*(1), 117–157.
+
+Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). Green data centers: A survey, perspectives, and future directions. *arXiv preprint* arXiv:1608.00687.
+
+LVM. (2020). *The ICT sector, climate and the environment – Interim report* (LVM 2020:14). Ministry of Transport and Communications, Finland.
+
+Masanet, E., Shehabi, A., Lei, N., Smith, S., & Koomey, J. (2020). Recalibrating global data center energy-use estimates. *Science, 367*(6481), 984–986.
+
+Sabree, R. M. S. (2025). Achieving sustainability in computing by minimizing data center carbon footprints. *Journal of Information Processing and Management*.
+
+Shehabi, A., Smith, S. J., Sartor, D., Brown, R., Herrlin, M., Koomey, J. G., Masanet, E., Horner, N., Azevedo, I. L., & Lintner, W. (2016). *United States data center energy usage report*. Lawrence Berkeley National Laboratory.
+
+---
+
+
+
+
+
+
+
+## Vihreä datakeskus: määritelmä ja tavoitteet
+- Ero perinteisen datakeskuksen ja vihreän datakeskuksen välillä  
+- Käyttöasteen nostaminen ja energian kulutuksen optimointi  
+- Ilmasto- ja sääntelyvaatimusten vaikutus  
+
+
+
+
+# Suomi datakeskuksen sijoituspaikkana
+## Ilmasto, vapaajäähdytys ja ympäristön olosuhteet
+- Viileä ilmasto ja mahdollisuus free cooling -ratkaisuihin  
+- Matalien ulkolämpötilojen hyödyntäminen jäähdytyksessä  
+
+
+
+## Uusiutuva energia ja puhdas sähkö
+- Tuuli-, aurinko- ja vesivoiman saatavuus ja verkon päästökertoimet  
+- Sähköverkon kapasiteetti ja varmuus  
+
+
+## Infrastruktuuri ja viive
+- Kuitu- ja energiainfrastruktuuri  
+- Käyttäjäviive ja palveluiden saavutettavuus  
+
+
+## Esimerkit suomalaisista sijaintistrategioista
+- Kaukolämpöverkkoon kytketyt datakeskukset  
+- Pilvi- ja HPC-keskusten sijoittumisratkaisut  
+
+
+# Perusopas vihreän datakeskuksen rakentamiseksi Suomessa
+## 1. Rakentamisen syyt ja sijaintipäätökset
+- Kasvavat palvelutarpeet ja päästövähennysvelvoitteet  
+- Käyttöaste ja energiatehokkuus investointiperusteina  
+- Sijaintikriteerit: ilmasto, uusiutuva energia, verkko, infrastruktuuri  
+
+
+## 2. Vihreän datakeskuksen peruselementit ja periaatteet
+- ICT-laitteiden energiatehokkuus: DVFS, power-down-tilat  
+- Resurssienhallinta: virtualisointi, kuormien ja liikenteen optimointi, power capping  
+- Lämpötilanhallinta: free cooling, kuuma/kylmä-käytävä, lämpötilarajat  
+- Vihreät mittarit ja valvonta: PUE, CUE, komponenttien hyötysuhdemittaus  
+
+
+## 3. Elinkaaren vaiheet
+- Tarveselvitys ja sijainti: kuormaprofiilit, kriittisyysluokat, sähkö- ja lämpöresurssit  
+- Suunnittelu ja mitoitus: laitevalinnat, arkkitehtuuri, sähkö- ja jäähdytysketju  
+- Rakentaminen ja käyttöönotto: testaus, PUE-mittaukset, ohjausstrategiat  
+- Operointi ja optimointi: VM-konsolidointi, lämpökuorman hallinta, verkko-ohjaus  
+- Modernisointi ja purku: laitepäivitykset, UPS- ja akkukemian vaihdot, kierrätys  
+
+
+## 4. Toiminta vaiheittain
+- Hetkellinen kuorma ja kapasiteetin valinta  
+- Virtuaalikoneiden sijoittelu ja palvelinparkit  
+- Verkon energiatehokas ohjaus: reititys, linkkien sammuttaminen  
+- Sähkönjakelun tehorajat ja varavoima: power-capping, akkujen/UPSien käyttö  
+- Jäähdytys ja lämpötilan hallinta: CRAC/vesi, TES-varastot, tuloilman lämpötilan optimointi  
+- Energiavirtamittaus ja palaute: PUE, CUE, lämpötilat, ilmavirrat  
+
+
+## 5. Energian kulutus ja uudelleenkäyttö
+- Kulutuslähteet: palvelimet, verkko, jäähdytys, sähkönjakelu  
+- Energian säästö: DVFS, sleep-tilat, free cooling, kuuman ja kylmän ilman erottelu  
+- Uudelleenkäyttö: hukkalämmön hyödyntäminen (kaukolämpö, prosessilämpö)  
+- Uusiutuvan energian käyttö ja varastointi: PV, tuuli, energian varastointi  
+
+
+
+## 6. Energiatehokkuuden mittaaminen
+- Mittaristo: PUE, DCiE, CUE, WUE ja muut tunnusluvut  
+- Mittauspisteiden suunnittelu: pääsyöttö, UPS, PDU, jäähdytys, IT  
+- Benchmarkkaus ja raportointi: energiaprofiilien keruu, vuorokausi- ja kuukausitrendit  
+- Yhtenäiset kansalliset raportointivaatimukset: Blue Angel, ICT-sektorin indikaattorityö
+
 
