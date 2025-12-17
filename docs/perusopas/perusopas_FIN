@@ -3,48 +3,59 @@
 ## Mitä datakeskus on ja miksi niitä rakennetaan
 
 - Perinteisen datakeskuksen energian- ja laitemitoitus  
-Perinteisen datakeskuksen energian- ja laitemitoitus ankkuroituu historiadataan, josta muodostetaan kaksi asiaa: (i) millaisia työpyyntöjä (job) keskukseen tulee ja (ii) kuinka niiden määrä muuttuu ajassa (Wang et al., 2020).  
-Wang et al. kuvaavat, että historiallinen työkuorma tyypitellään klusteroimalla (muokattu k-means), jolloin syntyy joukko työtyyppejä (workload characterization), ja tästä saadaan tyyppijakauma.    
-Kuorman ennuste (workload prediction): tulevien aikajaksojen työpyyntöjen määrä ennustetaan aikasarjamallilla (ARIMA), jolloin saadaan arvio työpyyntöjen määrästä per aikaväli (Wang et al., 2020).  
-Perinteisen datakeskuksen energian kulutuksen ja laitemitoituksen “perusta” on siis eksplisiittisesti: ennustettu työpyyntöjen määrä + työtyyppien resurssiprofiilit (Wang et al., 2020)  
-Palvelintarve johdetaan työpyyntöjen resurssivaatimuksista ja niiden suoritusaikavaatimuksista (deadlinet).
+## Datakeskus vs. Vihreä datakeskus
 
-Kun työtyypit on määritelty, jokaiselle työlle mallinnetaan vähintään:  
-CPU- ja muistivaatimus, ajoaika (execution duration), sekä deadline (Wang et al., 2020).  
-Työtyypit sidotaan edelleen niihin palvelintyyppeihin, joilla työ voidaan ajaa (job–server mapping): palvelin on “kelpoinen”, jos sen CPU- ja muistiresurssit riittävät työn vaatimuksiin (Wang et al., 2020).  
+## Mitä datakeskus on ja miksi niitä rakennetaan
 
-Laskentakapasiteettisuunnittelu muotoillaan kokonaislukusuunnitteluongelmana (ILP), jossa päätetään, mitä palvelimia otetaan käyttöön (muuttuja y) ja mille palvelimelle kukin työ sijoitetaan (muuttuja x).  
-Tällaisen mitoituslogiikan mukaan jokainen työ sijoitetaan täsmälleen yhdelle palvelimelle, palvelimen CPU- ja muistirajat eivät ylity ja työ valmistuu ennen määräaikaa (Wang et al., 2020).  
+### Perinteisen datakeskuksen energian- ja laitemitoitus
 
-Ongelma on NP-vaikea (ongelma, johon parhaat tunnetut algoritmit ovat erittäin hitaita suurissa tapauksissa, vaikka löydetyn ratkaisun oikeellisuus voidaan tarkistaa nopeasti) ja se voidaan redusoida 2-ulotteiseen laatikonpakkausongelmaan (bin packing),  
-jossa esineet ovat töitä (joilla CPU ja muistin käytön tarve) ja laatikot ovat palvelimia joilla on CPU ja muistikapasiteetti.  
+Perinteisen datakeskuksen energian- ja laitemitoitus ankkuroituu usein historiadataan, josta muodostetaan (i) millaisia työpyyntöjä (job) keskukseen saapuu ja (ii) miten niiden määrä muuttuu ajassa (Wang et al., 2020).
 
-Koska täsmäratkaisun löytäminen kapasiteetin mitoitusongelmaan on laskennallisesti vaikeaa (NP-vaikea), perinteiset datakeskukset mitoitetaan tavallisesti erilaisten heurististen menetelmien avulla.  
-Tyypillinen lähestymistapa on “first-fit”-tyyppinen kapasiteettisuunnittelu, jossa työt sijoitetaan palvelimille niiden vapaan kapasiteetin ja määräaikojen perusteella,  
-mutta valmistuksen tai käytön hiilijalanjälkeä ei huomioida (Wang ym. 2020).
+Historiadatan työkuorma tyypitetään klusteroimalla (esim. muokattu k-means), jolloin syntyy joukko työtyyppejä (workload characterization) ja niiden tyyppijakauma (Wang et al., 2020). Kuorman ennusteessa (workload prediction) tulevien aikajaksojen työpyyntöjen määrää ennustetaan aikasarjamallilla (esim. ARIMA), jolloin saadaan arvio työpyyntöjen määrästä per aikaväli (Wang et al., 2020). Tällöin energian kulutuksen ja laitemitoituksen “perusta” on eksplisiittisesti: **ennustettu työpyyntöjen määrä + työtyyppien resurssiprofiilit** (Wang et al., 2020).
 
-Tästä seuraa perinteisen datakeskuksen energiamitoituksen kannalta tärkeä periaate: kun palvelinmäärä ja kuorman sijoittelu (käyttöasteprofiili) on päätetty, voidaan laskea aktiivisten palvelinten energiankulutus ja siitä edelleen sähkönkuluksen ja päästöjen taso (Wang et al., 2020).  
-Wang et al. (2020) laskentamalli on eksplittiisesti sidottu palvelimien tehomallin.  
-Wang, J., Palanisamy, B., & Xu, J. (2020). Sustainability-aware resource provisioning in data centers. In 2020 IEEE 6th International Conference on Collaboration and Internet Computing (CIC). IEEE. https://doi.org/10.1109/CIC50333.2020.00018
+Palvelintarve johdetaan työpyyntöjen resurssivaatimuksista ja niiden suoritusaikavaatimuksista (deadlinet / SLA). Kun työtyypit on määritelty, jokaiselle työlle mallinnetaan vähintään CPU- ja muistivaatimus, ajoaika (execution duration) sekä deadline (Wang et al., 2020). Työtyypit sidotaan edelleen niihin palvelintyyppeihin, joilla työ voidaan ajaa (job–server mapping): palvelin on “kelpoinen”, jos sen CPU- ja muistiresurssit riittävät työn vaatimuksiin (Wang et al., 2020).
 
-- Perinteisten datakeskusten työpyyntöjen ja tilan käyttöaste  
-Perinteisten datakeskusten laskentaresurssien käyttöaste on tyypillisesti hämmästyttävän matala.  
-Useissa empiirisissä tarkasteluissa palvelinten keskimääräinen hyötykäyttö jää noin 7–12 prosenttiin, kun taas suurten pilvitoimijoiden optimoiduissa keskuksissa on raportoitu 20–40 prosentin tasoja (esim. Green Data Centers: A Survey, Perspectives, and Future Directions; Sustainability-aware Resource Provisioning in Data Centers).  
-Alhaista käyttöastetta selittää systemaattinen ylikapasiteetin mitoittaminen (over-provisioning), joka on ollut pitkään vallitseva suunnitteluperiaate.  
-Kapasiteetti mitoitetaan perinteisesti harvinaisten huipputilanteiden, pitkän aikavälin kasvuennusteiden ja vikatilanteissa vaadittavan redundanssin perusteella.  
-Sähkö- ja jäähdytysinfrastruktuuri sekä IT-laitteet suunnitellaan siten, että ne kykenevät kantamaan sekä tulevan kuormakasvun että N+1- tai 2N-redundanssivaatimukset.  
-Normaalikäytössä kuorma on kuitenkin suurimman osan ajasta selvästi mitoitusarvoa pienempi, minkä seurauksena huomattava osa palvelimista, räkkipaikoista ja syöttötehosta jää pysyvästi vajaakäytölle.  
+Laskentakapasiteettisuunnittelu voidaan muotoilla kokonaislukusuunnitteluongelmana (ILP), jossa päätetään, mitä palvelimia otetaan käyttöön (muuttuja *y*) ja mille palvelimelle kukin työ sijoitetaan (muuttuja *x*) (Wang et al., 2020). Tällaisessa mitoituslogiikassa jokainen työ sijoitetaan täsmälleen yhdelle palvelimelle, palvelimen CPU- ja muistirajat eivät ylity ja työ valmistuu ennen määräaikaa (Wang et al., 2020). Ongelma on laskennallisesti vaikea (NP-vaikea) ja kapasiteettimitotus voidaan kytkeä bin packing -tyyppisiin pakkausongelmiin; tästä seuraa, että käytännössä mitoitus tehdään usein heuristiikoilla täsmäratkaisun sijaan (Garey & Johnson, 1979).
 
-Toiseksi kapasiteettisuunnittelu on tyypillisesti staattista.  
-Resursseja lisätään karkeina askelina – esimerkiksi kokonaisina räkkiriveinä tai UPS-yksikköinä – sen sijaan, että kapasiteettia skaalattaisiin dynaamisesti todellisen kysynnän mukaan.  
-Kuorman vuorokausi- ja viikkorytmi, kausivaihtelut sekä palveluiden elinkaarimuutokset eivät heijastu infrastruktuurin mitoitukseen, mikä vahvistaa ylikapasiteettia.  
-Kolmanneksi sovelluksia ja asiakkaita eristetään infrastruktuurissa organisatorisista ja turvallisuussyistä.  
-Ilman pitkälle vietyä virtualisointia ja kuormien konsolidointia tämä johtaa tilanteisiin, joissa kokonaisia palvelimia tai räkkikokonaisuuksia varataan yksittäisille järjestelmille, vaikka niiden keskimääräinen kuorma olisi hyvin pieni.  
-Palvelimet toimivat tällöin pääosin tyhjäkäynnillä.  
-Neljänneksi laitteet ovat edelleen suurelta osin energiatehottomasti skaalautuvia: palvelin tai verkkolaite kuluttaa merkittävän osuuden nimellistehostaan jo tyhjäkäynnillä.  
-Tutkimusten mukaan 10 prosentin hyötykuorma voi vastata 50–70 prosentin sähkönkulutusta täydestä kuormasta.  
-Tämän vuoksi ylikapasiteetti näkyy suoraan ylimääräisenä energiankulutuksena ja sitä kautta myös kasvaneina hiilidioksidipäästöinä.  
-Perinteisen datakeskuksen alhainen käyttöaste on seurausta suunnittelufilosofiasta, jossa luotettavuus ja tulevaisuuden kasvu on asetettu energiatehokkuuden edelle.  
+Koska täsmäratkaisun löytäminen kapasiteetin mitoitukseen on vaikeaa, perinteiset datakeskukset mitoitetaan tavallisesti erilaisten heurististen menetelmien avulla. Tyypillinen lähestymistapa on “first-fit”-tyyppinen kapasiteettisuunnittelu, jossa työt sijoitetaan palvelimille niiden vapaan kapasiteetin ja määräaikojen perusteella, mutta valmistuksen tai käytön hiilijalanjälkeä ei eksplisiittisesti huomioida (Wang et al., 2020).
+
+Energiamitoituksen kannalta keskeinen periaate on: kun palvelinmäärä ja kuorman sijoittelu (käyttöasteprofiili) on päätetty, voidaan laskea aktiivisten palvelinten energiankulutus ja siitä edelleen sähkönkulutus sekä päästöt. Wang et al. (2020) -mallinnus kytkee tämän nimenomaisesti palvelimien tehomalliin (Wang et al., 2020).
+
+Tutkimuskirjallisuudessa korostetaan, että energia- ja laitemitoitus kannattaa ankkuroida IT-palvelutarpeeseen (sovellukset, alustat ja niiden kehitys) eikä pelkkään tehotiheysoletukseen (W/m²), jotta tilan, tehon ja jäähdytyksen tarve voidaan arvioida realistisesti (Geng, 2015). Tämä kapasiteettisuunnittelu on luonteeltaan “enterprise architecture” -tyyppistä: alustakohtainen historiakehitys ja kasvuennuste kytketään tulevaan kapasiteettiin, ja huomioidaan myös “refresh capacity” eli siirtymävaiheet, joissa vanha ja uusi järjestelmä voivat olla rinnakkain (Geng, 2015).
+
+Sähkömitoituksessa erotetaan pätöteho (W), loisteho (VAR), näennäisteho (VA) ja tehokerroin (PF), koska kuorman sähköinen luonne vaikuttaa siihen, miten paljon kapasiteettia verkosta ja varavoimasta todellisuudessa tarvitaan (Geng, 2015). Käytännössä esimerkiksi loisteho ja tehokerroin voivat rajoittaa kapasiteetin hyödynnettävyyttä, jos mitoitus tehdään vain yhden suureen perusteella ilman kokonaiskuvaa (Geng, 2015).
+
+Yhteenvetona: perinteinen datakeskus voidaan mitoittaa joko sovellus- ja alustatasosta (Geng, 2015) tai tarkemmalla tasolla ennustetuista työpyynnöistä ja niiden resurssiprofiileista (Wang et al., 2020). Molemmissa tapauksissa lopputuloksena johdetaan IT-teho (kW), jonka varaan sähkö- ja jäähdytysinfrastruktuuri mitoitetaan (Geng, 2015; Wang et al., 2020).
+
+---
+
+### Perinteisten datakeskusten työpyyntöjen ja tilan käyttöaste
+
+Perinteisten datakeskusten laskentaresurssien käyttöaste on tyypillisesti matala, mikä liittyy ylikapasiteetin mitoittamiseen (over-provisioning) ja staattisiin mitoitusperiaatteisiin (Jin et al., 2016; Whitney & Delforge, 2014). Esimerkiksi laajassa toimialakatsauksessa on raportoitu keskimääräisen palvelinkäyttöasteen pysyneen noin **12–18 %** tasolla (2006–2012), kun taas **hyperskaalan pilvitoimijoilla** voidaan saavuttaa korkeampia käyttöasteita (raportoitu haarukka **40–70 %**), vaikkakaan ei välttämättä johdonmukaisesti kaikissa ympäristöissä (Whitney & Delforge, 2014).
+
+Alhaista käyttöastetta selittää ensinnäkin systemaattinen ylikapasiteetin mitoittaminen: kapasiteetti mitoitetaan harvinaisten huipputilanteiden, pitkän aikavälin kasvuennusteiden ja redundanssivaatimusten (esim. N+1 tai 2N) perusteella (Whitney & Delforge, 2014). Tällöin sähkö- ja jäähdytysinfrastruktuuri sekä IT-laitteet rakennetaan kestämään huiput, vaikka kuorma olisi suurimman osan ajasta selvästi alle mitoitusarvon.
+
+Toiseksi kapasiteettisuunnittelu on usein staattista. Resursseja lisätään karkeina askelina (esim. kokonaiset räkit, UPS-yksiköt), jolloin vuorokausi- ja viikkorytmit, kausivaihtelut ja palveluiden elinkaarimuutokset eivät heijastu mitoitukseen, mikä vahvistaa ylikapasiteettia (Jin et al., 2016; Whitney & Delforge, 2014). Kolmanneksi sovelluksia ja asiakkaita eristetään infrastruktuurissa organisatorisista ja turvallisuussyistä; ilman pitkälle vietyä virtualisointia ja konsolidointia tämä voi johtaa siihen, että kokonaisia palvelimia varataan pienikuormaisille järjestelmille (Whitney & Delforge, 2014).
+
+Neljänneksi laitteiden energiankulutus ei useinkaan skaalaudu lineaarisesti kuorman mukana: palvelimet kuluttavat merkittävän osan huipputehostaan myös pienellä kuormalla tai lähes tyhjäkäynnillä. Katsauksissa on kuvattu, että matalalla käyttöasteella (esim. ~10 %) palvelimet voivat silti käyttää noin **30–60 %** maksimitehostaan, ja klassisessa energiaproportionaalisuuden analyysissä todetaan, että jopa energiatehokas palvelin kuluttaa tyhjäkäynnillä noin **puolet** huipputehostaan (Barroso & Hölzle, 2007; Whitney & Delforge, 2014). Tästä seuraa, että ylikapasiteetti näkyy suoraan ylimääräisenä energiankulutuksena ja siten myös kasvaneina päästöinä (Jin et al., 2016; Whitney & Delforge, 2014).
+
+---
+
+## Lähteet (APA)
+
+Barroso, L. A., & Hölzle, U. (2007). The case for energy-proportional computing. *Computer, 40*(12), 33–37.
+
+Garey, M. R., & Johnson, D. S. (1979). *Computers and intractability: A guide to the theory of NP-completeness*. W. H. Freeman.
+
+Geng, H. (Ed.). (2015). *Data center handbook*. John Wiley & Sons.
+
+Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). Green data centers: A survey, perspectives, and future directions. *arXiv*. (arXiv:1608.00687)
+
+Wang, J., Palanisamy, B., & Xu, J. (2020). Sustainability-aware resource provisioning in data centers. In *2020 IEEE 6th International Conference on Collaboration and Internet Computing (CIC)* (pp. 60–67). IEEE. `https://doi.org/10.1109/CIC50333.2020.00018`
+
+Whitney, J., & Delforge, P. (2014, August). *Data center efficiency assessment: Scaling up energy efficiency across the data center industry: Evaluating key drivers and barriers* (Issue Paper IP:14-08-a). Natural Resources Defense Council (NRDC) & Anthesis. ([nrdc.org][1])
+
+[1]: https://www.nrdc.org/sites/default/files/data-center-efficiency-assessment-IP.pdf "NRDC: Data Center Efficiency Assessment - Scaling Up Energy Efficiency Across the Data Center Industry - Evaluating Key Drivers and Barriers (PDF)"
 
 ---
 
