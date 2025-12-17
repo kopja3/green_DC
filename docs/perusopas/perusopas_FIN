@@ -27,13 +27,14 @@ Tästä seuraa perinteisen datakeskuksen energiamitoituksen kannalta tärkeä pe
 Wang et al. (2020) laskentamalli on eksplittiisesti sidottu palvelimien tehomallin.  
 Wang, J., Palanisamy, B., & Xu, J. (2020). Sustainability-aware resource provisioning in data centers. In 2020 IEEE 6th International Conference on Collaboration and Internet Computing (CIC). IEEE. https://doi.org/10.1109/CIC50333.2020.00018
 
-- Ajan ja tilan käyttöaste: miksi kuormat ovat usein alhaisella käyttöasteella  
+- Perinteisten datakeskusten työpyyntöjen ja tilan käyttöaste  
 Perinteisten datakeskusten laskentaresurssien käyttöaste on tyypillisesti hämmästyttävän matala.  
 Useissa empiirisissä tarkasteluissa palvelinten keskimääräinen hyötykäyttö jää noin 7–12 prosenttiin, kun taas suurten pilvitoimijoiden optimoiduissa keskuksissa on raportoitu 20–40 prosentin tasoja (esim. Green Data Centers: A Survey, Perspectives, and Future Directions; Sustainability-aware Resource Provisioning in Data Centers).  
 Alhaista käyttöastetta selittää systemaattinen ylikapasiteetin mitoittaminen (over-provisioning), joka on ollut pitkään vallitseva suunnitteluperiaate.  
 Kapasiteetti mitoitetaan perinteisesti harvinaisten huipputilanteiden, pitkän aikavälin kasvuennusteiden ja vikatilanteissa vaadittavan redundanssin perusteella.  
 Sähkö- ja jäähdytysinfrastruktuuri sekä IT-laitteet suunnitellaan siten, että ne kykenevät kantamaan sekä tulevan kuormakasvun että N+1- tai 2N-redundanssivaatimukset.  
 Normaalikäytössä kuorma on kuitenkin suurimman osan ajasta selvästi mitoitusarvoa pienempi, minkä seurauksena huomattava osa palvelimista, räkkipaikoista ja syöttötehosta jää pysyvästi vajaakäytölle.  
+
 Toiseksi kapasiteettisuunnittelu on tyypillisesti staattista.  
 Resursseja lisätään karkeina askelina – esimerkiksi kokonaisina räkkiriveinä tai UPS-yksikköinä – sen sijaan, että kapasiteettia skaalattaisiin dynaamisesti todellisen kysynnän mukaan.  
 Kuorman vuorokausi- ja viikkorytmi, kausivaihtelut sekä palveluiden elinkaarimuutokset eivät heijastu infrastruktuurin mitoitukseen, mikä vahvistaa ylikapasiteettia.  
