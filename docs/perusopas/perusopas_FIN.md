@@ -172,6 +172,8 @@ F. Tarkistuslista mittarit, anturit, hälytykset, redundanssi
 
 
 
+
+
 ## Ilmasto, vapaajäähdytys ja ympäristön olosuhteet
 - Viileä ilmasto ja mahdollisuus free cooling -ratkaisuihin  
 - Matalien ulkolämpötilojen hyödyntäminen jäähdytyksessä  
@@ -199,12 +201,27 @@ F. Tarkistuslista mittarit, anturit, hälytykset, redundanssi
 - Käyttöaste ja energiatehokkuus investointiperusteina  
 - Sijaintikriteerit: ilmasto, uusiutuva energia, verkko, infrastruktuuri  
 
+Tavoite: valita paikka, jossa sähkö, verkot, jäähdytysmahdollisuudet ja hukkalämpöverkot tekevät vihreydestä realistista.
+Sisällytä:
+Päätökset: sähköliittymä/siirtokyky, kuitu/latenssi, tontti & luvitus, riskit (tulva, myrskyt, melu), varmistuslogistiikka.
+“Suomi-edut”: kylmä ulkoilma (free cooling), kaukolämpö/hukkalämpö, uusiutuva sähkö.
+Checklist: 10–15 kyllä/ei-kysymystä (esim. “Onko hukkalämmölle vastaanottaja 2 km säteellä?”).
+
+
 
 ## 2. Vihreän datakeskuksen peruselementit ja periaatteet
 - ICT-laitteiden energiatehokkuus: DVFS, power-down-tilat  
 - Resurssienhallinta: virtualisointi, kuormien ja liikenteen optimointi, power capping  
 - Lämpötilanhallinta: free cooling, kuuma/kylmä-käytävä, lämpötilarajat  
 - Vihreät mittarit ja valvonta: PUE, CUE, komponenttien hyötysuhdemittaus  
+
+Tavoite: kuvata rakennuspalikat ja vaihtoehdot niin, että lukija voi valita järkevästi.
+Rakenna moduuleiksi:
+Sähkö: syötöt, UPS, generaattorit, jakelu, häviöiden minimointi.
+Jäähdytys: ilma vs neste, free cooling, adiabatic, immersion/nestejäähdytys (milloin kannattaa).
+IT: palvelintiheys, virtualisointi, kuormanhallinta.
+Rakennus: ilmavirrat, tiiveys, modulaarisuus, huollettavuus.
+Valintataulukko: “sopii / ei sovi” eri tehotasoille ja tavoitteille.
 
 
 ## 3. Elinkaaren vaiheet
@@ -213,6 +230,14 @@ F. Tarkistuslista mittarit, anturit, hälytykset, redundanssi
 - Rakentaminen ja käyttöönotto: testaus, PUE-mittaukset, ohjausstrategiat  
 - Operointi ja optimointi: VM-konsolidointi, lämpökuorman hallinta, verkko-ohjaus  
 - Modernisointi ja purku: laitepäivitykset, UPS- ja akkukemian vaihdot, kierrätys  
+
+Elinkaari (LCA-ajattelu käytännössä)
+Tavoite: estää “vihreä vain käyttövaiheessa” -ansa.
+Sisällytä:
+Hankinta → käyttö → laajennus → käytöstäpoisto.
+Materiaalit, huolto, varaosat, uudelleenkäyttö, kierrätys.
+Kapasiteetin suunnittelu: modulaarinen kasvu vs ylibuukkaus.
+Minimi vs hyvä vs huippu -tasot (helppo arvioida).
 
 
 ## 4. Toiminta vaiheittain
@@ -223,6 +248,14 @@ F. Tarkistuslista mittarit, anturit, hälytykset, redundanssi
 - Jäähdytys ja lämpötilan hallinta: CRAC/vesi, TES-varastot, tuloilman lämpötilan optimointi  
 - Energiavirtamittaus ja palaute: PUE, CUE, lämpötilat, ilmavirrat  
 
+Toiminta (operointi ja arjen ohjaus)
+Tavoite: vihreys syntyy eniten vasta käytössä (ohjaus, optimointi, prosessit).
+Sisällytä:
+Käyttöönotto, muutoksenhallinta, incident/maintenance.
+Optimointi: lämpötilasetpointit, ilmavirran ohjaus, kuorman siirto, huoltoikkunat.
+Palvelutasot vs energiatavoitteet: miten sovitetaan yhteen.
+Toimintamallit: “päivittäinen”, “viikoittainen”, “kvartaaleittain” tehtävät.
+
 
 ## 5. Energian kulutus ja uudelleenkäyttö
 - Kulutuslähteet: palvelimet, verkko, jäähdytys, sähkönjakelu  
@@ -230,6 +263,13 @@ F. Tarkistuslista mittarit, anturit, hälytykset, redundanssi
 - Uudelleenkäyttö: hukkalämmön hyödyntäminen (kaukolämpö, prosessilämpö)  
 - Uusiutuvan energian käyttö ja varastointi: PV, tuuli, energian varastointi  
 
+Energia ja hukkalämpö (vihreyden ydin)
+Tavoite: tehdä energiavirrat näkyviksi ja hyödyttää lämpö.
+Sisällytä:
+Sähkön hankinta (uusiutuva, sopimukset periaatetasolla), kulutusprofiili.
+Hukkalämmön talteenotto: lämpötilatasot, lämmönvaihdin, vastaanottaja, sopimuslogiikka.
+“Kannattaako?”-osio: yksinkertainen päätöspuu (lämpömäärä + vastaanottaja + etäisyys).
+Yksi esimerkkilasku (karkealla tasolla), jotta lukija ymmärtää suuruusluokat.
 
 
 ## 6. Energiatehokkuuden mittaaminen
@@ -237,5 +277,14 @@ F. Tarkistuslista mittarit, anturit, hälytykset, redundanssi
 - Mittauspisteiden suunnittelu: pääsyöttö, UPS, PDU, jäähdytys, IT  
 - Benchmarkkaus ja raportointi: energiaprofiilien keruu, vuorokausi- ja kuukausitrendit  
 - Yhtenäiset kansalliset raportointivaatimukset: Blue Angel, ICT-sektorin indikaattorityö
+
+Mittarit (todistettavuus ja jatkuva parantaminen)
+Tavoite: vihreys = mitattu ja johdettu, ei väitetty.
+Sisällytä:
+Mitä mitataan: IT-kuorma, kokonaissähkö, jäähdytys, lämpö talteen, vesi (jos relevantti).
+Ydinmittarit: esim. PUE + hukkalämmön hyödyntämisen mittari + uusiutuvan sähkön osuus (pidä mittaristo pienenä).
+Mittaripistekartta: missä anturit/mittarit ovat ja mitä niistä raportoidaan.
+Raportointirytmi ja “toimenpideraja-arvot” (milloin reagoidaan).
+
 
 
