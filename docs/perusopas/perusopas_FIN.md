@@ -210,10 +210,9 @@ F. Tarkistuslista mittarit, anturit, hälytykset, redundanssi
 
 # Perusopas vihreän datakeskuksen rakentamiseksi Suomessa
 ## 1. Rakentamisen syyt ja sijaintipäätökset
-Datakeskusten määrä ja koko kasvavat pilvipalveluiden ja digitaalisten palveluketjujen vuoksi. Samalla datakeskusten energiankulutus ja siitä seuraavat kustannus- ja päästövaikutukset ovat nousseet keskeiseksi suunnittelukriteeriksi. Jin ym. (2016) kokoavat yhteen tutkimusnäyttöä siitä, että merkittävä osa nykyisestä energiankulutuksesta ei johdu vain laskentakuorman kasvusta, vaan myös rakenteellisesta tehottomuudesta: resursseja ylivarmistetaan, kapasiteettia pidetään varalla ja käyttöaste jää matalaksi, mikä kasvattaa myös jäähdytyksen ja sähkönjakelun “tyhjäkäyntiä”. arXiv
+Datakeskusten määrä ja koko kasvavat pilvipalveluiden ja digitaalisten palveluketjujen vuoksi. Samalla datakeskusten energiankulutus ja siitä seuraavat kustannus- ja päästövaikutukset ovat nousseet keskeiseksi suunnittelukriteeriksi. Merkittävä osa nykyisestä energiankulutuksesta ei johdu vain laskentakuorman kasvusta, vaan myös rakenteellisesta tehottomuudesta: resursseja ylivarmistetaan, kapasiteettia pidetään varalla ja käyttöaste jää matalaksi, mikä kasvattaa myös jäähdytyksen ja sähkönjakelun “tyhjäkäyntiä” [1].
 
-Artikkelin mukaan Yhdysvaltain datakeskusten sähkönkulutus oli 2013 noin 91 mrd kWh ja ennuste 2020 noin 140 mrd kWh, ja globaalisti datakeskusten sähkönkulutuksen osuuden on arvioitu kasvavan merkittävästi. 
-arXiv Lisäksi tutkimusviitteet korostavat käyttöasteongelmaa: tyypillisiä palvelinkäyttöasteita on raportoitu noin 6–12 % tasolla, kun taas parhaat toimijat ovat pystyneet nostamaan käyttöastetta selvästi korkeammaksi (esim. 20–40 %). arXiv Tämä tarkoittaa sähkö- ja jäähdytysinfran näkökulmasta, että “vihreän datakeskuksen” rakentamisen keskeinen perustelu on usein saman palvelukyvyn tuottaminen pienemmällä energialla, joko parantamalla käyttöastetta (konsolidointi, virtualisointi, kuormanohjaus) tai pienentämällä infrastruktuurin häviöitä ja jäähdytyksen tarvetta – mielellään molempia.arXiv 
+Yhdysvaltain datakeskusten sähkönkulutus oli 2013 noin 91 mrd kWh ja ennuste 2020 noin 140 mrd kWh, ja globaalisti datakeskusten sähkönkulutuksen osuuden on arvioitu kasvavan merkittävästi [1]. Lisäksi tutkimusviitteet korostavat käyttöasteongelmaa: tyypillisiä palvelinkäyttöasteita on raportoitu noin 6–12 % tasolla, kun taas parhaat toimijat ovat pystyneet nostamaan käyttöastetta selvästi korkeammaksi (esim. 20–40 %) [1]. Tämä tarkoittaa sähkö- ja jäähdytysinfran näkökulmasta, että “vihreän datakeskuksen” rakentamisen keskeinen perustelu on usein saman palvelukyvyn tuottaminen pienemmällä energialla, joko parantamalla käyttöastetta (konsolidointi, virtualisointi, kuormanohjaus) tai pienentämällä infrastruktuurin häviöitä ja jäähdytyksen tarvetta – mielellään molempia [1]. 
 Jin ym. (2016) jäsentävät vihreät ratkaisut kahteen pääluokkaan: (1) suunnittelu- ja rakennusvaiheen “vihreät laitteet ja infrastruktuuri” sekä (2) operoinnin aikaiset tehokkuus- ja optimointimenetelmät (energiatehokkuus, resurssien hallinta, lämpötilan ja jäähdytyksen ohjaus, mittarointi). arXiv Oppaan näkökulmasta tämä on tärkeä periaate: sijainti ja sähköinen infrastruktuuri luovat tehokkuuskaton, mutta operointi ratkaisee, päästäkö kattoon.
 
 Sijaintipäätös sähköisen infrastruktuurin ja energian näkökulmasta (Suomi)
@@ -223,48 +222,60 @@ Sijaintipäätös kannattaa tehdä sähkö- ja energiavirtojen ehdoilla jo varha
 Vahva verkko ja realistinen liittymäpolku ovat edellytys kilpailukykyiselle investoinnille: mitä heikompi verkko, sitä enemmän tarvitaan kalliita paikallisia ratkaisuja (varasyötöt, jakelu, mahdolliset tehorajoitteet ja pitkät aikataulut). arXiv Oppaaseen kirjattava käytäntö: varmista varhain sähköverkkoyhtiöltä vapaa kapasiteetti, aikataulu ja kustannusrakenne (liityntä/tehomaksut) sekä mahdollisuus kahteen syöttöön (2N tai N+1 palvelutasotarpeen mukaan).
 
 2. Sähkön päästöintensiteetti ja uusiutuvan energian saatavuus
-Vihreän datakeskuksen “energia- ja ympäristötavoitteet” eivät toteudu ilman matalapäästöistä sähköä. Jin ym. nostavat uusiutuvan energian saatavuuden ja päästöohjautuvan optimoinnin vihreiden ratkaisujen ytimeen. 
-arXiv Oppaaseen kirjattava käytäntö: arvioi vaihtoehdot (PPA, alkuperätakuut, oma tuotanto) ja dokumentoi, miten sähkön alkuperä ja päästökerroin raportoidaan.
+Vihreän datakeskuksen “energia- ja ympäristötavoitteet” eivät toteudu ilman matalapäästöistä sähköä. Jin ym. nostavat uusiutuvan energian saatavuuden ja päästöohjautuvan optimoinnin vihreiden ratkaisujen ytimeen  
+[1]. Oppaaseen kirjattava käytäntö: arvioi vaihtoehdot (PPA, alkuperätakuut, oma tuotanto) ja dokumentoi, miten sähkön alkuperä ja päästökerroin raportoidaan.
 
 3. Ilmasto ja vapaajäähdytys (free cooling)
 Pitkä viileä kausi pienentää jäähdytyksen energiankulutusta ja voi yksinkertaistaa järjestelmiä. Tämä on suora Suomen kilpailuetu: useissa sijainneissa voidaan hyödyntää free cooling -ratkaisuja suuren osan vuodesta, mikä laskee jäähdytyksen osuutta kokonaisenergiasta. arXiv Oppaaseen kirjattava käytäntö: laske suunnittelussa free cooling -tuntipotentiaali (lämpötila + kosteus) ja määritä jäähdytysratkaisu sen mukaan (air-/water-side economizer, hybridit).
 
 4. Hukkalämmön hyödyntäminen
 Hukkalämmön talteenotto ja hyödyntäminen on vihreän datakeskuksen keskeinen kilpailutekijä: se muuttaa “hukasta” hyödykkeen ja parantaa kokonaisjärjestelmän ympäristötehokkuutta. 
-arXiv Oppaaseen kirjattava käytäntö: tee sijaintivaiheessa “lämmön vastaanottajakartoitus” (kaukolämpö / teollisuus / kiinteistöt), ja tarkista lämpötila- ja tehovaatimukset sekä etäisyys ja liittymiskustannukset.
+arXiv Oppaaseen kirjattava käytäntö: tee sijaintivaiheessa “lämmön vastaanottajakartoitus” (kaukolämpö / teollisuus / kiinteistöt), ja tarkista lämpötila- ja tehovaatimukset sekä etäisyys ja liittymiskustannukset [1].
 
-Lisäksi sijaintipäätöksessä on aina tasapainotettava viive ja käyttäjävaatimukset: kuormaa voidaan ohjata edullisemman ja puhtaamman energian alueille vain, jos palvelun latenssi- ja saatavuusrajat sallivat sen. 
-arXiv 
+Lisäksi sijaintipäätöksessä on aina tasapainotettava viive ja käyttäjävaatimukset: kuormaa voidaan ohjata edullisemman ja puhtaamman energian alueille vain, jos palvelun latenssi- ja saatavuusrajat sallivat sen [1]. 
 
 Lähde
-Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). Green Data Centers: A Survey, Perspectives, and Future Directions (arXiv:1608.00687). arXiv.
+[1] Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). Green Data Centers: A Survey, Perspectives, and Future Directions (arXiv:1608.00687). arXiv.
 
 
 ## 2. Vihreän datakeskuksen peruselementit ja periaatteet
-Vihreä datakeskus kannattaa kuvata kokonaisuutena, jossa IT-kuorma, sähköketju, jäähdytys, rakennus ja ohjaus/valvonta suunnitellaan yhtenä järjestelmänä ja niiden onnistumista mitataan sovituilla mittareilla. Tutkimuskirjallisuudessa vihreän datakeskuksen ratkaisut jäsentyvät toistuvasti neljään koriin: (1) energiatehokkuus IT:ssä, (2) resurssienhallinta, (3) lämpötilanhallinta ja (4) mittarit & monitorointi.
-[4] Lisäksi modernissa suunnittelussa korostuu ajatus datakeskuksesta “yhtenä tietokoneena” (warehouse-scale computer), jolloin energiatehokkuus ja käytettävyys syntyvät yhtä paljon ohjelmistosta ja orkestroinnista kuin laitevalinnoista. [1]
+Vihreä datakeskus on kokonaisuus, jossa IT-kuorma, sähköketju, jäähdytys, rakennus sekä ohjaus ja valvonta suunnitellaan yhtenä järjestelmänä, ja toimintaa johdetaan sovituilla, mitattavilla energia- ja ympäristötunnusluvuilla. 
+Vihreän datakeskuksen ratkaisut jäsentyvät neljään koriin: (1) energiatehokkuus IT:ssä, (2) resurssienhallinta, (3) lämpötilanhallinta ja (4) mittarit & monitorointi [4]. Lisäksi modernissa suunnittelussa korostuu ajatus datakeskuksesta “yhtenä tietokoneena” (warehouse-scale computer), jolloin energiatehokkuus ja käytettävyys syntyvät yhtä paljon ohjelmistosta ja orkestroinnista (automaattisesta kuormien ja resurssien ohjauksesta) kuin laitevalinnoista. [1]
 
 2.1 IT-kerros: energiatehokas laskenta ja resurssienhallinta
 
 Tavoite: tuottaa sama palvelutaso pienemmällä energialla ja vähemmällä ylikapasiteetilla.
--Energiatehokkuus (DVFS ja lepotilat): Prosessorien dynaaminen taajuus-/jännitesäätö (DVFS) ja power-down-tilat ovat keskeisiä keinoja tehdä kulutuksesta kuormaa vastaavaa (“energy-proportional”). [4]
+-Energiatehokkuus (DVFS ja lepotilat): Prosessorien dynaaminen taajuus-/jännitesäätö (DVFS, eli kellotaajuuden ja käyttöjännitteen automaattinen säätö kuorman mukaan) sekä lepotilat/power-down-tilat (eli käyttämättömien ytimien, komponenttien tai jopa koko palvelimen siirtäminen matalatehotilaan) ovat keskeisiä keinoja tehdä kulutuksesta kuormaa vastaavaa (“energy-proportional”). [4]
 
--Virtualisointi ja konsolidointi: Kun kuormat ajetaan korkeammalla käyttöasteella harvemmilla palvelimilla, säästyy sekä IT-sähköä että jäähdytystä; samalla voidaan sammuttaa vajaakäytöllä olevia laitteita hallitusti. Tämä kuuluu tutkimuksissa resurssienhallinnan ytimeen. [4]
+-Virtualisointi ja konsolidointi: Virtualisointi tarkoittaa, että samalla fyysisellä palvelimella voidaan ajaa useita erillisiä “virtuaalisia palvelimia” (virtuaalikoneita tai kontteja), jolloin sovellukset eivät ole sidottuja yhteen laitteeseen. Konsolidointi tarkoittaa, että nämä kuormat kootaan tarkoituksella harvemmille fyysisille palvelimille niin, että käyttöaste nousee. Kun kuormat ajetaan korkeammalla käyttöasteella harvemmilla palvelimilla, säästyy sekä IT-sähköä että jäähdytystä; samalla voidaan sammuttaa vajaakäytöllä olevia laitteita hallitusti. Tämä kuuluu resurssienhallinnan ytimeen. [4]
 
--Power capping ja kuormien ohjaus: Kuormaa voidaan rajoittaa ja siirtää ajallisesti/paikallisesti sähkön hinnan, uusiutuvan saatavuuden tai lämpötilatilanteen mukaan (orkestrointi + kapasiteettipolitiikat). [4]
+-Tehorajoitus (power capping) ja kuormien ohjaus: IT-kuormaa voidaan rajoittaa ja siirtää ajallisesti/paikallisesti sähkön hinnan, uusiutuvan saatavuuden tai lämpötilatilanteen mukaan (orkestrointi + kapasiteettipolitiikat). [4]
 
 2.2 Sähkö: syötöt, UPS, varavoima, jakelu ja häviöiden minimointi
 
-Tavoite: korkea käytettävyys minimoiduin häviöin ja mitoitus, joka tukee vihreitä tavoitteita (ei “varmuuden vuoksi” ylisuurta ketjua).
--Sähkönsyötön ja jakelun hyötysuhde: Green IT -viitekehykset korostavat koko sähköketjun (muuntajat–UPS–PDU–IT) häviöiden mittaamista ja pienentämistä sekä mittaripohjaista johtamista. [7]
+Tavoite: korkea käytettävyys minimoiduin häviöin ja mitoitus, joka tukee vihreitä tavoitteita (ei “varmuuden vuoksi” ylisuurta sähkönsyöttö- ja jakelujärjestelmää).
 
--Redundanssi vs. tehokkuus: Käytettävyysratkaisujen (N+1, 2N) vaikutus häviöihin pitää tehdä näkyväksi mittareilla ja kuormaprofiileilla; tapaustutkimuksissa “green” ei tarkoita redundanssista luopumista vaan suunnittelun ja operoinnin yhteisoptimointia. [6]
+-Sähkönsyötön ja jakelun hyötysuhde: Green IT -viitekehykset korostavat koko sähkönsyöttöketjun muuntajilta (jännitetason muutos) UPS-laitteiston (keskeytymätön virransyöttö) kautta PDU-yksiköihin (Power Distribution Unit, sähkönjakeluyksikkö/räkkijakelu) ja lopulta IT-laitteille (palvelimet, verkko, tallennus) häviöiden mittaamista ja pienentämistä sekä mittaripohjaista johtamista. [7]
 
--Energiavarastointi: UPS ei ole vain “pakollinen laatikko”, vaan osa energianhallintaa. Katsausartikkeleissa kuvataan keskeiset varastointiperheet (akut, pumppuvesi, paineilma, vauhtipyörät, lämpövarastot jne.) ja niiden roolit uusiutuvan tuotannon ja käyttövarmuuden tukena. [8]
+-Varmistusratkaisut vs. tehokkuus: Koska N+1- ja 2N-varmistus lisää usein osakuormalla käyviä laitteita ja siten häviöitä, vaikutus tulee tehdä näkyväksi mittareilla ja kuormaprofiileilla. Vihreä toteutus tarkoittaa varmistuksen ja energiatehokkuuden yhteisoptimointia sekä suunnittelussa että operoinnissa. [6]
+
+-Energiavarastointi ja UPS (Uninterruptible Power Supply, keskeytymätön virransyöttö) eivät ole vain “pakollinen laatikko”, vaan osa energianhallintaa: energian varastoinnilla voidaan tasata kulutuspiikkejä, tukea mikroverkon toimintaa ja parantaa uusiutuvan energian hyödyntämistä siirtämällä energian käyttöä ajallisesti (esim. “ylijäämän” varastointi ja myöhempi käyttö)[8]. Vihrein valinta alkaa mitoituksesta: UPS:n hyötysuhde heikkenee helposti, jos järjestelmä on selvästi ylisuurena ja käy pitkään pienellä kuormalla; siksi vihreässä suunnittelussa korostuu oikea mitoitus ja tarpeettomien häviöiden minimointi. [11] 
+
+Energiavarastointitekniikka valitaan tarpeen (kesto + vasteaika) mukaan: lyhyisiin katkottomuustarpeisiin (sekunnit–minuutit) soveltuvat mm. vauhtipyöräratkaisut, joiden tyypillinen purku-/latauskesto on 20 s–20 min ja vasteaika millisekuntitasoa; ne sijoittuvat ominaisuuksiltaan “superkondensaattorien ja akkujen väliin [12]. 
+
+Esimerkiksi MGHPCC-konesalissa (Massachusetts Green High Performance Computing Center) käytetään vauhtipyöräpohjaista UPS:ää generaattorien käynnistymiseen asti, ja artikkelissa tuodaan esiin myös kompromissi: vauhtipyörän valmiustila kuluttaa energiaa, joten varmistus rajataan vain osaan kuormasta energiatehokkuuden ja käytettävyyden tasapainottamiseksi [6].
+
+Jos tavoite on pidempi varakesto tai energian ajallinen siirto (tunnit), akkuvarasto on tyypillinen vaihtoehto esim. Litiumioni-BESS (Battery Energy Storage System) litiumioniakkuvarasto ohjaus- ja suojajärjestelmillä sekä tehoelektroniikalla, joiden avulla energiaa voidaan varastoida ja syöttää takaisin kuormalle tai sähköverkkoon, tyypillinen kesto usein 1–6 h. Superkondensaattorit taas soveltuvat erityisesti lyhytkestoiseen UPS- ja power quality -tukeen suurille hetkellisille kuormille. [13] 
+
+“Vihreys” kannattaa perustella myös elinkaarella: Life Cycle Assessment, elinkaariarviointitutkimuksessa litiumioniakkujen ympäristövaikutusten on todettu olevan useissa tarkastelluissa vaikutusluokissa pienemmät kuin lyijyakkujen (per toimitettu kWh), ja samalla korostuu, että käyttö­vaiheen sähkö (lataussähkön päästöintensiteetti, eli millä sähköllä varasto käytännössä ladataan) vaikuttaa kokonaisvaikutukseen merkittävästi. [14] 
+
+
+
 
 2.3 Jäähdytys ja lämpötilanhallinta: ilma, neste, free cooling ja “kuuma–kylmä”
 
 Tavoite: poistaa lämpö mahdollisimman pienellä jäähdytyssähköllä ja hallita luotettavuus–lämpötila-kompromissi.
+
 -Free cooling ja ilmavirtojen hallinta: Pitkä vapaajäähdytyskausi on käytännössä Suomen vakioetu, mutta hyödyt realisoituvat vasta, kun ilmavirrat (kuuma/kylmä-käytävä, tiiveys, ohivirtausten estäminen) ja ohjauslogiikka ovat kunnossa. Lämpötilanhallinta on tutkimuskoosteissa oma pääluokkansa juuri siksi, että se kytkeytyy sekä IT-kuorman sijoitteluun että rakennusratkaisuihin. [4]
 
 -Nestejäähdytys ja immersion (immersiojäähdytys): Nestejäähdytys tarkoittaa, että lämpö siirretään ilmasta nesteeseen lähellä lämmönlähdettä (esim. “direct-to-chip”), jolloin puhaltimien ja ilman kierron tarve pienenee. Immersiojäähdytys on nestejäähdytyksen alalaji, jossa palvelin(komponentit) upotetaan sähköä johtamattomaan nesteeseen. Oppaassa tämä kannattaa esittää valintana erityisesti, kun tehotiheys on korkea tai hukkalämmön hyödyntämiselle halutaan korkeampi lämpötila (helpompi lämmöntalteenotto). (Tämä kohta on tekninen periaatekuvaus; perustele omilla kohdevaatimuksilla ja toimittajadokumenteilla.)
@@ -324,6 +335,20 @@ Lähteet (APA 7)
 [8] Vaghela, P., Pandey, V., Sircar, A., Yadav, K., Bist, N., & Kumari, R. (2023). Energy storage techniques, applications, and recent trends: A sustainable solution for power storage. MRS Energy & Sustainability, 10, 261–276. https://doi.org/10.1557/s43581-023-00069-9
 
 [9] ANR (Agence Nationale de la Recherche). (n.d.). DATAZERO – Datacenter With Zero Emission and Robust Management Using Renewable Energy (ANR-15-CE25-0012).
+
+Uudet (lisätty loppuun):
+
+[10] International Energy Agency – Energy Storage Technology Collaboration Programme (IEA-ES). (2024, September). Technology: Flywheel Energy Storage [Fact sheet]. https://www.iea-es.org/wp-content/uploads/public/FactSheet_mechanical_flywheel.pdf 
+IEA ES TCP
+
+[11] Gagne, D. (2024, March 26). Energy Storage (NREL/PR-7A40-89172) [Presentation slides]. National Renewable Energy Laboratory. https://docs.nrel.gov/docs/fy24osti/89172.pdf 
+docs.nrel.gov
+
+[12] U.S. Environmental Protection Agency. (2017). ENERGY STAR® program requirements: Product specification for uninterruptible power supplies (UPSs)—Eligibility criteria (Version 2.0, Rev. Dec-2017). ENERGY STAR. https://www.energystar.gov/sites/default/files/ENERGY%20STAR%20Uninterruptible%20Power%20Supplies%20Final%20Version%202.0%20Specification_2.pdf 
+ENERGY STAR
+
+[13] Yudhistira, R., Khatiwada, D., & Sanchez, F. (2022). A comparative life cycle assessment of lithium-ion and lead-acid batteries for grid energy storage. Journal of Cleaner Production, 358, 131999. https://doi.org/10.1016/j.jclepro.2022.131999 
+sciencedirect.com
 
 ## 3. Elinkaaren vaiheet
 - Tarveselvitys ja sijainti: kuormaprofiilit, kriittisyysluokat, sähkö- ja lämpöresurssit  
