@@ -353,231 +353,199 @@ ENERGY STAR
 
 ## 3. Datakeskuksen elinkaaren vaiheet
 
-Vihreän datakeskuksen “vihreys” ei synny yksittäisestä teknisestä ratkaisusta, vaan siitä, että energiatehokkuus ja ympäristövaikutukset tehdään näkyväksi ja ohjattavaksi **koko elinkaaren ajan**: tarve- ja sijaintipäätöksistä suunnitteluun, rakentamiseen ja käyttöönottoon, operointiin sekä modernisointiin ja käytöstäpoistoon. Tutkimuskirjallisuus korostaa erityisesti kahta asiaa: (i) suunnittelu- ja rakennusvaiheessa valitaan rakenteet ja laitteistot, jotka joko mahdollistavat tai estävät myöhemmän optimoinnin, ja (ii) operointivaiheessa hyödyt syntyvät jatkuvasta mittaamisesta ja ohjauksesta (Jin ym., 2016; Geng, 2014; Sharma ym., 2017).
+1) Esiselvitys (tarve, vaihtoehdot, vihreän tason tavoitteet)
 
-Suomen kontekstissa elinkaariajattelun painopiste korostuu myös siksi, että energiajärjestelmän kytkennät (sähkö, lämpö, mahdollinen hukkalämmön hyödyntäminen) ja infrastruktuurin materiaalivirrat voivat muodostaa olennaisen osan kokonaisvaikutuksesta. Siksi elinkaaren tarkastelussa kannattaa välttää “vihreä vain käyttövaiheessa” -ansa: operoinnin PUE-parannukset ovat tärkeitä, mutta ne eivät yksinään ratkaise hankinnan, laajennusten ja käytöstäpoiston vaikutuksia (LVM, 2020).
+P4 – Elinkaaren vaiheet: esiselvitys
+Tässä vaiheessa tehdään “lukitsevat” päätökset siitä, miksi datakeskus tehdään, mitä palvelua tuotetaan (SLA, kuormaprofiili, kapasiteetin kasvu) ja miten vihreys mitataan ja johdetaan. Jos energiatehokkuus-, CO₂- ja hukkalämpötavoitteita ei päätetä tässä, ne jäävät helposti myöhemmin “raportoinniksi” eikä suunnittelua ohjaavaksi vaatimukseksi. [1–3]
 
-Tässä luvussa elinkaaren vaiheet kuvataan käytännönläheisesti. Jokaisessa vaiheessa nostetaan esiin:
+Keskeiset kysymykset (rajaus):
 
-* **mitä päätetään** (ja miksi se on lukitsevaa),
-* **millä minimitasolla** vihreys on ylipäätään hallittavissa,
-* **millä mittareilla** seuranta tehdään, ja
-* **millä tarkistuksilla** varmistetaan, että valinnat todella toimivat.
+Mikä on kuormaprofiili (huiput, vaihtelu, kasvu) ja SLA—mitä voidaan joustaa ja mitä ei? [5]
 
----
+Mitä “vihreä taso” tarkoittaa: PUE/WUE, CO₂/palveluyksikkö, uusiutuvan energian osuus, hukkalämmön hyödyntämisen tavoite? [3,6]
 
-### 3.1 Esiselvitys ja tavoitteiden asettaminen
+Miten elinkaari rajataan: huomioidaanko myös rakentaminen, hankinnat ja modernisoinnit (ei vain käyttö)? [1,7]
 
-Elinkaaren ensimmäinen vaihe on esiselvitys, jossa määritellään datakeskuksen rooli, palvelutaso ja kapasiteettitarve. Kriittinen havainto on, että energiatehokkuutta ei voi “liimata” projektiin jälkikäteen, jos tavoitetasoja ei aseteta jo tässä vaiheessa: ilman tavoitteita suunnittelu optimoi helposti vain kustannusta ja aikataulua, ei kokonaisvaikutusta (Uddin & Rahman, 2012; Jin ym., 2016).
+Minimitoimet (tee vähintään):
 
-**Keskeiset päätökset (ja miksi):**
+Kirjaa kuormaprofiili ja SLA sekä kasvuskenaariot.
 
-1. **Kuormaprofiilin ja palvelutason määrittely.**
-   Kuormaprofiili (vaihtelu ajassa, kapasiteettihuiput, kuorman ennakoitavuus) ja tavoiteltu käytettävyystaso ohjaavat suoraan mitoitusta, redundanssia ja ohjattavuusvaatimuksia. Mitä tiukempi SLA ja mitä vähemmän kuorma joustaa, sitä enemmän infrastruktuuri lukitaan “aina päällä” -tilaan, mikä heikentää energiatehokkuuspotentiaalia (Geng, 2014; Barroso ym., 2013).
+Sovi tavoitemittarit ja laskentasäännöt (PUE/WUE/CO₂/palveluyksikkö + hukkalämpö). [3,6]
 
-2. **Sijainti ja energiajärjestelmäkytkennät.**
-   Vihreän datakeskuksen kannalta sijainti ei ole vain tontti, vaan kytkeytyminen sähkö- ja lämpöjärjestelmään (sekä mahdollisiin uusiutuviin ja hukkalämmön hyödyntämiseen). Suomen olosuhteissa tämä korostaa myös sitä, että ympäristö- ja ilmastovaikutuksia tarkastellaan käytännössä sekä sähkön että lämmön näkökulmasta (LVM, 2020).
+Tuotokset:
 
-3. **Elinkaaritavoitteet (LCA-ajattelu).**
-   Esiselvityksessä kannattaa päättää, mitä tarkoitetaan “vihreydellä” omassa hankkeessa: pelkkä PUE ei kerro laitehankintojen, rakennusmateriaalien ja käytöstäpoiston vaikutuksia. LCA-ajattelu auttaa tekemään tavoitteista konkreettisia: hankinta → käyttö → laajennus → käytöstäpoisto, ja kytkee mukaan materiaalit, huollon, varaosat, uudelleenkäytön ja kierrätyksen (LVM, 2020).
+Esiselvitysraportti + tavoitetaso (energia, CO₂, hukkalämpö) + vaihtoehtoskenaariot (sijainti/energia/lämpö) + päätös etenemisestä. [2–3]
 
-**Minimitaso (pakollinen):**
+2) Suunnittelu (sijainti, kapasiteetti, perusratkaisut)
 
-* Kuormaprofiili ja käytettävyystaso on kirjattu (mitä ajetaan, millä joustolla, millä häiriönsietokyvyn vaatimuksella).
-* Energiatehokkuustavoitteet on määritelty vähintään mittareina, joita tullaan seuraamaan (esim. PUE, päästöt palveluyksikköä kohti, vedenkulutus/hukkalämpö, riippuen kohteesta) (Uddin & Rahman, 2012; Geng, 2014).
+P2 – Sijaintipäätökset + P4 – Suunnitteluvaihe
+Suunnittelussa muutetaan tavoitteet arkkitehtuuriksi ja varmistetaan, että myöhemmin voidaan oikeasti mitata ja optimoida: jäähdytys, sähkö, kuorma ja hukkalämpö eivät saa jäädä “mustiksi laatikoiksi”. [4,8]
 
-**Suositus (optimi):**
+Keskeiset kysymykset (rajaus):
 
-* Tavoitteet määritellään niin, että ne ohjaavat myös hankintaa ja laajennuksia (ei vain käyttöä).
-* Kuormaa luokitellaan jouston mukaan (mitä voidaan siirtää ajassa / mitä voidaan ajaa eri paikassa), jotta myöhempi ohjaus (esim. kuorman konsolidointi ja ajoitus) on realistista (Barroso ym., 2013; Jin ym., 2016).
+Sijainti ja energia/lämpö: miten sähkö ja lämpöverkot (hukkalämpö) rajaavat toteutusta? [9,10]
 
-**Mittarit ja tarkistus:**
+Kapasiteetin kasvumalli: rakennetaanko modulaarisesti vai ylikapasiteettina (vajaakäyttöriski)? [5]
 
-* Mittarit: tavoitteiden toteutumisen seuranta määritellään jo esiselvityksessä (mitä mitataan ja millä tarkkuudella).
-* Tarkistus: esiselvityksen päätöksille tehdään “toteutuskelpoisuus- ja vaikutustarkistus” ennen konseptisuunnitteluun siirtymistä (Geng, 2014).
+Mitattavuus: mitä mitataan, mistä, millä tarkkuudella ja miten data käytetään ohjauksessa? [6,8]
 
----
+Perusratkaisut: jäähdytyskonsepti, ilmavirrat/layout, sähköketju, automaatio, verkon hallittavuus. [4,8,11]
 
-### 3.2 Konseptisuunnittelu ja mitoitus
+Minimitoimet (tee vähintään):
 
-Konseptisuunnittelussa esiselvityksen tavoitteet muutetaan arkkitehtuuriksi: kapasiteetti, laitevalinnat, sähkö- ja jäähdytysketju sekä valvonta ja mittaus. Kirjallisuudessa tämä vaihe on olennainen siksi, että monet vihreyden “vipuvarret” ovat nimenomaan suunnitteluvaiheen valintoja: esimerkiksi jäähdytyskonsepti, ilma- ja lämpövirtojen hallinta sekä mittaroinnin kattavuus (Jin ym., 2016; Geng, 2014).
+Suunnittele mittauspisteet ja rajapinnat niin, että PUE/WUE/CO₂ voidaan laskea luotettavasti ja ohjaus on mahdollinen. [6,8]
 
-**Keskeiset päätökset (ja miksi):**
+Valitse jäähdytys- ja sähköketju, jotka toimivat myös osakuormilla ja mahdollistavat säätölogiikan. [4,8]
 
-1. **Kapasiteettistrategia: modulaarinen kasvu vai ylibuukkaus.**
-   Datakeskusta rakennetaan harvoin “kerralla valmiiksi”. Warehouse-scale -ajattelussa kapasiteettia rakennetaan sukupolvina, ja modulaarinen laajennus vähentää riskiä, että infrastruktuuri on pitkään vajaakäytöllä (Barroso ym., 2013). Tämä on suoraan energiatehokkuuskysymys: vajaakäyttöinen infra kuluttaa silti merkittävästi.
+Tuotokset:
 
-2. **Sähköketju ja varmistus (UPS, generaattorit, jakelu).**
-   Sähköketjun valinnat vaikuttavat sekä häviöihin että resilienssiin. Lisäksi akku- ja varastoratkaisut eivät ole “kertahankintoja”, vaan niiden elinkaari (syklimäärä, ikääntymismekanismit ja käyttöprofiili) ohjaa, milloin järjestelmä on uusittava ja millaisia riskejä on hallittava (Vaghela ym., 2023; Geng, 2014).
+Konseptisuunnitelma + mittaus- ja ohjausarkkitehtuuri + vaiheistus (modulaarinen kasvu) + lämpöintegraation periaate. [8–10]
 
-3. **Jäähdytyskonsepti ja tilaratkaisut.**
-   Jäähdytyksen energiatehokkuus määräytyy paitsi laitteista myös tilan fyysisistä reunaehdoista: kaappirivien sijoittelu, ilmankierron toteutus, mahdollinen käytäväeristys (containment), lattiaratkaisut ja kaapelireitit vaikuttavat siihen, kuinka paljon jäähdytystä “menee harakoille” (Geng, 2014; Jin ym., 2016). Suomen oloissa ulkoilman hyödyntämispotentiaali voi olla hyvä, mutta toteutus riippuu aina valitusta konseptista ja reunaehdoista.
+3) Rakentaminen (toteutus periaatteiden pohjalta)
 
-4. **Mittarointi ja “ohjattavuus”: mitä voidaan säätää?**
-   Ilman mittausta ei ole ohjausta. Sekä jatkuvan parantamisen kehikot että käytännön case-kuvaukset korostavat, että mittaustaso (mitä mitataan, missä ja miten usein) määrittää, onko optimointi mahdollista vai jääkö se arvailuksi (Uddin & Rahman, 2012; Sharma ym., 2017).
+P4 – Rakentaminen
+Rakentamisen “vihreä ydin” on varmistaa, että suunniteltu mitattavuus ja ohjattavuus toteutuvat käytännössä: mittarit, lokit ja rajapinnat tulevat fyysisesti ja loogisesti paikoilleen. Lisäksi ilmavirtojen kannalta pienetkin toteutusvirheet (läpiviennit, tiiveys, kaapelointi) voivat lisätä jäähdytyshukkaa. [4,8]
 
-5. **Verkko osana energiatehokkuutta.**
-   Verkko nähdään usein operointivaiheen asiana, mutta arkkitehtuurivalinnat tehdään tässä. Green DCN -kirjallisuus korostaa, että energiatehokas ohjaus (esim. linkkien ja laitteiden energiatilat, reitityksen sopeutus kuormaan) edellyttää, että arkkitehtuuri ja hallittavuus tukevat sitä (Bilal ym., 2014).
+Keskeiset kysymykset (rajaus):
 
-**Minimitaso (pakollinen):**
+Onko mittausjärjestelmä (anturit, energiamittarit, virtausmittaus, data-alusta) asennettu suunnitellusti ja kalibroitu? [6,8]
 
-* Valitaan jäähdytys- ja sähköketju, jotka mahdollistavat mittauksen ja säätämisen (ei “mustia laatikoita” ilman näkyvyyttä).
-* Määritellään mittauspisteet vähintään siten, että PUE voidaan laskea luotettavasti ja trendiä seurata (Geng, 2014; Sharma ym., 2017).
+Vastaavatko ilmavirrat ja tilaratkaisut (containment, tiiveys) suunnitelmaa? [4,8]
 
-**Suositus (optimi):**
+Onko rajapinnat ja lokitus rakennettu niin, että operointi voi tehdä “muutos → vaikutus” -todentamisen? [6]
 
-* Modulaarinen kapasiteettikasvu ja “rakennetaan sitä mitä voidaan täyttää” -periaate.
-* Mittarointi suunnitellaan suoraan optimointia varten: ei vain raportointiin, vaan myös ohjauksen perustaksi (Uddin & Rahman, 2012; Sharma ym., 2017).
+Minimitoimet (tee vähintään):
 
-**Mittarit ja tarkistus:**
+As-built-dokumentaatio: mittauspisteet, kytkennät, rajapinnat, lokit, setpointien hallinta.
 
-* Mittarit: PUE (ja tarvittaessa CO₂/palveluyksikkö), jäähdytyksen toimintalämpötilat, IT-kuorman käyttöaste, häviöt sähköketjussa.
-* Tarkistus: konseptisuunnitelman katselmointi “optimointikelpoisuuden” näkökulmasta: mitä voidaan myöhemmin ohjata, mitä voidaan mitata, mitä voidaan vaiheistaa (Jin ym., 2016; Geng, 2014).
+Laadunvarmistus ilmavirroille/tiiveydelle ja mittauksen toimivuudelle. [4]
 
----
+Tuotokset:
 
-### 3.3 Rakentaminen ja käyttöönotto (commissioning)
+As-built + testisuunnitelma käyttöönottoon + hyväksytty mittaus- ja lokitusarkkitehtuuri. [8]
 
-Rakentamisessa suunnitelmat muuttuvat infrastruktuuriksi, mutta vihreän datakeskuksen kannalta merkittävä rajapinta on **käyttöönotto**: siinä mitataan ja varmistetaan, että suunnitteluratkaisut toimivat todellisissa kuormitus- ja lämpötilatilanteissa. MGHPCC:n tapaustarkastelu osoittaa, että jo varhaisesta vaiheesta lähtien kerätty mittausdata mahdollistaa suunnitteluratkaisujen varmistamisen ja myöhemmän hienosäädön (Sharma ym., 2017).
+4) Käyttöönotto (testaus, ensimmäiset mittaukset)
 
-**Keskeiset päätökset (ja miksi):**
+P4 – Käyttöönotto
+Käyttöönotossa tehdään baseline-mittaukset ja asetetaan vertailutaso tavoitteisiin: miten PUE/WUE/CO₂ käyttäytyvät osakuormilla ja nimelliskuormalla, missä on kuumia pisteitä, ja miten automaatio reagoi. Tämä on kriittistä, koska ilman baselinea myöhempi optimointi jää arvailuksi. [12–13]
 
-1. **Rakennus- ja asennuslaatu: ilmavirrat ja lämpövuodot.**
-   Yksittäiset “pienet” rakennustekniset ratkaisut (läpiviennit, tiivistykset, kaapelireitit) vaikuttavat ilmankierron hallintaan ja siten jäähdytyksen energiatehokkuuteen (Geng, 2014).
+Keskeiset kysymykset (rajaus):
 
-2. **Käyttöönoton testausohjelma (FAT/SAT, kuormitustestit).**
-   Käyttöönotossa mitataan peruslinja: miten järjestelmät käyttäytyvät osakuormilla ja suunnitelluilla kuormilla, missä syntyy kuumia pisteitä, miten automaatio reagoi (Sharma ym., 2017; Geng, 2014).
+Onko baseline mitattu kuormatasoittain (osakuorma → suunnittelukuorma)? [12]
 
-3. **Ohjausstrategioiden käyttöönotto “alusta asti”.**
-   Jin ym. (2016) kuvaavat, että vihreys ei ole vain laitteita, vaan myös operointitekniikoita. Jos ohjausstrategiat (esim. kuormariippuva jäähdytysohjaus ja energiahallinta) jätetään “myöhemmäksi”, käytäntö vakiintuu käsiohjaukseksi ja optimointi vaikeutuu (Jin ym., 2016; Uddin & Rahman, 2012).
+Onko mittausdatan laatu riittävä (luotettavuus, aikaleimat, datakatkokset)? [6]
 
-**Minimitaso (pakollinen):**
+Onko ohjausstrategiat otettu käyttöön “alusta asti” (ei käsiohjauksen vakiintumista)? [6,12]
 
-* Käyttöönoton aikana tehdään järjestelmä- ja kuormitustestit sekä ensimmäinen mittauspohja (baseline) energiatehokkuudelle (Sharma ym., 2017).
-* Mittaus- ja valvontajärjestelmät ovat käytössä ennen tuotantokäyttöä (Geng, 2014).
+Minimitoimet (tee vähintään):
 
-**Suositus (optimi):**
+Kuormitustestit + lämpötilaprofiilien kartoitus + baseline-raportti. [12]
 
-* Kuormitustestaus tehdään vaiheittain (osakuormat ja suunnittelukuorma) ja yhdistetään lämpötilaprofiilien/ilmavirtojen kartoitukseen; näin löytyvät “rakenteelliset” ongelmat ennen vakiokäyttöä (Sharma ym., 2017).
+Hyväksytyt mittarilaskennat (PUE/WUE/CO₂) ja hälytysrajat. [6,12]
 
-**Mittarit ja tarkistus:**
+Tuotokset:
 
-* Mittarit: PUE per kuormataso, lämpötilahajonta, kuumat pisteet, jäähdytysjärjestelmän ohjauksen vaste.
-* Tarkistus: commissioning-raportti, jossa verrataan suunniteltua ja mitattua toimintaa, ja sovitaan korjaavat toimet ennen tuotantoon siirtymistä (Geng, 2014; Sharma ym., 2017).
+Commissioning-raportti: baseline, poikkeamat, korjaavat toimet ja tuotantokriteerit. [12]
 
----
+5) Käyttö ja operointi (normaali arki konesalissa)
 
-### 3.4 Käyttö, operointi ja jatkuva optimointi
+P4 – Käyttö ja operointi
+Operointi on elinkaaren pisin vaihe ja suurin kumulatiivisten hyötyjen lähde: jatkuva mittaus, PUE/CO₂-seuranta ja häiriöiden tunnistus. Tavoite ei ole “kerran viritetty”, vaan jatkuvan parantamisen malli: mittaa → analysoi → muutos → vaikutus → vakiointi. [6,14–15]
 
-Operointi on datakeskuksen pisin vaihe ja myös se vaihe, jossa jatkuva optimointi tuottaa suurimman kumulatiivisen hyödyn. Vakiintunut lähestymistapa on jatkuvan parantamisen sykli: **mittaa nykytila → tunnista parannuskohteet → toteuta muutokset → mittaa vaikutus ja vakioi** (Uddin & Rahman, 2012). Samalla on hyödyllistä omaksua “datakeskus tietokoneena” -ajattelu: energiatehokkuus on IT:n, infrastruktuurin ja ohjelmistojen yhteisominaisuus, ei yhden tiimin optimointitehtävä (Barroso ym., 2013).
+Keskeiset kysymykset (rajaus):
 
-**Keskeiset päätökset (ja miksi):**
+Miten kuormaa hallitaan (konsolidointi, ajoitus), jotta käyttöaste nousee ja turhaa kapasiteettia voidaan hiljentää? [5,8]
 
-1. **Kuormanhallinta ja konsolidointi.**
-   Virtualisointi ja kuormien konsolidointi nostavat käyttöastetta ja mahdollistavat palvelinten sammuttamisen tai energiatilojen käytön. Tämä on kirjallisuudessa yksi keskeisimpiä operointivaiheen vihreitä tekniikoita (Jin ym., 2016; Uddin & Rahman, 2012).
+Miten jäähdytys ohjataan mittareilla (setpointit, lämpötilaprofiilit, osakuormat)? [4,10,16]
 
-2. **Jäähdytyksen ohjaus mittareilla.**
-   Jäähdytys on tyypillisesti suuri osa ei-IT-kulutusta, ja ohjaus nojaa siihen, että mittauspisteet ja ohjausparametrit on valittu tarkoituksenmukaisesti (Geng, 2014; Sharma ym., 2017).
+Miten verkon energiatehokkuutta parannetaan (energiamoodit, kuormaan sopeutus), jos relevanttia? [11]
 
-3. **Verkon energiatehokas operointi.**
-   Green DCN -kirjallisuus korostaa, että verkon energiankulutusta voidaan alentaa mm. reitityksen ja resurssien aktivoinnin kautta kuorman mukaan, mutta tämä edellyttää hallittavia perusratkaisuja (Bilal ym., 2014).
+Miten uusiutuvat/varastointi/hukkalämpö kytketään operointiin (jos käytössä)? [9,17–18]
 
-4. **Uusiutuvat ja varastointi osana ohjausta (jos käytössä).**
-   Jos datakeskus hyödyntää paikallista tuotantoa tai varastointia, operointi muuttuu “energiajärjestelmäksi”: ohjausstrategioiden suunnittelu ja simulointi ennen toteutusta on keskeinen teema DATAZERO-tyyppisissä lähestymistavoissa (Pierson ym., 2019).
+Minimitoimet (tee vähintään):
 
-**Minimitaso (pakollinen):**
+Jatkuva mittaus ja raportointi: PUE/WUE/CO₂ + poikkeamien käsittely ja selkeä omistajuus. [6,14]
 
-* Säännöllinen mittarointi ja raportointi (vähintään energiankulutus ja PUE) sekä poikkeamien käsittely (Uddin & Rahman, 2012).
-* Selkeä omistajuus: kuka vastaa energiatehokkuudesta ja millä päätöksillä (Barroso ym., 2013).
+Hälytyslogiikka ja trendiseuranta (häiriöiden tunnistus ennen SLA-vaikutusta). [6]
 
-**Suositus (optimi):**
+Tuotokset:
 
-* Operoinnin päätökset sidotaan mittareihin ja jälkimittaukseen (“muutos → vaikutus”), jotta optimointi ei perustu oletuksiin (Uddin & Rahman, 2012; Sharma ym., 2017).
-* Kuormanhallinta ja jäähdytysohjaus kytketään yhteen, ei erillisinä optimointeina (Barroso ym., 2013; Jin ym., 2016).
+Operointikäytännöt, mittaritaulu (dashboard), säännöllinen energiatehokkuuskatselmus ja dokumentoitu muutoshallinta. [6]
 
-**Mittarit ja tarkistus:**
+6) Modernisointi ja kapasiteetin laajennus
 
-* Mittarit: PUE-trendi ja kuormatasokohtainen PUE, IT-käyttöaste, jäähdytyksen lämpötilaprofiilit, (tarvittaessa) päästöt palveluyksikköä kohti.
-* Tarkistus: säännöllinen energiatehokkuuskatselmus (esim. kuukausi/kvartaali), jossa käydään läpi parannustoimet ja mitattu vaikutus (Uddin & Rahman, 2012).
+P4 – Modernisointi ja laajennukset
+Tässä vaiheessa päätetään, mitä kannattaa uusia energiatehokkuuden ja kapasiteetin kannalta sekä hyödynnetään historiadataa ja (tarvittaessa) malleja päätöksenteon tukena. Datakeskus elää “sukupolvissa”, ja väärin vaiheistettu refresh voi kasvattaa hetkellistä energiantarvetta ja heikentää optimointia. [5,4]
 
----
+Keskeiset kysymykset (rajaus):
 
-### 3.5 Modernisointi, laajennus ja elinkaaren loppu
+Mitkä komponentit ovat pullonkauloja (jäähdytys, sähköketju, automaatio, IT) ja mikä on vaikutus PUE/CO₂:een? [4,6]
 
-Datakeskuksen elinkaari ei ole lineaarinen: kapasiteettia lisätään, laitteita uusitaan ja ohjausjärjestelmiä päivitetään. Warehouse-scale -näkökulmasta infrastruktuuri elää “sukupolvissa”, ja modernisointi on normaali osa elinkaarta (Barroso ym., 2013). Vihreyden kannalta keskeistä on, että laajennukset eivät romuta alkuperäistä energiatehokkuuslogiikkaa (esim. lisäävät jäähdytyksen “kriittisiä pullonkauloja”) ja että elinkaaren lopussa materiaalivirrat ja vaaralliset komponentit käsitellään hallitusti (LVM, 2020).
+Miten päivitys vaiheistetaan niin, ettei synny pitkäaikaista vajaakäyttöä tai riskipiikkiä? [5]
 
-**Keskeiset päätökset (ja miksi):**
+Miten varmistetaan “muutos → mitattu vaikutus” (ennen/jälkeen)? [6]
 
-1. **Refresh- ja laajennusstrategia.**
-   Modernisointi voi kohdistua IT-laitteisiin, jäähdytykseen, sähköketjuun tai automaatioon. Jos päivitykset tehdään ilman vaiheistusta, syntyy helposti “refresh capacity” -tilanne, jossa vanha ja uusi kapasiteetti ovat päällekkäin ja hetkellinen energiantarve kasvaa (Barroso ym., 2013; Geng, 2014).
+Tarvitaanko elinkaarimallinnusta päästöjen arviointiin (erityisesti isoissa muutoksissa)? [19,7]
 
-2. **UPS- ja akkujen elinkaari.**
-   Varastoratkaisujen elinkaari riippuu käyttöprofiilista ja ikääntymisestä. Akuston “kunto” (SoH) ja turvallisuus ovat sekä käytettävyyden että ympäristövastuun ydinkysymyksiä (Vaghela ym., 2023; Geng, 2014).
+Minimitoimet (tee vähintään):
 
-3. **Käytöstäpoisto, uudelleenkäyttö ja kierrätys.**
-   LCA-ajattelussa käytöstäpoisto ei ole pelkkä loppu, vaan mahdollisuus vähentää kokonaisvaikutuksia (uudelleenkäyttö, komponenttien kierto, materiaalien kierrätys). Suomen ICT-sektorin ilmasto- ja ympäristökeskustelussa materiaalivirrat ja elektroniikkajäte ovat keskeisiä teemoja (LVM, 2020).
+Jokaiselle muutokselle: tavoite, toteutus, ennen/jälkeen mittaus ja päätös vakioinnista. [6]
 
-**Minimitaso (pakollinen):**
+Päivitetty kapasiteettitiekartta ja elinkaaritavoitteiden tarkistus. [5]
 
-* Modernisoinneille on muutoshallinta ja jälkimittaus: “päivitys → mitattu vaikutus energiatehokkuuteen”.
-* Käytöstäpoistolle on prosessi (laitteet, kaapelit, akut, kylmäaineet), jossa noudatetaan säädöksiä ja varmistetaan jäljitettävyys (LVM, 2020).
+Tuotokset:
 
-**Suositus (optimi):**
+Modernisointisuunnitelma + jälkianalyysi + päivitetty mittaristo ja baseline. [6]
 
-* Modernisointi suunnitellaan modulaarisesti: lisätään tai vaihdetaan osia ilman, että koko järjestelmä joudutaan ajamaan yli varmuuden vuoksi (Barroso ym., 2013).
-* Kiertotalous huomioidaan jo hankinnassa (uudelleenkäyttö, kierrätettävyys, toimittajavaatimukset), jotta elinkaaren loppu ei ole “projekti ilman välineitä” (LVM, 2020).
+7) Purku ja elinkaaren loppu (kiertotalous)
 
-**Mittarit ja tarkistus:**
+P4 – Purku ja elinkaaren loppu + P3 – Kiertotalous
+Elinkaaren lopussa yhdistyvät tietoturva ja kiertotalous: data pitää poistaa palauttamattomasti, ja laitteet ohjata uudelleenkäyttöön tai kierrätykseen hallitusti. Samalla kerätään opit seuraavaan hankkeeseen: mikä toimi, mikä ei, ja miten hankintavaatimuksia parannetaan (modulaarisuus, kierrätettävyys, dokumentointi). [20–22]
 
-* Mittarit: energiatehokkuus ennen/jälkeen, laitteiden elinkaarikustannus, akkujen SoH ja syklit, kierrätyksen/uudelleenkäytön osuus (Vaghela ym., 2023; LVM, 2020).
-* Tarkistus: modernisointien jälkianalyysi sekä käytöstäpoiston dokumentointi ja toimittajaraportointi (LVM, 2020).
+Keskeiset kysymykykset (rajaus):
 
----
+Miten mediasanitaatio toteutetaan ja todennetaan (HDD/SSD, menetelmä median ja riskin mukaan)? [20]
 
-### 3.6 Minimi–hyvä–huippu -tasot elinkaaren johtamiseen
+Mitkä komponentit uudelleenkäytetään, mitkä kierrätetään, ja miten haitalliset aineet käsitellään? [21–22]
 
-Yksinkertainen tapa arvioida, onko elinkaariajattelu käytännössä mukana, on erottaa kolme tasoa:
+Miten opit viedään takaisin esiselvitykseen ja suunnitteluun (P3: kiertotalousvaatimukset)? [21–22]
 
-* **Minimi:** elinkaari tunnistetaan, mutta se näkyy lähinnä yksittäisinä mittareina (esim. PUE) ja yksittäisinä parannuksina. Mittaus on olemassa, mutta ohjaus on rajallista (Uddin & Rahman, 2012).
-* **Hyvä:** elinkaari näkyy päätöksissä: modulaarinen kasvu, commissioning ja jälkimittaus, jatkuvan parantamisen sykli sekä modernisointien suunnitelmallisuus. Optimointi perustuu mitattuun vaikutukseen (Sharma ym., 2017; Barroso ym., 2013).
-* **Huippu:** elinkaari on myös materiaalien ja energiajärjestelmän hallintaa: hankinnoissa huomioidaan elinkaarivaikutus, varastointiratkaisut ja ohjausstrategiat integroidaan, ja käytöstäpoisto on suunniteltu osaksi kokonaisuutta (LVM, 2020; Pierson ym., 2019; Vaghela ym., 2023).
+Minimitoimet (tee vähintään):
 
----
+Dokumentoitu sanitointi + todistusaineisto + jäljitettävä materiaalivirta. [20–22]
 
-## Lähteet (APA)
+Tuotokset:
 
-Barroso, L. A., Clidaras, J., & Hölzle, U. (2013). *The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines* (2nd ed.). Morgan & Claypool.
+Purkuraportti: sanitointitodisteet, uudelleenkäyttö-/kierrätysaste, toimittajaraportointi sekä “opit seuraavaan hankkeeseen”. [20–22]
 
-Bilal, K., Malik, S. U. R., Khalid, O., Hameed, A., Alvarez, E., Wijaysekara, V., … Khan, S. U. (2014). A taxonomy and survey on green data center networks. *Future Generation Computer Systems, 36*, 189–208.
+Lähteet (APA, numerointi)
 
-Geng, H. (Ed.). (2014). *Data Center Handbook*. John Wiley & Sons.
+[1] UNEP DTU Partnership. (2020). Environmental sustainability of data centres: A need for a multi-impact and life-cycle approach.
+[2] Schneider Electric – Data Center Science Center. (2015). Fundamentals of Managing the Data Center Life Cycle for Owners.
+[3] Uddin, M., & Rahman, A. A. (2012). Energy efficiency and low carbon enabler green IT framework for data centers considering green metrics. Renewable and Sustainable Energy Reviews, 16(6), 4078–4094.
+[4] Geng, H. (Ed.). (2014). Data Center Handbook. John Wiley & Sons.
+[5] Barroso, L. A., Clidaras, J., & Hölzle, U. (2013). The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines (2nd ed.). Morgan & Claypool.
+[6] Sharma, P., Pegus II, P., Irwin, D. E., Shenoy, P., Goodhue, J., & Culbert, J. (2017). Design and operational analysis of a green data center. IEEE Internet Computing, 21(4), 16–24.
+[7] Whitehead, B., Andrews, D., & Shah, A. (2015). The life cycle assessment of a UK data centre. International Journal of Life Cycle Assessment, 20, 332–349. https://doi.org/10.1007/s11367-014-0838-7
 
-Jin, X., Zhang, Y., Vasilakos, A. V., & Liu, Z. (2016). *Green Data Centers: A Survey, Perspectives, and Future Directions* (arXiv preprint arXiv:1608.00687).
+[8] Lawrence Berkeley National Laboratory. (2025). Best Practices Guide for Energy-Efficient Data Center Design.
+[9] Liikenne- ja viestintäministeriö. (2020). The ICT sector, climate and the environment (Publications of the Ministry of Transport and Communications 2020:14).
+[10] Oró, E., Depoorter, V., Garcia, A., & Salom, J. (2015). Energy efficiency and renewable energy integration in data centres: Strategies and modelling review. Renewable and Sustainable Energy Reviews, 42, 429–445. https://doi.org/10.1016/j.rser.2014.10.058
 
-Liikenne- ja viestintäministeriö. (2020). *The ICT sector, climate and the environment – Interim report of the working group preparing a climate and environmental strategy for the ICT sector in Finland* (Publications of the Ministry of Transport and Communications 2020:14).
+[11] Bilal, K., Malik, S. U. R., Khalid, O., Hameed, A., Alvarez, E., Wijaysekara, V., … Khan, S. U. (2014). A taxonomy and survey on green data center networks. Future Generation Computer Systems, 36, 189–208.
+[12] Shehabi, A., Smith, S., Sartor, D., Brown, R., Herrlin, M., Koomey, J., ... & Lintner, W. (2016). United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory.
+[13] Masanet, E., Shehabi, A., Lei, N., Smith, S., & Koomey, J. (2020). Recalibrating global data center energy-use estimates. Science, 367(6481), 984–986. https://doi.org/10.1126/science.aba3758
 
-Pierson, J.-M., Baudic, G., Caux, S., Celik, B., Costa, G., Grange, L., … Varnier, C. (2019). DATAZERO: Datacenter with zero emission and robust management using renewable energy. *IEEE Access*.
+[14] Zhang, Q., Cheng, L., & Boutaba, R. (2021). Cloud data centers: Energy efficiency and sustainable design. ACM Computing Surveys, 54(7), 1–36. https://doi.org/10.1145/3453154
 
-Sharma, P., Pegus II, P., Irwin, D. E., Shenoy, P., Goodhue, J., & Culbert, J. (2017). Design and operational analysis of a green data center. *IEEE Internet Computing, 21*(4), 16–24.
+[15] Jin, X., Zhang, Y., Vasilakos, A. V., & Liu, Z. (2016). Green Data Centers: A Survey, Perspectives, and Future Directions (arXiv:1608.00687).
+[16] Pierson, J.-M., Baudic, G., Caux, S., Celik, B., Costa, G., Grange, L., … Varnier, C. (2019). DATAZERO: Datacenter with zero emission and robust management using renewable energy. IEEE Access.
+[17] Vanderbauwhede, W., & Wadenstein, M. (2025). Life Cycle Analysis for Emissions of Scientific Computing Centres. arXiv. https://doi.org/10.48550/arXiv.2506.14365
 
-Uddin, M., & Rahman, A. A. (2012). Energy efficiency and low carbon enabler green IT framework for data centers considering green metrics. *Renewable and Sustainable Energy Reviews, 16*(6), 4078–4094.
+[18] National Institute of Standards and Technology. (2014). NIST Special Publication 800-88 Revision 1: Guidelines for Media Sanitization.
+[19] Li, J., Zeng, X., Chen, M., Ogunseitan, O. A., & Stevels, A. (2015). Control-Alt-Delete: Rebooting solutions for the e-waste problem. Environmental Science & Technology, 49(12), 7095–7102. https://doi.org/10.1021/es5053009
 
-Vaghela, P., Pandey, V., Sircar, A., Yadav, K., Bist, N., & Kumari, R. (2023). Energy storage techniques, applications, and recent trends: A sustainable solution for power storage. *MRS Energy & Sustainability, 10*, 261–276.
-
-
-- Tarveselvitys ja sijainti: kuormaprofiilit, kriittisyysluokat, sähkö- ja lämpöresurssit  
-- Suunnittelu ja mitoitus: laitevalinnat, arkkitehtuuri, sähkö- ja jäähdytysketju  
-- Rakentaminen ja käyttöönotto: testaus, PUE-mittaukset, ohjausstrategiat  
-- Operointi ja optimointi: VM-konsolidointi, lämpökuorman hallinta, verkko-ohjaus  
-- Modernisointi ja purku: laitepäivitykset, UPS- ja akkukemian vaihdot, kierrätys  
-
-Elinkaari (LCA-ajattelu käytännössä)
-Tavoite: estää “vihreä vain käyttövaiheessa” -ansa.
-Sisällytä:
-Hankinta → käyttö → laajennus → käytöstäpoisto.
-Materiaalit, huolto, varaosat, uudelleenkäyttö, kierrätys.
-Kapasiteetin suunnittelu: modulaarinen kasvu vs ylibuukkaus.
-Minimi vs hyvä vs huippu -tasot (helppo arvioida).
+[20] Baldé, C. P., Forti, V., Gray, V., Kuehr, R., & Stegmann, P. (2017). The Global E-waste Monitor 2017: Quantities, Flows, and Resources. United Nations University, ITU, ISWA.
 
 
 ## 4. Toiminta vaiheittain
