@@ -353,7 +353,7 @@ ENERGY STAR
 
 ## 3. Datakeskuksen elinkaaren vaiheet
 
-1) Esiselvitys (tarve, vaihtoehdot, vihreän tason tavoitteet)
+1) Tarvekartoitus esiselvitys 
 
 Tässä vaiheessa tehdään “lukitsevat” päätökset siitä, miksi datakeskus tehdään, mitä palvelua tuotetaan (SLA, kuormaprofiili, kapasiteetin kasvu) ja miten vihreys mitataan ja johdetaan. Jos energiatehokkuus-, CO₂- ja hukkalämpötavoitteita ei päätetä tässä, ne jäävät helposti myöhemmin “raportoinniksi” eikä suunnittelua ohjaavaksi vaatimukseksi. [1–3]
 
@@ -375,29 +375,219 @@ Tuotokset:
 
 Esiselvitysraportti + tavoitetaso (energia, CO₂, hukkalämpö) + vaihtoehtoskenaariot (sijainti/energia/lämpö) + päätös etenemisestä. [2–3]
 
-2) Suunnittelu (sijainti, kapasiteetti, perusratkaisut)
+2) Suunnittelu, päätöksenteko ja luvitus
 
-Suunnittelussa muutetaan tavoitteet arkkitehtuuriksi ja varmistetaan, että myöhemmin voidaan oikeasti mitata ja optimoida: jäähdytys, sähkö, kuorma ja hukkalämpö eivät saa jäädä “mustiksi laatikoiksi”. [4,8]
+Tässä vaiheessa esiselvityksessä määritetty “vihreä taso” (energia, CO₂, hukkalämpö) muutetaan toteutuskelpoiseksi suunnitelmaksi ja luvituskelpoiseksi dokumentaatioksi. Vaiheen ydin on lukitseva: jos mitattavuus, rajapinnat ja lupareunaehdot eivät ole kunnossa ennen rakentamista, niitä korjataan myöhemmin kalliisti tai ne jäävät pysyväksi kompromissiksi. [1–2]
 
-Keskeiset kysymykset (rajaus):
+2.1 Ongelman kuvaaminen ja rajaaminen
 
-Sijainti ja energia/lämpö: miten sähkö ja lämpöverkot (hukkalämpö) rajaavat toteutusta? [9,10]
+Konteksti: Suunnittelu ei ole pelkkää tekniikkaa, vaan päätöksenteon “todistepaketin” tuottamista:
 
-Kapasiteetin kasvumalli: rakennetaanko modulaarisesti vai ylikapasiteettina (vajaakäyttöriski)? [5]
+mitä rakennetaan (kapasiteetti, SLA, kasvumalli),
 
-Mitattavuus: mitä mitataan, mistä, millä tarkkuudella ja miten data käytetään ohjauksessa? [6,8]
+miten vihreys todetaan (mittarit ja laskentasäännöt),
 
-Perusratkaisut: jäähdytyskonsepti, ilmavirrat/layout, sähköketju, automaatio, verkon hallittavuus. [4,8,11]
+mitä voidaan myöhemmin optimoida (ohjattavuus), ja
 
-Minimitoimet (tee vähintään):
+mitä viranomaiset edellyttävät (luvat, vaikutusarvioinnit, reunaehdot). [1–3]
 
-Suunnittele mittauspisteet ja rajapinnat niin, että PUE/WUE/CO₂ voidaan laskea luotettavasti ja ohjaus on mahdollinen. [6,8]
+Rajaa työ neljään kysymykseen (karsii epäolennaisen):
 
-Valitse jäähdytys- ja sähköketju, jotka toimivat myös osakuormilla ja mahdollistavat säätölogiikan. [4,8]
+Sääntely ja velvoitteet: mitä EU- ja kansallisia velvoitteita koskee hanketta (ympäristö, kemikaalit, melu/vesi, raportointivelvoitteet)? [4–6]
 
-Tuotokset:
+Lupapolku ja aikataulu: mitkä luvat ja menettelyt ovat kriittisellä polulla ja milloin ne pitää käynnistää? [7–8]
 
-Konseptisuunnitelma + mittaus- ja ohjausarkkitehtuuri + vaiheistus (modulaarinen kasvu) + lämpöintegraation periaate. [8–10]
+Infrastruktuurikyvykkyys: sähköliittymä, televerkot, mahdollinen lämpöintegraatio (hukkalämpö) – ovatko ne toteutettavissa? [2,8]
+
+Ympäristövastuu ja hyväksyttävyys: miten vaikutukset arvioidaan ja miten sidosryhmät osallistetaan niin, ettei prosessi pysähdy myöhemmin? [7–9]
+
+2.2 Tietojen kerääminen ja analysointi (mitä pitää olla “pöydällä” ennen päätöstä)
+
+Kerää ja lukitse vähintään seuraavat tietokokonaisuudet:
+
+A) Tekninen toteutus ja ohjattavuus
+
+jäähdytyskonsepti + ilmavirtojen hallinta (layout/containment/tiiveys)
+
+sähköketju ja varmistus (häviöt, osakuormat, mittaus)
+
+mittauspisteet, lokitus ja rajapinnat (BMS/DCIM/IT) – mitä voidaan myöhemmin mitata ja optimoida [1–2]
+
+B) Sijainti ja liitynnät
+
+sähkön saatavuus, kapasiteetti ja liityntäaikataulu
+
+tietoliikenneyhteydet ja redundanssi
+
+hukkalämmön hyödyntämisen toteutettavuus (lämpöverkko, lämpötaso, sopimukset) [2]
+
+C) Sääntely, luvat ja raportointivelvoitteet
+
+ympäristölupien ja menettelyjen tarve + arvioitu käsittelyaika ja portit (”ei saa aloittaa ennen lupaa”) [10]
+
+EU-tason velvoitteet, joilla on suora vaikutus mittarointiin ja raportointiin (esim. Energy Efficiency Directive -recast ja siihen liittyvä delegoitu asetus, joka velvoittaa tietyt datakeskukset raportoimaan KPI:t EU-tietokantaan) [5–6]
+
+teollisuuspäästödirektiivin (IED) ja BAT-ajattelun merkitys silloin, kun hankkeessa on luvituksen kannalta relevantteja teollisia toimintoja (esim. polttoprosesseihin liittyvät päästöt) – käytännössä “paras käyttökelpoinen tekniikka” toimii usein myös lupadokumentoinnin viitekehyksenä [11–12]
+
+D) Vaikutukset ja hyväksyttävyys
+
+melu, vesi, ilmanlaatu, luonto- ja ilmastovaikutukset, riskit
+
+sidosryhmät ja osallistaminen (kuka vaikuttaa, milloin, ja millä tiedolla) [7–9]
+
+2.3 Elinkaariongelman pilkkominen osaongelmiin (työvirrat)
+
+Jotta vaihe ei muutu “kaikeksi kaikille”, jaa työ neljään rinnakkaiseen virtaan:
+
+Suunnitteluratkaisut ja optimointikelpoisuus
+
+jäähdytys/sähkö/kuorma/hukkalämpö: valitaan ratkaisut, jotka voidaan mitata ja ohjata [1–2]
+
+Päätöksenteko ja lupaprosessi (⚖️ Vaihe 3 -sisältö)
+
+sääntelykehys, lupadokumentit, kaavoituskoordinaatio ja viranomaisvuoropuhelu [7–8]
+
+Infrastruktuuri ja sijainti
+
+sähkö- ja teleliitynnät, maankäyttö, alueelliset reunaehdot [2,8]
+
+Ympäristövastuu ja vaikutusten hallinta
+
+vaikutusarvioinnit, rajoitukset (melu/vesi/ilma), sidosryhmät, hyväksyttävyys [7–9]
+
+2.4 Osaongelmien analysointi ja priorisointi (mitä ratkaistaan ensin)
+
+Tässä vaiheessa kannattaa priorisoida kriittisen polun ja lukitusriskin mukaan:
+
+Ratkaise ensin (lukitsee myöhemmän onnistumisen):
+
+Mittaus, lokitus ja rajapinnat (ilman näitä ei synny todellista PUE/CO₂/hukkalämpö-ohjausta) [1–2]
+
+Sähköliittymän ja lämpöintegraation toteutettavuus (aikataulu + sopimukset) [2,8]
+
+Lupapolun “portit” ja menettelyjen aloitusajankohdat (viiveet pysäyttävät hankkeen) [7,10]
+
+Ratkaise seuraavaksi (optimoi kustannus ja vaikutus):
+
+Konseptin valinnat osakuormilla (modulaarisuus ja osakuormatehokkuus) [1–2]
+
+Raportointivelvoitteiden huomiointi jo suunnittelussa (tietomallit ja KPI:t) [5–6]
+
+Vaihe 3: Päätöksenteko ja luvitus (sisällytetty ja käytäntöön käännetty)</summary>
+
+Tässä vaiheessa tehdään datakeskuksen toteutuksen kannalta ratkaisevat päätökset ja varmistetaan, että hanke täyttää viranomaismääräykset ja kestävän kehityksen tavoitteet. Prosessi on monialainen ja se kannattaa käsitellä neljänä osa-alueena (kuten luonnoksessasi):
+
+1) EU- ja kansallisen tason sääntelykehys
+
+Mitä tämä tarkoittaa käytännössä suunnittelulle:
+
+Laadi “compliance-kartta”: mitä säädöksiä sovelletaan ja mitä ne vaativat mittaamiselta, raportoimiselta ja raja-arvoilta. [5–6,11–12]
+
+Huomioi erityisesti EU:n energiatehokkuuslinjaukset datakeskuksille: tietyt datakeskukset velvoitetaan raportoimaan energiankulutusta ja KPI:itä EU-tietokantaan, mikä vaikuttaa suoraan siihen, mitä mittareita ja datan keruuta suunnittelussa pitää rakentaa. [5–6]
+
+2) Lupaprosessi ja päätöksenteko
+
+Mitä tämä tarkoittaa käytännössä suunnittelulle:
+
+Tee lupaprosessista projektin aikataulun runko (ei liite).
+
+Kokoa lupahakemusten ydinaineisto: kuvaus toiminnasta, vaikutukset, päästöt/riski, hallintatoimet ja seuranta. [7,10]
+
+Varmista ajoitus: käytännön kokemusten mukaan luvituksen viivästykset voivat hidastaa hanketta merkittävästi – ja siksi aikainen “viranomaisdialogi + dokumenttivalmius” on usein ratkaisevaa. [7]
+
+3) Infrastruktuurin suunnittelu ja sijainnin määrittely
+
+Mitä tämä tarkoittaa käytännössä suunnittelulle:
+
+Lukitse liittymävaatimukset ja toteutusaikataulu (sähkö, tele, vesi, lämpö) ennen lopullista investointipäätöstä.
+
+Tuota “liityntä- ja kapasiteettitodisteet” päätöksenteolle (mitä saadaan, milloin, millä ehdoilla). [2,8]
+
+4) Ympäristövastuu ja vaikutusten hallinta
+
+Mitä tämä tarkoittaa käytännössä suunnittelulle:
+
+Tee vaikutusarvioinnit niin, että ne tukevat sekä lupia että hyväksyttävyyttä: melu-, vesi- ja ilmanlaatu sekä luonto- ja ilmastovaikutukset. [7–9]
+
+Rakenna osallistaminen (paikallisyhteisöt, viranomaiset) osaksi aikataulua – ei “viime hetken kuulemisena”. [7–8]
+
+Miksi elinkaarimalli kuuluu tähän vaiheeseen:
+Elinkaarilähtöinen arviointi estää sen, että päätöksenteko optimoi vain operointia ja unohtaa rakentamisen ja muutosten vaikutukset; tämä on noussut esiin myös datakeskusten LCA-keskustelussa. [9]
+
+2.5 Ratkaisustrategiat (konkreettiset askeleet, joita voi seurata)
+
+Suunnittelun minimitaso (pakollinen ennen lupahakemuksia):
+
+Mittaus- ja datakeruusuunnitelma: PUE/CO₂/hukkalämpö (ja tarvittaessa WUE) + laskentasäännöt + datan omistajuus [1–2,5–6]
+
+Konseptisuunnittelu “osakuormilla”: miten järjestelmät käyttäytyvät vajaalla kuormalla [1–2]
+
+Lupakartta + aikataulu + vastuuroolit + dokumenttipohjat [7,10]
+
+Suositus (kun haetaan parasta onnistumistodennäköisyyttä):
+
+“Permit-ready design review”: katselmoi suunnittelu nimenomaan lupavaatimuksia ja vaikutusten hallintaa vasten (melu/vesi/kemikaalit/varavoima). [7–8]
+
+Tee päätöksenteosta jäljitettävää: päätösloki + vaihtoehtojen vertailu (TCO + päästöt + hukkalämpö + riskit). [9]
+
+Valmistele raportointivelvoitteet etukäteen (KPI-määrittelyt, rajapinnat, datan laatu). [5–6]
+
+2.6 Kokoaminen ja systematisointi (yhdeksi ohjattavaksi paketiksi)
+
+Kokoa lopuksi suunnittelu + päätöksenteko + luvitus yhdeksi “stage-gate” -paketiksi:
+
+Portti A: Concept freeze (ennen lupien viimeistelyä)
+
+konsepti valittu (jäähdytys/sähkö/kuorma/hukkalämpö)
+
+mittaus ja rajapinnat määritelty (raportointikyky mukana) [1–2,5–6]
+
+Portti B: Permit pack valmis
+
+lupahakemukset + vaikutusarviot + seurantasuunnitelma koottu
+
+viranomaisdialogi käyty, kriittiset riskit kirjattu [7,10]
+
+Portti C: Investointipäätös (FID)
+
+aikataulu perustuu lupapolkuun ja liityntöihin
+
+päätös perustuu vaihtoehtojen vertailuun (energia/CO₂/hukkalämpö/TCO/riskit) [2,7,9]
+
+Lähteet (APA, numerot)
+
+[1] Lawrence Berkeley National Laboratory. (2025). Best Practices Guide for Energy-Efficient Data Center Design.
+
+[2] Geng, H. (Ed.). (2014). Data Center Handbook. John Wiley & Sons.
+
+[3] Schneider Electric – Data Center Science Center. (2015). Fundamentals of Managing the Data Center Life Cycle for Owners.
+
+[4] Directive 2010/75/EU of the European Parliament and of the Council of 24 November 2010 on industrial emissions (integrated pollution prevention and control). Official Journal of the European Union. 
+Legislation.gov.uk
+
+[5] Directive (EU) 2023/1791 of the European Parliament and of the Council of 13 September 2023 on energy efficiency (recast). Official Journal of the European Union. 
+EUR-Lex
+
+[6] Commission Delegated Regulation (EU) 2024/1364 of 14 March 2024 on the first phase of the establishment of a common Union rating scheme for data centres. Official Journal of the European Union. 
+EUR-Lex
+
+[7] RPS Group. (2025). Environmental permitting for data centres: What you need and when to apply.
+
+[8] Suomi.fi. (n.d.). Environmental permit – Regional State Administrative Agency. 
+Suomi.fi
+
+[9] Tozzi, C. (2025, kesä 11). Data Center Life Cycle Assessments: A New Sustainability Standard. Data Center Knowledge.
+
+[10] European Commission. (2024). Commission adopts EU-wide scheme for rating sustainability of data centres. 
+Energy
+
+[11] BAT reference documents (EU-BRITE / JRC). (n.d.). BAT reference documents. 
+bureau-industrial-transformation.jrc.ec.europa.eu
+
+[12] Finnish Energy Authority (Energiavirasto). (2024). Reporting from data centres to the European database has started. 
+Energiavirasto
+
+
 
 3) Rakentaminen (toteutus periaatteiden pohjalta)
 
@@ -421,7 +611,7 @@ Tuotokset:
 
 As-built + testisuunnitelma käyttöönottoon + hyväksytty mittaus- ja lokitusarkkitehtuuri. [8]
 
-4) Käyttöönotto (testaus, ensimmäiset mittaukset)
+4) Käyttöönotto operatiivinen toiminta modernisointi ja kapasiteetin laajennus 
 
 Käyttöönotossa tehdään baseline-mittaukset ja asetetaan vertailutaso tavoitteisiin: miten PUE/WUE/CO₂ käyttäytyvät osakuormilla ja nimelliskuormalla, missä on kuumia pisteitä, ja miten automaatio reagoi. Tämä on kriittistä, koska ilman baselinea myöhempi optimointi jää arvailuksi. [12–13]
 
@@ -442,8 +632,6 @@ Hyväksytyt mittarilaskennat (PUE/WUE/CO₂) ja hälytysrajat. [6,12]
 Tuotokset:
 
 Commissioning-raportti: baseline, poikkeamat, korjaavat toimet ja tuotantokriteerit. [12]
-
-5) Käyttö ja operointi (normaali arki konesalissa)
 
 Operointi on elinkaaren pisin vaihe ja suurin kumulatiivisten hyötyjen lähde: jatkuva mittaus, PUE/CO₂-seuranta ja häiriöiden tunnistus. Tavoite ei ole “kerran viritetty”, vaan jatkuvan parantamisen malli: mittaa → analysoi → muutos → vaikutus → vakiointi. [6,14–15]
 
@@ -467,7 +655,7 @@ Tuotokset:
 
 Operointikäytännöt, mittaritaulu (dashboard), säännöllinen energiatehokkuuskatselmus ja dokumentoitu muutoshallinta. [6]
 
-6) Modernisointi ja kapasiteetin laajennus
+Modernisointi ja kapasiteetin laajennus
 
 Tässä vaiheessa päätetään, mitä kannattaa uusia energiatehokkuuden ja kapasiteetin kannalta sekä hyödynnetään historiadataa ja (tarvittaessa) malleja päätöksenteon tukena. Datakeskus elää “sukupolvissa”, ja väärin vaiheistettu refresh voi kasvattaa hetkellistä energiantarvetta ja heikentää optimointia. [5,4]
 
@@ -491,7 +679,7 @@ Tuotokset:
 
 Modernisointisuunnitelma + jälkianalyysi + päivitetty mittaristo ja baseline. [6]
 
-7) Purku ja elinkaaren loppu (kiertotalous)
+6) Käytöstä poisto ja uudelleenkäyttö
 
 Elinkaaren lopussa yhdistyvät tietoturva ja kiertotalous: data pitää poistaa palauttamattomasti, ja laitteet ohjata uudelleenkäyttöön tai kierrätykseen hallitusti. Samalla kerätään opit seuraavaan hankkeeseen: mikä toimi, mikä ei, ja miten hankintavaatimuksia parannetaan (modulaarisuus, kierrätettävyys, dokumentointi). [20–22]
 
