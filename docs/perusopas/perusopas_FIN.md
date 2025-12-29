@@ -514,28 +514,41 @@ Purkuraportti: sanitointitodisteet, uudelleenkäyttö-/kierrätysaste, toimittaj
 Lähteet (APA, numerointi)
 
 [1] UNEP DTU Partnership. (2020). Environmental sustainability of data centres: A need for a multi-impact and life-cycle approach.
+
 [2] Schneider Electric – Data Center Science Center. (2015). Fundamentals of Managing the Data Center Life Cycle for Owners.
+
 [3] Uddin, M., & Rahman, A. A. (2012). Energy efficiency and low carbon enabler green IT framework for data centers considering green metrics. Renewable and Sustainable Energy Reviews, 16(6), 4078–4094.
+
 [4] Geng, H. (Ed.). (2014). Data Center Handbook. John Wiley & Sons.
+
 [5] Barroso, L. A., Clidaras, J., & Hölzle, U. (2013). The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines (2nd ed.). Morgan & Claypool.
+
 [6] Sharma, P., Pegus II, P., Irwin, D. E., Shenoy, P., Goodhue, J., & Culbert, J. (2017). Design and operational analysis of a green data center. IEEE Internet Computing, 21(4), 16–24.
+
 [7] Whitehead, B., Andrews, D., & Shah, A. (2015). The life cycle assessment of a UK data centre. International Journal of Life Cycle Assessment, 20, 332–349. https://doi.org/10.1007/s11367-014-0838-7
 
 [8] Lawrence Berkeley National Laboratory. (2025). Best Practices Guide for Energy-Efficient Data Center Design.
+
 [9] Liikenne- ja viestintäministeriö. (2020). The ICT sector, climate and the environment (Publications of the Ministry of Transport and Communications 2020:14).
+
 [10] Oró, E., Depoorter, V., Garcia, A., & Salom, J. (2015). Energy efficiency and renewable energy integration in data centres: Strategies and modelling review. Renewable and Sustainable Energy Reviews, 42, 429–445. https://doi.org/10.1016/j.rser.2014.10.058
 
 [11] Bilal, K., Malik, S. U. R., Khalid, O., Hameed, A., Alvarez, E., Wijaysekara, V., … Khan, S. U. (2014). A taxonomy and survey on green data center networks. Future Generation Computer Systems, 36, 189–208.
+
 [12] Shehabi, A., Smith, S., Sartor, D., Brown, R., Herrlin, M., Koomey, J., ... & Lintner, W. (2016). United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory.
+
 [13] Masanet, E., Shehabi, A., Lei, N., Smith, S., & Koomey, J. (2020). Recalibrating global data center energy-use estimates. Science, 367(6481), 984–986. https://doi.org/10.1126/science.aba3758
 
 [14] Zhang, Q., Cheng, L., & Boutaba, R. (2021). Cloud data centers: Energy efficiency and sustainable design. ACM Computing Surveys, 54(7), 1–36. https://doi.org/10.1145/3453154
 
 [15] Jin, X., Zhang, Y., Vasilakos, A. V., & Liu, Z. (2016). Green Data Centers: A Survey, Perspectives, and Future Directions (arXiv:1608.00687).
+
 [16] Pierson, J.-M., Baudic, G., Caux, S., Celik, B., Costa, G., Grange, L., … Varnier, C. (2019). DATAZERO: Datacenter with zero emission and robust management using renewable energy. IEEE Access.
+
 [17] Vanderbauwhede, W., & Wadenstein, M. (2025). Life Cycle Analysis for Emissions of Scientific Computing Centres. arXiv. https://doi.org/10.48550/arXiv.2506.14365
 
 [18] National Institute of Standards and Technology. (2014). NIST Special Publication 800-88 Revision 1: Guidelines for Media Sanitization.
+
 [19] Li, J., Zeng, X., Chen, M., Ogunseitan, O. A., & Stevels, A. (2015). Control-Alt-Delete: Rebooting solutions for the e-waste problem. Environmental Science & Technology, 49(12), 7095–7102. https://doi.org/10.1021/es5053009
 
 [20] Baldé, C. P., Forti, V., Gray, V., Kuehr, R., & Stegmann, P. (2017). The Global E-waste Monitor 2017: Quantities, Flows, and Resources. United Nations University, ITU, ISWA.
