@@ -355,7 +355,6 @@ ENERGY STAR
 
 1) Esiselvitys (tarve, vaihtoehdot, vihreän tason tavoitteet)
 
-P4 – Elinkaaren vaiheet: esiselvitys
 Tässä vaiheessa tehdään “lukitsevat” päätökset siitä, miksi datakeskus tehdään, mitä palvelua tuotetaan (SLA, kuormaprofiili, kapasiteetin kasvu) ja miten vihreys mitataan ja johdetaan. Jos energiatehokkuus-, CO₂- ja hukkalämpötavoitteita ei päätetä tässä, ne jäävät helposti myöhemmin “raportoinniksi” eikä suunnittelua ohjaavaksi vaatimukseksi. [1–3]
 
 Keskeiset kysymykset (rajaus):
@@ -378,7 +377,6 @@ Esiselvitysraportti + tavoitetaso (energia, CO₂, hukkalämpö) + vaihtoehtoske
 
 2) Suunnittelu (sijainti, kapasiteetti, perusratkaisut)
 
-P2 – Sijaintipäätökset + P4 – Suunnitteluvaihe
 Suunnittelussa muutetaan tavoitteet arkkitehtuuriksi ja varmistetaan, että myöhemmin voidaan oikeasti mitata ja optimoida: jäähdytys, sähkö, kuorma ja hukkalämpö eivät saa jäädä “mustiksi laatikoiksi”. [4,8]
 
 Keskeiset kysymykset (rajaus):
@@ -403,7 +401,6 @@ Konseptisuunnitelma + mittaus- ja ohjausarkkitehtuuri + vaiheistus (modulaarinen
 
 3) Rakentaminen (toteutus periaatteiden pohjalta)
 
-P4 – Rakentaminen
 Rakentamisen “vihreä ydin” on varmistaa, että suunniteltu mitattavuus ja ohjattavuus toteutuvat käytännössä: mittarit, lokit ja rajapinnat tulevat fyysisesti ja loogisesti paikoilleen. Lisäksi ilmavirtojen kannalta pienetkin toteutusvirheet (läpiviennit, tiiveys, kaapelointi) voivat lisätä jäähdytyshukkaa. [4,8]
 
 Keskeiset kysymykset (rajaus):
@@ -426,7 +423,6 @@ As-built + testisuunnitelma käyttöönottoon + hyväksytty mittaus- ja lokitusa
 
 4) Käyttöönotto (testaus, ensimmäiset mittaukset)
 
-P4 – Käyttöönotto
 Käyttöönotossa tehdään baseline-mittaukset ja asetetaan vertailutaso tavoitteisiin: miten PUE/WUE/CO₂ käyttäytyvät osakuormilla ja nimelliskuormalla, missä on kuumia pisteitä, ja miten automaatio reagoi. Tämä on kriittistä, koska ilman baselinea myöhempi optimointi jää arvailuksi. [12–13]
 
 Keskeiset kysymykset (rajaus):
@@ -449,7 +445,6 @@ Commissioning-raportti: baseline, poikkeamat, korjaavat toimet ja tuotantokritee
 
 5) Käyttö ja operointi (normaali arki konesalissa)
 
-P4 – Käyttö ja operointi
 Operointi on elinkaaren pisin vaihe ja suurin kumulatiivisten hyötyjen lähde: jatkuva mittaus, PUE/CO₂-seuranta ja häiriöiden tunnistus. Tavoite ei ole “kerran viritetty”, vaan jatkuvan parantamisen malli: mittaa → analysoi → muutos → vaikutus → vakiointi. [6,14–15]
 
 Keskeiset kysymykset (rajaus):
@@ -474,7 +469,6 @@ Operointikäytännöt, mittaritaulu (dashboard), säännöllinen energiatehokkuu
 
 6) Modernisointi ja kapasiteetin laajennus
 
-P4 – Modernisointi ja laajennukset
 Tässä vaiheessa päätetään, mitä kannattaa uusia energiatehokkuuden ja kapasiteetin kannalta sekä hyödynnetään historiadataa ja (tarvittaessa) malleja päätöksenteon tukena. Datakeskus elää “sukupolvissa”, ja väärin vaiheistettu refresh voi kasvattaa hetkellistä energiantarvetta ja heikentää optimointia. [5,4]
 
 Keskeiset kysymykset (rajaus):
@@ -499,7 +493,6 @@ Modernisointisuunnitelma + jälkianalyysi + päivitetty mittaristo ja baseline. 
 
 7) Purku ja elinkaaren loppu (kiertotalous)
 
-P4 – Purku ja elinkaaren loppu + P3 – Kiertotalous
 Elinkaaren lopussa yhdistyvät tietoturva ja kiertotalous: data pitää poistaa palauttamattomasti, ja laitteet ohjata uudelleenkäyttöön tai kierrätykseen hallitusti. Samalla kerätään opit seuraavaan hankkeeseen: mikä toimi, mikä ei, ja miten hankintavaatimuksia parannetaan (modulaarisuus, kierrätettävyys, dokumentointi). [20–22]
 
 Keskeiset kysymykykset (rajaus):
