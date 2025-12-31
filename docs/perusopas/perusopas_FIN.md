@@ -402,11 +402,17 @@ Minimissään:
 ### Miksi?
 Suunnittelussa päätetään, miten vihreys toteutuu konkreettisina teknisinä ratkaisuina ja ennen kaikkea mitattavuutena (measurement & verification). Tämä vaihe tuottaa rakennusvaiheen “ohjekirjan”: jos dokumentaatio on puutteellinen, rakennusvaiheessa tehdään tulkintoja – ja tulkinnat maksavat. [1][3][4]
 
-### Mitä tehdään (syvemmällä tasolla)
+### Mitä tehdään 
 
 #### A) Mittauspisteet ja todentaminen (M&V)
 - Määritä PUE/WUE/CUE-laskennan rajat: mikä lasketaan “IT load” vs “facility load”; missä kohtaa mitataan sähkö (pääkeskus, UPS-lähtö, PDU/rack). [3][13]  
 - Määritä sensorien tarkkuusluokat, aikaleimavaatimukset ja data-ketju (BMS/DCIM), jotta mittausdata kelpaa päätöksentekoon ja raportointiin. [3][6][7]  
+---
+
+**Liite A:** Mittauspisteiden minimirunko (konkreettinen mittaripistekartta).
+
+---
+
 
 #### B) Automaatiot ja rajapinnat
 - Suunnittele ohjauslogiikat (jäähdytys, ilmanvaihto, pumput, varavoima) ja aseta ohjaukselle tavoitteet: minimi häviöt, raja-arvot, hälytykset, “safe mode”. [3][4]  
@@ -849,9 +855,7 @@ IT-laitteet (server / storage / network)
 
 ---
 
-## Mihin kohtaan oppaaseen nämä liitteet kannattaa laittaa?
 
-- Laita nämä **liitteiksi** (Liite A ja Liite B) **sanaston jälkeen tai ennen lähteitä**.  
 - Päätekstissä viittaa näin:
   - “Mittauspisteiden minimirunko on esitetty Liitteessä A.”
   - “Hukkalämmön hyödyntämisen päätöspuu on esitetty Liitteessä B.”
