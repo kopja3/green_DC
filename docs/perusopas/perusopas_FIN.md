@@ -696,3 +696,168 @@ Yhteenveto + tarkistuslistat
 
 
 
+
+# Liite A: Esimerkkimittaripistekartta (PUE/CUE/WUE + häviöiden paikannus)
+
+## A1. Sähkönjakeluketjun energianmittaus 
+
+**Tavoite:** erottaa kolme asiaa, jotta energiatehokkuutta voidaan parantaa järkevästi:
+1) **IT-laitteiden energiankulutus** (palvelimet / storage / verkko)  
+2) **Sähköketjun häviöt** (UPS + jakelu)  
+3) **Muu konesalin energiankulutus** (jäähdytys, pumput, puhaltimet, valaistus jne.)
+
+Jos nämä menevät “yhdeksi luvuksi”, et näe mistä PUE paranee tai huononee.
+
+---
+
+### 1) Mitä sähkönjakeluketjussa tapahtuu 
+
+```text
+Jakeluverkko (tuleva sähkö)
+  |
+  | [M1] Päämittaus: paljonko koko kohde kuluttaa sähköenergiaa
+  v
+Pääkeskus (konesalin pääjakelu)
+  |
+  | [M2] IT-syötön mittaus: paljonko sähköenergiaa ohjautuu konesalin kriittiseen syöttöön
+  v
+UPS (keskeytymätön virransyöttö)
+  |  [M3] UPS sisään: UPS:lle tuleva sähkönsyöttö
+  |  [M4] UPS ulos: UPS:ltä IT-saliin lähtevä sähkönyöttö
+  |       -> UPS-häviö ≈ (M3 − M4)
+  v
+Sähkönjakelu IT-saliin (alue-/salitaso)
+  |
+  | [M5] Alue-/salimittaus: paljonko sähköenergiaa menee tiettyyn saliin tai alueeseen
+  v
+Räkit / räkkijakelu (PDU)
+  |
+  | [M6] IT-mittaus: räkki- tai ryhmätaso (paras “IT-sähköenergiakuorman” arvio)
+  v
+IT-laitteet (server / storage / network)
+
+```
+
+**Hyvä nyrkkisääntö:** jos et saa erotettua **UPS-häviötä** ja **jäähdytyksen kulutusta**, et pysty perustelemaan, missä PUE:n parannus oikeasti syntyy.
+
+---
+
+## A2. Mittaripisteet taulukkona (minimi → hyvä → erinomainen)
+
+| ID | Sijainti / rajapinta | Mitä mitataan | Miksi mitataan | Vähimmäistaso |
+|---|---|---|---|---|
+| M1 | Liittymä / utility meter | kWh, kW, PF | Kokonaiskulutus (Facility Energy) | **Pakollinen** |
+| M2 | MSB-lähdöt (kriittiset) | kW/kWh per lähtö | Erottaa suuret kulutuskorit (IT vs MEP) | Suositus |
+| M3 | UPS input | kW/kWh | UPS-häviöiden laskenta | Suositus |
+| M4 | UPS output | kW/kWh | IT-syötön mittaus (IT-lähempänä) | **Pakollinen PUE-tarkkuudelle** |
+| M5 | PDU/RPP | kW/kWh per sali/alue | Häviöiden paikannus vyöhykkeittäin | Hyvä taso |
+| M6 | Räkkimittaus | kW/kWh per räkki | Kuorman hallinta, kapasiteetti, laskutus | Hyvä/erinomainen |
+
+---
+
+## A3. Jäähdytys- ja lämpömittaukset (jotta “PUE:n toinen puoli” ei ole arvaus)
+
+| ID | Sijainti | Mitä mitataan | Miksi mitataan |
+|---|---|---|---|
+| C1 | Jäähdytyskoneikko / chiller | kW/kWh | Jäähdytyksen suurin sähköerä (jos ei free cooling) |
+| C2 | Pumput (prim/sek) | kW/kWh + virtaus | Pumpun osuus ja optimointi (Δp, virtaus) |
+| C3 | CRAH/CRAC puhaltimet | kW/kWh | Ilmansiirron energiahukka / ohivirtaus |
+| C4 | Ulkoilma/free cooling -laitteet | kW/kWh | Todentaa “Suomi-edun” realisoituminen |
+| T1 | Tuloilma palvelimille | °C, RH | Lämpötilasäätö ja riskien hallinta |
+| T2 | Paluuilma | °C, RH | Hot/cold aisle -toimivuus, sekoittuminen |
+| H1 | LTO-lämmönvaihdin (jos käytössä) | lämpöteho (kWth), energiamäärä (MWhth) | Hukkalämmön hyöty, raportointi |
+
+> Huom: Lämpöenergian mittaus kannattaa tehdä siten, että saat sekä **lämpötehon (kWth)** että **energiamäärän (MWhth)** raportointiin ja sopimuksiin.
+
+---
+
+## A4. PUE/CUE/WUE – mitä tarvitset laskentaan (käytännön minimi)
+
+- **PUE** = (Facility Energy) / (IT Energy)  
+  - Facility Energy: yleensä **M1**  
+  - IT Energy: vähintään **M4** (tai M6 aggregoituna)
+
+- **CUE** = (CO₂e) / (IT Energy)  
+  - tarvitset sähkön **päästökertoimen** + IT Energy (M4/M6)
+
+- **WUE** (jos relevantti) = (vesi) / (IT Energy)  
+  - tarvitset kokonaisveden + jäähdytysvesien erottelun
+
+---
+
+# Liite B: Päätöspuu hukkalämmön hyödyntämiseen (Suomi-konteksti)
+
+## B1. Päätöspuu (nopea “go/no-go”)
+
+**Lähtötieto (pakollinen):**
+- IT-teho (kW), arvio PUE:sta, arvio **talteenotettavasta lämpötehosta** (kWth)
+- lämpötilataso (esim. ilma 25–35°C / vesi 30–60°C / “korkea” 60–80°C)
+- etäisyys mahdolliseen lämpöasiakkaaseen / kaukolämpöön (km)
+
+---
+
+1. Onko lämmölle vastaanottaja lähellä?
+
+   * Ei -> Hyödynnä sisäisesti (toimistot, prosessit) tai suunnittele myöhempi varaus (putkivaraukset).
+   * Kyllä -> 2
+
+2. Onko lämpötilataso riittävä suoraan vastaanottajalle?
+
+   * Kyllä (esim. paikallinen matalalämpöverkko / prosessi) -> 4
+   * Ei -> 3
+
+3. Voidaanko lämpöpumpulla nostaa taso taloudellisesti?
+
+   * Laske COP-arvio ja sähkön lisäkulutus
+   * Jos talous ok -> 4
+   * Jos ei -> suunnittele “valmius” (LTO + liityntä) ja palaa myöhemmin
+
+4. Onko käyttöprofiili yhteensopiva (lämpöä tarvitaan silloin kun sitä syntyy)?
+
+   * Kyllä -> 5
+   * Ei -> harkitse: (a) lämpövarasto (TES), (b) sopimus joustosta, (c) osittainen hyödyntäminen
+
+5. Toteutuskelpoisuus:
+
+   * Putkireitti, lämmönvaihdin, mittaus (MWhth), sopimukset, luvitus
+   * Jos ok -> Toteuta + mittaroi (H1)
+
+---
+
+---
+
+## B2. Mitä “vaiheen ohittaminen” tyypillisesti maksaa (käytännön oppi)
+
+- **Jos vastaanottaja kartoitellaan vasta rakentamisen jälkeen:**  
+  joudut vetämään putkireittejä “valmiiseen” ympäristöön → lisätyö, käyttökatkot, ja usein heikompi hyötysuhde.
+
+- **Jos lämpötilatasoa ei suunnitella (air vs liquid cooling):**  
+  saatat päätyä lämpöön, jonka hyödyntäminen vaatii aina lämpöpumpun → jatkuva lisäsähkö ja pienempi nettovaikutus.
+
+- **Jos mittaus (MWhth) puuttuu:**  
+  hukkalämmön “vihreä hyöty” jää väitteeksi → vaikea perustella investointia, vaikea raportoida.
+
+---
+
+## B3. Mini-esimerkkilasku (suuruusluokat lukijalle)
+
+**Oletus:** IT-kuorma 1 MW, talteenotettava osuus 80%, käyttöaika 8 000 h/a.
+
+- Talteenotettava lämpöenergia ≈ 1 MW × 0.8 × 8 000 h = **6 400 MWhth/a**
+- Jos tämä korvaa kaukolämpöä, vaikutus riippuu paikallisesta päästökertoimesta ja sopimuksesta.
+- Oppaan kannalta tärkein oppi: **jo “pienen” MW-luokan datakeskuksessa hukkalämpö on GWh-luokkaa vuodessa** → kannattaa ainakin tehdä vastaanottajakartoitus ja varaukset.
+
+---
+
+## Mihin kohtaan oppaaseen nämä liitteet kannattaa laittaa?
+
+- Laita nämä **liitteiksi** (Liite A ja Liite B) **sanaston jälkeen tai ennen lähteitä**.  
+- Päätekstissä viittaa näin:
+  - “Mittauspisteiden minimirunko on esitetty Liitteessä A.”
+  - “Hukkalämmön hyödyntämisen päätöspuu on esitetty Liitteessä B.”
+ 
+---
+
+
+
+
