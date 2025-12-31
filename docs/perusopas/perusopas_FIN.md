@@ -353,7 +353,6 @@ ENERGY STAR
 
 ## 3. Datakeskuksen elinkaaren vaiheet
 
-```md
 # Datakeskuksen elinkaaren vaiheet (syvennetty Green ICT -näkökulmalla)
 
 Tämä osio kokoaa vihreän datakeskuksen elinkaaren vaiheet ja avaa, mitä kullakin vaiheella tarkoitetaan, miksi se on kriittinen energiatehokkuuden, ympäristövastuun ja kustannusten hallinnan kannalta – sekä mitä seuraa, jos vaihe jää vajaaksi. Elinkaaren logiikka on “ketju”: jokainen vaihe tuottaa dokumentteja ja päätöksiä, joita seuraava vaihe käyttää lähtötietoina. Elinkaariketjun suurin riski on se, että tehdään päätöksiä ilman riittävää dataa ja dokumentaatiota, jolloin virheet näkyvät vasta myöhemmin – silloin korjaus on kallista ja hidasta. [1][3][4]
@@ -519,11 +518,8 @@ Elinkaaren loppu vaikuttaa sekä ympäristöön että tietoturvaan. Vihreys ei o
 - Suunnittelussa tee dokumenteista rakennusvaiheen “totuus” (BoD, mittaussuunnitelma, commissioning). [1][3]  
 - Rakentamisessa varmista toteuma + as-built + testaus, muuten operointi on sokkona. [3][12]  
 - Operoinnissa optimoi jatkuvasti, muuten vihreys rapautuu. [3][11][12]  
-```
 
-
-
-
+---
 
 ## Lähteet
 
