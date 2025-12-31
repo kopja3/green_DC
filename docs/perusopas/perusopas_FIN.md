@@ -610,4 +610,89 @@ Mittaripistekartta: missä anturit/mittarit ovat ja mitä niistä raportoidaan.
 Raportointirytmi ja “toimenpideraja-arvot” (milloin reagoidaan).
 
 
+Yhteenveto + tarkistuslistat
+
+
+# Sanasto
+
+## Sanasto (Termi – Selitys)
+
+| Termi | Selitys |
+|---|---|
+| Datakeskus | Fyysinen ympäristö, jossa tuotetaan laskenta-, tallennus- ja verkkopalveluja (IT-laitteet + sähkö, jäähdytys, valvonta). |
+| Vihreä datakeskus | Datakeskus, jonka suunnittelu ja operointi on optimoitu energiatehokkuuden ja ympäristövaikutusten (mm. CO₂) minimointiin mitattavasti. |
+| IT-kuorma (IT load) | Palvelimien, verkon ja tallennuksen käyttämä sähköteho/energia; PUE-laskennan nimittäjä. |
+| Facility load | Koko laitoksen sähkökuorma (IT + jäähdytys + sähköketjun häviöt + muut tukijärjestelmät). |
+| PUE | Power Usage Effectiveness = koko datakeskuksen sähkö / IT-kuorman sähkö. Mitä lähempänä 1,0, sitä parempi. |
+| WUE | Water Usage Effectiveness = vedenkulutus suhteessa IT-kuorman energiankäyttöön (mittaritapa vaihtelee rajauksesta). |
+| CUE | Carbon Usage Effectiveness = hiilidioksidipäästöt suhteessa IT-kuorman energiankäyttöön (kgCO₂e/IT-kWh). |
+| Historiadata | Aiemmista käyttöjaksoista kerätty data kuormista, resursseista ja suorituskyvystä mitoituksen ja ennusteen pohjaksi. |
+| Työpyyntö (job) | Kuormayksikkö (esim. batch-ajo, laskentatehtävä, palvelupyyntö), jonka resurssitarve voidaan mallintaa. |
+| Kuorman tyypitys (workload characterization) | Kuorman ryhmittely työtyypeiksi (esim. klusterointi), jotta resursseja voidaan mitoittaa/ohjata. |
+| Klusterointi | Menetelmä, jolla havaintoja ryhmitellään samankaltaisuuden mukaan (esim. työtyypit). |
+| k-means | Yleinen klusterointialgoritmi, jossa havaintoja jaetaan k ryhmään etäisyysperiaatteella. |
+| Kuormaennuste (workload prediction) | Tulevien kuormien määrän/luonteen ennustaminen aikasarjamalleilla. |
+| ARIMA | Aikasarjamalli, jota käytetään trendin ja kausivaihtelun ennustamiseen (esim. kuorma per aikaväli). |
+| Resurssiprofiili | Työtyypin tyypillinen CPU-, muisti-, I/O- ja aikavaade (sekä mahdollinen prioriteetti/SLA). |
+| SLA | Service Level Agreement: sovittu palvelutaso (esim. vasteaika, saatavuus), joka ohjaa mitoitusta. |
+| Deadline | Aikaraja, johon mennessä työ on valmistuttava. |
+| Job–server mapping | Sääntö/kuvaus siitä, mille palvelintyypeille tietty työ voidaan sijoittaa (kelpoisuus). |
+| CPU | Prosessoriresurssi (laskentakapasiteetti), usein keskeinen rajoite työkuormien sijoittelussa. |
+| Muisti (RAM) | Käyttömuisti; rajoite erityisesti datakeskeisille/virtuaalikuormille. |
+| Kapasiteettisuunnittelu | Päätöksenteko siitä, kuinka paljon palvelimia/infra-kapasiteettia tarvitaan kuormaan ja SLA:han nähden. |
+| ILP | Integer Linear Programming: kokonaislukusuunnittelu, jolla voidaan muotoilla mm. mitoitus- ja sijoitteluongelmia. |
+| Bin packing | Pakkausongelma: kohteet (työt) sijoitetaan “laatikoihin” (palvelimet) kapasiteettirajoitteilla. |
+| NP-vaikea | Ongelmaluokka, jossa täsmäratkaisu voi kasvaa nopeasti laskennallisesti vaikeaksi. |
+| Heuristiikka | Käytännön “hyvä riittävä” -ratkaisutapa, joka ei takaa optimaalista ratkaisua mutta toimii tehokkaasti. |
+| First-fit | Heuristiikka: sijoita kohde ensimmäiseen kelpaavaan “laatikkoon” (esim. palvelimeen, jossa riittää kapasiteetti). |
+| Tehomalli | Malli, joka arvioi palvelimen tehonkulutusta kuormituksen funktiona (aktiivinen + peruskulutus). |
+| Energian proportionalisuus | Tavoite, että laitteen energiankulutus skaalautuu lähelle lineaarisesti kuorman mukana. |
+| Tyhjäkäyntiteho (idle power) | Teho, jonka palvelin kuluttaa lähes ilman kuormaa; keskeinen syy vajaakuorman energiahukkaan. |
+| Ylikapasitointi (over-provisioning) | Kapasiteetin mitoittaminen selvästi yli keskimääräisen tarpeen (huiput/varmuus), joka laskee käyttöastetta. |
+| Käyttöaste | Kuinka suuri osa IT-kapasiteetista on käytössä (esim. CPU-utilisaatio); vaikuttaa energiatehokkuuteen. |
+| Hyperskaala | Suuret pilvitoimijat, joilla on erittäin suuret konesalit ja pitkälle automatisoitu operointi. |
+| Virtualisointi | Useita virtuaalikoneita/kontteja ajetaan samassa fyysisessä palvelimessa eristetysti. |
+| Konsolidointi | Kuormien kokoaminen harvemmille fyysisille palvelimille käyttöasteen nostamiseksi ja tyhjäkäyntihävikin pienentämiseksi. |
+| DVFS | Dynamic Voltage and Frequency Scaling: prosessorin jännitteen/taajuuden säätö kuorman mukaan energiansäästöön. |
+| Lepotila / sleep state | Komponentin tai järjestelmän matalatehotila, kun kapasiteettia ei tarvita hetkellisesti. |
+| Power capping | Tehoraja, jolla IT-laitteiden kulutusta rajoitetaan (esim. verkon/UPS:n rajoitteet, kustannusoptimointi). |
+| Sähkönsyöttöketju | Muuntajat + UPS + PDU + kaapelointi + IT-kuorma; häviöt syntyvät jokaisessa muunnos-/jakeluvaiheessa. |
+| Muuntohäviöt | Tehoelektroniikan ja muuntajien aiheuttamat häviöt (lämpönä), jotka heikentävät ketjun hyötysuhdetta. |
+| UPS | Uninterruptible Power Supply: keskeytymätön virransyöttö, joka ylläpitää kuormaa katkoksessa siirtymän ajan. |
+| BESS | Battery Energy Storage System: akkuvarasto ohjaus-, suojaus- ja tehoelektroniikkakomponenteilla. |
+| Omakulutus (perushäviöt) | Kuormasta riippumaton kulutus (ohjaus, valvonta, lämpöhallinta), joka korostuu osakuormilla. |
+| Peak shaving | Kuormahuippujen leikkaaminen varastolla tai ohjauksella, jotta huipputehoa ja kustannuksia pienennetään. |
+| Power quality | Sähkönlaatu: jännite-/taajuuspoikkeamat, transientit jne.; UPS/superkondensaattorit voivat tukea. |
+| Superkondensaattori | Lyhytkestoiseen tehotukeen sopiva varasto (nopea vaste, pieni energiasisältö). |
+| Vauhtipyörävarasto | Mekaaninen varasto, joka soveltuu sekunti–minuutti -tason UPS-tukeen (nopea vaste). |
+| Redundanssi (N+1, 2N) | Varmistusperiaate: ylimääräinen kapasiteetti (N+1) tai kaksinkertainen järjestelmä (2N) saatavuuden parantamiseksi. |
+| Osakuorma | Tilanne, jossa laite käy selvästi alle nimelliskuorman; suhteelliset häviöt kasvavat usein. |
+| PDU | Power Distribution Unit: sähkönjakeluyksikkö (usein räkkikohtainen), jakaa syötön IT-laitteille. |
+| BMS | Building Management System: rakennusautomaatio (HVAC, energiavirrat, hälytykset). |
+| DCIM | Data Center Infrastructure Management: datakeskuksen infrastruktuurin valvonta/johtaminen (energia, kapasiteetti, ympäristö). |
+| Free cooling | Vapaajäähdytys: ulkoilman/ulkoveden hyödyntäminen jäähdytyksessä ilman kompressorityötä suurimman osan ajasta. |
+| Hot aisle / cold aisle | Kuuma–kylmäkäytäväjärjestely, jolla erotetaan poisto- ja tuloilma ja vähennetään sekoittumista. |
+| Ohivirtaus (bypass) | Ilmavirta, joka kiertää kuorman ohi (esim. vuotokohdista) ja heikentää jäähdytyksen tehokkuutta. |
+| Nestejäähdytys (direct-to-chip) | Lämpö siirretään nesteeseen lähellä komponenttia, mikä vähentää puhallinsähköä ja parantaa lämmön talteenottoa. |
+| Immersiojäähdytys | Palvelinkomponentit upotetaan sähköä johtamattomaan nesteeseen tehokasta lämmönsiirtoa varten. |
+| Commissioning | Käyttöönoton testaus- ja todentamisprosessi (toiminnallisuus + suorituskyky + mittarointi). |
+| M&V | Measurement & Verification: mittauksen ja todentamisen käytännöt (rajaukset, tarkkuus, datapolut). |
+| BoD (Basis of Design) | Suunnittelun perusteludokumentti: miksi ratkaisut valittiin, miten tavoitteet (mm. KPI:t) saavutetaan. |
+| QA/QC | Quality Assurance/Quality Control: laadunvarmistus ja tarkastus (asennus, mittarit, testit). |
+| Stage-gate | Projektiporttimalli: eteneminen vaiheittain tarkastuspisteiden kautta (vaatimukset, luvat, investointipäätös). |
+| As-built | Toteumadokumentit, jotka kuvaavat lopullisen rakennetun ratkaisun (välttämätön operoinnille). |
+| Hukkalämpö | IT- ja infrastruktuurihäviöistä syntyvä lämpö, joka voidaan talteenottaa ja hyödyntää (esim. kaukolämpö). |
+| Kaukolämpöliityntä | Datakeskuksen lämmönsyöttö paikalliseen kaukolämpöverkkoon; edellyttää lämpötilatasoa ja sopimusmallia. |
+| PPA | Power Purchase Agreement: pitkäaikainen sähkönhankintasopimus, usein uusiutuvasta tuotannosta. |
+| Alkuperätakuu | Sertifikaatti sähkön alkuperästä (esim. uusiutuva); tärkeä raportoinnissa mutta ei yksin ratkaise verkon fyysistä tuotantorakennetta. |
+| Mikroverkko (microgrid) | Paikallinen sähköjärjestelmä, joka voi ohjata tuotantoa/kuormaa/varastoa yhdessä (voi toimia myös irti pääverkosta). |
+| LCA | Life Cycle Assessment: elinkaariarviointi, jossa tarkastellaan ympäristövaikutuksia valmistuksesta käyttöön ja loppukäsittelyyn. |
+| E-jäte (e-waste) | Sähkö- ja elektroniikkaromu; keskeinen kiertotalous- ja vastuullisuuskysymys datakeskuksen elinkaaressa. |
+| Media sanitization | Tallennusmedian tietoturvallinen tyhjennys/hävittäminen (esim. NIST-ohjeiden mukaan). |
+| BAT | Best Available Techniques: parhaat käytettävissä olevat tekniikat; viitekehys luvituksessa ja ympäristövaatimuksissa. |
+| BREF | BAT Reference Document: BAT-viiteasiakirjat, jotka kokoavat alan parhaat tekniikat ja vertailutasot. |
+| IED | Industrial Emissions Directive: EU:n teollisuuspäästödirektiivi; voi koskea datakeskusta tapauskohtaisesti. |
+| DCN | Data Center Network: datakeskuksen sisäinen verkko (topologia, linkit, kytkimet), jolla on myös energiajalanjälki. |
+
+
 
