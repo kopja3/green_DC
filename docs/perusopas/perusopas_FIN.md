@@ -353,182 +353,181 @@ ENERGY STAR
 
 ## 3. Datakeskuksen elinkaaren vaiheet
 
-Tämä luku jäsentää vihreän datakeskuksen kehittämisen elinkaaren vaiheisiin niin, että **tavoitteet, mitattavuus ja ohjattavuus** lukitaan ajoissa ja toteutuvat myös käytännössä (suunnittelu → rakentaminen → käyttöönotto → operointi → modernisointi → käytöstä poisto). [1–4]
+```md
+# Datakeskuksen elinkaaren vaiheet (syvennetty Green ICT -näkökulmalla)
+
+Tämä osio kokoaa vihreän datakeskuksen elinkaaren vaiheet ja avaa, mitä kullakin vaiheella tarkoitetaan, miksi se on kriittinen energiatehokkuuden, ympäristövastuun ja kustannusten hallinnan kannalta – sekä mitä seuraa, jos vaihe jää vajaaksi. Elinkaaren logiikka on “ketju”: jokainen vaihe tuottaa dokumentteja ja päätöksiä, joita seuraava vaihe käyttää lähtötietoina. Elinkaariketjun suurin riski on se, että tehdään päätöksiä ilman riittävää dataa ja dokumentaatiota, jolloin virheet näkyvät vasta myöhemmin – silloin korjaus on kallista ja hidasta. [1][3][4]
 
 ---
 
-### 3.1 Vaihe 1 — Tarvekartoitus ja esiselvitys
-**Tavoite:** Määritellä palvelutaso, kuormaprofiili ja vihreystavoitteet niin, että ne ohjaavat suunnittelua eivätkä jää pelkäksi raportoinniksi. [1][4]
+## Yleiskuva elinkaaresta ja riippuvuuksista
 
-**Miksi se merkitsee:** Alkuvaihe lukitsee suuren osan elinkaaren kustannuksista ja ympäristövaikutuksista päätöksinä (mitä rakennetaan, mihin ja miten sitä mitataan). [2][1]
+| Vaihe | Tavoite | Keskeinen kysymys | Mitä tuotetaan seuraavalle vaiheelle |
+|---|---|---|---|
+| Tarvekartoitus ja esiselvitys | Oikea tarve, oikea koko, oikea sijainti | “Miksi ja minkä kokoinen?” | Vaatimusmäärittely + vihreät KPI:t + vaihtoehtopäätökset |
+| Suunnittelu | Muuttaa vaatimukset toteutuskelpoiseksi | “Miten toteutetaan mitattavasti vihreänä?” | Basis of Design, piirustukset, mittaussuunnitelma, hankinnat |
+| Päätöksenteko ja luvitus | Luvallisuus + investointilukitus | “Saammeko rakentaa ja kannattaako?” | Lupahakemukset, vaikutusarviot, stage-gate-päätökset |
+| Rakentaminen | Rakennetaan suunnitelmien mukaan | “Rakennammeko oikein ja mitattavasti?” | As-built, testiraportit, käyttöönotto-valmius |
+| Käyttöönotto, käyttö ja modernisointi | Todennetaan suorituskyky, optimoidaan | “Miten pidämme tehokkaana koko elinkaaren?” | Baseline, jatkuva optimointi, muutoshallinta |
+| Käytöstäpoisto ja uudelleenkäyttö | Turvallinen purku + kiertotalous | “Miten minimoimme elinkaaren loppupään vaikutukset?” | Sanitointi, kierrätys, opit seuraavaan hankkeeseen |
 
-**Keskeiset suunnitteluperiaatteet / ratkaisuvaihtoehdot:**
-- Kuormaprofiili + kasvuskenaariot + SLA → mitoitusperiaate. [4]
-- Vihreysmittarit ja laskentasäännöt (PUE/WUE/CO₂/palveluyksikkö + hukkalämpö). [1][2]
-- Sijaintistrategia Suomessa: ilmasto, sähkö, latenssi, lämpöverkko, tontti ja luvitus. [3][4]
-- Esiselvityksen vaihtoehdot: oma DC vs colocation vs pilvi vs hybridi. [4]
-
-**Teema → vaikutus → käytännön toimet → mittarit → viite**
-- *Sijainti (pohjoinen/etelä/länsirannikko)* → jäähdytyspotentiaali, uusiutuvan saatavuus, latenssi → sijaintikriteerit ja pisteytys → PUE-ennuste, viive, uusiutuvan osuus → [3][4]
-- *Vihreysmittarit* → ohjattavuus ja raportointikelpoisuus → määritä KPI:t + laskentasäännöt → PUE/WUE/CO₂ → [1][2]
-
-**Mittarit / todennus:** PUE, (tarvittaessa WUE), CO₂/palveluyksikkö, uusiutuvan osuus, hukkalämmön talteenoton aste. [1][2]
-
-**Esimerkki / case:** Tee “go/no-go”-portti: esiselvitysraportti + mittaristo + 2–3 sijainti- ja energia-skenaariota. [1][4]
+Seuraavissa kappaleissa avataan kunkin vaiheen keskeiset toimet ja vihreät huomionaiheet.
 
 ---
 
-### 3.2 Vaihe 2 — Suunnittelu (mittauspisteet → sensorit → datamalli)
+## 1) Tarvekartoitus ja esiselvitys
 
-**Tavoite (1 lause).**  
-Muuttaa esiselvityksen vaatimukset toteutuskelpoisiksi suunnitelmiksi niin, että **rakentamisen kuviin** sisältyvät **mittauspisteet**, ja mittaaminen on suunniteltu ennen kuin mitään rakennetaan. [1][3]
+### Miksi?
+Tässä vaiheessa päätetään 70–80 % myöhemmistä kustannus- ja energiatehokkuusominaisuuksista, koska valitaan kuormaprofiili, palvelutasot, sijainti ja tavoitearkkitehtuuri. Väärä mitoitus näkyy joko ylikapasiteettina (pysyvät perushäviöt, turha infra) tai alikapasiteettina (SLA-riski, kiireiset laajennukset). [1][2][3]
 
-**Miksi se merkitsee (1–2 lausetta, optional).**  
-Jos mittauspisteet, lokitus ja rajapinnat (BMS/DCIM/IT) eivät ole suunnitelmissa ja urakkarajoissa, PUE/CO₂-johtaminen jää jälkeenpäin paikattavaksi (kallis ja usein vajaa). Lisäksi osakuormakäyttäytyminen ratkaisee vuositasolla tehokkuuden, mutta sitä ei voi optimoida ilman mitattavuutta. [1][4]
+### Mitä tehdään (sisältö, ei vain lista)?
+- **Kuorman ja palvelutason määrittely:** erottele IT-kuorma, jäähdytyskuorma ja infrastruktuurikuorma; määritä kuormaprofiili (päivä/viikko/kausi) eikä vain “maksimikilowatit”. [3][13]  
+- **Sijainnin arviointi (Suomi):** vapaajäähdytyskausi, sähkön saatavuus ja liityntäkapasiteetti, kuituyhteydet, hukkalämmön hyödyntäminen (kaukolämpöverkko / prosessilämpö), sekä maankäyttö ja lupaympäristö. [3][11]  
+- **Ratkaisuvaihtoehdot:** oma / colocation / pilvi / hybridi – vertaile todellista ohjattavuutta (mittaus, energialähteet, hukkalämpö) ja vastuujakoa (kuka vastaa mittareista ja raportoinnista). [1][2][3]  
+- **Vihreät tavoitteet ja mittarit:** aseta KPI:t (PUE, WUE, CUE, uusiutuvan osuus, hukkalämmön hyödyntämisaste) ja tee niistä projektin “sopimus”: niitä vasten hyväksytään suunnitelmat ja käyttöönotto. [2][3][11]  
 
-**Keskeiset suunnitteluperiaatteet / ratkaisuvaihtoehdot (3–6 bulletia).**
-- **Mittaus ensin:** määritä mittauspistekartta (sähkö, IT-kuorma, jäähdytys, hukkalämpö, tarvittaessa vesi) ja liitä se rakentamisen kuviin (ID:t, sijainnit, tarkkuus, kalibrointi). [1][3]
-- **Sensorit ja datamalli:** päätä mittauspiste → mittalaite/sensori → data-attribuutit (aikaleima, yksikkö, laatu) → laskenta (PUE/WUE/CO₂/palveluyksikkö). [1][5][6]
-- **Rajapinnat ja lokitus:** määritä integraatiot (BMS/DCIM/IT), tietovirtojen omistajuus, datan säilytys ja audit trail. [1]
-- **Osakuormatehokkuus:** mitoita sähkö- ja jäähdytysketju niin, että hyötysuhde säilyy vajaakuormilla (25/50/75/100%). [4]
-- **Laajennettavuus (modulaarisuus):** suunnittele kapasiteetin kasvun portaat niin, että mittaus, automaatio ja raportointi skaalautuvat mukana. [1][4]
-- **Hukkalämpö suunnitteluehtona:** jos lämpö integroidaan, määritä lämpötasot, siirtokyky ja mittaus jo tässä vaiheessa. [11]
+### Tuotokset (deliverables)
+Minimissään:
+- **Vaatimusmäärittely (Requirements):** kapasiteetti, SLA, redundanssitaso, laajennuspolku, IT-arkkitehtuuriperiaatteet. [1][3]  
+- **Vihreä tavoitekehys:** KPI-tavoitteet + mittausperiaatteet + raportointitarpeet (myös EU-tasolle). [2][5][6][7]  
+- **Feasibility + TCO/LCA-suunta:** kustannus- ja ympäristövaikutusten suunta-arvio vaihtoehdoille. [2][17]  
 
-**Teema → vaikutus → käytännön toimet → mittarit → viite**
-- **Mittauspistekartta** → mahdollistaa todentamisen ja ohjauksen → lukitse pisteet kuviin ja urakkarajoihin → *mittauskattavuus %, mittausepävarmuus, kalibrointivaatimus* → [1][3]  
-- **Rajapinnat & lokitus** → mahdollistaa “muutos → vaikutus” -todentamisen → määritä BMS/DCIM/IT-rajapinnat ja datan omistajuus → *datakatkot, aikaleimavirheet, audit trail* → [1]  
-- **Osakuormakäyttäytyminen** → ratkaisee vuosienergian → simuloi/testaa suunnitteluarvoina osakuormat → *PUE(25/50/75/100), jäähdytyksen osuus* → [4]
-
-**Mittarit / todennus.**
-- Mittauspistekartta + mittalaiteluettelo (instrumentation schedule) + datamalli hyväksytty. [1][3]  
-- PUE/WUE/CO₂-laskentasäännöt ja datalähteet dokumentoitu (raportointikelpoisuus). [5–7]  
-- Osakuormatehokkuuden todentaminen suunnitteluarvoin (ja myöhemmin käyttöönotossa mittauksin). [4]
-
-**Esimerkki / case / referenssi.**
-- *“Measurement-ready design”*: jokaisella KPI:llä (PUE/WUE/CO₂) on määritelty mittauspisteet, sensorit, datamalli ja laskentasääntö ennen urakkalaskentaa. [1][5][6]
+### Jos vaihe ohitetaan / tehdään heikosti
+- Koko hanke voi “lukittua” väärään kokoon → myöhemmin rakennetaan kiireessä lisää (kalliimpaa, epäoptimoitua) tai pyöritetään vajaakuormalla (häviöt).  
+- KPI:t jäävät “toiveiksi” → suunnittelussa ei ole tarkkaa mittaus- ja todentamispolkua, jolloin käyttöönotossa ei tiedetä, saavutettiinko vihreys oikeasti. [2][3]  
 
 ---
 
-### 3.3 Vaihe 3 — Päätöksenteko ja luvitus (Permit pack → FID)
+## 2) Suunnittelu
 
-**Tavoite (1 lause).**  
-Varmistaa, että hanke täyttää velvoitteet ja on toteutettavissa: **Permit pack** (lupapaketti) + **FID** (investointipäätös) perustuvat todennettuihin liittymiin, vaikutusarvioihin ja mittaus-/raportointikykyyn. [1][5–8]
+### Miksi?
+Suunnittelussa päätetään, miten vihreys toteutuu konkreettisina teknisinä ratkaisuina ja ennen kaikkea mitattavuutena (measurement & verification). Tämä vaihe tuottaa rakennusvaiheen “ohjekirjan”: jos dokumentaatio on puutteellinen, rakennusvaiheessa tehdään tulkintoja – ja tulkinnat maksavat. [1][3][4]
 
-**Miksi se merkitsee (1–2 lausetta, optional).**  
-Lupapolun viiveet ja puutteellinen compliance-tulkinta voivat pysäyttää hankkeen, ja EU-velvoitteet ohjaavat suoraan sitä, mitä datakeskuksesta pitää pystyä mittaamaan ja raportoimaan. [5–8]
+### Mitä tehdään (syvemmällä tasolla)
 
-**Keskeiset suunnitteluperiaatteet / ratkaisuvaihtoehdot (3–6 bulletia).**
-- **Stage-gate:** määritä portit: (A) Concept freeze, (B) Permit pack valmis, (C) FID. [1]
-- **Compliance-kartta:** mitä EU-/kansalliset velvoitteet tarkoittavat *mittaamiselle, KPI:lle, datan laadulle ja raportoinnille*. [5–7]
-- **Lupapolku kriittisenä polkuna:** tunnista lupatyypit, aloitusajat ja “ei saa aloittaa ennen lupaa” -portit. [8]
-- **Liityntä- ja kapasiteettitodisteet (Suomi-konteksti):** sähköliittymä (MW + aikataulu), tietoliikenneyhteydet (redundanssi), hukkalämpöliityntä (jos käytössä). [4][1]
-- **BAT/BREF tarvittaessa:** jos luvitus edellyttää parhaan käyttökelpoisen tekniikan perusteluja, käytä BAT-viitekehystä. [9][10]
+#### A) Mittauspisteet ja todentaminen (M&V)
+- Määritä PUE/WUE/CUE-laskennan rajat: mikä lasketaan “IT load” vs “facility load”; missä kohtaa mitataan sähkö (pääkeskus, UPS-lähtö, PDU/rack). [3][13]  
+- Määritä sensorien tarkkuusluokat, aikaleimavaatimukset ja data-ketju (BMS/DCIM), jotta mittausdata kelpaa päätöksentekoon ja raportointiin. [3][6][7]  
 
-**Teema → vaikutus → käytännön toimet → mittarit → viite**
-- **EU-raportointivelvoitteet** → määräävät KPI-datan → compliance-kartta + KPI-määrittelyt → *KPI-valmius (PUE/WUE/CO₂), audit trail* → [5–7]  
-- **Luvat ja portit** → määrittävät aikataulun → lupakartta + ennakkodialogi → *lupastatus, käsittelyajat, riskirekisteri* → [8]  
-- **Sähkö/tele/lämpöliitynnät** → toteutettavuus ja aikataulu → “capacity proof” (sopimukset/LOI:t) → *MW varattu, liittymäaikataulu, redundanssitaso* → [4][1]
+#### B) Automaatiot ja rajapinnat
+- Suunnittele ohjauslogiikat (jäähdytys, ilmanvaihto, pumput, varavoima) ja aseta ohjaukselle tavoitteet: minimi häviöt, raja-arvot, hälytykset, “safe mode”. [3][4]  
+- Rajaa vastuut: BMS vs DCIM vs IT-orkestrointi. Liian “siiloutunut” ohjaus johtaa paikallisiin optimointeihin, jotka heikentävät kokonaisuutta.  
 
-**Mittarit / todennus.**
-- Permit pack: hakemukset, vaikutusarviot, seurantasuunnitelmat ja vastuuroolit koottu. [8]  
-- Compliance-kartta: velvoitteet ↔ KPI ↔ datalähde ↔ laskentasääntö ↔ todennus. [5–7]  
-- Liityntä- ja kapasiteettitodisteet: sähkö/tele/lämpö dokumentoitu (ehdot + aikataulu). [4][1]
+#### C) Modulaarisuus ja kasvumahdollisuudet
+- Suunnittele kapasiteetin kasvatus moduuleina (sähkö, jäähdytys, IT-salit). Tavoite: laajennus ilman, että joudutaan remontoimaan kriittisiä runkoratkaisuja. [1][3]  
+- **Kestävä modulaarinen suunnittelu:** pitkä käyttöikä, kierrätettävyys ja tehdasvalmistus (laatu, vähemmän työmaajätettä). Suomessa tämä tukee myös nopeaa käyttöönottoa ja vaiheittaista investointia. [18][19]  
 
-**Esimerkki / case / referenssi.**
-- *FID-muistio:* vaihtoehtojen vertailu (TCO + kgCO₂e + hukkalämpö + riskit) + “mittaus/raportointi valmius” liitteenä. [1][2][17]
+#### D) Tekniset ratkaisut (sähkö + jäähdytys + varmistus)
+- Valitse redundanssitaso (N+1, 2N) ja arvioi sen energiahinta: ylivarmistus kasvattaa osakuormaa ja häviöitä – tee kompromissi näkyväksi mittareilla ja kuormaprofiililla. [3][4][11]  
+- Jäähdytyksen osalta Suomessa vapaajäähdytys on usein vahva lähtökohta, mutta sen hyödyt tulevat vain, jos ilmavirrat/tiiveys/ohjaus ovat kunnossa (tämä on suunnittelussa “lukittava”). [3][4][11]  
 
----
+### Tuotokset (deliverables) – rakennusvaihe käyttää näitä
+- **Basis of Design (BoD):** miksi kukin ratkaisu on valittu (vihreys + riskit + ylläpito). [1][3][4]  
+- **Piirustukset ja kaaviot:** sähkö single-line, jäähdytyksen prosessikaaviot, layout (kuuma–kylmä), sensorikartta. [3][4]  
+- **Hankintaspesifikaatiot:** laitevaatimukset (hyötysuhde, ohjausrajapinnat, mittausvalmius, huollettavuus). [3][4]  
+- **Commissioning-suunnitelma:** miten testataan (myös osakuormilla) ja miten baseline muodostetaan. [3][12]  
 
-### 3.4 Vaihe 4 — Rakentaminen (suunniteltu mitattavuus toteutuu)
-
-**Tavoite (1 lause).**  
-Rakentaa datakeskus niin, että suunnitellut **mittauspisteet, sensorit ja rajapinnat** toteutuvat fyysisesti ja “as-built” varmistaa jäljitettävyyden. [1][3][4]
-
-**Miksi se merkitsee (1–2 lausetta, optional).**  
-Rakentamisen “vihreä ydin” on toteuttaa mitattavuus ja ohjattavuus: ilman oikein asennettuja mittauksia ei synny luotettavaa PUE/CO₂-seurantaa, ja pienetkin ilmavirta-/tiiveysvirheet voivat kasvattaa jäähdytyskuormaa merkittävästi. [3][4]
-
-**Keskeiset suunnitteluperiaatteet / ratkaisuvaihtoehdot (3–6 bulletia).**
-- **Asenna sensorit mittapisteisiin suunnitelman mukaan** ja varmista kalibrointi. [3][4]
-- **As-built-dokumentaatio:** mittauspisteet, kytkennät, rajapinnat, lokit, setpointit ja muutosten historia. [1][3]
-- **Ilmavirtojen ja tiiveyden laadunvarmistus:** containment, läpiviennit, kaapelointi ja “bypass air” -hallinta. [3][4]
-- **Rajapintojen käyttöönotto:** BMS/DCIM/IT-yhteydet niin, että operointi voi todentaa muutosten vaikutukset. [1]
-- **Rakentamisen muutoshallinta:** poikkeamat kirjataan ja arvioidaan KPI-vaikutuksin. [1]
-
-**Teema → vaikutus → käytännön toimet → mittarit → viite**
-- **Sensoriasennukset** → KPI-laskenta mahdollistuu → asenna + kalibroi + testaa → *datan saatavuus %, kalibrointitodisteet* → [3][4]  
-- **Ilmavirrat/tiiveys** → jäähdytyksen osuus ja hotspotit → QA-checklist + mittaukset → *ΔT, ohivirtaus %, hotspot-lukumäärä* → [3][4]  
-- **As-built** → jäljitettävyys ja ylläpidettävyys → luovutusaineisto + versionhallinta → *dokumentaation kattavuus, poikkeamien määrä* → [1]
-
-**Mittarit / todennus.**
-- Mittausdatan kattavuus ja laatu ennen käyttöönottoa (katkot, aikaleimat, drift). [1][3]  
-- Ilmavirran todentaminen: lämpötila, ΔT, ohivirtaus %, containmentin eheys. [3][4]
-
-**Esimerkki / case / referenssi.**
-- *“Measurement SAT” (site acceptance test):* hyväksymiskriteeri, jossa KPI-mittausketju (mittari → data → laskenta) toimii end-to-end. [1][3]
+### Jos vaihe ohitetaan / tehdään heikosti (tämä on se “kallis boomerangi”)
+- Rakentaminen tehdään suunnittelun dokumenteilla. Jos dokumentit ovat vajaita, rakennusvaihe tekee oletuksia → syntyy toteutus, joka ei vastaa KPI-tavoitteita tai jota ei voi kunnolla mitata.  
+- Rakennusvaiheessa löytyvä muutos tarkoittaa takaisinkytkentää suunnitteluun:  
+  - piirustuksia ja laskelmia päivitetään  
+  - laitespesit muuttuvat  
+  - jo tilatut laitteet/materialit voivat mennä vaihtoon  
+  - tulee palautus- ja uudelleentilauskierroksia (toimitusajat!)  
+  - ja aikataulu sekä kustannusarviot venyvät  
+  Tämä on tyypillisin syy “vihreys jäi tavoitteeksi” -lopputulokseen. [1][3]  
 
 ---
 
-### 3.5 Vaihe 5 — Käyttöönotto, käyttö/operointi sekä modernisointi/laajennus
+## 3) Päätöksenteko ja luvitus
 
-**Tavoite (1 lause).**  
-Tuottaa **baseline käyttöönotossa**, ylläpitää **jatkuva todennus operoinnissa** ja tehdä modernisointi-/laajennuspäätökset **historiadatan** ja ennen/jälkeen -todennuksen perusteella. [1][12][13]
+### Miksi?
+Ilman lupia ei rakenneta – ja ilman sääntelyyn sopivaa mittaamista/raportointia projekti voi myöhemmin törmätä vaatimuksiin, joita ei ole huomioitu. EU-tason energiatehokkuus ja datakeskusten luokitus/raportointi korostaa dokumentoitavuutta. [5][6][7][9][10]
 
-**Miksi se merkitsee (1–2 lausetta, optional).**  
-Baseline ilman myöhempi “optimointi” jää arvailuksi. Operoinnin arvo syntyy jatkuvasta mittauksesta ja hallitusta muutoksesta, ja modernisoinnissa vaikutus pitää pystyä todentamaan. [1][12]
+### Mitä tehdään
+- **Sääntelykartoitus:** energiatehokkuus, raportointi, mahdollinen IED-kehikko, BAT/BREF-vertailu. [5][9][10]  
+- **Lupaprosessi (Suomi):** ympäristölupa (AVI) tapauskohtaisesti, rakennuslupa kunnasta, mahdollinen YVA-tarveharkinta; liityntäselvitykset (sähkö/vesi/viestintä). [8][9]  
+- **Stage-gate:** portit ja kriteerit (vaatimukset, KPI:t, luvitusvalmius, investointipäätös). [5][6][7]  
 
-**Keskeiset suunnitteluperiaatteet / ratkaisuvaihtoehdot (3–6 bulletia).**
-- **Käyttöönotto = baseline:** kuormitustestit ja ensimmäinen PUE-mittaus (sekä tarvittaessa WUE/CO₂) vertailutasoksi. [3][13]
-- **Operointi = jatkuva parantaminen:** mittaa → analysoi → muutos → todenna vaikutus → vakioi, ja poikkeamien hallinta. [1][12]
-- **Datan laatu operoinnin ehtona:** aikaleimat, katkot, kalibrointi ja datan omistajuus. [1]
-- **Modernisointi/laajennus historiadatalla:** pullonkaulat trendien perusteella, ennen/jälkeen KPI-todennus. [1][12]
-- **Osakuormatehokkuuden seuranta:** seuraa tehokkuutta myös vajaakuormilla. [4]
+### Tuotokset
+- Lupahakemukset + liitteet (vaikutusarviot, mittaussuunnitelma, energiatehokkuus- ja raportointisuunnitelma). [5][6][8][9]  
 
-**Teema → vaikutus → käytännön toimet → mittarit → viite**
-- **Baseline** → mahdollistaa vaikutusten todentamisen → kuormitustestit + KPI-laskenta käyttöön → *PUE(25/50/75/100), jäähdytyksen osuus, CO₂/palveluyksikkö* → [3][13]  
-- **Poikkeamien hallinta** → estää tehokkuuden hiipimisen → hälytysrajat + trendiseuranta + juurisyy → *poikkeamatiheys, kesto, MTTR* → [12]  
-- **Modernisointi** → paranee vain todennettuna → muutokselle tavoite + ennen/jälkeen mittaus → *PUE/CO₂ ennen–jälkeen, kapasiteettimuutos* → [1][12]
-
-**Mittarit / todennus.**
-- Käyttöönoton baseline-raportti: KPI:t kuormatasoittain + lämpötilaprofiilit + hyväksymiskriteerit tuotantoon. [3][13]  
-- Operoinnin mittaristo: PUE/WUE/CO₂-trendit, poikkeamien käsittely, muutoshallinnan todennus. [1][12]  
-- Modernisoinnin todennus: ennen/jälkeen KPI + päivitetty baseline. [1][12]
-
-**Esimerkki / case / referenssi.**
-- *“Muutos → vaikutus” -käytäntö:* jokainen säätö hyväksytään vasta, kun vaikutus näkyy KPI:ssä ja riskit on kirjattu. [1][12]
+### Jos vaihe ohitetaan / tehdään heikosti
+- Luvat viivästyvät → rakentaminen seisoo.  
+- Raportointivelvoite huomataan myöhään → joudutaan lisäämään mittauspisteitä jälkikäteen (kallis ja häiritsee käyttöä). [6][7]  
 
 ---
 
-### 3.6 Vaihe 6 — Käytöstä poisto ja uudelleenkäyttö (tietoturva + materiaalivirrat + opit takaisin)
+## 4) Rakentaminen
 
-**Tavoite (1 lause).**  
-Poistaa datakeskus hallitusti niin, että **mediasanitaatio** on todennettua, **materiaalivirrat** ovat jäljitettäviä ja opit viedään takaisin esiselvityksen vaatimuksiin. [14–16][1]
+### Miksi?
+Rakentamisessa “vihreä suunnitelma” muuttuu todellisuudeksi. Tyypillisin energiatehokkuuden epäonnistuminen syntyy siitä, että asennus ja käyttöönotto eivät vastaa suunnittelun oletuksia (mittarit, ilmavirrat, ohjauslogiikat). [3][4][12]
 
-**Miksi se merkitsee (1–2 lausetta, optional).**  
-Elinkaaren lopussa yhdistyvät tietoturva ja kiertotalous: data on poistettava palauttamattomasti ja laitteet ohjattava uudelleenkäyttöön tai kierrätykseen niin, että vaikutus ja vastuut ovat todennettavissa. [14–16]
+### Mitä tehdään
+- **QA/QC mittaroinnille:** asennus, kalibrointi ja signaalitiet (ei vain “asennettu”, vaan “tuottaa oikeaa dataa”). [3]  
+- **Jäähdytyksen toteutus:** tiiveys, ohivirtausten estäminen, kuuma–kylmä, ohjauslogiikat. [3][4][11]  
+- **Integraatiot:** BMS/DCIM/IT-rajapinnat testataan oikeilla datapoluilla. [3]  
+- **As-built:** päivitetään “todellinen toteuma” – tämä on operoinnin perusta. [3][12]  
 
-**Keskeiset suunnitteluperiaatteet / ratkaisuvaihtoehdot (3–6 bulletia).**
-- **Mediasanitaatio riskiperusteisesti** (HDD/SSD; menetelmä valitaan riskin ja median mukaan; todennus). [14]
-- **Materiaalivirrat ja kiertotalous:** uudelleenkäyttö ensin, kierrätys seuraavaksi; vaaralliset aineet hallitusti. [15][16]
-- **Jäljitettävyys:** dokumentoitu ketju (kuka, mitä, milloin), todistusaineisto ja toimittajaraportointi. [14–16]
-- **Opit takaisin vaiheeseen 1:** mikä toimi mittauksessa, ohjauksessa, ylläpidossa ja varmistuksissa; päivitä hankintavaatimukset (modulaarisuus, mittausvalmius, dokumentointi). [1][2]
+### Tuotokset
+- As-built-dokumentit + testiraportit + kalibrointiraportit. [3][12]  
 
-**Teema → vaikutus → käytännön toimet → mittarit → viite**
-- **Sanitointi** → tietoturvariski eliminoituu vain todennettuna → valitse menetelmä + todenna → *sanitointikattavuus %, todistusaineisto* → [14]  
-- **Materiaalivirrat** → ympäristövaikutus ja vastuullisuus → uudelleenkäyttö-/kierrätysprosessi + raportointi → *uudelleenkäyttöaste %, kierrätysaste %, e-jäte kg* → [15][16]  
-- **Lessons learned** → seuraava hanke paranee → vaatimuslista + päätösloki + mittausarkkitehtuurin opit → *havaittujen parannusten määrä, päivitykset vaatimuksiin* → [1][2]
-
-**Mittarit / todennus.**
-- Mediasanitaation todentaminen (audit trail) ja hävitys-/uudelleenkäyttötodistukset. [14]  
-- Uudelleenkäyttö-/kierrätysaste ja jäljitettävät materiaalivirrat. [15][16]
-
-**Esimerkki / case / referenssi.**
-- *Purkuraportti:* sanitointitodisteet + materiaalivirrat + “top-10 opit” ja niiden muuntaminen seuraavan esiselvityksen vaatimuksiksi. [14–16][1]
+### Jos vaihe ohitetaan / tehdään heikosti
+- Et pysty todentamaan PUE/WUE/CUE luotettavasti → optimointi ja raportointi kärsii.  
+- “Pienet” asennusvirheet (sensoripaikka, tiiveys) → jatkuva energiahukka koko elinkaaren ajan.  
 
 ---
 
-## Lähteet (APA, numerointi)
+## 5) Käyttöönotto, käyttö ja modernisointi
 
-[1] Schneider Electric – Data Center Science Center. (2015). *Fundamentals of Managing the Data Center Life Cycle for Owners*.
+### Miksi?
+Vihreä datakeskus ei ole “rakennettu ja valmis”, vaan operoinnissa optimoitava järjestelmä. Lisäksi IT-kuorma muuttuu: ilman jatkuvaa seurantaa ja modernisointia energiatehokkuus valuu pois. [3][11][12][13]
+
+### Mitä tehdään
+- **Baseline-testit:** eri kuormatasot, PUE/WUE-baseline, toiminnalliset testit. [3]  
+- **Jatkuva seuranta:** hälytysrajat, trendit, poikkeamat, jatkuva commissioning. [3][12]  
+- **Modernisointi:** laite- ja ohjauspäivitykset, kapasiteetin lisäys moduuleina, vaikutusten mittaus ennen/jälkeen. [3][11][12]  
+
+### Tuotokset
+- Baseline + jatkuvan optimoinnin prosessit + muutoshallintadokumentit.
+
+### Jos vaihe ohitetaan / tehdään heikosti
+- Energiatehokkuus heikkenee “hiljaa” (setpoint drift, ohivirtaus, osakuormat).  
+- Laajennukset tehdään ilman vaikutusmittausta → uusi kapasiteetti tuo suhteettomasti häviöitä.  
+
+---
+
+## 6) Käytöstäpoisto ja uudelleenkäyttö
+
+### Miksi?
+Elinkaaren loppu vaikuttaa sekä ympäristöön että tietoturvaan. Vihreys ei ole uskottavaa, jos purku ja e-jäte hoidetaan huonosti. [14][15][16][17]
+
+### Mitä tehdään
+- **Media sanitization:** NIST 800-88 mukaiset menetelmät. [14]  
+- **Uudelleenkäyttö ja kierrätys:** kuntoarvio, materiaalivirrat, vaaralliset jätteet (akut). [15][16]  
+- **Oppien keruu:** mikä toimi, mikä ei → syöttö seuraavaan hankkeeseen. [17]  
+
+### Jos vaihe ohitetaan / tehdään heikosti
+- Tietoturvariski + mainehaitta.  
+- E-jäte menee väärään kanavaan → vastuullisuus- ja compliance-riski.  
+
+---
+
+## Tiivis “vihreän onnistumisen” sääntö
+
+- Määritä KPI:t ja mittausrajat esiselvityksessä → ne ohjaavat kaikkea. [2][3]  
+- Suunnittelussa tee dokumenteista rakennusvaiheen “totuus” (BoD, mittaussuunnitelma, commissioning). [1][3]  
+- Rakentamisessa varmista toteuma + as-built + testaus, muuten operointi on sokkona. [3][12]  
+- Operoinnissa optimoi jatkuvasti, muuten vihreys rapautuu. [3][11][12]  
+```
+
+
+
+
+
+## Lähteet
+
+[1] Schneider Electric – Data Center Science Center. (2015). *Fundamentals of Managing the Data Center Life Cycle for Owners* (White Paper).
 
 [2] UNEP DTU Partnership. (2020). *Environmental sustainability of data centres: A need for a multi-impact and life-cycle approach*.
 
@@ -562,6 +561,9 @@ Elinkaaren lopussa yhdistyvät tietoturva ja kiertotalous: data on poistettava p
 
 [17] Whitehead, B., Andrews, D., & Shah, A. (2015). The life cycle assessment of a UK data centre. *The International Journal of Life Cycle Assessment, 20*, 332–349. https://doi.org/10.1007/s11367-014-0838-7
 
+[18] Schneider Electric. (2021). *How Modular Data Centers Help Companies Meet Sustainability Goals*.
+
+[19] Datacenter Dynamics. (2023). *Embracing the future: Modularization, sustainability, and efficiency in data centers*.
 
 
 
