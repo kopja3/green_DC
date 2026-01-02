@@ -790,21 +790,6 @@ Käytännön toteutus Suomessa tarkoittaa:
 [9] Liikenne- ja viestintäministeriö. (2020). *The ICT sector, climate and the environment – Interim report* (Publications of the Ministry of Transport and Communications 2020:14).
 
 
-- Hetkellinen kuorma ja kapasiteetin valinta  
-- Virtuaalikoneiden sijoittelu ja palvelinparkit  
-- Verkon energiatehokas ohjaus: reititys, linkkien sammuttaminen  
-- Sähkönjakelun tehorajat ja varavoima: power-capping, akkujen/UPSien käyttö  
-- Jäähdytys ja lämpötilan hallinta: CRAC/vesi, TES-varastot, tuloilman lämpötilan optimointi  
-- Energiavirtamittaus ja palaute: PUE, CUE, lämpötilat, ilmavirrat  
-
-Toiminta (operointi ja arjen ohjaus)
-Tavoite: vihreys syntyy eniten vasta käytössä (ohjaus, optimointi, prosessit).
-Sisällytä:
-Käyttöönotto, muutoksenhallinta, incident/maintenance.
-Optimointi: lämpötilasetpointit, ilmavirran ohjaus, kuorman siirto, huoltoikkunat.
-Palvelutasot vs energiatavoitteet: miten sovitetaan yhteen.
-Toimintamallit: “päivittäinen”, “viikoittainen”, “kvartaaleittain” tehtävät.
-
 
 ## 5. Energian kulutus ja uudelleenkäyttö
 - Kulutuslähteet: palvelimet, verkko, jäähdytys, sähkönjakelu  
