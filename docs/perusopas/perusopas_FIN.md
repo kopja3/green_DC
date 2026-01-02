@@ -569,7 +569,227 @@ Elinkaaren loppu vaikuttaa sekä ympäristöön että tietoturvaan. Vihreys ei o
 
 
 
-## 4. Toiminta vaiheittain
+## 4. Vihreän datakeskuksen toiminta vaiheittan: sähköstä palveluksi ja takaisin lämmöksi
+
+**Tavoite:** kuvata, miten **energia ja tieto** kulkevat vihreässä datakeskuksessa vaiheesta toiseen (sähkö → IT-palvelu → lämpö) ja miten ketju toteutetaan Suomessa niin, että **uusiutuva energia, energiatehokkuus (PUE), hukkalämmön hyödyntäminen, mittaus/raportointi ja jatkuva optimointi** ovat osa normaalia toimintaa. [1–4][6–9]
+
+**Lukijalle käytännön lupaus:** jokaisen alaluvun lopussa on **tuotokset (deliverables)** ja “**Mistä saat tämän?**” -ohje: teetkö itse, tilaatko suunnittelijalta, pyydätkö datakeskusoperaattorilta vai energia-/kaukolämpöyhtiöltä.
+
+---
+
+## P4.1 Sähkönsyöttö ja virranjakelu (verkosta IT-kuormaan)
+
+**Miksi?**  
+Datakeskus on **kriittinen sähköjärjestelmä**: toimitusvarmuus (UPS/varavoima) ja energiatehokkuus ratkaistaan yhtä aikaa. Kaikki häviöt (muunto, UPS, jakelu) näkyvät lopulta myös jäähdytyskuormana, koska sähkö päätyy lämmöksi. [6][7] Suomessa vihreys edellyttää lisäksi, että sähkön alkuperä ja päästöt ovat **todennettavissa** ja raportoitavissa. [9]
+
+**Mitä tehdään (sisältö)?**  
+1) Määritetään sähköketju (verkko → muuntajat → UPS → jakelu/PDU → räkit) ja 2) tehdään siitä **mitattava**, jotta voidaan erottaa **IT-kuorma** ja **infrastruktuurikuorma** (PUE:n perusta). [2][6][7]  
+Samalla varmistetaan, että uusiutuvan sähkön hankinta ja päästöintensiteetin todentaminen kytketään sopimuksiin (ei “jälkikäteen arvioituna”). [9]
+
+**Näin toimit käytännössä (ICT-yrityksen askelpolku):**
+- **A. Päätä toteutusmalli (vaikuttaa siihen, mistä saat tuotokset):**
+  - *Oma datakeskus*: tilaat suunnittelun ja urakat (sinulla suurin kontrolli mittaukseen).
+  - *Colocation / konesalipalvelu*: et rakenna itse, mutta vaadit mittauksen, raportoinnin ja läpinäkyvyyden sopimusehdoiksi.
+- **B. Tee työpaketti “Sähkö + mittaus”:** laadi 1–2 sivun vaatimuslista, jossa vaadit mittauspisteet ja raportoinnin ennen laitevalintoja. (Tämä on hankinnan tärkein ohjauskeppi.) [2]
+- **C. Pyydä kapasiteetti ja liittymäaikataulu kirjallisena:** Suomen kontekstissa sähköliittymä (MW, aikataulu) on usein kriittinen polku. (Tämä on toteutettavuuden “todiste”.)
+
+**Tuotokset (deliverables) + mistä ne saat?**
+- **Sähköketjun arkkitehtuuri + varmistusratkaisut** (single line diagram / SLD, varmistusluokka, UPS- ja generaattorikonsepti). [6][7]  
+  - *Mistä saat?* Sähkösuunnittelijalta (kriittinen sähkö), EPC/urakoitsijalta tai colocation-operaattorin teknisestä dokumentaatiosta.
+- **Mittauspistekartta sähköketjuun**: kokonaiskulutus (grid-in), UPS sisään/ulos (UPS-häviöt), jakelutasot (esim. PDU/räkki tai ryhmä). [2][6][7]  
+  - *Mistä saat?* Suunnittelijalta + mittaus-/automaatiointegraattorilta (DCIM/BMS). Colocationissa: vaadi asiakasraportointiin vähintään IT-energian ja kokonaisenergian erottelu.
+- **Raportointivalmius uusiutuvan sähkön ja päästöjen osalta**: todentaminen + laskentaperiaate (mitä todennetaan ja miten). [9]  
+  - *Mistä saat?* Sähkönmyyjältä (alkuperätakuu/GoO), operaattorilta tai omasta energiahallinnasta.
+
+**Minimissään**
+- Mittaa vähintään: **kokonaisenergia** + **IT-energia** + **UPS sisään/ulos** (häviöt). [2][6][7]
+
+**Jos vaihe ohitetaan / tehdään heikosti**
+- PUE ja päästöraportointi jäävät arvailuksi, koska IT- ja infraenergiaa ei voi erottaa; UPS-häviöt jäävät piiloon ja kulutus “lukittuu” vuosiksi. [2][7]
+
+---
+
+## P4.2 IT-palvelu: palvelimet, virtualisointi ja kuormanohjaus (sähkö → laskenta)
+
+**Miksi?**  
+Vihreys realisoituu vasta, kun IT-työ tehdään **minimaalisella energialla per palvelu**. Tutkimus korostaa kuorman yhdistämistä (consolidation), energiaproportionaalia laskentaa ja dynaamista sijoittelua, joilla tyhjäkäynti pienenee. [1][2][4]
+
+**Mitä tehdään (sisältö)?**  
+- Määritetään **kuormaprofiili** (mitä ajetaan, milloin ja millä SLA:lla).  
+- Toteutetaan **virtualisointi/kontit** ja **konsolidointi**, jotta sama kapasiteetti saadaan vähemmällä rautamäärällä. [1][2]  
+- Otetaan käyttöön **tehonhallinta** (esim. prosessorien tehonsäätö) ja varmistetaan, että vaikutus näkyy mittauksessa ja lämpökuormassa. [1][2]  
+- Suomi-näkökulmasta: pienempi ja tasaisemmin ohjattu kuorma helpottaa myös hukkalämmön hyötykäytön mitoittamista ja parantaa kokonaisvaikutusta. [1][9]
+
+**Näin toimit käytännössä**
+- **A. Tee “IT-kapasiteettikuvaus” (1–2 sivua):** palvelut, SLA, kasvu, huiput, kriittiset kuormat.
+- **B. Tee “konsolidointipolitiikka”:** milloin tyhjiä solmuja sammutetaan/nukutetaan ja milloin pidetään reservissä.
+- **C. Varmista mittausrajapinta:** IT-energian mittaus ja kuormamittarit (käyttöaste, CPU, muistiprofiili) samaan seurantarakenteeseen.
+
+**Tuotokset + mistä ne saat?**
+- **Kuormaprofiili + kapasiteettisuunnitelma** (kasvuskenaariot, SLA, varareservi-periaate). [1][4]  
+  - *Mistä saat?* Omasta IT-arkkitehtuurista/tuoteomistuksesta; tarvittaessa konsultilta.
+- **Kuormanohjauksen periaatteet + mittarointi** (konsolidointi, power-capping, automaation rajat). [1][2]  
+  - *Mistä saat?* Alusta-/pilvitiimiltä (VMware/Kubernetes), datakeskusoperaattorilta (jos managed).
+
+**Minimissään**
+- Kyky mitata käyttöaste + IT-energia ja välttää pysyvä “varmuuden vuoksi” -ylikapasiteetti. [1][2]
+
+**Jos vaihe ohitetaan / tehdään heikosti**
+- Tyhjäkäynti syö energian: kulutus ja jäähdytys kasvavat ilman palvelutason hyötyä. [1][2]
+
+---
+
+## P4.3 Verkko ja yhteydet (palvelu → liikenne → energiankulutus)
+
+**Miksi?**  
+Verkko on sekä suorituskyky- että energiakomponentti. Tutkimus korostaa liikenteen mittausta, energiatiloja ja dynaamista ohjausta, joilla kulutusta voidaan pienentää kuorman vaihdellessa. [1][8]
+
+**Mitä tehdään (sisältö)?**  
+- Rakennetaan **redundanssi** (eri reitit/operaattorit) mutta vältetään “kaikki aina päällä” -ylikuormitus, jos SLA sallii dynaamiset energiatilat. [8]  
+- Otetaan käyttöön energiatehokkaat konfiguraatiot (portit/linkit skaalautuvat kuormaan). [8]  
+- Tuodaan verkon mittaus samaan havaintokehykseen kuin IT ja jäähdytys, jotta verkon osuus näkyy päätöksissä. [1][8]
+
+**Näin toimit käytännössä**
+- **A. Pyydä verkkosuunnittelulta kaksi näkymää:** (1) SLA/redundanssi, (2) energiatilat ja mittaus.
+- **B. Vaatimus sopimuksiin:** saat vähintään laiteryhmäkohtaisen kulutuksen (tai verkon kokonaiskulutuksen) näkyviin.
+
+**Tuotokset + mistä ne saat?**
+- **Verkon energiaprofiili (kulutus vs liikenne) + ohjausperiaatteet**. [8]  
+  - *Mistä saat?* Verkkosuunnittelijalta / operaattorilta / konesalipalvelun tarjoajalta.
+
+**Minimissään**
+- Verkon kulutus ja liikenneprofiili mitataan ja poikkeamat näkyvät (ruuhka/vajaakuorma). [8]
+
+**Jos vaihe ohitetaan / tehdään heikosti**
+- Verkko jää “näkymättömäksi kuluksi” ja kasvattaa myös lämpökuormaa ilman ohjausta. [1][8]
+
+---
+
+## P4.4 Jäähdytys ja lämpötilanhallinta (sähkö → lämpö hallintaan)
+
+**Miksi?**  
+IT:n käyttämä sähkö muuttuu käytännössä lämmöksi ja on poistettava luotettavasti. Jäähdytys on **säädettävä järjestelmä**: setpointit, ilmavirrat/virtaamat ja ohjauslogiikka määräävät jäähdytyksen energiankulutuksen. [4][6][7]
+
+**Mitä tehdään (sisältö)?**  
+- Valitaan jäähdytysarkkitehtuuri, joka hyödyntää Suomen olosuhteita (vapaajäähdytys ja viileä ilmasto). [6][7]  
+- Hallitaan ilmavirrat (kuuma/kylmä käytävä, containment, ohivirtaus) ja ehkäistään hotspotit mittaamalla. [7]  
+- Kytketään jäähdytys mittaukseen: jäähdytyksen energia ja lämpöteho erotellaan, jotta PUE ja myöhemmin hukkalämpö ovat todennettavia. [2][4][7]
+
+**Näin toimit käytännössä**
+- **A. Pyydä HVAC-suunnittelulta “osakuormalupaus”:** miten järjestelmä käyttäytyy 25/50/75/100% kuormilla (tämä ratkaisee vuosikulutuksen). [4][7]  
+- **B. Vaadi mittauspisteet jäähdytykseen:** sähkö (pumput, puhaltimet, chillerit) + lämpötilat/virtaamat.
+- **C. Vaadi käyttöönotossa säätö ja dokumentointi:** ilman tätä setpointit jäävät “arvauksiksi”.
+
+**Tuotokset + mistä ne saat?**
+- **Jäähdytyksen ohjausperiaatteet + mittarit** (lämpötila, ΔT, virtaamat, jäähdytysenergia). [4][7]  
+  - *Mistä saat?* LVI/HVAC-suunnittelijalta ja automaatiointegraattorilta (BMS/DCIM).
+
+**Minimissään**
+- Lämpötila- ja virtaus/ilmavirta-mittaus sekä kyky säätää kuorman mukaan (ei vakioasetuksilla ympäri vuoden). [4][7]
+
+**Jos vaihe ohitetaan / tehdään heikosti**
+- Jäähdytys paisuu suurimmaksi häviöksi; PUE heikkenee ja hukkalämmön hyödyntäminen vaikeutuu, koska lämpötasoja ei hallita. [4][7]
+
+---
+
+## P4.5 Hukkalämmön talteenotto ja hyötykäyttö (lämpö → korvaava energia)
+
+**Miksi?**  
+Hukkalämpö on vihreässä datakeskuksessa mahdollisuus tuottaa **lisäilmastohyötyä**: lämpö voi korvata muuta lämmöntuotantoa. Suomessa kaukolämpö ja muut lämmönkäyttökohteet tekevät hyödyntämisestä erityisen relevanttia, ja käytäntöesimerkkejä on koottu sektoritason selvityksiin. [9]
+
+**Mitä tehdään (sisältö)?**  
+- Valitaan talteenottokohta ja varmistetaan lämpötaso (ilma/neste), jonka voi siirtää lämmönvaihtimella tai nostaa lämpöpumpulla. [7]  
+- Tehdään hyötykäytöstä “oikea toimitusketju”: vastaanottaja (kaukolämpö/kiinteistö/teollisuus), liityntä, sopimus, ja mitattava MWh-siirto. [9]  
+- Raportoidaan hyödynnetty lämpö ja sen vaikutus: ilman mittausta hyödyt jäävät väitteiksi. [9]
+
+**Näin toimit käytännössä**
+- **A. Ota yhteys paikalliseen kaukolämpö-/energiayhtiöön jo suunnittelussa:** kysy liitynnän ehdot, lämpötaso ja aikataulu (tämä on yhtä “lukitseva” kuin sähköliittymä).  
+- **B. Pyydä suunnittelijalta “lämpörajapinta”:** missä kohtaa lämpö otetaan talteen, millä lämpötilalla ja millä teholla.  
+- **C. Vaadi mittaus:** siirretty lämpöenergia (MWh) ja jatkuva raportointi.
+
+**Tuotokset + mistä ne saat?**
+- **Hukkalämpöliityntä + tekninen ratkaisu + mittaus ja raportointi** (siirretty lämpöenergia). [7][9]  
+  - *Mistä saat?* LVI-suunnittelijalta + lämpöyhtiöltä (liityntäehdot) + automaatiointegraattorilta (mittaus).
+
+**Minimissään**
+- Lämpöenergian mittaus ja suunnitelma (tai sopimus/LOI) hyötykäytön käynnistämiseksi vaiheittain. [9]
+
+**Jos vaihe ohitetaan / tehdään heikosti**
+- Datakeskus voi olla uusiutuvalla sähköllä energiatehokas, mutta yhteiskunnallinen ilmastohyöty jää vajaaksi, jos lämpö poistetaan ympäristöön ilman korvausvaikutusta. [9]
+
+---
+
+## P4.6 Mittaus, johtaminen ja jatkuva parantaminen (ketju ohjattavaksi)
+
+**Miksi?**  
+Mittauksen ja palautteen avulla järjestelmä muuttuu ohjattavaksi: “mittaa → analysoi → muutos → todenna vaikutus”. Tämä on vihreän datakeskuksen peruslogiikka: mitataan osat, tunnistetaan kuumat pisteet ja parannetaan mittareiden avulla. [2][4]
+
+**Mitä tehdään (sisältö)?**  
+- Rakennetaan end-to-end mittausketju: kokonaiskulutus, IT-energia, UPS-häviöt, jäähdytysenergia, lämpötilat/virtaamat ja hukkalämmön MWh. [2][6][7][9]  
+- Johdetaan tunnusluvuilla: PUE perusmittarina ja tarvittaessa muita sovittuja mittareita (esim. uusiutuvan osuus, hukkalämmön hyödyntäminen). [2][9]  
+- Otetaan käyttöön poikkeamien hallinta ja optimointi: hälytysrajat, trendit, analytiikka (myös edistyneemmät ohjausmenetelmät, kun data on laadukasta). [1][3][4]
+
+**Näin toimit käytännössä**
+- **A. Vaatimus: “mittaus ennen optimointia”:** määritä mittauspisteet ja datan omistajuus jo hankinnassa. [2]  
+- **B. Pyydä toimitus: “mittauspisteet → data → laskenta → dashboard”:** ei riitä, että antureita on — ketjun pitää toimia.  
+- **C. Tee toimintamalli muutoksille:** jokainen muutos (setpoint, ohjauslogiikka, laitepäivitys) hyväksytään vasta, kun vaikutus näkyy mittareissa. [2][4]
+
+**Tuotokset + mistä ne saat?**
+- **Mittaus- ja raportointimalli:** mittauspisteet → data → laskentasäännöt → dashboardit → audit trail. [2][4][7]  
+  - *Mistä saat?* DCIM/BMS-toimittajalta ja integraattorilta; tilaajana vaadit tämän toimituseräksi.
+- **Jatkuvan parantamisen malli:** mittaa → analysoi → muutos → todenna → vakioi. [2][4]  
+  - *Mistä saat?* Operointimallina omalta tuotanto-/infra-tiimiltä tai palveluntarjoajalta.
+
+**Minimissään**
+- PUE-laskenta luotettavasti (kokonais + IT) + jäähdytyksen energian seuranta + hukkalämmön MWh-mittaus, jos talteenotto on käytössä. [2][4][7][9]
+
+**Jos vaihe ohitetaan / tehdään heikosti**
+- “Vihreys” jää väitteeksi ilman todennusta; optimointi perustuu oletuksiin eikä hyötyjä voi osoittaa luotettavasti. [2][4]
+
+---
+
+## P4.7 Ketjun yhteenveto 
+
+**Miksi?**  
+Ketju on kokonaisuus: sähkö, IT, verkko, jäähdytys ja lämpö kytkeytyvät toisiinsa — kaikki sähkö päätyy lopulta lämmöksi. [6][7] Suomessa vihreys konkretisoituu erityisesti uusiutuvan sähkön todennettavuuden, energiatehokkuuden ja hukkalämmön hyötykäytön kautta. [9]
+
+**Mitä tehdään (sisältö)?**  
+Käytännön toteutus Suomessa tarkoittaa:  
+(i) uusiutuva sähkö todennettuna ja raportoitu, (ii) IT-kuorman energiaproportionaali ohjaus, (iii) mitattu ja ohjattava verkko, (iv) olosuhteita hyödyntävä jäähdytys, (v) hukkalämmön hyötykäyttö, ja (vi) mittaus- ja johtamismalli, joka mahdollistaa jatkuvan parantamisen. [1–4][6–9]
+
+**Tuotokset + mistä ne saat?**
+- **Todennettava vihreä toimintamalli**: PUE + uusiutuvan sähkön ja päästöjen raportointi + mitattu hukkalämmön hyötykäyttö. [2][9]  
+  - *Mistä saat?* Koostuu edellisten vaiheiden toimituksista; tilaaja varmistaa sopimuksissa.
+
+**Minimissään**
+- Mitattu ja raportoitu kokonaisenergia + IT-energia + jäähdytysenergia, sekä todennettava uusiutuvan ja päästöjen laskenta; hukkalämmön hyödyntämisen valmius. [2][7][9]
+
+**Jos vaihe ohitetaan / tehdään heikosti**
+- Lopputulos jää osaoptimoinniksi: energiaa kuluu turhaan, lämpö ei korvaa muuta tuotantoa ja todennus puuttuu. [2][4][9]
+
+---
+
+# Lähteet (APA, numerointi)
+
+[1] Jin, X., Zhang, Y., Vasilakos, A. V., & Liu, Z. (2016). *Green data centers: A survey, perspectives, and future directions* (arXiv:1608.00687).
+
+[2] Uddin, M., & Rahman, A. A. (2012). Energy efficiency and low carbon enabler green IT framework for data centers considering green metrics. *Renewable and Sustainable Energy Reviews, 16*(6), 4078–4094.
+
+[3] Pierson, J.-M., Baudic, G., Caux, S., Celik, B., Costa, G., Grange, L., … Varnier, C. (2019). DATAZERO: Datacenter with zero emission and robust management using renewable energy. *IEEE Access*.
+
+[4] Sharma, P., Pegus II, P., Irwin, D. E., Shenoy, P., Goodhue, J., & Culbert, J. (2017). Design and operational analysis of a green data center. *IEEE Internet Computing, 21*(4), 16–24.
+
+[5] *Energy storage techniques, applications, and recent trends – A sustainable solution for power storage*. (n.d.). **Tarkennettava tekijä- ja julkaisudata ennen julkaisemista.**
+
+[6] Barroso, L. A., Clidaras, J., & Hölzle, U. (2013). *The datacenter as a computer: An introduction to the design of warehouse-scale machines* (2nd ed.). Morgan & Claypool.
+
+[7] Geng, H. (Ed.). (2014). *Data center handbook*. John Wiley & Sons.
+
+[8] Bilal, K., Malik, S. U. R., Khalid, O., Hameed, A., Alvarez, E., Wijaysekara, V., … Khan, S. U. (2014). A taxonomy and survey on green data center networks. *Future Generation Computer Systems, 36*, 189–208.
+
+[9] Liikenne- ja viestintäministeriö. (2020). *The ICT sector, climate and the environment – Interim report* (Publications of the Ministry of Transport and Communications 2020:14).
+
+
 - Hetkellinen kuorma ja kapasiteetin valinta  
 - Virtuaalikoneiden sijoittelu ja palvelinparkit  
 - Verkon energiatehokas ohjaus: reititys, linkkien sammuttaminen  
