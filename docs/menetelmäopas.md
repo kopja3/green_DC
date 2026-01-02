@@ -2,6 +2,10 @@
 
 ## M0. Tarkoitus ja periaate
 
+Soveltamisala. Tämä opas koskee vihreän datakeskuksen (oma DC tai colocation) sähkö–IT–jäähdytys–hukkalämpö -ketjun mitattavuutta, raportointia ja todennettavuutta, jotta energiatehokkuus (PUE) ja muut vihreysvaatimukset eivät jää väitteiksi vaan voidaan osoittaa datalla. [2][4][6][7][9]
+
+Toteutusperiaate. PUE:n laskenta ja johtaminen edellyttävät vähintään kokonaisenergian ja IT-energian erottelua; lisäksi UPS-häviöt ja jäähdytyksen energia tulee pystyä osoittamaan osajärjestelmätasolla, jotta optimoinnin kohde on yksiselitteinen ja todennettavissa. [2][6][7]
+
 **Tarkoitus.** Tämä menetelmäopas kuvaa, miten datakeskuksen operatiivinen hiilijalanjälki (energia → CO₂e) **mitataan, todennetaan ja pienennetään** mittausdatan avulla siten, että muutos voidaan osoittaa “ennen–jälkeen”-vertailuna. Menetelmä perustuu jatkuvaan silmukkaan: **mittaa → analysoi → muuta → todenna → vakioi**. [2][4]
 
 **Ydinajatus.** Datakeskuksessa kaikki IT:n käyttämä sähkö päätyy lopulta lämmöksi, joten hiilijalanjäljen optimointi on koko ketjun optimointia (sähkö → IT → verkko → jäähdytys → lämpö → mittaus). [1][6][7]
@@ -142,9 +146,31 @@ Tässä menetelmä kytkeytyy suoraan toimintaketjuun: sähkö → IT → verkko 
 
 **Todennus:** toimitettu MWh_th kasvaa / vakaantuu ja on mitattu. [7][9]
 
+M6.5 Reaaliaikainen valvonta ja AI/DA-ohjaus (miten se tehdään todennettavasti)
+
+Rakenna se näin (tiiviinä):
+
+Mitä mitataan reaaliajassa (viittaus M1/M2 mittapisteisiin)
+
+Mitä AI optimoi (ohjausmuuttujat)
+
+Mitä rajoitteita ei saa rikkoa (SLA, lämpöraja, redundanssi)
+
+Miten vaikutus todennetaan (M4.3 before–after + versionhallinta)
+
+Näin AI/DA ei jää “maininnaksi”, vaan se on menetelmään kytketty osa, jonka vaikutus voidaan osoittaa.
+
+
 ---
 
 ## M7. Mitä asiakkaana saat ulos (API/raportti) – vähimmäisvaatimus
+
+M7 on “sustainability data pack” -liite, jonka colocation-asiakas voi vaatia sopimukseen.
+
+Datan tulee tulla sekä raporttina että koneellisesti (CSV/JSON/API) ja sisältää myös data quality -kentät (missing %, aikaleimat).
+
+KPI-laskenta ei saa muuttua ilman versionhallintaa (sinulla tämä on jo M4.2:ssa — nosta se näkyväksi myös M7:ään).
+
 
 ### M7.1 Pakollinen asiakasraportti (kuukausi + tiivistelmä)
 Raportti sisältää vähintään:
