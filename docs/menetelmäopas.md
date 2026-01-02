@@ -349,6 +349,182 @@ Asiakkaana sinulla on oikeus vaatia:
 
 ---
 
-Jos haluat, voin seuraavaksi kirjoittaa sinulle **valmiin M6.5-alaluvun “syvemmälle menevillä tutkimustuloksilla”** (AI/DA-ohjaus, mallityypit: ennusteet/anomaliat/optimointi, sekä mitä tuloksia kirjallisuus raportoi ja millä mittausvaatimuksilla ne ovat uskottavia) — mutta teen sen niin, että jokainen väite on sidottu yllä olevaan mittaus- ja todennusrunkoon (M2–M4), eikä siitä tule irrallinen “AI-kappale”.
+Kyllä — sun nykyinen **M0–M7-runko kattaa käytännössä koko tuon “Moduuli 6 / EN 50600-4 ja mittarit” -taulukon sisällön** (EN 50600-4:n rooli, PUE/CUE/WUE/REF/ERF, mittauspisteet, mittaustiheys & datan laatu, mittarit raportoinnissa ja tavoitteissa sekä AI/ML-kytkentä M6.5:ssä). Erityisen hyvin se osuu siihen ajatukseen, että standardi ei “määrää hyvää PUE:ta”, vaan yhdenmukaistaa **miten mitataan ja raportoidaan**, jotta luvut ovat vertailukelpoisia .
+
+Alla on **1–2 sivun opasmainen, selittävä teksti**, jonka voit liittää sellaisenaan M0:n jatkoksi (tai M2:n alkuun). Se tekee lukijalle konkreettiseksi: **mitä dokumentteja vaaditaan, mikä on minimitaso, miten todennetaan ja mitä dataa asiakkaana saat ulos (raportti + API/CSV)** — ja sitoo kaiken EN 50600-4 -ajatteluun  .
+
+---
+
+## EN 50600-4 + mittausdata: miten “vihreys” tehdään todennettavaksi (asiakkaalle ja rakentajalle)
+
+### 1) Mikä EN 50600-4:n rooli on tässä menetelmässä?
+
+EN 50600-4 -standardisarjan käytännön arvo on se, että se pakottaa vastaamaan kahteen kysymykseen samalla tavalla joka kerta:
+
+1. **Mitä mitataan ja mistä rajasta?** (measurement boundary, mittausrajaukset)
+2. **Miten mittareita lasketaan ja raportoidaan?** (laskentasäännöt, ajanjaksotus, raportointirakenne)
+
+Standardi ei itsessään kerro mikä arvo on “hyvä”, vaan miten mittaat ja raportoit oikein niin, että datakeskuksia voidaan verrata samoilla periaatteilla . Tämä on kriittistä, koska muuten PUE/CUE/WUE/ERF/REF jäävät helposti “yhdeksi numeroksi”, jonka taustaa ei voi auditoida eikä käyttää optimoinnin ohjauksessa.
+
+**Mitä tämä tarkoittaa käytännössä lukijalle (ICT-yritys)?**
+Jos et saa näkyviin **mittausrajausta + mittauspistekarttaa + laskentasääntöjä**, et voi tietää, ovatko PUE/CUE/WUE-raportit vertailukelpoisia edes saman toimittajan sisällä eri kuukausina.
+
+---
+
+### 2) Mitkä mittarit ovat “pakko”, ja mitä mittausdataa ne vaativat?
+
+Perusjoukko muodostuu käytännössä EN 50600-4 -ajattelun “ydinmittareista” (PUE, WUE, CUE sekä energian alkuperään ja uudelleenkäyttöön liittyvät mittarit kuten REF/ERF)  .
+
+**Minimissä (audit-kelpoinen “Basic”) tarvitset:**
+
+* **E_total (kWh)**: laitoksen sisään tuleva energia *määritellyltä mittausrajalla*
+* **E_IT (kWh)**: IT-kuorman energia (tyypillisesti PDU/räkki tai vastaava)
+* Näistä saat: **PUE = E_total / E_IT**
+* Ja kun lisäät **päästökertoimen periaatteen** (location/market tms.), saat **CO₂e_total**
+
+**Standard/Advanced tasolle (todellinen ohjaus & optimointi) tarvitset lisäksi:**
+
+* **UPS_in ja UPS_out** → UPS-häviöt (kWh)
+* **E_cooling (kWh)** (jäähdytys eriteltynä)
+* lämpötila/ΔT ja vähintään perusvirtaamaindikaattorit
+* (jos lämpöä toimitetaan) **heat_export (MWh_th)** + lämpötaso (meno/paluu)
+
+**Miksi tämä on oleellista?**
+Optimointia ei voi “kohdistaa” ellei energia jakaudu osiin. PUE voi parantua “vahingossa” (IT-kuorma kasvaa), mutta CO₂e ei välttämättä parane. Siksi menetelmä vaatii erottelun: **kokonaisenergia vs. IT-energia** ja käytännössä myös **UPS-häviöt + jäähdytyksen energia**, jotta vaikutus näkyy oikeassa paikassa.
+
+---
+
+### 3) Vaaditut dokumentit: missä ne konkreettisesti ovat ja kuka ne tuottaa?
+
+Tässä kohtaa lukija yleensä pysähtyy: “Missä nämä deliverablet ovat — teenkö itse vai saanko jostain?”
+
+Ajattele niin, että menetelmä on “audit trail -ketju”: ilman dokumentteja data on irrallista eikä kelpaa todennukseen.
+
+**Pakolliset dokumentit (pyydä/tuota aina):**
+
+1. **Mittausrajaus (Measurement Boundary Statement)**
+
+   * “mistä kohtaa E_total mitataan ja mitä se sisältää/ei sisällä”
+2. **Mittauspistekartta (Instrumentation & Metering Map)**
+
+   * mittarien paikat, tunnisteet, mittausvälit, mittarityyppi/luokka sekä datan reitti (mittari → DCIM/BMS → tietovarasto)
+3. **KPI-sanasto ja laskentasäännöt (KPI Dictionary & Calculation Rules)**
+
+   * PUE/CUE/WUE/REF/ERF, ajanjaksotus, kaavat, rounding, mitä tehdään puuttuvalle datalle
+4. **Datan omistajuus + toimitusmäärittely (Data Access & Delivery Spec)**
+
+   * mitä asiakas saa, missä muodossa (PDF + CSV/JSON/API), aikavyöhyke, granulariteetti, säilytys, data quality -kentät
+5. **Mittauksen käyttöönotto- ja todennuspöytäkirja (Measurement SAT / Commissioning Record)**
+
+   * end-to-end: “mittari → data → KPI” toimii ja on testattu
+
+**Kuka tuottaa nämä (roolipohjainen vastaus):**
+
+* **Colocation-asiakas:** vaadi operaattorilta 1–5 sopimusliitteenä (“Sustainability Data Pack”).
+* **DC-omistaja/rakentaja:** tilaa 1–3 suunnittelun/energiasuunnittelun osana, ja vaadi 5 käyttöönoton (commissioning) urakkaan.
+* **IT-palveluomistaja:** vastaa usein kuormapolitiikoista ja SLA-ehdoista, jotka määrittävät optimoinnin rajat ja baseline-jaksot.
+
+---
+
+### 4) Minimitasot (Basic / Standard / Advanced) – ja mitä ne oikeasti mahdollistavat
+
+Pelkkä “PUE kuukausiraportissa” ei vielä tarkoita, että voit optimoida.
+
+**Basic (audit-kelpoinen minimiraportointi):**
+
+* Mittaus: E_total, E_IT (suositus: UPS_in/out)
+* Granulariteetti: ≥ 60 min
+* Tuotos: kuukausi- ja viikkotason PUE + CO₂e (päästökerroinperiaate dokumentoitu)
+
+**Standard (ohjauskelpoinen optimointi):**
+
+* Lisäksi: E_cooling, lämpötila/ΔT vähintään sali/alue, perusvirtaamaindikaattorit
+* Granulariteetti: suositus 15 min
+* Tuotos: “muutos → vaikutus” todentuu (jäähdytyksen osuus, UPS-häviöt, CO₂e trendit)
+
+**Advanced (jatkuva optimointi + automaatio/AI):**
+
+* Lisäksi: vyöhykemittaukset (sähkö + jäähdytys), data quality -indikaattorit, mahdollinen verkon energia, lämpötoimitus reaaliajassa
+* Granulariteetti: suositus 5 min
+* Mahdollistaa: mallit, jotka säätävät ja oppivat (palautesilmukka) — mutta vain jos todennus ja muutosloki ovat kunnossa
+
+---
+
+### 5) Todennukset: millä varmistat, että luvut ovat “audit-kelpoisia”?
+
+**(A) Ennen optimointia: Measurement SAT (“mittari → data → KPI”)**
+
+* tarkista mittarien luokka/kalibrointi, aikaleimat, ja että PUE asettuu realistiselle välille
+* UPS_in/out tuottaa järkevät häviöt
+
+**(B) Jatkuva datan laatu**
+
+* datakatkot, epärealistiset hyppäykset, drift, “jäätyneet arvot”
+* KPI-laskenta ei saa muuttua ilman versionumeroitua muutosta
+
+**(C) Ennen–jälkeen -todennus kaikelle optimoinnille**
+
+* baseline-jakso + muutos + mittausjakso + vaikutus KPI:hin + SLA-seuranta
+* hyväksy muutos vasta kun vaikutus on mitattu (ei “arvioitu”)
+
+Tämä rakenne tekee myös AI/DA-osuudesta uskottavan: jos malli säätää setpointteja, sen vaikutus näkyy E_coolingissa, hotspot-mittareissa ja PUE:ssa samalla aikajaksolla (ja muutos on versionhallittu).
+
+---
+
+### 6) Mitä mittausdataa asiakkaana saat ulos: raportti + API/CSV (minimivaatimus)
+
+Asiakkaan kannalta tärkein konkretia on: **mitä saat ulos, missä muodossa, millä aikatasolla ja millä todennuksella.**
+
+**Pakollinen kuukausiraportti (PDF):**
+
+* E_total (kWh), E_IT (kWh), PUE
+* CO₂e_total (kgCO₂e) + EF-periaate (lähde, päivitysrytmi, location/market)
+* UPS-häviöt (kWh) jos mitattu
+* (jos lämpöä toimitetaan) heat_export (MWh_th) + lämpötaso + mittauspiste
+  **Pakolliset liitteet:** mittausrajaus + mittauspistekartta (versio), KPI-säännöt (versio), data quality -yhteenveto
+
+**Pakollinen koneellinen toimitus (CSV/JSON/API):**
+
+* vähintään päivä/viikko (Basic), suositus 15 min (Standard)
+* jokaisella datapisteellä aikaleima + aikavyöhyke
+* mukana data quality -kentät (missing %, flagit)
+* mukana KPI-sääntöjen versionumero
+
+**Minimikentät (pakko):**
+
+* `total_energy_kwh`, `it_energy_kwh`, `pue`, `co2e_kg`
+* `ef_method`, `ef_value_kg_per_kwh` (tai viite dokumenttiin)
+* `data_quality_missing_pct`, `data_quality_flags`, `calculation_rules_version`
+
+**Suositellut lisäkentät (nostaa optimointikykyä):**
+
+* `cooling_energy_kwh`, `ups_losses_kwh`
+* `heat_export_mwh_th`, `heat_supply_temp_c`, `heat_return_temp_c`
+* (Advanced) vyöhykekentät + sensoritasoiset flagit
+
+---
+
+### 7) Missä “tekoäly ja data-analyysi” näkyy tässä menetelmässä (ilman että se jää maininnaksi)?
+
+Tekoäly ei ole oma irrallinen luku, vaan se on **ohjausosa**, joka käyttää samaa mittausketjua ja samoja todennuksia:
+
+* **Syöte:** Standard/Advanced-tason mittauspisteet (energia + lämpötila + kuorma)
+* **Ohjaus:** setpointit, puhallin/pumppu, free-cooling-tilat, kuorman sijoittelu (SLA-rajoissa)
+* **Rajoitteet:** SLA, lämpöraja/hotspot, redundanssi
+* **Todennus:** aina baseline vs jälkeen + muutosloki + KPI-vaikutus
+
+Tällä tavalla “Konesalien ympäristövaikutusten optimointi tekoälyn ja data-analyysin avulla” on suoraan todennettavissa mittareilla, eikä jää puheeksi.
+
+---
+
+Jos haluat, teen seuraavaksi **valmiin M6.5-alaluvun (1–2 sivua)** “syvemmälle menevillä tutkimustuloksilla” niin, että se on *kirjaimellisesti plug-in* tähän sun nykyiseen M-rakenteeseen:
+
+* (i) mallityypit (ennuste, anomalioiden havaitseminen, optimointi / MPC / RL),
+* (ii) mitä tuloksia kirjallisuus raportoi,
+* (iii) millä mittausvaatimuksilla tulokset ovat uskottavia,
+* (iv) mitä deliverableja (mallikortti, muutosloki, before–after-raportti) vaaditaan.
+
+
+
 
 
