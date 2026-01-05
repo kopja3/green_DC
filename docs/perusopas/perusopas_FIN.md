@@ -154,61 +154,6 @@ Vihreän datakeskuksen suunnittelu Suomessa voidaan siten nähdä investointina,
 
 
 
- Ilmasto- ja sääntelyvaatimusten vaikutus  
-
-
-
-
-# Suomi datakeskuksen sijoituspaikkana
-Suomi lähtökohtana
-
-Sähkömarkkina ja uusiutuvan sähkön hankinta (PPA / alkuperätakuut)
-
-Kylmä ilmasto → free cooling -potentiaali
-Kaukolämpöverkot ja hukkalämmön hyödyntäminen (kannattaako liittää)
-
-Sijainti: kuituyhteydet, sähköliittymä, tontti, luvitus, melu, vesiasiat
-
-A. Fakta (miksi tärkeä) jäähdytys voi olla suurin IT:n ulkopuolinen kuluttaja
-
-B. Tavoite (mitä mitataan) laske jäähdytyksen energia per IT-kWh
-
-C. Suunnitteluvaihtoehdot (2–4 vaihtoehtoa) 
-
-D. Valintakriteerit Suomessa (milloin mikäkin) Suomi-kriteerit: ulkolämpötilajakauma, vesirajoitteet, huolto-osaaminen
-
-E. Riskit ja varmistukset kondenssi, vedenkulutus, huolto, yhteensopivuus
-
-F. Tarkistuslista mittarit, anturit, hälytykset, redundanssi
-
-
-
-
-
-## Ilmasto, vapaajäähdytys ja ympäristön olosuhteet
-- Viileä ilmasto ja mahdollisuus free cooling -ratkaisuihin
-    
-- Matalien ulkolämpötilojen hyödyntäminen jäähdytyksessä  
-
-
-
-## Uusiutuva energia ja puhdas sähkö
-- Tuuli-, aurinko- ja vesivoiman saatavuus ja verkon päästökertoimet
-  
-- Sähköverkon kapasiteetti ja varmuus  
-
-
-## Infrastruktuuri ja viive
-- Kuitu- ja energiainfrastruktuuri
-  
-- Käyttäjäviive ja palveluiden saavutettavuus  
-
-
-## Esimerkit suomalaisista sijaintistrategioista
-- Kaukolämpöverkkoon kytketyt datakeskukset
-  
-- Pilvi- ja HPC-keskusten sijoittumisratkaisut  
-
 
 # Perusopas vihreän datakeskuksen rakentamiseksi Suomessa
 ## 2. Rakentamisen syyt ja sijaintipäätökset
