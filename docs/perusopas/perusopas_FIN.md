@@ -238,11 +238,11 @@ Lähde
 [1] Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). Green Data Centers: A Survey, Perspectives, and Future Directions (arXiv:1608.00687). arXiv.
 
 
-## 2. Vihreän datakeskuksen peruselementit ja periaatteet
+## 3. Vihreän datakeskuksen peruselementit ja periaatteet
 Vihreä datakeskus on kokonaisuus, jossa IT-kuorma, sähköketju, jäähdytys, rakennus sekä ohjaus ja valvonta suunnitellaan yhtenä järjestelmänä, ja toimintaa johdetaan sovituilla, mitattavilla energia- ja ympäristötunnusluvuilla. 
 Vihreän datakeskuksen ratkaisut jäsentyvät neljään koriin: (1) energiatehokkuus IT:ssä, (2) resurssienhallinta, (3) lämpötilanhallinta ja (4) mittarit & monitorointi [4]. Lisäksi modernissa suunnittelussa korostuu ajatus datakeskuksesta “yhtenä tietokoneena” (warehouse-scale computer), jolloin energiatehokkuus ja käytettävyys syntyvät yhtä paljon ohjelmistosta ja orkestroinnista (automaattisesta kuormien ja resurssien ohjauksesta) kuin laitevalinnoista. [1]
 
-2.1 IT-kerros: energiatehokas laskenta ja resurssienhallinta
+3.1 IT-kerros: energiatehokas laskenta ja resurssienhallinta
 
 Tavoite: tuottaa sama palvelutaso pienemmällä energialla ja vähemmällä ylikapasiteetilla.
 -Energiatehokkuus (DVFS ja lepotilat): Prosessorien dynaaminen taajuus-/jännitesäätö (DVFS, eli kellotaajuuden ja käyttöjännitteen automaattinen säätö kuorman mukaan) sekä lepotilat/power-down-tilat (eli käyttämättömien ytimien, komponenttien tai jopa koko palvelimen siirtäminen matalatehotilaan) ovat keskeisiä keinoja tehdä kulutuksesta kuormaa vastaavaa (“energy-proportional”). [4]
@@ -251,7 +251,7 @@ Tavoite: tuottaa sama palvelutaso pienemmällä energialla ja vähemmällä ylik
 
 -Tehorajoitus (power capping) ja kuormien ohjaus: IT-kuormaa voidaan rajoittaa ja siirtää ajallisesti/paikallisesti sähkön hinnan, uusiutuvan saatavuuden tai lämpötilatilanteen mukaan (orkestrointi + kapasiteettipolitiikat). [4]
 
-2.2 Sähkö: syötöt, UPS, varavoima, jakelu ja häviöiden minimointi
+3.2 Sähkö: syötöt, UPS, varavoima, jakelu ja häviöiden minimointi
 
 Tavoite: saavuttaa korkea käytettävyys mahdollisimman pienin häviöin ja mitoittaa sähkönsyöttö- ja jakelujärjestelmä kuormitusprofiilin mukaisesti (välttäen “varmuuden vuoksi” -ylimitotusta), siten että ratkaisu tukee asetettuja ympäristötavoitteita.
 
@@ -271,7 +271,7 @@ Elinkaariperustelu. “Vihreys” kannattaa perustella myös elinkaarella: elink
 
 
 
-2.3 Jäähdytys ja lämpötilanhallinta: ilma, neste, free cooling ja “kuuma–kylmä”
+3.3 Jäähdytys ja lämpötilanhallinta: ilma, neste, free cooling ja “kuuma–kylmä”
 
 Tavoite: poistaa lämpö mahdollisimman pienellä jäähdytyssähköllä ja hallita luotettavuus–lämpötila-kompromissi.
 
@@ -281,7 +281,7 @@ Tavoite: poistaa lämpö mahdollisimman pienellä jäähdytyssähköllä ja hall
 
 -Käytännön esimerkki “green”-suunnittelusta: MGHPCC-tapaustutkimus kuvaa nimenomaan suunnittelun ja operoinnin yhteisvaikutusta energiatehokkuuteen ja antaa uskottavan referenssikehyksen (mitä mitataan, mitä optimoidaan, miten operointikäytännöt vaikuttavat). [6]
 
-2.4 Rakennus: ilmavirrat, tiiveys, modulaarisuus ja huollettavuus
+3.4 Rakennus: ilmavirrat, tiiveys, modulaarisuus ja huollettavuus
 
 Tavoite: mahdollistaa energiatehokas jäähdytys ja turvallinen ylläpito koko elinkaaren ajan.
 
@@ -289,19 +289,19 @@ Tavoite: mahdollistaa energiatehokas jäähdytys ja turvallinen ylläpito koko e
 
 -Kun yhdistät tämän “datacenter-as-a-computer” -ajatteluun, saat perustelun sille, miksi rakennus ei ole vain kustannuserä vaan osa suorituskykyä, energiatehokkuutta ja käytettävyyttä. [1]
 
-2.5 Mittarit ja valvonta: PUE, CUE ja jatkuva optimointi
+3.5 Mittarit ja valvonta: PUE, CUE ja jatkuva optimointi
 
 Tavoite: tehdä vihreys todennettavaksi ja ohjattavaksi.
 -Tutkimuksissa mittarit ja monitorointi ovat oma pääpilarinsa: ilman jatkuvaa mittausta (IT-kuorma, jäähdytys, sähköketjun häviöt, lämpötilat, uusiutuvan osuus) “vihreys” jää väitteeksi. [4]
 
 -Oppaaseen kannattaa kirjata vähintään: PUE (kokonaisenergiatehokkuus), CUE (hiili-intensiteetti), sekä käytännön mittauspisteet (mistä PUE lasketaan, mitä mitataan PDU/UPS-tasolla ja jäähdytyksessä). [7]
 
-2.6 Verkko (DCN): energiatehokas liikenne ja verkko-tietoinen sijoittelu
+3.6 Verkko (DCN): energiatehokas liikenne ja verkko-tietoinen sijoittelu
 
 Tavoite: välttää tilanne, jossa “vihreä IT ja jäähdytys” tehdään, mutta verkko syö hyödyt.
 -Vihreän datakeskuksen verkko ei ole vain kapasiteettikysymys: tutkimuskoosteet nostavat esiin energiatehokkaat topologiat, linkkien/porttien dynaamisen ohjauksen sekä verkko-tietoisen kuormien sijoittelun. [2]
 
-2.7 Uusiutuva integraatio ja mikroverkot (valinnainen moduuli)
+3.7 Uusiutuva integraatio ja mikroverkot (valinnainen moduuli)
 
 Tavoite: nostaa uusiutuvan osuutta ja parantaa hallittavuutta.
 -DATAZERO-tyyppiset ratkaisut kokoavat datakeskuksen osaksi mikroverkkoa (tuuli/aurinko/verkko + varastointi), jolloin kuorman, varaston ja tuotannon ohjaus linkittyy yhteen. Tämä sopii oppaaseen “edistyneet ratkaisut” -laatikoksi (milloin kannattaa, mitä edellyttää). [9]
@@ -351,7 +351,7 @@ ENERGY STAR
 [15] U.S. Environmental Protection Agency. (n.d.). Reduce energy loss from uninterruptible power supply systems. ENERGY STAR. Retrieved December 22, 2025, from https://www.energystar.gov/products/data_center_equipment/16-more-ways-cut-energy-waste-data-center/reduce-energy-losses-uninterruptible-power-supply-ups-systems
 
 
-## 3. Datakeskuksen elinkaaren vaiheet
+# 4. Datakeskuksen elinkaaren vaiheet
 
 # Datakeskuksen elinkaaren vaiheet (syvennetty Green ICT -näkökulmalla)
 
@@ -374,7 +374,7 @@ Seuraavissa kappaleissa avataan kunkin vaiheen keskeiset toimet ja vihreät huom
 
 ---
 
-## 1) Tarvekartoitus ja esiselvitys
+## 4.1) Tarvekartoitus ja esiselvitys
 
 ### Miksi?
 Tässä vaiheessa päätetään 70–80 % myöhemmistä kustannus- ja energiatehokkuusominaisuuksista, koska valitaan kuormaprofiili, palvelutasot, sijainti ja tavoitearkkitehtuuri. Väärä mitoitus näkyy joko ylikapasiteettina (pysyvät perushäviöt, turha infra) tai alikapasiteettina (SLA-riski, kiireiset laajennukset). [1][2][3]
@@ -397,7 +397,7 @@ Minimissään:
 
 ---
 
-## 2) Suunnittelu
+## 4.2) Suunnittelu
 
 ### Miksi?
 Suunnittelussa päätetään, miten vihreys toteutuu konkreettisina teknisinä ratkaisuina ja ennen kaikkea mitattavuutena (measurement & verification). Tämä vaihe tuottaa rakennusvaiheen “ohjekirjan”: jos dokumentaatio on puutteellinen, rakennusvaiheessa tehdään tulkintoja – ja tulkinnat maksavat. [1][3][4]
@@ -444,7 +444,7 @@ Suunnittelussa päätetään, miten vihreys toteutuu konkreettisina teknisinä r
 
 ---
 
-## 3) Päätöksenteko ja luvitus
+## 4.3) Päätöksenteko ja luvitus
 
 ### Miksi?
 Ilman lupia ei rakenneta – ja ilman sääntelyyn sopivaa mittaamista/raportointia projekti voi myöhemmin törmätä vaatimuksiin, joita ei ole huomioitu. EU-tason energiatehokkuus ja datakeskusten luokitus/raportointi korostaa dokumentoitavuutta. [5][6][7][9][10]
@@ -463,7 +463,7 @@ Ilman lupia ei rakenneta – ja ilman sääntelyyn sopivaa mittaamista/raportoin
 
 ---
 
-## 4) Rakentaminen
+## 4.4) Rakentaminen
 
 ### Miksi?
 Rakentamisessa “vihreä suunnitelma” muuttuu todellisuudeksi. Tyypillisin energiatehokkuuden epäonnistuminen syntyy siitä, että asennus ja käyttöönotto eivät vastaa suunnittelun oletuksia (mittarit, ilmavirrat, ohjauslogiikat). [3][4][12]
@@ -483,7 +483,7 @@ Rakentamisessa “vihreä suunnitelma” muuttuu todellisuudeksi. Tyypillisin en
 
 ---
 
-## 5) Käyttöönotto, käyttö ja modernisointi
+## 4.5) Käyttöönotto, käyttö ja modernisointi
 
 ### Miksi?
 Vihreä datakeskus ei ole “rakennettu ja valmis”, vaan operoinnissa optimoitava järjestelmä. Lisäksi IT-kuorma muuttuu: ilman jatkuvaa seurantaa ja modernisointia energiatehokkuus valuu pois. [3][11][12][13]
@@ -502,7 +502,7 @@ Vihreä datakeskus ei ole “rakennettu ja valmis”, vaan operoinnissa optimoit
 
 ---
 
-## 6) Käytöstäpoisto ja uudelleenkäyttö
+## 4.6) Käytöstäpoisto ja uudelleenkäyttö
 
 ### Miksi?
 Elinkaaren loppu vaikuttaa sekä ympäristöön että tietoturvaan. Vihreys ei ole uskottavaa, jos purku ja e-jäte hoidetaan huonosti. [14][15][16][17]
@@ -569,7 +569,7 @@ Elinkaaren loppu vaikuttaa sekä ympäristöön että tietoturvaan. Vihreys ei o
 
 
 
-## 4. Vihreän datakeskuksen toiminta vaiheittan: sähköstä palveluksi ja takaisin lämmöksi
+## 5. Vihreän datakeskuksen toiminta vaiheittan: sähköstä palveluksi ja takaisin lämmöksi
 
 **Tavoite:** kuvata, miten **energia ja tieto** kulkevat vihreässä datakeskuksessa vaiheesta toiseen (sähkö → IT-palvelu → lämpö) ja miten ketju toteutetaan Suomessa niin, että **uusiutuva energia, energiatehokkuus (PUE), hukkalämmön hyödyntäminen, mittaus/raportointi ja jatkuva optimointi** ovat osa normaalia toimintaa. [1–4][6–9]
 
@@ -577,7 +577,7 @@ Elinkaaren loppu vaikuttaa sekä ympäristöön että tietoturvaan. Vihreys ei o
 
 ---
 
-## P4.1 Sähkönsyöttö ja virranjakelu (verkosta IT-kuormaan)
+## P5.1 Sähkönsyöttö ja virranjakelu (verkosta IT-kuormaan)
 
 **Miksi?**  
 Datakeskus on **kriittinen sähköjärjestelmä**: toimitusvarmuus (UPS/varavoima) ja energiatehokkuus ratkaistaan yhtä aikaa. Kaikki häviöt (muunto, UPS, jakelu) näkyvät lopulta myös jäähdytyskuormana, koska sähkö päätyy lämmöksi. [6][7] Suomessa vihreys edellyttää lisäksi, että sähkön alkuperä ja päästöt ovat **todennettavissa** ja raportoitavissa. [9]
@@ -609,7 +609,7 @@ Samalla varmistetaan, että uusiutuvan sähkön hankinta ja päästöintensiteet
 
 ---
 
-## P4.2 IT-palvelu: palvelimet, virtualisointi ja kuormanohjaus (sähkö → laskenta)
+## P5.2 IT-palvelu: palvelimet, virtualisointi ja kuormanohjaus (sähkö → laskenta)
 
 **Miksi?**  
 Vihreys realisoituu vasta, kun IT-työ tehdään **minimaalisella energialla per palvelu**. Tutkimus korostaa kuorman yhdistämistä (consolidation), energiaproportionaalia laskentaa ja dynaamista sijoittelua, joilla tyhjäkäynti pienenee. [1][2][4]
@@ -639,7 +639,7 @@ Vihreys realisoituu vasta, kun IT-työ tehdään **minimaalisella energialla per
 
 ---
 
-## P4.3 Verkko ja yhteydet (palvelu → liikenne → energiankulutus)
+## P5.3 Verkko ja yhteydet (palvelu → liikenne → energiankulutus)
 
 **Miksi?**  
 Verkko on sekä suorituskyky- että energiakomponentti. Tutkimus korostaa liikenteen mittausta, energiatiloja ja dynaamista ohjausta, joilla kulutusta voidaan pienentää kuorman vaihdellessa. [1][8]
@@ -665,7 +665,7 @@ Verkko on sekä suorituskyky- että energiakomponentti. Tutkimus korostaa liiken
 
 ---
 
-## P4.4 Jäähdytys ja lämpötilanhallinta (sähkö → lämpö hallintaan)
+## P5.4 Jäähdytys ja lämpötilanhallinta (sähkö → lämpö hallintaan)
 
 **Miksi?**  
 IT:n käyttämä sähkö muuttuu käytännössä lämmöksi ja on poistettava luotettavasti. Jäähdytys on **säädettävä järjestelmä**: setpointit, ilmavirrat/virtaamat ja ohjauslogiikka määräävät jäähdytyksen energiankulutuksen. [4][6][7]
@@ -692,7 +692,7 @@ IT:n käyttämä sähkö muuttuu käytännössä lämmöksi ja on poistettava lu
 
 ---
 
-## P4.5 Hukkalämmön talteenotto ja hyötykäyttö (lämpö → korvaava energia)
+## P5.5 Hukkalämmön talteenotto ja hyötykäyttö (lämpö → korvaava energia)
 
 **Miksi?**  
 Hukkalämpö on vihreässä datakeskuksessa mahdollisuus tuottaa **lisäilmastohyötyä**: lämpö voi korvata muuta lämmöntuotantoa. Suomessa kaukolämpö ja muut lämmönkäyttökohteet tekevät hyödyntämisestä erityisen relevanttia, ja käytäntöesimerkkejä on koottu sektoritason selvityksiin. [9]
@@ -719,7 +719,7 @@ Hukkalämpö on vihreässä datakeskuksessa mahdollisuus tuottaa **lisäilmastoh
 
 ---
 
-## P4.6 Mittaus, johtaminen ja jatkuva parantaminen (ketju ohjattavaksi)
+## P5.6 Mittaus, johtaminen ja jatkuva parantaminen (ketju ohjattavaksi)
 
 **Miksi?**  
 Mittauksen ja palautteen avulla järjestelmä muuttuu ohjattavaksi: “mittaa → analysoi → muutos → todenna vaikutus”. Tämä on vihreän datakeskuksen peruslogiikka: mitataan osat, tunnistetaan kuumat pisteet ja parannetaan mittareiden avulla. [2][4]
@@ -748,7 +748,7 @@ Mittauksen ja palautteen avulla järjestelmä muuttuu ohjattavaksi: “mittaa �
 
 ---
 
-## P4.7 Ketjun yhteenveto 
+## P5.7 Ketjun yhteenveto 
 
 **Miksi?**  
 Ketju on kokonaisuus: sähkö, IT, verkko, jäähdytys ja lämpö kytkeytyvät toisiinsa — kaikki sähkö päätyy lopulta lämmöksi. [6][7] Suomessa vihreys konkretisoituu erityisesti uusiutuvan sähkön todennettavuuden, energiatehokkuuden ja hukkalämmön hyötykäytön kautta. [9]
@@ -791,7 +791,7 @@ Käytännön toteutus Suomessa tarkoittaa:
 
 
 
-## 5. Energian kulutus ja uudelleenkäyttö
+## 6. Energian kulutus ja uudelleenkäyttö
 - Kulutuslähteet: palvelimet, verkko, jäähdytys, sähkönjakelu  
 - Energian säästö: DVFS, sleep-tilat, free cooling, kuuman ja kylmän ilman erottelu  
 - Uudelleenkäyttö: hukkalämmön hyödyntäminen (kaukolämpö, prosessilämpö)  
@@ -806,7 +806,7 @@ Hukkalämmön talteenotto: lämpötilatasot, lämmönvaihdin, vastaanottaja, sop
 Yksi esimerkkilasku (karkealla tasolla), jotta lukija ymmärtää suuruusluokat.
 
 
-## 6. Energiatehokkuuden mittaaminen
+## 7. Datakeskuksen energiatehokkuuden mittaaminen
 - Mittaristo: PUE, DCiE, CUE, WUE ja muut tunnusluvut  
 - Mittauspisteiden suunnittelu: pääsyöttö, UPS, PDU, jäähdytys, IT  
 - Benchmarkkaus ja raportointi: energiaprofiilien keruu, vuorokausi- ja kuukausitrendit  
