@@ -156,30 +156,122 @@ Vihreän datakeskuksen suunnittelu Suomessa voidaan siten nähdä investointina,
 Datakeskusten määrä ja koko kasvavat pilvipalveluiden ja digitaalisten palveluketjujen vuoksi. Samalla datakeskusten energiankulutus ja siitä seuraavat kustannus- ja päästövaikutukset ovat nousseet keskeiseksi suunnittelukriteeriksi. Merkittävä osa nykyisestä energiankulutuksesta ei johdu vain laskentakuorman kasvusta, vaan myös rakenteellisesta tehottomuudesta: resursseja ylivarmistetaan, kapasiteettia pidetään varalla ja käyttöaste jää matalaksi, mikä kasvattaa myös jäähdytyksen ja sähkönjakelun “tyhjäkäyntiä” [1].
 
 Yhdysvaltain datakeskusten sähkönkulutus oli 2013 noin 91 mrd kWh ja ennuste 2020 noin 140 mrd kWh, ja globaalisti datakeskusten sähkönkulutuksen osuuden on arvioitu kasvavan merkittävästi [1]. Lisäksi tutkimusviitteet korostavat käyttöasteongelmaa: tyypillisiä palvelinkäyttöasteita on raportoitu noin 6–12 % tasolla, kun taas parhaat toimijat ovat pystyneet nostamaan käyttöastetta selvästi korkeammaksi (esim. 20–40 %) [1]. Tämä tarkoittaa sähkö- ja jäähdytysinfran näkökulmasta, että “vihreän datakeskuksen” rakentamisen keskeinen perustelu on usein saman palvelukyvyn tuottaminen pienemmällä energialla, joko parantamalla käyttöastetta (konsolidointi, virtualisointi, kuormanohjaus) tai pienentämällä infrastruktuurin häviöitä ja jäähdytyksen tarvetta – mielellään molempia [1]. 
-Jin ym. (2016) jäsentävät vihreät ratkaisut kahteen pääluokkaan: (1) suunnittelu- ja rakennusvaiheen “vihreät laitteet ja infrastruktuuri” sekä (2) operoinnin aikaiset tehokkuus- ja optimointimenetelmät (energiatehokkuus, resurssien hallinta, lämpötilan ja jäähdytyksen ohjaus, mittarointi). arXiv Oppaan näkökulmasta tämä on tärkeä periaate: sijainti ja sähköinen infrastruktuuri luovat tehokkuuskaton, mutta operointi ratkaisee, päästäkö kattoon.
+Jin ym. (2016) jäsentävät vihreät ratkaisut kahteen pääluokkaan: (1) suunnittelu- ja rakennusvaiheen “vihreät laitteet ja infrastruktuuri” sekä (2) operoinnin aikaiset tehokkuus- ja optimointimenetelmät (energiatehokkuus, resurssien hallinta, lämpötilan ja jäähdytyksen ohjaus, mittarointi). arXiv Oppaan näkökulmasta tämä on tärkeä periaate: sijainti ja sähköinen infrastruktuuri luovat tehokkuuskaton, mutta operointi ratkaisee, päästäänkö kattoon. [1] Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). Green Data Centers: A Survey, Perspectives, and Future Directions (arXiv:1608.00687). arXiv.
 
-Sijaintipäätös sähköisen infrastruktuurin ja energian näkökulmasta (Suomi)
-Sijaintipäätös kannattaa tehdä sähkö- ja energiavirtojen ehdoilla jo varhaisessa vaiheessa, koska teho- ja liittymärajoitteet, redundanssivaatimukset sekä energian alkuperä lukitsevat pitkälti sekä investoinnin että elinkaaren päästöprofiilin. Tutkimusnäytön perusteella sijaintiin liittyy erityisesti neljä käytännön kannalta ratkaisevaa tekijää:
 
-1.Sähköverkon kapasiteetti ja luotettavuus
-Vahva verkko ja realistinen liittymäpolku ovat edellytys kilpailukykyiselle investoinnille: mitä heikompi verkko, sitä enemmän tarvitaan kalliita paikallisia ratkaisuja (varasyötöt, jakelu, mahdolliset tehorajoitteet ja pitkät aikataulut). arXiv Oppaaseen kirjattava käytäntö: varmista varhain sähköverkkoyhtiöltä vapaa kapasiteetti, aikataulu ja kustannusrakenne (liityntä/tehomaksut) sekä mahdollisuus kahteen syöttöön (2N tai N+1 palvelutasotarpeen mukaan).
+### Sijaintipäätös sähköisen infrastruktuurin ja energian näkökulmasta (Suomi)
 
-2. Sähkön päästöintensiteetti ja uusiutuvan energian saatavuus
-Vihreän datakeskuksen “energia- ja ympäristötavoitteet” eivät toteudu ilman matalapäästöistä sähköä. Jin ym. nostavat uusiutuvan energian saatavuuden ja päästöohjautuvan optimoinnin vihreiden ratkaisujen ytimeen  
-[1]. Oppaaseen kirjattava käytäntö: arvioi vaihtoehdot (PPA, alkuperätakuut, oma tuotanto) ja dokumentoi, miten sähkön alkuperä ja päästökerroin raportoidaan.
+#### Miksi?
 
-3. Ilmasto ja vapaajäähdytys (free cooling)
-Pitkä viileä kausi pienentää jäähdytyksen energiankulutusta ja voi yksinkertaistaa järjestelmiä. Tämä on suora Suomen kilpailuetu: useissa sijainneissa voidaan hyödyntää free cooling -ratkaisuja suuren osan vuodesta, mikä laskee jäähdytyksen osuutta kokonaisenergiasta. arXiv Oppaaseen kirjattava käytäntö: laske suunnittelussa free cooling -tuntipotentiaali (lämpötila + kosteus) ja määritä jäähdytysratkaisu sen mukaan (air-/water-side economizer, hybridit).
+Sijaintipäätös kannattaa tehdä sähkö- ja energiavirtojen ehdoilla varhaisessa vaiheessa, koska teho- ja liittymärajoitteet, redundanssivaatimukset sekä energian alkuperä lukitsevat pitkälti sekä investoinnin toteutettavuuden että elinkaaren päästöprofiilin. Vihreän datakeskuksen näkökulmasta sijainti on käytännössä päätös siitä, **mistä sähkö tulee, miten se todennetaan ja millä energiatehokkuudella lämpö poistetaan ja (mahdollisesti) hyödynnetään**. [1][7][9]
 
-4. Hukkalämmön hyödyntäminen
-Hukkalämmön talteenotto ja hyödyntäminen on vihreän datakeskuksen keskeinen kilpailutekijä: se muuttaa “hukasta” hyödykkeen ja parantaa kokonaisjärjestelmän ympäristötehokkuutta. 
-arXiv Oppaaseen kirjattava käytäntö: tee sijaintivaiheessa “lämmön vastaanottajakartoitus” (kaukolämpö / teollisuus / kiinteistöt), ja tarkista lämpötila- ja tehovaatimukset sekä etäisyys ja liittymiskustannukset [1].
+Tutkimus- ja asiantuntijatiedon perusteella sijaintiin kytkeytyvät ratkaisevat tekijät voidaan tiivistää neljään kokonaisuuteen (sähkö, sähköntuotannon päästöt/todentaminen, jäähdytysilmasto, hukkalämpö) sekä yhteen reunaehtoon (viive/saatavuus). [1][6][7][9]
 
-Lisäksi sijaintipäätöksessä on aina tasapainotettava viive ja käyttäjävaatimukset: kuormaa voidaan ohjata edullisemman ja puhtaamman energian alueille vain, jos palvelun latenssi- ja saatavuusrajat sallivat sen [1]. 
+---
 
-Lähde
-[1] Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). Green Data Centers: A Survey, Perspectives, and Future Directions (arXiv:1608.00687). arXiv.
+#### Mitä tehdään (sisältö, ei vain lista)?
 
+Käytännöllinen ja läpinäkyvä malli on kaksivaiheinen: **(1) porttikriteerit (go/no-go)** ja **(2) pisteytys ja painotettu vertailu (1–5)**.
+
+**Vaihe 1: Porttikriteerit (go/no-go)**  
+Karsi sijainnit, jos jokin näistä ei täyty:
+
+1) **Sähköverkon kapasiteetti ja luotettavuus (liittymäpolku + aikataulu)**  
+- varmista liityntämahdollisuus (MW), aikataulu ja kustannusrakenne (liityntä- ja tehomaksut)  
+- määritä palvelutasotarpeen mukaan redundanssi (N+1 / 2N) ja tarkista kahden syötön realismi  
+- dokumentoi kriittiset epävarmuudet (mitä pitää vielä varmistaa ja keneltä) [7][9]
+
+2) **Sähkön päästöintensiteetti ja uusiutuvan energian todentaminen**  
+- valitse hankintamalli: PPA, alkuperätakuut (GoO), oma tuotanto tai portfolio  
+- dokumentoi todentaminen ja raportointi (mitä väitetään ja millä todisteella)  
+- arvioi, voiko kuormaa ohjata (aikaperusteinen optimointi) palvelutasoa rikkomatta [1][9]
+
+3) **Ilmasto ja vapaajäähdytys (free cooling) – jäähdytyksen edellytykset**  
+- laske free cooling -tuntipotentiaali (lämpötila + kosteus) ja tee oletus näkyväksi  
+- valitse jäähdytysarkkitehtuuri olosuhteiden mukaan (air-/water-side economizer, hybridi, neste)  
+- kirjaa rajoitteet (kosteudenhallinta, kondenssi, käyttörajat) [7][4]
+
+4) **Hukkalämmön hyödyntäminen – vastaanottaja ja integraation realismi**  
+- tee vastaanottajakartoitus (kaukolämpö / teollisuus / kiinteistöt)  
+- tarkista lämpötaso, tehovaatimus, siirtomatka, liittymiskustannukset ja toteutusmalli (esim. lämpöpumppu)  
+- dokumentoi “go/no-go”: onko realistinen vastaanottaja ja miksi [1][7][9]
+
+**Reunaehto: Latenssi ja käyttäjävaatimukset (viive, saatavuus, redundanssi)**  
+- varmista, että sijainti täyttää kuorman viive- ja saatavuusvaatimukset  
+- huomioi, että kuorman siirto puhtaamman/halvemman energian alueille onnistuu vain, jos palvelutaso sallii sen [6][8]
+
+**Avoimet tietolähteet (pisteytyksen syöttödata)**
+
+Porttivaiheessa varmistetaan toteutettavuus (go/no-go), ja pisteytysvaiheessa verrataan vaihtoehtoja yhtenäisillä mittareilla. Jotta pisteytys on läpinäkyvä ja toistettavissa, suositellaan hyödyntämään ensisijaisesti avoimia tietolähteitä ja viranomais-/järjestelmätoimijoiden julkaisuja. Tässä oppaassa käytetään seuraavia “ydinlähteitä”:
+
+- **Sähköliittymä ja kantaverkko:** Fingrid (liityntätilanne, pullonkaulat, vahvistushankkeet; Grid Scope)
+- **Aurinkopotentiaali:** PVGIS (JRC) – säteily ja PV-tuotto
+- **Tuulipotentiaali:** Ilmatieteen laitoksen Tuuliatlas
+- **Free cooling -potentiaali:** Ilmatieteen laitoksen avoin data (lämpötila + kosteus tuntiprofiileina)
+- **Tulvariskit:** SYKE/Tulvakeskus – tulvakartat ja riskialueet
+- **Kuitu ja peitto:** Traficom – laajakaistan saatavuus/peitto (täydennä tarvittaessa operaattoriselvityksellä)
+- **Tontti ja kaavoitus:** kunnan kaavat + paikkatietoaineistot (rakennettavuus ja rajoitteet)
+
+Kriteerikohtaiset mittarit ja suositellut datalähteet on koottu taulukkoon (→ **Liite: Avoimet datalähteet sijaintipisteytykseen**).
+
+
+**Vaihe 2: Pisteytys ja painotettu vertailu (1–5)**  
+Pisteytä vain portista läpäisseet sijainnit (1 = heikko/korkea riski, 5 = erinomainen/matala riski).  
+Esimerkkipainotus: sähkö 35 %, lämpöintegraatio 20 %, jäähdytysilmasto 15 %, kuitu 15 %, vesi+lupitus 15 %.
+
+- kirjaa jokaiselle pisteelle **1 lauseen perustelu**  
+- tee vähintään yksi **herkkyystarkastelu** (muuttuuko paras vaihtoehto, jos painot muuttuvat?)  
+- nosta päätökseksi 1–2 parasta sijaintia jatkoselvitykseen ja varasuunnitelma (plan B) [7][9]
+
+---
+
+#### Tuotokset (deliverables)
+
+Minimissään:
+
+- **Sijaintivaihtoehtojen esikarsinta (go/no-go) -muistio**  
+  - porttikriteerit täyttyvät / eivät täyty + perustelu + avoimet kysymykset
+
+- **Pisteytystaulukko (1–5) + painotukset + herkkyystarkastelu**  
+  - näkyvät oletukset ja perustelut → päätös on läpinäkyvä myös sidosryhmille
+
+- **Sähkö- ja energiadokumentaatio**  
+  - liittymäpolku (MW, aikataulu, kustannukset, redundanssi)  
+  - uusiutuvan hankintamalli ja todentaminen (PPA/GoO/oma tuotanto)  
+  - suunnitelma päästö- ja energiaraportoinnista [1][9]
+
+- **Jäähdytyksen ja hukkalämmön alustava toteutettavuuskuvaus**  
+  - free cooling -tuntipotentiaalin laskentaoletus  
+  - hukkalämmön vastaanottajakartoitus + integraatiopolku (jos realistinen) [4][7][9]
+
+- **Viive- ja saavutettavuusreunaehdot**  
+  - kuormatyypeittäin (latenssiherkkä / ei-latenssiherkkä) hyväksyttävä viive ja redundanssi [6][8]
+
+---
+
+#### Jos vaihe tehdään huonosti / ohitetaan
+
+- **Liittymäpolku “yllättää”**: aikataulu venyy, kustannukset kasvavat tai redundanssi jää vajaaksi → koko hanke voi pysähtyä tai muuttua kalliiksi kompromissiksi. [7][9]  
+- **Vihreät tavoitteet jäävät toiveiksi**: uusiutuvan todentaminen, päästöraportointi tai kuormanohjaus ei toteudu käytännössä, vaikka ne on kirjattu tavoitteiksi. [1][2][9]  
+- **Jäähdytys suunnitellaan väärille oletuksille**: free cooling -etu jää realisoitumatta tai kosteudenhallinta aiheuttaa käyttörajoitteita → energiankulutus ja riskit kasvavat. [4][7]  
+- **Hukkalämpöpotentiaali menetetään**: vastaanottajaa ei kartoiteta ajoissa → integraatio ei onnistu myöhemmin kohtuukustannuksella. [7][9]  
+- **Verkko/latenssi unohtuu**: sijainti rajoittaa palveluiden laatua tai estää kuorman siirron energian mukaan → operointi kallistuu ja “vihreä optimointi” jää vajaaksi. [6][8]
+
+---
+
+#### Lähteet (viitenumerointi)
+
+[1] Green Data Centers: A Survey, Perspectives, and Future Directions.  
+[2] Energy efficiency and low carbon enabler green IT framework for data centers (Uddin & Rahman).  
+[3] DATAZERO – Datacenter With Zero Emission and Robust Management Using Renewable Energy.  
+[4] Design and Operational Analysis of a Green Data Center (MGHPCC).  
+[5] Energy storage techniques, applications, and recent trends – A sustainable solution for power storage.  
+[6] The Datacenter as a Computer – An Introduction to the Design of Warehouse-Scale Machines.  
+[7] Data Center Handbook (toim. Hwaiyu Geng).  
+[8] A Taxonomy and Survey on Green Data Center Networks.  
+[9] The ICT sector, climate and the environment – Interim report (LVM 2020:14).
+
+---
 
 ## 3. Vihreän datakeskuksen peruselementit ja periaatteet
 Vihreä datakeskus on kokonaisuus, jossa IT-kuorma, sähköketju, jäähdytys, rakennus sekä ohjaus ja valvonta suunnitellaan yhtenä järjestelmänä, ja toimintaa johdetaan sovituilla, mitattavilla energia- ja ympäristötunnusluvuilla. 
