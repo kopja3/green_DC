@@ -60,7 +60,7 @@ Datakeskuksen sijantia suunniteltaessa tulisi ottaa huomioon useita tekijöitä,
 
 -Sähköeneregian saatavuus ja hinta 
 
--Imasto
+-Ilmasto
 
 -Maantiede ja tietoliikenneyhteydet
 
