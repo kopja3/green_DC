@@ -1,13 +1,9 @@
 ## Johdanto vihreään datakeskukseen
 
-# Datakeskus vs. Vihreä datakeskus
+Tämä perusopas syventää itseopiskelumateriaalia ja etenee sen rakenteen mukaisesti: johdannon jälkeen opas vastaa kappaleiden 1–6 (M1–M6) teemoja. Vihreän datakeskuksen ymmärtämiselle luodaan perusta tarkastelemalla ensin perinteisen datakeskuksen energia- ja laitemitoitusta, koska mitoitusketju (kuorma → kapasiteetti → IT-teho → sähkönsyöttö ja jäähdytys) selittää datakeskuksen sähköenergiatarpeen muodostumisen. 
 
-## Mitä datakeskus on ja miksi niitä rakennetaan
+Tämän jälkeen johdannossa määritellään vihreä datakeskus ja sen tavoitteet tutkimuskirjallisuuden avulla sekä tiivistetään, mitä vihreys tarkoittaa käytännön päätöksinä. Luvut 2–7 käsittelevät sijaintiperusteet, peruselementit ja periaatteet, elinkaaren ja toiminnan vaiheet, energian kulutuksen ja uudelleenkäytön sekä energiatehokkuuden mittaamisen. Jokainen keskeinen väite ankkuroidaan lähteisiin, jotta lukija voi arvioida johtopäätöksiä ja soveltaa niitä omaan tilanteeseensa.
 
-- Perinteisen datakeskuksen energian- ja laitemitoitus  
-## Datakeskus vs. Vihreä datakeskus
-
-## Mitä datakeskus on ja miksi niitä rakennetaan
 
 ### Perinteisen datakeskuksen energian- ja laitemitoitus
 
