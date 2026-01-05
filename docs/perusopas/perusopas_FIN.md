@@ -169,7 +169,7 @@ Tutkimus- ja asiantuntijatiedon perusteella sijaintiin kytkeytyvät ratkaisevat 
 
 ---
 
-#### Mitä tehdään (sisältö, ei vain lista)?
+#### Mitä tehdään
 
 Käytännöllinen ja läpinäkyvä malli on kaksivaiheinen: **(1) porttikriteerit (go/no-go)** ja **(2) pisteytys ja painotettu vertailu (1–5)**.
 
@@ -202,17 +202,41 @@ Karsi sijainnit, jos jokin näistä ei täyty:
 
 **Avoimet tietolähteet (pisteytyksen syöttödata)**
 
-Porttivaiheessa varmistetaan toteutettavuus (go/no-go), ja pisteytysvaiheessa verrataan vaihtoehtoja yhtenäisillä mittareilla. Jotta pisteytys on läpinäkyvä ja toistettavissa, suositellaan hyödyntämään ensisijaisesti avoimia tietolähteitä ja viranomais-/järjestelmätoimijoiden julkaisuja. Tässä oppaassa käytetään seuraavia “ydinlähteitä”:
+Porttivaiheessa varmistetaan toteutettavuus (go/no-go), ja pisteytysvaiheessa verrataan vaihtoehtoja yhtenäisillä mittareilla. Jotta pisteytys on läpinäkyvä ja toistettavissa, suositellaan hyödyntämään ensisijaisesti avoimia tietolähteitä ja viranomais-/järjestelmätoimijoiden julkaisuja.**Avoimet tietolähteet (pisteytyksen syöttödata)**
 
-- **Sähköliittymä ja kantaverkko:** Fingrid (liityntätilanne, pullonkaulat, vahvistushankkeet; Grid Scope)
-- **Aurinkopotentiaali:** PVGIS (JRC) – säteily ja PV-tuotto
-- **Tuulipotentiaali:** Ilmatieteen laitoksen Tuuliatlas
-- **Free cooling -potentiaali:** Ilmatieteen laitoksen avoin data (lämpötila + kosteus tuntiprofiileina)
-- **Tulvariskit:** SYKE/Tulvakeskus – tulvakartat ja riskialueet
-- **Kuitu ja peitto:** Traficom – laajakaistan saatavuus/peitto (täydennä tarvittaessa operaattoriselvityksellä)
-- **Tontti ja kaavoitus:** kunnan kaavat + paikkatietoaineistot (rakennettavuus ja rajoitteet)
+Porttivaiheessa varmistetaan toteutettavuus (go/no-go), ja pisteytysvaiheessa verrataan vaihtoehtoja yhtenäisillä mittareilla. Jotta pisteytys on läpinäkyvä ja toistettavissa, suositellaan hyödyntämään ensisijaisesti avoimia tietolähteitä ja viranomaisten/järjestelmätoimijoiden julkaisuja:
 
-Kriteerikohtaiset mittarit ja suositellut datalähteet on koottu taulukkoon (→ **Liite: Avoimet datalähteet sijaintipisteytykseen**).
+- **Sähköliittymä ja kantaverkko:** Fingrid (liityntätilanne, pullonkaulat, vahvistushankkeet; Grid Scope)  
+  URL: https://www.fingrid.fi/  
+  Haettu: 2026-01-05. Saatavuus: avoin (selain).  
+  (Avoin data: https://data.fingrid.fi/ — Haettu: 2026-01-05. Saatavuus: avoin (API + selain).)
+
+- **Aurinkopotentiaali:** PVGIS (JRC) – säteily ja PV-tuotto  
+  URL: https://joint-research-centre.ec.europa.eu/pvgis_en  
+  Haettu: 2026-01-05. Saatavuus: avoin (selain + API).
+
+- **Tuulipotentiaali:** Ilmatieteen laitoksen Tuuliatlas  
+  URL: https://tuuliatlas.fi/  
+  Haettu: 2026-01-05. Saatavuus: avoin (selain).
+
+- **Free cooling -potentiaali:** Ilmatieteen laitoksen avoin data (lämpötila + kosteus tuntiprofiileina)  
+  URL: https://www.ilmatieteenlaitos.fi/avoin-data  
+  Haettu: 2026-01-05. Saatavuus: avoin (API + selain).
+
+- **Tulvariskit:** SYKE/Tulvakeskus – tulvakartat ja riskialueet  
+  URL: https://www.vesi.fi/aiheet/vesiymparisto-ja-maankaytto/tulvat/  
+  Haettu: 2026-01-05. Saatavuus: avoin (selain).
+
+- **Kuitu ja peitto:** Traficom – laajakaistan saatavuus/peitto (täydennä tarvittaessa operaattoriselvityksellä)  
+  URL: https://www.traficom.fi/  
+  Haettu: 2026-01-05. Saatavuus: avoin (selain; osa aineistoista ladattavissa).
+
+- **Tontti ja kaavoitus:** kunnan kaavat + paikkatietoaineistot (rakennettavuus ja rajoitteet)  
+  URL (MML rajapinnat): https://www.maanmittauslaitos.fi/rajapinnat  
+  Haettu: 2026-01-05. Saatavuus: avoin/rekisteröityminen voi vaatia tunnistautumista.  
+  URL (kunta): [lisää kohdekunnan kaavapalvelun URL]  
+  Haettu: 2026-01-05. Saatavuus: vaihtelee kunnittain.
+
 
 
 **Vaihe 2: Pisteytys ja painotettu vertailu (1–5)**  
@@ -220,7 +244,7 @@ Pisteytä vain portista läpäisseet sijainnit (1 = heikko/korkea riski, 5 = eri
 Esimerkkipainotus: sähkö 35 %, lämpöintegraatio 20 %, jäähdytysilmasto 15 %, kuitu 15 %, vesi+lupitus 15 %.
 
 - kirjaa jokaiselle pisteelle **1 lauseen perustelu**  
-- tee vähintään yksi **herkkyystarkastelu** (muuttuuko paras vaihtoehto, jos painot muuttuvat?)  
+- tee vähintään yksi **painotusten vaikutuksen tarkistus**: muuta painoja kohtuullisesti (esim. sähkö 35 % → 45 % ja vähennä muista vastaavasti) ja katso, muuttuuko sijaintien järjestys.  
 - nosta päätökseksi 1–2 parasta sijaintia jatkoselvitykseen ja varasuunnitelma (plan B) [7][9]
 
 ---
@@ -251,7 +275,7 @@ Minimissään:
 
 #### Jos vaihe tehdään huonosti / ohitetaan
 
-- **Liittymäpolku “yllättää”**: aikataulu venyy, kustannukset kasvavat tai redundanssi jää vajaaksi → koko hanke voi pysähtyä tai muuttua kalliiksi kompromissiksi. [7][9]  
+- **Sähköliittymän varmistus epäonnistuu**, jos tarvittava kapasiteetti (MW), toteutusaikataulu, kustannusarvio tai vaadittu toimitusvarmuus (esim. kahden syötön toteutettavuus) eivät toteudu oletetusti → seurauksena viiveitä, lisäinvestointeja tai palvelutason heikkenemistä. [7][9] 
 - **Vihreät tavoitteet jäävät toiveiksi**: uusiutuvan todentaminen, päästöraportointi tai kuormanohjaus ei toteudu käytännössä, vaikka ne on kirjattu tavoitteiksi. [1][2][9]  
 - **Jäähdytys suunnitellaan väärille oletuksille**: free cooling -etu jää realisoitumatta tai kosteudenhallinta aiheuttaa käyttörajoitteita → energiankulutus ja riskit kasvavat. [4][7]  
 - **Hukkalämpöpotentiaali menetetään**: vastaanottajaa ei kartoiteta ajoissa → integraatio ei onnistu myöhemmin kohtuukustannuksella. [7][9]  
