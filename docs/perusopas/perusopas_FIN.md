@@ -629,7 +629,8 @@ Elinkaaren loppu vaikuttaa sekä ympäristöön että tietoturvaan. Vihreys ei o
 
 
 ## 5. Vihreän datakeskuksen toiminta vaiheittan: sähköstä palveluksi ja takaisin lämmöksi
-P5.0 Päivä vihreän datakeskuksen elämässä
+
+## P5.0 Päivä vihreän datakeskuksen elämässä
 Vihreän datakeskuksen ohjaus on ketju, jossa IT-, verkko-, sähkö- ja jäähdytyskerros optimoidaan yhdessä: palvelupyynnöt mitoitetaan hetkelliseen tarpeeseen (right-sizing), virtuaalikoneet pakataan vähälle palvelinmäärälle, verkon linkkejä ja kytkimiä pidetään energiatiloissa kuorman mukaan, tehoa rajataan (power-capping) ja piikkejä voidaan leikata UPS/akkuresursseilla, samalla kun jäähdytyksen setpointit ja ilmavirrat/virtaamat optimoidaan osakuormilla. Ketju suljetaan mittauksella ja palautteella (PUE/CUE ja alijärjestelmämittaus), joiden perusteella ohjauslogiikkaa parannetaan jatkuvasti. [1][2][4][8]
 Uusiutuvan energian ja varastojen tapauksessa ohjaus tehdään usealla aikaskaalalla (päivät–viikot / tunnit / reaaliaika). [3][5] Suomessa korostuvat todennettavuus, raportointi ja hukkalämmön hyödyntämisen käytännön toimitusketju. [9]
 
