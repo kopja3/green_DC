@@ -851,18 +851,373 @@ Käytännön toteutus Suomessa tarkoittaa:
 
 
 ## 6. Energian kulutus ja uudelleenkäyttö
-- Kulutuslähteet: palvelimet, verkko, jäähdytys, sähkönjakelu  
-- Energian säästö: DVFS, sleep-tilat, free cooling, kuuman ja kylmän ilman erottelu  
-- Uudelleenkäyttö: hukkalämmön hyödyntäminen (kaukolämpö, prosessilämpö)  
-- Uusiutuvan energian käyttö ja varastointi: PV, tuuli, energian varastointi  
 
-Energia ja hukkalämpö (vihreyden ydin)
-Tavoite: tehdä energiavirrat näkyviksi ja hyödyttää lämpö.
-Sisällytä:
-Sähkön hankinta (uusiutuva, sopimukset periaatetasolla), kulutusprofiili.
-Hukkalämmön talteenotto: lämpötilatasot, lämmönvaihdin, vastaanottaja, sopimuslogiikka.
-“Kannattaako?”-osio: yksinkertainen päätöspuu (lämpömäärä + vastaanottaja + etäisyys).
-Yksi esimerkkilasku (karkealla tasolla), jotta lukija ymmärtää suuruusluokat.
+
+Tässä kappaleessa käsitellään, mistä datakeskuksen kWh-lukemat muodostuvat, miten työkuorma ja tietoliikenne näkyvät kulutuksessa, miten kulutus vaihtelee ajassa, mikä on jäähdytyksen rooli sekä mitä hukkalämpö tarkoittaa ja miten sitä voidaan hyödyntää. Lisäksi kuvataan, miten energiankäyttö sidotaan päästöihin ja miten luvut viedään raportointiin ja indikaattoreihin standardoidulla tavalla. Energiadata ja sen rakenteet ovat pohja myöhemmälle, analytiikkaan perustuvalle optimoinnille (menetelmäopas jatkaa tästä).
+
+---
+
+### 6.1 Peruskuva: mistä kWh:t syntyvät
+
+### Miksi?
+
+* kWh on laskutuksen ja energiaraportoinnin perusyksikkö: se kuvaa kulutettua energiaa ajan yli (teho kW integroituna ajassa). Ilman yhteistä määrittelyä siitä, mitä mitataan ja mistä mittausrajasta, eri kohteiden ja eri kuukausien luvut eivät ole vertailukelpoisia.
+* Datakeskuksessa “kokonaisenergia” sisältää IT-laitteiden energian (palvelimet, tallennus, verkko) ja tukijärjestelmien energian (jäähdytys, sähkönjakelu/UPS-häviöt, valaistus ja muu infrastruktuuri). PUE-metriikka on standardoitu tapa kuvata tätä suhdetta. [1]
+
+### Mitä tehdään?
+
+* Määritetään mittausrajat (control volume) ja energian virrat:
+
+  * sisään: verkkosähkö ja mahdollinen oma tuotanto
+  * sisäinen käyttö: IT-laitteet + tukikuormat
+  * ulos: lämpö (käytännössä lähes kaikki sähkö muuttuu lämmöksi tilassa), mahdollinen uudelleenkäyttö (hukkalämpö) ja häviöt.
+* Sovitaan mittaus- ja raportointitapa PUE:lle (mittauspisteet, ajallinen resoluutio, raportointijakso). Standardi määrittää PUE:n laskennan ja raportoinnin periaatteet sekä mittauskategorioita. [1]
+* Rakennetaan perusenergiatase: “laitosenergia” vs. “IT-energia” sekä karkea alajakautuma (jäähdytys / sähköketju / muu). Tukena voidaan käyttää laiteluokkajakoa (servers, storage, network, cooling, other) yleisellä tasolla. [2]
+
+### Tuotokset
+
+* Energian mittausrajakuvaukset (yksinkertainen kaavio ja sanallinen määrittely).
+* Mittauspiste- ja mittarilista (pääkeskus/utility, UPS-lähdöt, jäähdytyksen syötöt, mahdollinen rack-/PDU-mittaus).
+* Ensimmäinen PUE-laskenta ja raportointisääntö (mitä raportoidaan, millä jaksolla). [1]
+
+### Jos vaihe tehdään huonosti / ohitetaan
+
+* Kokonaiskulutus ja IT-kulutus sekoittuvat (PUE vääristyy) ja toimenpiteiden vaikutus jää epäselväksi.
+* Mittaus ei kata kriittisiä kuormia (esim. jäähdytyksen osia tai UPS-häviöitä), jolloin optimointi kohdistuu virheelliseen “suurimpaan” kuluerään.
+* Myöhemmän analytiikan lähtötaso puuttuu: poikkeamia ei tunnisteta eikä ennusteita voi sitoa todellisiin mittauksiin.
+
+---
+
+### 6.2 Miten tietoliikenne ja työkuorma näkyvät kWh-luvuissa
+
+### Miksi?
+
+* IT-energian sisällä kulutus jakautuu palvelimiin, tallennukseen ja verkkolaitteisiin. Näillä on eri kuormitusprofiilit: osa kulutuksesta on kuormaan sidottua, osa perustasoa (idle). [2]
+* Palvelinlaitteiden energiankäyttö ei historiallisesti ole ollut täysin “energiaproportionaalista” (kulutus ei laske lineaarisesti kuorman mukana), mikä tekee kuormanohjauksesta ja konsolidoinnista keskeisen energiamuuttujan. [4]
+* Datakeskusten lisäksi myös datansiirtoverkot kuluttavat sähköä merkittävässä mittakaavassa, ja palvelun kokonaisvaikutus voi ulottua datakeskuksen rajojen ulkopuolelle (erityisesti, jos palvelutasolla raportoidaan laajemmin ICT-palvelun energiankäyttöä). [3]
+
+### Mitä tehdään?
+
+* Liitetään energiamittaus työkuorma- ja verkkomittareihin:
+
+  * työkuorma: CPU/GPU-utilisaatio, muistikuorma, I/O, jobit/tapahtumat, virtuaalikoneiden/containerien määrä
+  * tietoliikenne: sisäinen läpivienti (east-west), ulkoinen liikenne (north-south), porttien käyttöaste, reitittimien/kytkinten kuorma.
+* Rakennetaan perusmalli “energia per tuotettu palvelu” -ajatteluun:
+
+  * kWh per transaktio / kWh per jobi / kWh per GB siirrettyä dataa (valitaan palvelukohtaisesti).
+* Varmistetaan, että IT-energian määrittelyyn sisältyvät myös verkkolaitteet, jos niitä käytetään PUE/IT-energia -jaottelussa. [1]
+
+### Tuotokset
+
+* Mittauskartta: mitkä kuormitus- ja verkkometriikat kerätään ja mihin energiamittauksiin ne yhdistetään.
+* Perusraportti: “IT-energia jaettu palvelimet/tallennus/verkko” sekä vastaavat kuormamittarit samalla aikajanalla. [2]
+* Yksi tai useampi palvelukohtainen intensiteetti-indikaattori (esim. kWh/jobi tai kWh/GB), jota voidaan käyttää kapasiteetti- ja optimointikeskusteluissa. [4]
+
+### Jos vaihe tehdään huonosti / ohitetaan
+
+* Energiankulutus nähdään vain kuukausisummaa kohti, eikä erotu, johtuuko muutos työkuormasta, verkosta, jäähdytyksestä vai häviöistä.
+* Kapasiteettisuunnittelu perustuu huipputehon oletuksiin ilman palvelutasomittareita, mikä kasvattaa ylimitoituksen riskiä.
+* Monitoimijaympäristössä (colocation) kulutusta ei pystytä kohdistamaan asiakkaalle/kuormalle, mikä vaikeuttaa kustannus- ja päästöallokointia.
+
+---
+
+### 6.3 Kulutusprofiilit ja kuormituksen vaihtelu
+
+### Miksi?
+
+* Datakeskuksen energiankäyttö muodostuu samanaikaisesti:
+
+  * kuormaan sidotusta osasta (IT ja osa jäähdytyksestä)
+  * perustasosta (jatkuva infrastruktuurikuorma, osa IT-laitteiden idle-tehosta). [4]
+* Ajallinen vaihtelu (päivä/viikko/vuosi) vaikuttaa sekä energiakustannuksiin (tehomaksut, tariffit) että jäähdytyksen tarpeeseen (ulkoilma ja vuodenaika).
+* EU:n energiatehokkuusdirektiivin raportointikehikko edellyttää vuosittaista seurantaa ja julkistamista tietyille kynnyskokoa suuremmille datakeskuksille, mikä tekee profiilien muodostamisesta käytännön vaatimuksen monissa ympäristöissä. [12]
+
+### Mitä tehdään?
+
+* Rakennetaan kuormitus- ja kulutusprofiilit vähintään kolmella aikajaksolla:
+
+  * vuorokausi: huiput, yökuorma, ajoitetut batchit
+  * viikko: arki vs. viikonloppu
+  * vuosi: kesä/talvi, lämpötila- ja jäähdytysvaikutus.
+* Erotellaan kokonaiskulutus vähintään kahteen pääkomponenttiin:
+
+  * IT-energia
+  * ei-IT-energia (jäähdytys + sähköketju + muu).
+* Tunnistetaan “minimikuorma” (baseload) ja “huippukuorma” (peak), ja kirjataan mitkä järjestelmät määrittävät huipun.
+
+### Tuotokset
+
+* Aikasarja- ja profiilikuvaus: kW ja kWh (kokonaisuus, IT, jäähdytys) sovitulla resoluutiolla (esim. 15 min tai 1 h).
+* Kuormituskalenteri: tunnetut työkuormapiikit ja ajoitetut ajot (ylläpito, varmistukset, malliajojen ikkunat).
+* Lista toimenpidekohteista, jotka vaikuttavat joko baseloadiin tai huippuun (erotellaan tarkoituksella).
+
+### Jos vaihe tehdään huonosti / ohitetaan
+
+* Optimointi kohdistuu kuukausisummaa pienentäviin keinoihin, vaikka kustannus muodostuu tehohuipuista tai jäähdytyksen kausivaihtelusta.
+* Raportoinnissa näkyy ristiriitoja (esim. PUE “paranee” vain siksi, että IT-kuorma nousi, vaikka jäähdytyksen ohjaus ei muuttunut). [1]
+* Hukkalämmön hyödyntämisen mitoitus tehdään keskiarvoilla, jolloin lämpöteho tai lämpötilataso ei riitä lämmityskauden huippuun.
+
+---
+
+##¤ 6.4 Jäähdytyksen osuus energiankulutuksesta
+
+### Miksi?
+
+* Jäähdytys ja muu infrastruktuuri muodostavat mitattavan osan datakeskuksen sähköstä. IEA:n laiteluokkajaottelussa “cooling” on oma pääluokkansa kokonaiskulutuksessa. [2]
+* Jäähdytyksen energiankäyttö riippuu IT-kuormasta, lämmönsiirtoratkaisusta (ilma/neste), tavoitelämpötiloista sekä ulko-olosuhteista.
+* Jäähdytyksen tehokkuutta voidaan mitata standardoidulla KPI:llä (Cooling Efficiency Ratio, CER). [5]
+* Lämpötila- ja ympäristörajat määräytyvät IT-laitteiden käyttöympäristön mukaan; ASHRAE:n ohjeistus kuvaa datakeskusten lämpötilakäytäntöjen kehitystä ja käyttöympäristöluokkia (ml. nestekierto). [6]
+
+### Mitä tehdään?
+
+* Erotellaan jäähdytyksen sähkö kulutusmittauksilla omaksi lohkokseen (chillerit, pumput, puhaltimet, CRAH/CRAC, kuivajäähdyttimet, mahdolliset jäähdytystornit).
+* Kirjataan ohjausmuuttujat ja niiden mittaus:
+
+  * lämpötilan asetusarvot (supply/return)
+  * ilman/nesteen virtaamat ja lämpötilat (jos saatavilla)
+  * ulkolämpötila ja mahdollinen vapaajäähdytyksen käyttö.
+* Lasketaan ja raportoidaan CER, tai vähintään jäähdytyksen kWh ja sen osuus kokonaiskWh:sta sovitulla jaksolla. [5]
+
+### Tuotokset
+
+* Jäähdytyksen sähkönkulutuksen aikasarja ja osuus kokonaiskulutuksesta. [2]
+* Jäähdytyksen KPI (CER) tai vastaava sisäinen mittari, joka perustuu standardin mukaiseen määrittelyyn. [5]
+* Asetusarvopolitiikka: mitkä lämpötila-alueet ovat käytössä ja millä perusteella (sidotaan IT-laitteiden ympäristövaatimuksiin). [6]
+
+### Jos vaihe tehdään huonosti / ohitetaan
+
+* Jäähdytyksen kulutus jää “muu kuorma” -luokkaan, jolloin muutokset näkyvät vain PUE:ssa ilman selitystä. [1]
+* Asetusarvoja muutetaan ilman mittausta, mikä voi siirtää ongelman ilmavirroista paikallisiin hotspotteihin.
+* Hukkalämmön hyödyntämisen mahdollisuus jää arvioimatta, koska lämpötilataso ja lämpöteho eivät ole mitattuna.
+
+---
+
+### 6.5 Mitä hukkalämmöllä tarkoitetaan
+
+### Miksi?
+
+* Datakeskus muuntaa sähkön lämmöksi IT-laitteissa ja tukijärjestelmissä; tämä lämpö poistetaan jäähdytyksellä ja päätyy tyypillisesti ulkoilmaan tai vesipiiriin.
+* Hukkalämmöllä tarkoitetaan lämpöenergiaa, joka syntyy prosessin sivutuotteena ja jota ei käytetä kohteessa hyödyksi. Datakeskuksissa lämpö on usein “matalalämpöistä”; IRENA kuvaa tyypillisiä lämpötilatasoja noin 25–40 °C esimerkkinä datakeskushukkalämmöstä. [9]
+* Uudelleenkäyttöä voidaan kuvata standardoidulla mittarilla Energy Reuse Factor (ERF), joka mittaa datakeskuksesta uudelleenkäytettävän energian suhdetta kokonaiskulutettuun energiaan. [7]
+* Lisäksi on käytössä mittarikehikkoja, jotka on rakennettu tekemään uudelleenkäyttö näkyväksi datakeskusmittareissa (esim. The Green Gridin ERE-lähestymistapa). [8]
+
+### Mitä tehdään?
+
+* Määritetään hukkalämmön syntypiste ja keräystapa:
+
+  * ilmajäähdytys: poistoilman lämpö ja ilmamäärä
+  * nestekierto: paluu-/menolämpötilat ja virtaama
+  * lauhdutinpuoli (jäähdytyskoneet): missä lämpö vapautuu ympäristöön.
+* Arvioidaan “hyödynnettävä lämpö” kolmella peruskysymyksellä:
+
+  1. paljonko lämpötehoa on saatavilla (kWth) eri kuormilla
+  2. mikä on lämpötilataso (°C)
+  3. missä ajassa ja millä vaihtelulla lämpö on saatavilla (profiilit).
+* Valitaan mittari, jolla uudelleenkäyttö raportoidaan (ERF, ja tarvittaessa ERE). [7] [8]
+
+### Tuotokset
+
+* Hukkalämmön inventaario: lämpöteho, lämpötilataso, saatavuusprofiili (päivä/viikko/vuosi).
+* Rajapintakuvaus: mitä luovutetaan (vesi/ilma), mitkä lämpötilat ja virtaamat, mihin mittaus perustuu.
+* ERF-laskennan edellyttämä mittausmäärittely ja mittauspisteet. [7]
+
+### Jos vaihe tehdään huonosti / ohitetaan
+
+* Hukkalämmön lämpötilataso oletetaan vääräksi (esim. ilman lämpöpumppua luvataan lämpöä lämpöverkkoon), jolloin integraatio ei täytä vastaanottajan vaatimuksia.
+* Lämpömäärä arvioidaan nimellistehosta, vaikka käytännön kuormitus ei yllä mitoitushetken oletuksiin.
+* Uudelleenkäyttö jää raportoimatta, jolloin vaikutus ei näy energiadataan eikä sidosryhmäraportointiin. [7]
+
+---
+
+### 6.6 Konkreettiset esimerkit hukkalämmön hyödyntämisestä
+
+### Miksi?
+
+* Esimerkit konkretisoivat kaksi asiaa: (1) mihin lämpö voidaan ohjata ja (2) millaisia toimijoita ja sopimusmalleja ketju vaatii (datakeskus–operaattori–lämpöyhtiö–loppukäyttäjä).
+* Useissa toteutuksissa keskeinen mahdollistaja on olemassa oleva kaukolämpöverkko ja liittymämalli ylimääräisen lämmön syöttämiseksi verkkoon. [10] [11]
+
+### Mitä tehdään?
+
+* Tyypillisiä toteutuspolkuja:
+
+  1. **Syöttö kaukolämpöön**: datakeskuksen lämpö kerätään (usein lämpöpumpulla lämpötilaa nostamalla) ja siirretään lämpöyhtiön verkkoon.
+
+     * Esimerkkejä: Microsoft–Fortum -kokonaisuuden tavoite hyödyntää datakeskusten lämpöä rakennusten lämmityksessä pääkaupunkiseudulla. [13] [14]
+     * Esimerkkejä: Googlen Hamina-projekti, jossa datakeskuksen lämpö ohjataan paikalliseen kaukolämpöön yhteistyössä energiayhtiön kanssa. [15] [16]
+  2. **Kaupunkitason “open district heating” -malli**: verkko-operaattori tarjoaa menettelyn, jossa ulkopuolinen toimija voi myydä tai luovuttaa ylijäämälämpöä verkkoon.
+
+     * Esimerkki: Stockholm Exergin “Open District Heating” -konsepti ja lämmön talteenotto datakeskus- ja teollisuuskohteista. [11]
+  3. **Lämmön käyttö jäähdytyksen tuottamiseen**: hukkalämpöä käytetään esimerkiksi absorptiojäähdytyksen ajamiseen tai muuhun on-site -ratkaisuun (toteutus riippuu lämpötilatasosta ja järjestelmästä).
+
+     * Esimerkkityyppinä kuvattu ERE-mittariston yhteydessä: lämmön käyttö absorptiojäähdyttimen ajamiseen ja hyötykäyttö muualla kampuksella. [8]
+
+### Tuotokset
+
+* Valittu toteutusarkkitehtuuri (kaukolämpö / open DH / on-site -käyttö).
+* Vastuunjako ja mittaus: mitä mitataan datakeskuksessa ja mitä verkossa (lämpömäärämittaus, lämpötilat, toimitettu energia).
+* Sopimusrunko (toimitusehdot, lämpötehon saatavuus, hinnoittelu/maksumalli, seisokkien käsittely).
+
+### Jos vaihe tehdään huonosti / ohitetaan
+
+* Lämpö toimitetaan ilman yhteistä mittaus- ja vastuunjakomallia, jolloin toimitettu energiamäärä ja hyvitys jää epäselväksi.
+* Lämmön saatavuus ei vastaa lämpöverkon tarvetta (kausivaihtelu) ja projekti jää “teknisesti toimivaksi mutta käytännössä vajaakäyttöiseksi”.
+* Ratkaisu lukitaan yhteen käyttötapaan ilman vaihtoehtoista lämpönielua (esim. vain kaukolämpö ilman varapolkua), jolloin käyttökatkot kasvavat.
+
+---
+
+### 6.7 Milloin hukkalämmön hyödyntäminen on taloudellisesti optimaalisinta
+
+### Miksi?
+
+* Kannattavuus muodostuu yleensä kolmesta tekijästä:
+
+  1. **liitynnän ja siirron kustannus** (putkivedot, lämmönsiirrin, lämpöpumppu, sähköliittymä)
+  2. **hyödynnetyn lämmön määrä ja lämpötilataso**
+  3. **korvattavan lämmön tuotantotapa ja hinta** (esim. polttoaineet, sähkölämpö, lämpöpumput).
+* IRENA nostaa esiin, että datakeskusten hukkalämmön talteenotto kytkeytyy erityisesti kaukolämpö- ja -jäähdytysverkkoihin sekä mahdollisuuteen varastoida kesän lämpöä talven tarpeisiin. [9]
+
+### Mitä tehdään?
+
+* Tehdään esiselvitys, jossa lasketaan:
+
+  * toimitettava lämpöenergia (MWh/a) kuormitusprofiilin perusteella
+  * tarvittava lämpötilan nosto ja lämpöpumpun sähkö (jos käytetään lämpöpumppua)
+  * investoinnit ja ylläpito (CAPEX/OPEX)
+  * tulot/hyödyt (lämmön myynti, korvattu lämmöntuotanto, mahdolliset sopimuskorvaukset).
+* Valitaan mittari ja raportointitapa, jolla hyödyntäminen todennetaan (ERF ja/tai muu lämpöenergian todennus). [7]
+* Huomioidaan sääntely- ja raportointirajat: EU:n energiatehokkuusdirektiivissä on kytkentöjä hukkalämmön hyödyntämisen tarkasteluun ja kustannus–hyötyarviointeihin (erityisesti suuremmissa kohteissa). [12]
+
+### Tuotokset
+
+* Kannattavuuslaskelma ja herkkyysanalyysi (lämmön hinta, sähkön hinta, kuorman vaihtelu, lämpöpumpun käyttö).
+* Mitoitus (kWth, virtaamat, lämpötilat) ja liityntäsuunnitelma.
+* Mittaus- ja todennusmalli (lämpömäärämittaus + ERF-laskennan perusta). [7]
+
+### Jos vaihe tehdään huonosti / ohitetaan
+
+* Lämmönluovutus mitoitetaan nimelliskuormalle ilman kuormaprofiilia, jolloin toteutunut vuosihyöty jää suunniteltua pienemmäksi.
+* Lämpöpumpun sähkönkulutus tai tehomaksut jäävät huomioimatta, jolloin nettosäästö ei vastaa laskelmaa.
+* Sopimus (toimitusvelvoite vs. saatavuus) jää epäselväksi ja riskit realisoituvat seisokeissa.
+
+---
+
+### 6.8 Milloin hukkalämmön hyödyntäminen on ekologisesti optimaalisinta
+
+### Miksi?
+
+* Ekologinen hyöty syntyy, jos hukkalämmöllä korvataan lämmöntuotantoa, jonka päästöintensiteetti on korkeampi kuin talteenoton ja siirron aiheuttamat päästöt (esim. lämpöpumpun käyttämä sähkö). Tämä edellyttää eksplisiittistä päästölaskentaa.
+* IRENA kuvaa hukkalämmön talteenoton tuovan ympäristöhyötyjä, kun muuten hukkaan menevä lämpö käytetään lämmitykseen ja datakeskuksen energia voidaan kytkeä järjestelmätasolla tarkoituksenmukaisiin ratkaisuihin (esim. DHC-verkot ja varastointi). [9]
+
+### Mitä tehdään?
+
+* Lasketaan “nettopäästövaikutus” per toimitettu lämpöyksikkö:
+
+  * päästöt, jotka syntyvät talteenoton ja lämpötilan noston sähköstä (jos käytössä)
+  * miinus päästöt, jotka vältetään korvaamalla toista lämmöntuotantoa.
+* Sidotaan laskenta organisaation GHG-raportointiin (Scope 2 sähkö, ja tarvittaessa erikseen vaikutus korvattuun lämpöön).
+* Raportoidaan datakeskuksen hiili-intensiteetti standardoidulla KPI:llä (CUE) ja erotetaan energiamittarit (PUE/REF/ERF) päästömittareista. [17] [1] [2]
+
+### Tuotokset
+
+* Päästölaskennan periaatteet ja käytetyt päästökertoimet (dokumentointi).
+* Yksi päätösindikaattori: esim. “tCO₂e vältetty / MWh toimitettu lämpö” + epävarmuusraja.
+* CUE-raportti datakeskuksen käyttöaikaisista CO₂-päästöistä ja sen taustadatat (energia, energialähde). [17]
+
+### Jos vaihe tehdään huonosti / ohitetaan
+
+* Hukkalämmön “hyöty” raportoidaan vain toimitettuna lämpönä, vaikka nettovaikutus riippuu sähköstä ja korvatusta lämmöstä.
+* Päästölukuja ei voi auditoida (puuttuvat kertoimet, rajaukset ja laskentasäännöt).
+* Päätöksenteko ohjautuu pelkkään energiamäärään (MWh) ilman hiili-intensiteettiä.
+
+---
+
+### 6.9 Energian käytön ja päästöjen yhteys
+
+### Miksi?
+
+* Energian määrä (kWh) ja päästöt (tCO₂e) liittyvät toisiinsa päästökertoimien kautta, mutta yhteys ei ole vakio: sama kWh voi tuottaa eri määrän päästöjä riippuen sähkön tuotantorakenteesta ja hankintamallista.
+* GHG Protocolin Scope 2 -ohjeistus on keskeinen viitekehys ostosähkön epäsuorien päästöjen raportointiin (menetelmät ja läpinäkyvyysvaatimukset). [18]
+* Datakeskuksille on olemassa standardoituja KPI-mittareita, jotka tukevat vertailua ja raportointia:
+
+  * PUE (kokonaisenergia / IT-energia) [1]
+  * REF (uusiutuvan sähkön osuutta kuvaava tekijä) [19]
+  * ERF (uudelleenkäytetyn energian osuus) [7]
+  * CER (jäähdytyksen tehokkuusmittari) [5]
+  * CUE (CO₂-intensiteetti käyttöaikana) [17]
+* EU:n energiatehokkuusdirektiivi velvoittaa jäsenmaita edellyttämään tietyn kokoluokan datakeskuksilta vuosittaista energiasuorituskykytiedon seurantaa ja julkistamista (kynnys: asennettu IT-tehontarve vähintään 500 kW; aikataulut ja liitteet määrittävät sisältöä). [12]
+
+### Mitä tehdään?
+
+* Tehdään näkyväksi kolme tasoa:
+
+  1. **Energia**: kokonaiskWh, IT-kWh, jäähdytys-kWh, uusiutuva kWh (sovittu rajaus).
+  2. **Päästöt**: tCO₂e (Scope 2) ja tarvittaessa täydentävät kategoriat (esim. polttoaineet).
+  3. **Indikaattorit**: PUE, REF, ERF, CER, CUE sekä valitut palvelukohtaiset intensiteetit (kWh/jobi).
+* Rakennetaan raportointiputki:
+
+  * mittausdata → laadunvarmistus (puuttuvat arvot, kalibrointi) → KPI-laskenta → julkaisu/raportti → audit trail.
+* Dokumentoidaan rajaukset (mitä sisältyy datakeskukseen; mitä ei), koska se vaikuttaa sekä KPI-lukuihin että sääntelyraportointiin. [12] [1]
+
+### Tuotokset
+
+* Vuosikello: mitä raportoidaan kuukausittain ja vuosittain (energia, KPI:t, päästöt).
+* KPI-määrittelydokumentti (PUE/REF/ERF/CER/CUE) ja laskentasäännöt organisaation sisällä. [1] [19] [7] [5] [17]
+* Julkaisukelpoinen raportti tai dashboard, jossa näkyy:
+
+  * kulutus (kWh), teho (kW), profiilit
+  * uusiutuvan sähkön osuus
+  * hukkalämmön toimitus ja ERF
+  * päästöt ja CUE. [12]
+
+### Jos vaihe tehdään huonosti / ohitetaan
+
+* Energia ja päästöt raportoidaan irrallaan ilman yhteistä data- ja laskentaketjua; muutosten syy ei löydy.
+* KPI:t muuttuvat raportista toiseen, koska mittausrajat tai laskentasäännöt eivät ole dokumentoituja.
+* Sääntelyraportoinnissa syntyy aukkoja (puuttuva data tai puutteelliset määrittelyt), ja sisäinen optimointi perustuu epätasalaatuiseen mittaukseen. [12]
+
+---
+
+## Lähteet
+
+1. ISO: *ISO/IEC 30134-2:2016 – Power usage effectiveness (PUE): määrittely, mittaus, laskenta ja raportointi.* ([ISO][1])
+2. International Energy Agency (IEA): *Share of electricity consumption by data centre and equipment type, 2024 (servers, storage, network, cooling, other infrastructure).* ([IEA][2])
+3. IEA: *Data centres and data transmission networks – kumpikin noin 1–1,5 % globaalista sähkönkulutuksesta; taustoitus digitalisaation energiankäytöstä.* ([IEA][3])
+4. Barroso & Hölzle (2007): *The Case for Energy-Proportional Computing – energiaproportionaalisuuden tausta ja palvelinten kuormariippuvuus.* ([barroso.org][4])
+5. ISO: *ISO/IEC 30134-7:2023 – Cooling efficiency ratio (CER) jäähdytyksen KPI:nä.* ([ISO][5])
+6. ASHRAE: *Data center thermal guidelines -materiaali (ilma- ja nestekiertoympäristöt, käyttöalueiden kehitys).* ([ASHRAE Dallas Chapter][6])
+7. ISO: *ISO/IEC 30134-6:2021 – Energy Reuse Factor (ERF): uudelleenkäytetyn energian osuus.* ([ISO][7])
+8. The Green Grid / LBNL: *ERE: A metric for measuring the benefit of reuse energy from a data center (ERE/ERF- jaottelun tausta ja esimerkkikäyttö).* ([Data Center Efficiency Center][8])
+9. IRENA: *Waste heat recovery from data centres – lämpötilatasot, DHC-kytkennät ja järjestelmätason tarkastelu.* ([IRENA][9])
+10. EU Covenant of Mayors: *Stockholm: Heat recovery from data centres – kaukolämpöinfrastruktuurin rooli ja konseptit.* ([eu-mayors.ec.europa.eu][10])
+11. Stockholm Exergi: *Heat recovery / Open District Heating – ylijäämälämmön syöttö verkkoon.* ([stockholmexergi.se][11])
+12. EU: *Directive (EU) 2023/1791 (Energy Efficiency Directive), Article 12 ja Annex VII – datakeskusten seuranta- ja julkaisukynnykset (mm. 500 kW) ja raportoitavat tiedot.* ([EUR-Lex][12])
+13. Fortum: *Datacentres Helsinki region – Fortum & Microsoft -hankkeen kuvaus hukkalämmön hyödyntämisestä.* ([Fortum][13])
+14. AFRY: *Capturing data centre waste heat for Fortum’s district heating in Finland – hankekuvaus ja roolit.* ([Afry][14])
+15. Google: *Our first offsite heat recovery project lands in Finland – Hamina, kaukolämpö ja aikataulutus.* ([blog.google][15])
+16. Data Center Dynamics: *Google launches heat recovery project at data center in Hamina, Finland – toteutus ja kumppanit.* ([Data Center Dynamics][16])
+17. ISO: *ISO/IEC 30134-8:2022 – Carbon Usage Effectiveness (CUE): käyttöaikaisen CO₂-intensiteetin KPI.* ([ISO][17])
+18. GHG Protocol: *Scope 2 Guidance – ostosähkön päästöjen raportoinnin periaatteet ja läpinäkyvyys.* ([ghgprotocol.org][18])
+19. ISO: *ISO/IEC 30134-3:2016 – Renewable Energy Factor (REF): uusiutuvan sähkön käytön kvantitatiivinen mittari.* ([ISO][19])
+
+[1]: https://www.iso.org/standard/63451.html?utm_source=chatgpt.com "ISO/IEC 30134-2:2016 - Information technology — Data centres — Key ..."
+[2]: https://www.iea.org/data-and-statistics/charts/share-of-electricity-consumption-by-data-centre-and-equipment-type-2024?utm_source=chatgpt.com "Share of electricity consumption by data centre and equipment type, 2024"
+[3]: https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks?utm_source=chatgpt.com "Data centres & networks - IEA - International Energy Agency"
+[4]: https://www.barroso.org/publications/ieee_computer07.pdf?utm_source=chatgpt.com "Case for Energy-Proportional Computing - Barroso"
+[5]: https://www.iso.org/standard/80493.html?utm_source=chatgpt.com "ISO/IEC 30134-7:2023 - Information technology — Data centres key ..."
+[6]: https://dallas-ashrae.org/images/meeting/041625/the_ashrae_thermal_guidelines_for_data_centers_____past__present_and_future.pdf?utm_source=chatgpt.com "The ASHRAE Thermal Guidelines for Data Centers Past, Present, and Future"
+[7]: https://www.iso.org/standard/71717.html?utm_source=chatgpt.com "ISO/IEC 30134-6:2021 - Information technology — Data centres key ..."
+[8]: https://datacenters.lbl.gov/sites/default/files/EREmetric_GreenGrid.pdf?utm_source=chatgpt.com "ERE: A METRIC FOR MEASURING THE BENEFIT OF REUSE ENERGY FROM A DATA CENTER"
+[9]: https://www.irena.org/Innovation-landscape-for-smart-electrification/Power-to-heat-and-cooling/31-Waste-heat-recovery-from-data-centres "31 Waste heat recovery from data centres"
+[10]: https://eu-mayors.ec.europa.eu/en/news/stockholm-sweden-heat-recovery-data-centres?utm_source=chatgpt.com "Stockholm, Sweden : Heat recovery from data centres"
+[11]: https://www.stockholmexergi.se/en/heat-recovery/?utm_source=chatgpt.com "Heat recovery - Stockholm Exergi"
+[12]: https://eur-lex.europa.eu/eli/dir/2023/1791/oj/eng "Directive - 2023/1791 - EN - EUR-Lex"
+[13]: https://www.fortum.com/data-centres-helsinki-region?utm_source=chatgpt.com "Fortum and Microsoft's datacentre project spearheads energy efficiency"
+[14]: https://afry.com/en/project/capturing-data-center-waste-heat-fortums-district-heating-in-finland?utm_source=chatgpt.com "Capturing data centre waste heat for Fortum’s district heating in ..."
+[15]: https://blog.google/around-the-globe/google-europe/our-first-offsite-heat-recovery-project-lands-in-finland/?utm_source=chatgpt.com "Our first offsite heat recovery project lands in Finland"
+[16]: https://www.datacenterdynamics.com/en/news/google-launches-heat-recovery-project-at-data-center-in-hamina-finland/?utm_source=chatgpt.com "Google launches heat recovery project at data center in Hamina, Finland ..."
+[17]: https://www.iso.org/standard/77691.html?utm_source=chatgpt.com "ISO/IEC 30134-8:2022 - Information technology — Data centres key ..."
+[18]: https://ghgprotocol.org/scope-2-guidance?utm_source=chatgpt.com "Scope 2 Guidance - GHG Protocol"
+[19]: https://www.iso.org/standard/66127.html?utm_source=chatgpt.com "ISO/IEC 30134-3:2016 - Information technology — Data centres — Key ..."
 
 
 ## 7. Datakeskuksen energiatehokkuuden mittaaminen
