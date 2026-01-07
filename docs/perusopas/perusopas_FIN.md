@@ -632,6 +632,29 @@ Elinkaaren loppu vaikuttaa sekä ympäristöön että tietoturvaan. Vihreys ei o
 
 ## P5.0 Päivä vihreän datakeskuksen elämässä
 
+Tämä on se kohta, johon “paketoit” Jin et al. -päivärytmin ja kerrosoptimoinnin. Sen jälkeen P5.1–P5.7 avaa saman ketjun teknisinä toimituksina.
+
+Mitä siihen tulee (lyhyenä prosessina):
+
+Kuorma → right-sizing / energy-proportional (Jin) [1]
+
+VM-sijoittelu ja konsolidointi (Jin) [1]
+
+Verkon energiatilat ja linkkien ohjaus (Bilal + Jin) [8][1]
+
+Power-capping / UPS / akku piikkien leikkaus (Jin + varastot) [1][5]
+
+Jäähdytys + setpointit + free cooling / osakuorma (MGHPCC + Barroso/Geng taustaksi) [4][6][7]
+
+Mittaus → analyysi → ohjausparametrien päivitys (Uddin + MGHPCC) [2][4]
+
+(valinnainen laatikko) uusiutuvat + moniaikaskaalaohjaus (DATAZERO) [3]
+
+(Suomi-laatikko) todentaminen + hukkalämpö + raportointi (LVM) [9]
+
+👉 Tulos: Saat “kaikkien 10 lähteen” ideat näkyviin yhdessä kuvassa ja puolessa sivussa ilman että P5.1–P5.7 paisuu.
+
+
 Vihreän datakeskuksen ohjaus on ketju, jossa IT-, verkko-, sähkö- ja jäähdytyskerros optimoidaan yhdessä: palvelupyynnöt mitoitetaan hetkelliseen tarpeeseen (right-sizing), virtuaalikoneet pakataan vähälle palvelinmäärälle, verkon linkkejä ja kytkimiä pidetään energiatiloissa kuorman mukaan, tehoa rajataan (power-capping) ja piikkejä voidaan leikata UPS/akkuresursseilla, samalla kun jäähdytyksen setpointit ja ilmavirrat/virtaamat optimoidaan osakuormilla. Ketju suljetaan mittauksella ja palautteella (PUE/CUE ja alijärjestelmämittaus), joiden perusteella ohjauslogiikkaa parannetaan jatkuvasti. [1][2][4][8]
 Uusiutuvan energian ja varastojen tapauksessa ohjaus tehdään usealla aikaskaalalla (päivät–viikot / tunnit / reaaliaika). [3][5] Suomessa korostuvat todennettavuus, raportointi ja hukkalämmön hyödyntämisen käytännön toimitusketju. [9]
 
@@ -643,6 +666,16 @@ Uusiutuvan energian ja varastojen tapauksessa ohjaus tehdään usealla aikaskaal
 ---
 
 ## P5.1 Sähkönsyöttö ja virranjakelu (verkosta IT-kuormaan)
+
+“Rakenteellisesti sähköketju ja sen häviöt kannattaa kuvata single-line -tasolla (verkko–UPS–jakelu), koska häviöt näkyvät suoraan jäähdytyskuormana. [6][7] Ohjauksessa power-capping ja varastoresurssit voivat tasata piikkejä ja parantaa hallittavuutta. [1][5]”
+
+Barroso [6] + Geng [7]: sähköketjun rakenne ja häviölogiikka (verkko → muuntajat → UPS → PDU → räkit)
+
+Jin [1]: power-capping, UPS/akku osana ohjausta
+
+Varastopaperi [5]: varaston rooli (piikit, ride-through, laatu)
+
+LVM [9]: todentaminen ja raportointi Suomessa
 
 **Miksi?**  
 Datakeskus on **kriittinen sähköjärjestelmä**: toimitusvarmuus (UPS/varavoima) ja energiatehokkuus ratkaistaan yhtä aikaa. Kaikki häviöt (muunto, UPS, jakelu) näkyvät lopulta myös jäähdytyskuormana, koska sähkö päätyy lämmöksi. [6][7] Suomessa vihreys edellyttää lisäksi, että sähkön alkuperä ja päästöt ovat **todennettavissa** ja raportoitavissa. [9]
@@ -676,6 +709,10 @@ Samalla varmistetaan, että uusiutuvan sähkön hankinta ja päästöintensiteet
 
 ## P5.2 IT-palvelu: palvelimet, virtualisointi ja kuormanohjaus (sähkö → laskenta)
 
+Jin [1]: right-sizing, VM packing, energy-proportional
+
+(tukena) MGHPCC [4]: mittaus- ja jälkianalyysi käytännön toteutuksessa
+
 **Miksi?**  
 Vihreys realisoituu vasta, kun IT-työ tehdään **minimaalisella energialla per palvelu**. Tutkimus korostaa kuorman yhdistämistä (consolidation), energiaproportionaalia laskentaa ja dynaamista sijoittelua, joilla tyhjäkäynti pienenee. [1][2][4]
 
@@ -706,6 +743,13 @@ Vihreys realisoituu vasta, kun IT-työ tehdään **minimaalisella energialla per
 
 ## P5.3 Verkko ja yhteydet (palvelu → liikenne → energiankulutus)
 
+Bilal [8]: DCN-energiatehokkuus, linkkien/kytkimien energiatilat
+
+(tukena) Jin [1]: verkon ohjaus osana kerrosoptimointia
+
+👉 Lisää P5.3 “Mitä tehdään” -listaan yksi eksplisiittinen kohta:
+“sovitaan, mitkä verkkokomponentit ovat energiatilojen piirissä ja miten uudelleenkonfigurointi tehdään kuorman muuttuessa. [8]”
+
 **Miksi?**  
 Verkko on sekä suorituskyky- että energiakomponentti. Tutkimus korostaa liikenteen mittausta, energiatiloja ja dynaamista ohjausta, joilla kulutusta voidaan pienentää kuorman vaihdellessa. [1][8]
 
@@ -731,6 +775,12 @@ Verkko on sekä suorituskyky- että energiakomponentti. Tutkimus korostaa liiken
 ---
 
 ## P5.4 Jäähdytys ja lämpötilanhallinta (sähkö → lämpö hallintaan)
+
+MGHPCC [4]: osakuormakäyttäytyminen, konsepti → operointi → mittaus → analyysi
+
+Geng [7]: jäähdytysarkkitehtuurit, ilmanjako ja mittausjärjestelmät (insinöörin “miten tämä oikeasti tehdään”)
+
+(tukena) Barroso [6]: perusrakenne ja riippuvuudet IT↔facility
 
 **Miksi?**  
 IT:n käyttämä sähkö muuttuu käytännössä lämmöksi ja on poistettava luotettavasti. Jäähdytys on **säädettävä järjestelmä**: setpointit, ilmavirrat/virtaamat ja ohjauslogiikka määräävät jäähdytyksen energiankulutuksen. [4][6][7]
@@ -759,6 +809,10 @@ IT:n käyttämä sähkö muuttuu käytännössä lämmöksi ja on poistettava lu
 
 ## P5.5 Hukkalämmön talteenotto ja hyötykäyttö (lämpö → korvaava energia)
 
+LVM [9]: Suomi-konteksti, toimitusketju, raportointi
+
+(tukena) Geng [7]: tekniset liitynnät (lämpötaso/siirto/mittaus)
+
 **Miksi?**  
 Hukkalämpö on vihreässä datakeskuksessa mahdollisuus tuottaa **lisäilmastohyötyä**: lämpö voi korvata muuta lämmöntuotantoa. Suomessa kaukolämpö ja muut lämmönkäyttökohteet tekevät hyödyntämisestä erityisen relevanttia, ja käytäntöesimerkkejä on koottu sektoritason selvityksiin. [9]
 
@@ -785,6 +839,15 @@ Hukkalämpö on vihreässä datakeskuksessa mahdollisuus tuottaa **lisäilmastoh
 ---
 
 ## P5.6 Mittaus, johtaminen ja jatkuva parantaminen (ketju ohjattavaksi)
+
+Uddin & Rahman [2]: “mittaa → hotspot → toimenpiteet → seuraa mittareilla” -kehys
+
+MGHPCC [4]: commissioning/baseline-ajattelu ja mittauksen rooli operoinnissa
+
+(tukena) Jin [1]: monitoroinnin palaute ohjausalgoritmeihin
+
+👉 Lisää P5.6 loppuun yksi “baseline”-virke:
+“Käyttöönoton jälkeen muodostetaan baseline, jota vasten kaikki muutokset (setpointit, ohjauslogiikka, konsolidointi) todennetaan mittareilla. [4][2]”
 
 **Miksi?**  
 Mittauksen ja palautteen avulla järjestelmä muuttuu ohjattavaksi: “mittaa → analysoi → muutos → todenna vaikutus”. Tämä on vihreän datakeskuksen peruslogiikka: mitataan osat, tunnistetaan kuumat pisteet ja parannetaan mittareiden avulla. [2][4]
@@ -814,6 +877,12 @@ Mittauksen ja palautteen avulla järjestelmä muuttuu ohjattavaksi: “mittaa �
 ---
 
 ## P5.7 Ketjun yhteenveto 
+
+Jin [1]: kerrosoptimoinnin kokonaisuus
+
+LVM [9]: Suomen painotukset (todentaminen + lämpö + raportointi)
+
+(tukena) DATAZERO [3] jos haluat nostaa “uusiutuvat + moniaikaskaala” -näkymän yhteenvedossa
 
 **Miksi?**  
 Ketju on kokonaisuus: sähkö, IT, verkko, jäähdytys ja lämpö kytkeytyvät toisiinsa — kaikki sähkö päätyy lopulta lämmöksi. [6][7] Suomessa vihreys konkretisoituu erityisesti uusiutuvan sähkön todennettavuuden, energiatehokkuuden ja hukkalämmön hyötykäytön kautta. [9]
