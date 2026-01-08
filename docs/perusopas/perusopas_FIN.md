@@ -1,4 +1,4 @@
-## Johdanto vihreään datakeskukseen
+## P1–Johdanto vihreään datakeskukseen
 
 Tämä perusopas syventää itseopiskelumateriaalia ja etenee sen rakenteen mukaisesti: johdannon jälkeen opas vastaa kappaleiden 1–6 (M1–M6) teemoja. Vihreän datakeskuksen ymmärtämiselle luodaan perusta tarkastelemalla ensin perinteisen datakeskuksen energia- ja laitemitoitusta, koska mitoitusketju (kuorma → kapasiteetti → IT-teho → sähkönsyöttö ja jäähdytys) selittää datakeskuksen sähköenergiatarpeen muodostumisen. 
 
@@ -102,12 +102,9 @@ Masanet, E., Shehabi, A., Lei, N., Smith, S., & Koomey, J. (2020). Recalibrating
 Sabree, R. M. S. (2025). Achieving sustainability in computing by minimizing data center carbon footprints. *Journal of Information Processing and Management*.  
 Shehabi, A., Smith, S. J., Sartor, D., Brown, R., Herrlin, M., Koomey, J. G., Masanet, E., Horner, N., Azevedo, I. L., & Lintner, W. (2016). *United States data center energy usage report*. Lawrence Berkeley National Laboratory.  
 
-
 ---
 
-
-
-## Vihreä datakeskus: määritelmä ja tavoitteet
+### Vihreän datakeskuksen elementit ja periaatteet
 
 Vihreä datakeskus määritellään datakeskukseksi, jossa mekaaniset, valaistus-, sähkö- ja tietotekniset järjestelmät on suunniteltu ja toteutettu siten, että energiankäyttö on mahdollisimman tehokasta ja ympäristövaikutukset, erityisesti kasvihuonekaasupäästöt, mahdollisimman vähäisiä (Uddin & Rahman, 2012). Uddin ja Rahman korostavat, että vihreä datakeskus on edelleen normaalin datakeskuksen tavoin tiedon tallennuksen, käsittelyn ja jakelun keskus, mutta sen infrastruktuuri – ohjelmistot, IT-laitteet ja rakennus-/talotekniikka – on optimoitu energiatehokkuuden ja kestävyyden näkökulmasta eikä ainoastaan kapasiteetin ja käytettävyyden perusteella (Uddin & Rahman, 2012).
 
@@ -152,7 +149,7 @@ Vihreän datakeskuksen suunnittelu Suomessa voidaan siten nähdä investointina,
 
 
 # Perusopas vihreän datakeskuksen rakentamiseksi Suomessa
-## 2. Rakentamisen syyt ja sijaintipäätökset
+## P2 – Miksi datakeskus rakennetaan ja miten sijainti valitaan
 Datakeskusten määrä ja koko kasvavat pilvipalveluiden ja digitaalisten palveluketjujen vuoksi. Samalla datakeskusten energiankulutus ja siitä seuraavat kustannus- ja päästövaikutukset ovat nousseet keskeiseksi suunnittelukriteeriksi. Merkittävä osa nykyisestä energiankulutuksesta ei johdu vain laskentakuorman kasvusta, vaan myös rakenteellisesta tehottomuudesta: resursseja ylivarmistetaan, kapasiteettia pidetään varalla ja käyttöaste jää matalaksi, mikä kasvattaa myös jäähdytyksen ja sähkönjakelun “tyhjäkäyntiä” [1].
 
 Yhdysvaltain datakeskusten sähkönkulutus oli 2013 noin 91 mrd kWh ja ennuste 2020 noin 140 mrd kWh, ja globaalisti datakeskusten sähkönkulutuksen osuuden on arvioitu kasvavan merkittävästi [1]. Lisäksi tutkimusviitteet korostavat käyttöasteongelmaa: tyypillisiä palvelinkäyttöasteita on raportoitu noin 6–12 % tasolla, kun taas parhaat toimijat ovat pystyneet nostamaan käyttöastetta selvästi korkeammaksi (esim. 20–40 %) [1]. Tämä tarkoittaa sähkö- ja jäähdytysinfran näkökulmasta, että “vihreän datakeskuksen” rakentamisen keskeinen perustelu on usein saman palvelukyvyn tuottaminen pienemmällä energialla, joko parantamalla käyttöastetta (konsolidointi, virtualisointi, kuormanohjaus) tai pienentämällä infrastruktuurin häviöitä ja jäähdytyksen tarvetta – mielellään molempia [1]. 
@@ -297,7 +294,7 @@ Minimissään:
 
 ---
 
-## 3. Vihreän datakeskuksen peruselementit ja periaatteet
+## 3-Vihreän datakeskuksen peruselementit ja periaatteet
 Vihreä datakeskus on kokonaisuus, jossa IT-kuorma, sähköketju, jäähdytys, rakennus sekä ohjaus ja valvonta suunnitellaan yhtenä järjestelmänä, ja toimintaa johdetaan sovituilla, mitattavilla energia- ja ympäristötunnusluvuilla. 
 Vihreän datakeskuksen ratkaisut jäsentyvät neljään koriin: (1) energiatehokkuus IT:ssä, (2) resurssienhallinta, (3) lämpötilanhallinta ja (4) mittarit & monitorointi [4]. Lisäksi modernissa suunnittelussa korostuu ajatus datakeskuksesta “yhtenä tietokoneena” (warehouse-scale computer), jolloin energiatehokkuus ja käytettävyys syntyvät yhtä paljon ohjelmistosta ja orkestroinnista (automaattisesta kuormien ja resurssien ohjauksesta) kuin laitevalinnoista. [1]
 
