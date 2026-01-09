@@ -11,7 +11,23 @@ Opas jäsentää päätökset vaiheisiin ja liittää ne mitattaviin suureisiin:
 
 ### P1.2 Mikä on vihreä datakeskus?
 
-Vihreä datakeskus tarkoittaa datakeskusta, jossa IT-laitteiden sekä rakennus- ja talotekniikan suunnittelu ja operointi kytketään energiatehokkuuden ja päästöintensiteetin mittareihin sekä raportointiin (Uddin & Rahman, 2012). Tavoitteet kuvataan tyypillisesti kokonaisenergiankulutuksena, energiatehokkuusmittareina ja päästöintensiteettinä (Jin et al., 2016; Geng, 2015). Käytännön tasolla tämä näkyy muun muassa siinä, miten kapasiteetti mitoitetaan palvelupyyntöjen ja IT-työkuorman perusteella, miten sähkön alkuperä todennetaan, miten jäähdytysratkaisu valitaan paikallisten olosuhteiden perusteella, miten hukkalämpö otetaan talteen ja ohjataan hyötykäyttöön sekä miten laitteiden käytöstäpoisto, tietojen hävittäminen ja materiaalivirrat toteutetaan hallitusti (Uddin & Rahman, 2012; Jin et al., 2016; Elavarasi et al., 2025; Geng, 2015).
+Vihreä datakeskus on datakeskus, jossa suunnittelu ja operointi sidotaan energian ja päästöjen mittaamiseen sekä raportointiin (Uddin & Rahman, 2012). Tässä oppaassa vihreys kuvataan kokonaisenergiankulutuksena, energiatehokkuusmittareina ja päästöintensiteettinä (Jin et al., 2016; Geng, 2015).
+Vihreä datakeskus käsitellään tässä oppaassa seuraavina osa-alueina:
+
+1.Kuorma ja kapasiteetti: työkuorma L(t) → kapasiteetti C → IT-tehoprofiili P_IT(t).
+
+2.Sähkönsyöttö ja varmistus: sähköliittymä, jakelu, UPS/varavoima ja häviöt.
+
+3.Sähkön alkuperä ja päästöt: sähkön hankintatapa ja päästökertoimet raportointia varten.
+
+4.Jäähdytys: jäähdytysarkkitehtuuri ja jäähdytyksen sähköteho suhteessa IT-tehoon.
+
+5.Hukkalämpö: talteenotto, mittaus ja luovutusrajapinta.
+
+6.Elinkaaren loppu: käytöstäpoisto, tietojen hävittäminen ja materiaalivirrat.
+
+   
+Osa-alueiden päätökset kuvataan kohdassa P1.8 ja niiden toteutus käsitellään luvussa 3 (Jin et al., 2016; Geng, 2015).
 
 ### P1.3 Miten opasta käytetään?
 
