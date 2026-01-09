@@ -28,6 +28,7 @@ Menetelmäopas täydentää tätä perusopasta tuomalla laskenta- ja toteutusmen
 - **IT-työkuorma** = palvelupyyntöjen/työpyyntöjen määrä ja laatu ajan funktiona sekä niiden vaihtelu ja huiput (esim. pyyntöä/s, transaktiota/s, jobeja, datavirtoja).
 - **IT-kapasiteetti** = IT-resurssit, joilla työkuorma ajetaan sovitulla palvelutasolla (esim. palvelinmäärä, CPU/GPU, muisti, tallennus, verkko). Tämä on kapasiteettisuunnittelun tulos.
 - **IT-teho** = IT-laitteiden (palvelimet, tallennus, verkko) hetkellinen sähköteho. Yksikkö kW IT.
+- **IT-tehoprofiili (P_IT(t))** = IT-laitteiden sähköteho ajan funktiona. Kuvaa kuorman vaihtelun, huiput ja mahdollisen peruskuorman. Yksikkö kW IT, muuttuja t on aika.
 - **Jäähdytyskuorma / lämpökuorma** = poistettava lämpöteho. Yksikkö kW(th). Tyypillisesti samaa suuruusluokkaa kuin IT-teho, ja kokonaislämpökuormaan vaikuttavat myös sähköketjun häviöt.
 - **Jäähdytyksen sähköteho** = jäähdytyslaitteiden oma sähkönkulutus. Yksikkö kW(e). Tämä ei ole sama asia kuin poistettava lämpöteho.
 
@@ -47,6 +48,8 @@ Vihreän datakeskuksen näkökulmasta sama tehomitoitusketju säilyy, mutta siih
 ---
 
 ### P1.5 Tausta: perinteisen datakeskuksen energian- ja laitemitoitus
+
+Edellä esitetty tehomitoitusketju (IT-työkuorma L(t) → IT-kapasiteetti C → IT-tehoprofiili P_IT(t) → sähkönsyöttö ja jäähdytys) kertoo, mitä vaiheita datakeskuksen mitoitus sisältää. Tässä kappaleessa tarkennetaan ketjun alkupäätä: miten työpyynnöistä muodostetaan työtyypit ja niiden resurssiprofiilit (kuorman rakenne), ja miten kuorman määrä ennustetaan aikajaksoittain. Näiden perusteella mitoitetaan kapasiteetti ja johdetaan IT-tehoprofiili P_IT(t). Tämä on perinteinen lähtötapa, jota vihreän datakeskuksen tarkastelu täydentää myöhemmin mittausrajoilla, sähkön alkuperän todentamisella ja hukkalämpörajapinnoilla (Geng, 2015; Wang et al., 2020).
 
 #### Keskeiset termit (katso myös sanasto, s. X)
 
