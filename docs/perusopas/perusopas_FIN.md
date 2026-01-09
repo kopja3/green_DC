@@ -18,7 +18,7 @@ Luku 4: Datakeskuksen elinkaaren vaiheet
 Suunnittelu, rakentaminen, käyttö ja käytöstäpoisto; data ja materiaalivirrat.
 
 Luku 5: Datakeskuksen toiminta vaiheittain
-Mitoitusketju: IT-työkuorma L(t) → kapasiteetti C → IT-tehoprofiili P_IT(t) → sähköketju ja jäähdytys; varmistusperiaatteet (N, N+1, 2N).
+Kuorma ja palvelutaso → kapasiteettisuunnittelu → IT-tehon vaihtelu ajassa → sähköliittymän, jakelun, varmistuksen ja jäähdytyksen mitoitus.
 
 Luku 6: Energian kulutus ja uudelleenkäyttö
 Kulutuserät, jäähdytyksen sähkönkulutus, hukkalämmön talteenotto, rajapinnat ja mittaustieto.
@@ -26,6 +26,7 @@ Kulutuserät, jäähdytyksen sähkönkulutus, hukkalämmön talteenotto, rajapin
 Luku 7: Datakeskusten energiatehokkuuden mittaaminen
 EN 50600-4 -mittarit ja mittauspisteet; mittarikortit (PUE, REF, ERF, CER, CUE, WUE).
 
+Merkinnät ja mitoitusketjun symbolit esitellään kohdassa P1.4.
 
 ### P1.2 Mikä on vihreä datakeskus?
 
