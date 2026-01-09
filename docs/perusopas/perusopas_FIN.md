@@ -26,7 +26,11 @@ Menetelmäopas täydentää tätä perusopasta tuomalla laskenta- ja toteutusmen
 - **Teho (P)** = hetkellinen otto/anto. Yksikkö W, kW, MW.
 - **Energia (E)** = teho ajanjaksolla. Yksikkö Wh, kWh, MWh, GWh. (Energia saadaan kertomalla teho ajalla: kWh = kW × h.)
 - **IT-työkuorma** = palvelupyyntöjen/työpyyntöjen määrä ja laatu ajan funktiona sekä niiden vaihtelu ja huiput (esim. pyyntöä/s, transaktiota/s, jobeja, datavirtoja).
-- **IT-kapasiteetti** = IT-resurssit, joilla työkuorma ajetaan sovitulla palvelutasolla (esim. palvelinmäärä, CPU/GPU, muisti, tallennus, verkko). Tämä on kapasiteettisuunnittelun tulos.
+
+- **Laskentakapasiteetti (IT-kapasiteetti)** = resurssit, joilla työkuorma suoritetaan palvelutasovaatimuksilla (palvelinmäärä, CPU/GPU, muisti, tallennus, verkko).
+-Asennettu laskentakapasiteetti Cinst  = hankittu ja asennettu resurssipooli.
+-Käyttöön otettu laskentakapasiteetti Cact(t)  = ajossa pidettävä osa resurssipoolista ajanhetkellä t (aktiivisten palvelinten määrä ja niiden resurssit).
+-Varakapasiteetti Cres = kapasiteetti, jota pidetään valmiina kuormahuippujen tai vikatilanteiden varalta (SLA ja varmistusperiaate). (Whitney & Delforge, 2014; Wang et al., 2020)
 - **IT-teho** = IT-laitteiden (palvelimet, tallennus, verkko) hetkellinen sähköteho. Yksikkö kW IT.
 - **IT-tehoprofiili (P_IT(t))** = IT-laitteiden sähköteho ajan funktiona. Kuvaa kuorman vaihtelun, huiput ja mahdollisen peruskuorman. Yksikkö kW IT, muuttuja t on aika.
 - **Jäähdytyskuorma / lämpökuorma** = poistettava lämpöteho. Yksikkö kW(th). Tyypillisesti samaa suuruusluokkaa kuin IT-teho, ja kokonaislämpökuormaan vaikuttavat myös sähköketjun häviöt.
@@ -39,11 +43,11 @@ Tehomitoitusketju tarkoittaa päätöksentekoketjua, jossa IT-palvelun vaatimuks
 
 Ketju esitetään seuraavasti:
 
-**IT-työkuorma (L(t)) → IT-kapasiteetti (C) → IT-tehoprofiili (P_\mathrm{IT}(t)) → sähkönsyöttö ja jäähdytys (tehomitoitus)**
+IT-työkuorma L(t) + palvelutasovaatimus (SLA/deadline) → käyttöön otettu laskentakapasiteetti Cact(t) ja tarvittaessa varakapasiteetti Cres  → IT-tehoprofiili PIT(t)  → sähkö- ja jäähdytysinfrastruktuurin mitoitus
 
-Ketju selittää, miksi datakeskuksen energiankulutukseen ja päästöihin vaikuttavat valinnat eivät rajaudu yksittäiseen laitevalintaan. Kun työkuorman rakenne, huiput ja palvelutasovaatimukset on määritelty, kapasiteettisuunnittelu ja siitä seuraava IT-tehoprofiili ohjaavat sähkö- ja jäähdytysjärjestelmien mitoitusta sekä käytettävyyteen ja vikasietoisuuteen liittyviä ratkaisuja (redundanssi, N+1/2N) (Geng, 2015; Wang et al., 2020).
+Ketju selittää, miksi datakeskuksen energiankulutukseen ja päästöihin vaikuttavat valinnat eivät rajaudu yksittäiseen laitevalintaan. Kun työkuorman rakenne, huiput ja palvelutasovaatimukset on määritelty, kapasiteettisuunnittelu ja siitä seuraava IT-tehoprofiili ohjaavat sähkö- ja jäähdytysjärjestelmien mitoitusta sekä käytettävyyteen ja vikasietoisuuteen liittyviä ratkaisuja (redundanssi, N+1/2N) (Geng, 2015; Wang et al., 2020). Varmistusperiaate (esim. N+1, 2N) tarkoittaa, että osa kapasiteetista on mitoitettu niin, että kuorma voidaan ylläpitää myös yksittäisen komponentin vikaantuessa; tämä näkyy sekä asennettuna infrastruktuurikapasiteettina että osakuormalla toimivien laitteiden hyötysuhteina.” (Geng, 2015; Whitney & Delforge, 2014)
 
-Vihreän datakeskuksen näkökulmasta sama tehomitoitusketju säilyy, mutta siihen liitetään lisäksi (i) **sähkön alkuperän todentaminen**, (ii) **energian käytön mittausrajat** (mistä pisteestä kokonaisenergia mitataan ja mihin asti IT-energia lasketaan) sekä (iii) **hukkalämmön talteenoton ja hyötykäytön rajapinnat** (Jin et al., 2016; Uddin & Rahman, 2012).
+Vihreän datakeskuksen näkökulmasta sama tehomitoitusketju säilyy, mutta siihen liitetään lisäksi (i) **sähkön alkuperän todentaminen**, (ii) **energian käytön mittausrajat** (mistä pisteestä kokonaisenergia mitataan ja mihin asti IT-energia lasketaan) sekä (iii) **hukkalämmön talteenoton ja hyötykäytön rajapinnat** (Jin et al., 2016; Uddin & Rahman, 2012). Mittausrajalla tarkoitetaan, mistä pisteestä kokonaisenergia (esim. sähköliittymä / pääkeskus) mitataan ja mistä pisteestä IT-energia (esim. UPS/PDU-lähdöt tai räkki-/PDU-mittaus) mitataan; rajaus määrittää, mitä häviöitä ja kuormia PUE-laskenta sisältää.” (Jin et al., 2016; Uddin & Rahman, 2012)
 
 ---
 
@@ -59,13 +63,13 @@ Edellä esitetty tehomitoitusketju (IT-työkuorma L(t) → IT-kapasiteetti C →
 - **Kuorman ennuste (workload prediction)**: tulevien aikajaksojen työpyyntömäärän arviointi historiadatan perusteella. [W]
 - **Palvelutasovaatimus (SLA / deadline)**: vaatimus vasteajasta, saatavuudesta tai määräajasta, jonka puitteissa työpyyntö on käsiteltävä. [W]
 - **Kelpoisuussidonta (job–server mapping)**: sääntö, jolla määritetään, millä palvelintyypeillä työpyyntö voidaan suorittaa (esim. CPU- ja muistirajat). [W]
-- **Kapasiteettisuunnittelu**: päätös siitä, kuinka paljon kapasiteettia otetaan käyttöön ja miten työpyynnöt sijoitetaan kapasiteetille. [W]
+- Kapasiteettisuunnittelu (capacity planning / provisioning): päätös siitä, mitkä ja kuinka monet palvelimet/resurssit pidetään käytössä Cact(t) ja miten työpyynnöt sijoitetaan niille, niin että resurssirajat eivät ylity ja SLA/deadline täyttyy. [W]
 
 #### Lähtötieto perinteisessä mitoituksessa
 
 Perinteinen mitoitus perustuu usein historiadataan ja sen avulla kuvattuihin työpyyntöihin ja kuormituskäyttäytymiseen. Yksi tapa esittää tämä on erottaa (i) työtyyppien muodostaminen (workload characterization) ja (ii) kuorman ennustaminen (workload prediction) (Wang et al., 2020).
 
-Työkuorma tyypitetään klusteroimalla, jolloin saadaan joukko työtyyppejä ja niiden tyyppijakauma (Wang et al., 2020). IT-työkuorma ennusteessa tulevien aikajaksojen työpyyntöjen määrää ennustetaan aikasarjamallilla, jolloin saadaan arvio työmäärästä per aikaväli (Wang et al., 2020). Tällöin kapasiteettiperusta voidaan ilmaista muodossa: **ennustettu työpyyntöjen määrä + työtyyppien resurssiprofiilit** (Wang et al., 2020).
+Työkuorma tyypitetään klusteroimalla, jolloin saadaan joukko työtyyppejä ja niiden tyyppijakauma (Wang et al., 2020). IT-työkuorma ennusteessa tulevien aikajaksojen työpyyntöjen määrää ennustetaan aikasarjamallilla, jolloin saadaan arvio työpyyntöjen määrästä per aikaväli (Wang et al., 2020). Tällöin kapasiteettiperusta voidaan ilmaista muodossa: **ennustettu työpyyntöjen määrä + työtyyppien resurssiprofiilit** (Wang et al., 2020).
 
 Kun työtyypit ja palvelutasovaatimukset on kuvattu, palvelintarve johdetaan työpyyntöjen resurssivaatimuksista ja aikavaatimuksista (deadline/SLA). Työtyypit sidotaan niihin palvelintyyppeihin, joilla työpyyntö voidaan ajaa (job–server mapping), ja kapasiteetin mitoitus voidaan muotoilla kokonaislukusuunnitteluongelmana (ILP) (Wang et al., 2020). Koska vastaavat ongelmaluokat kytkeytyvät bin packing -tyyppisiin pakkausongelmiin, käytännön mitoituksessa käytetään usein heuristiikkoja täsmäratkaisun sijaan (Garey & Johnson, 1979; Wang et al., 2020).
 
