@@ -4,9 +4,27 @@
 
 ### P1.1 Miksi perusopas?
 
-Tämä opas tukee vihreän datakeskuksen suunnittelua ja toteutusta Suomessa. Opas täydentää itseopiskelumateriaalia ja noudattaa samaa rakennetta: johdannon jälkeen käsitellään moduulit M1–M6.
+Tämä perusopas tukee vihreän datakeskuksen suunnittelua ja toteutusta Suomessa. Opas jäsentää päätökset vaiheisiin ja liittää ne mitattaviin suureisiin: energia (E), teho (P), kapasiteetti (C) ja palvelutaso (SLA) (Jin et al., 2016; Uddin & Rahman, 2012; Geng, 2015). Väitteet sidotaan lähteisiin.
 
-Opas jäsentää päätökset vaiheisiin ja liittää ne mitattaviin suureisiin: energiaan, tehoon, kapasiteettiin ja palvelutasoon (Jin et al., 2016; Uddin & Rahman, 2012; Geng, 2015). Väitteet perustellaan lähteillä, jotta oletukset voi tarkistaa ja soveltaa omaan ympäristöön.
+Opas etenee luvuittain seuraavasti:
+
+Luku 2: Datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet
+Sijainnin reunaehdot: sähkö, verkko, viive, jäähdytys ja hukkalämpöliitynnät.
+
+Luku 3: Vihreän datakeskuksen peruselementit ja periaatteet
+Osa-alueet ja käsitteet, joilla vihreyttä tarkastellaan; mittausrajat ja arvioinnin periaatteet.
+
+Luku 4: Datakeskuksen elinkaaren vaiheet
+Suunnittelu, rakentaminen, käyttö ja käytöstäpoisto; data ja materiaalivirrat.
+
+Luku 5: Datakeskuksen toiminta vaiheittain
+Mitoitusketju: IT-työkuorma L(t) → kapasiteetti C → IT-tehoprofiili P_IT(t) → sähköketju ja jäähdytys; varmistusperiaatteet (N, N+1, 2N).
+
+Luku 6: Energian kulutus ja uudelleenkäyttö
+Kulutuserät, jäähdytyksen sähkönkulutus, hukkalämmön talteenotto, rajapinnat ja mittaustieto.
+
+Luku 7: Datakeskusten energiatehokkuuden mittaaminen
+EN 50600-4 -mittarit ja mittauspisteet; mittarikortit (PUE, REF, ERF, CER, CUE, WUE).
 
 
 ### P1.2 Mikä on vihreä datakeskus?
