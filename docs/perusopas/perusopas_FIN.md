@@ -21,11 +21,15 @@ Menetelmäopas täydentää tätä perusopasta tuomalla laskenta- ja toteutusmen
 
 ### Perustermit ja yksiköt
 
-* **Teho** ($P$) = hetkellinen otto/anto (**W, kW, MW**).
-* **Energia** ($E$) = teho ajanjaksolla (**Wh, kWh, MWh, GWh**), missä **$E = P \times t$**.
-* **IT-teho** ($P_{\mathrm{IT}}(t)$) = IT-laitteiden (palvelimet, tallennus, verkko) hetkellinen **sähköteho** (**kW IT**).
-* **Jäähdytyskuorma / lämpökuorma** ($Q(t)$) = poistettava **lämpöteho** (**kW(th)**). Käytännössä IT-teho muuttuu lähes kokonaan lämmöksi, joten $Q \approx P_{\mathrm{IT}}$ (lisäksi tulevat sähköketjun häviöt).
-* **Jäähdytyksen sähköteho** ($P_{\mathrm{cool},e}(t)$) = jäähdytyslaitteiden oma sähkönkulutus (**kW(e)**), joka on eri asia kuin poistettava lämpöteho.
+**Perustermit ja yksiköt**
+
+- **Teho (P)** = hetkellinen otto/anto. Yksikkö W, kW, MW.
+- **Energia (E)** = teho ajanjaksolla. Yksikkö Wh, kWh, MWh, GWh. (Energia saadaan kertomalla teho ajalla: kWh = kW × h.)
+- **IT-työkuorma** = palvelupyyntöjen/työpyyntöjen määrä ja laatu ajan funktiona sekä niiden vaihtelu ja huiput (esim. pyyntöä/s, transaktiota/s, jobeja, datavirtoja).
+- **IT-kapasiteetti** = IT-resurssit, joilla työkuorma ajetaan sovitulla palvelutasolla (esim. palvelinmäärä, CPU/GPU, muisti, tallennus, verkko). Tämä on kapasiteettisuunnittelun tulos.
+- **IT-teho** = IT-laitteiden (palvelimet, tallennus, verkko) hetkellinen sähköteho. Yksikkö kW IT.
+- **Jäähdytyskuorma / lämpökuorma** = poistettava lämpöteho. Yksikkö kW(th). Tyypillisesti samaa suuruusluokkaa kuin IT-teho, ja kokonaislämpökuormaan vaikuttavat myös sähköketjun häviöt.
+- **Jäähdytyksen sähköteho** = jäähdytyslaitteiden oma sähkönkulutus. Yksikkö kW(e). Tämä ei ole sama asia kuin poistettava lämpöteho.
 
 
 ### Tehomitoitusketju 
