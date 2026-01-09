@@ -4,8 +4,11 @@
 
 ### P1.1 Miksi perusopas?
 
-Tämä perusopas tukee vihreän datakeskuksen suunnittelua ja toteutusta Suomessa. Opas syventää itseopiskelumateriaalia ja etenee sen rakenteen mukaisesti: johdannon jälkeen opas käsittelee moduulikokonaisuudet M1–M6. Oppaan lähtökohta on, että datakeskushankkeen päätökset tehdään vaiheittain ja ne voidaan ankkuroida mitattaviin suureisiin (energia, teho, kapasiteetti ja palvelutaso) (Jin et al., 2016; Uddin & Rahman, 2012; Geng, 2015). 
-Jokainen keskeinen väite sidotaan lähteisiin, jotta lukija voi tarkistaa oletukset ja soveltaa niitä omaan ympäristöönsä.
+Tämä opas tukee vihreän datakeskuksen suunnittelua ja toteutusta Suomessa. Opas täydentää itseopiskelumateriaalia ja noudattaa samaa rakennetta: johdannon jälkeen käsitellään moduulit M1–M6.
+
+Opas jäsentää päätökset vaiheisiin ja liittää ne mitattaviin suureisiin: energiaan, tehoon, kapasiteettiin ja palvelutasoon (Jin et al., 2016; Uddin & Rahman, 2012; Geng, 2015). Väitteet perustellaan lähteillä, jotta oletukset voi tarkistaa ja soveltaa omaan ympäristöön.
+
+
 ### P1.2 Mikä on vihreä datakeskus?
 
 Vihreä datakeskus tarkoittaa datakeskusta, jossa IT-laitteiden sekä rakennus- ja talotekniikan suunnittelu ja operointi kytketään energiatehokkuuden ja päästöintensiteetin mittareihin sekä raportointiin (Uddin & Rahman, 2012). Tavoitteet kuvataan tyypillisesti kokonaisenergiankulutuksena, energiatehokkuusmittareina ja päästöintensiteettinä (Jin et al., 2016; Geng, 2015). Käytännön tasolla tämä näkyy muun muassa siinä, miten kapasiteetti mitoitetaan palvelupyyntöjen ja IT-työkuorman perusteella, miten sähkön alkuperä todennetaan, miten jäähdytysratkaisu valitaan paikallisten olosuhteiden perusteella, miten hukkalämpö otetaan talteen ja ohjataan hyötykäyttöön sekä miten laitteiden käytöstäpoisto, tietojen hävittäminen ja materiaalivirrat toteutetaan hallitusti (Uddin & Rahman, 2012; Jin et al., 2016; Elavarasi et al., 2025; Geng, 2015).
