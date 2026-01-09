@@ -30,23 +30,21 @@ Merkinnät ja mitoitusketjun symbolit esitellään kohdassa P1.4.
 
 ### P1.2 Mikä on vihreä datakeskus?
 
-Vihreä datakeskus on datakeskus, jossa suunnittelu ja operointi sidotaan energian ja päästöjen mittaamiseen sekä raportointiin (Uddin & Rahman, 2012). Tässä oppaassa vihreys kuvataan kokonaisenergiankulutuksena, energiatehokkuusmittareina ja päästöintensiteettinä (Jin et al., 2016; Geng, 2015).
-Vihreä datakeskus käsitellään tässä oppaassa seuraavina osa-alueina:
+Vihreä datakeskus on datakeskus, jossa suunnittelu ja operointi sidotaan energian ja päästöjen mittaamiseen sekä raportointiin (Uddin & Rahman, 2012). Tässä oppaassa vihreys kuvataan kokonaisenergiankulutuksena, energiatehokkuusmittareina ja päästöintensiteettinä (Jin et al., 2016; Geng, 2015). Vihreä datakeskus käsitellään seuraavina osa-alueina:
 
-1.Kuorma ja kapasiteetti: työkuorma L(t) → kapasiteetti C → IT-tehoprofiili P_IT(t).
+Kuorma ja kapasiteetti: työkuorman kuvaus, kapasiteetin mitoitus ja IT-tehon vaihtelu ajassa.
 
-2.Sähkönsyöttö ja varmistus: sähköliittymä, jakelu, UPS/varavoima ja häviöt.
+Sähkönsyöttö ja varmistus: sähköliittymä, jakelu, UPS/varavoima ja häviöt.
 
-3.Sähkön alkuperä ja päästöt: sähkön hankintatapa ja päästökertoimet raportointia varten.
+Sähkön alkuperä ja päästöt: hankintatapa, todentaminen ja päästökertoimet raportointiin.
 
-4.Jäähdytys: jäähdytysarkkitehtuuri ja jäähdytyksen sähköteho suhteessa IT-tehoon.
+Jäähdytys: jäähdytysarkkitehtuuri ja jäähdytyksen sähkönkulutus suhteessa IT-tehoon.
 
-5.Hukkalämpö: talteenotto, mittaus ja luovutusrajapinta.
+Hukkalämpö: talteenotto, mittaus ja luovutusrajapinta.
 
-6.Elinkaaren loppu: käytöstäpoisto, tietojen hävittäminen ja materiaalivirrat.
-
+Elinkaaren loppu: käytöstäpoisto, tietojen hävittäminen ja materiaalivirrat.
    
-Osa-alueiden päätökset kuvataan kohdassa P1.8 ja niiden toteutus käsitellään luvussa 3 (Jin et al., 2016; Geng, 2015).
+Osa-alueiden päätökset kuvataan kohdassa P1.8 ja toteutus käsitellään luvussa 3.
 
 ### P1.3 Miten opasta käytetään?
 
