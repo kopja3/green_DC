@@ -12,17 +12,33 @@ Vihreä datakeskus tarkoittaa datakeskusta, jossa IT-laitteiden sekä rakennus- 
 
 ### P1.3 Miten opasta käytetään?
 
-Opas on kirjoitettu päätöksenteon tueksi. Luvuissa 2–7 käsitellään datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet, vihreän datakeskuksen peruselementit ja -periaatteet, datakeskuksen elinkaaren ja toiminnan vaiheet, energian kulutus ja uudelleenkäyttö sekä datakeskuksen energiatehokkuuden mittaus. Menetelmäopas täydentää tätä perusopasta tuomalla laskenta- ja toteutusmenettelyjä mittaamiseen ja optimointiin (esim. mittaa → analysoi → muutos → todenna → vakioi), mutta perusopas rajaa aiheen hankkeen päätöksiin, rajapintoihin ja toimituksiin (Uddin & Rahman, 2012; Jin et al., 2016).
+Opas on kirjoitettu päätöksenteon tueksi. Luvuissa 2–7 käsitellään datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet, vihreän datakeskuksen peruselementit ja -periaatteet, datakeskuksen elinkaaren ja toiminnan vaiheet, energian kulutus ja uudelleenkäyttö sekä datakeskuksen energiatehokkuuden mittaus.
+Menetelmäopas täydentää tätä perusopasta tuomalla laskenta- ja toteutusmenettelyjä mittaamiseen ja optimointiin (Uddin & Rahman, 2012; Jin et al., 2016), esimerkiksi: mittaa → analysoi → muutos → todenna → vakioi.
 
 ---
 
 ### P1.4 Mitoitusketju vihreän datakeskuksen lähtökohtana
 
-Datakeskuksen sähköenergiantarve voidaan jäsentää mitoitusketjuna, jossa kuormasta johdetaan kapasiteetti, kapasiteetista IT-teho ja IT-tehosta sähkö- ja jäähdytysinfrastruktuurin mitoitus:
 
-**kuorma → kapasiteetti → IT-teho → sähkönsyöttö ja jäähdytys**
+**Perustermit ja yksiköt**
 
-Tämä ketju selittää, miksi datakeskuksen energiankulutukseen ja päästöihin vaikuttavat valinnat eivät rajaudu yksittäiseen laitevalintaan. Kun palvelupyyntöjen määrä, IT-työkuorman rakenne ja palvelutasovaatimukset on määritelty, sähkö- ja jäähdytysjärjestelmien mitoitus seuraa IT-tehon sekä käytettävyys- ja vikasietoisuusvaatimusten (redundanssi, N+1/2N) kautta (Geng, 2015; Wang et al., 2020). Vihreän datakeskuksen näkökulmasta sama ketju säilyy, mutta siihen liitetään energian alkuperän todentaminen, energian käytön mittausrajat (mistä pisteestä kokonaisenergia mitataan ja mihin asti IT-energia lasketaan) sekä sekä hukkalämmön talteenoton ja hyötykäytön rajapinnat (Jin et al., 2016; Uddin & Rahman, 2012).
+* **Teho** (P) = hetkellinen otto/anto (**W, kW, MW**).
+* **Energia** (E) = teho ajanjaksolla (**Wh, kWh, MWh, GWh**), missä **(E = P \times t)**.
+* **IT-työkuorma (kuorma)** = palvelupyyntöjen / työpyyntöjen määrä ja ominaisuudet ajan funktiona (kuorman “muoto” ja vaihtelu) .
+* **IT-kapasiteetti (kapasiteetti)** = käytössä oleva IT-resurssikapasiteetti, jolla työkuorma ajetaan sovitulla palvelutasolla (esim. palvelinmäärä, CPU/GPU-resurssit, muisti, tallennus, verkko). Tämä on kapasiteettisuunnittelun tulos .
+* **IT-teho** (P_\mathrm{IT}(t)) = IT-laitteiden (palvelimet, tallennus, verkko) hetkellinen **sähköteho** (**kW IT**).
+* **Jäähdytyskuorma / lämpökuorma** (Q(t)) = poistettava **lämpöteho** (**kW(th)**). Käytännössä IT-teho muuttuu lähes kokonaan lämmöksi, joten (Q \approx P_\mathrm{IT}) (lisäksi tulevat sähköketjun häviöt).
+* **Jäähdytyksen sähköteho** (P_{\mathrm{cool},e}(t)) = jäähdytyslaitteiden oma sähkönkulutus (**kW(e)**), joka on eri asia kuin poistettava lämpöteho.
+
+**Mitoitusketju:**
+Datakeskuksen sähköenergiantarve voidaan jäsentää mitoitusketjuna, jossa **IT-työkuormasta** johdetaan tarvittava **IT-kapasiteetti**, kapasiteetista johdetaan **IT-tehon** taso ja vaihtelu, ja IT-tehon perusteella mitoitetaan **sähkönsyöttö ja jäähdytys** (eli sähkö- ja jäähdytysinfrastruktuuri) :
+
+**IT-työkuorma → IT-kapasiteetti → IT-teho (kW IT) → sähkönsyöttö ja jäähdytys**
+
+Tämä ketju selittää, miksi datakeskuksen energiankulutukseen ja päästöihin vaikuttavat valinnat eivät rajaudu yksittäiseen laitevalintaan. Kun palvelupyyntöjen määrä, IT-työkuorman rakenne ja palvelutasovaatimukset on määritelty, kapasiteettisuunnittelu ja siitä seuraava IT-teho ohjaavat sähkö- ja jäähdytysjärjestelmien mitoitusta sekä käytettävyys- ja vikasietoisuusvaatimusten (redundanssi, N+1/2N) kautta tehtäviä valintoja (Geng, 2015; Wang et al., 2020) .
+
+Vihreän datakeskuksen näkökulmasta sama ketju säilyy, mutta siihen liitetään (i) **energian alkuperän todentaminen**, (ii) **energian käytön mittausrajat** (mistä pisteestä kokonaisenergia mitataan ja mihin asti IT-energia lasketaan) sekä (iii) **hukkalämmön talteenoton ja hyötykäytön rajapinnat** (Jin et al., 2016; Uddin & Rahman, 2012) .
+
 
 ---
 
