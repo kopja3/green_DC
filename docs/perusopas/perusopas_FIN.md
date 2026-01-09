@@ -17,28 +17,29 @@ Menetelmäopas täydentää tätä perusopasta tuomalla laskenta- ja toteutusmen
 
 ---
 
-### P1.4 Mitoitusketju vihreän datakeskuksen lähtökohtana
+## P1.4 IT-työkuormasta sähköliittymätehoon: datakeskuksen sähkö- ja jäähdytysinfrastruktuurin tehomitoitusketju
 
+### Perustermit ja yksiköt
 
-**Perustermit ja yksiköt**
+* **Teho** (P) = hetkellinen otto tai anto. Yksikkö **W, kW, MW**.
+* **Energia** (E) = teho ajanjaksolla. Yksikkö **Wh, kWh, MWh, GWh**, missä (E = P \times t).
+* **IT-työkuorma** (L(t)) = palvelupyyntöjen/työpyyntöjen määrä ja laatu ajan funktiona (esim. pyyntöä/s, transaktiota/s, jobeja, datavirtoja) sekä niiden vaihtelu ja huipputilanteet.
+* **IT-kapasiteetti** (C) = IT-resurssit, joilla työkuorma ajetaan sovitulla palvelutasolla (esim. palvelinmäärä, CPU/GPU-resurssit, muisti, tallennus ja verkko). Tämä on kapasiteettisuunnittelun tulos.
+* **IT-teho** (P_\mathrm{IT}(t)) = IT-laitteiden (palvelimet, tallennus, verkko) hetkellinen **sähköteho**, yksikkö **kW IT**. (Käytännössä on hyvä sopia, missä mittausrajassa (P_\mathrm{IT}) mitataan, esim. IT-jakelussa/rack-PDU-tasolla.)
+* **Lämpökuorma / jäähdytyskuorma** (Q(t)) = poistettava **lämpöteho**, yksikkö **kW(th)**. Tyypillisesti (Q(t)) on samaa suuruusluokkaa kuin (P_\mathrm{IT}(t)), ja kokonaislämpökuormaan vaikuttavat myös sähköketjun häviöt.
+* **Jäähdytyksen sähköteho** (P_{\mathrm{cool},e}(t)) = jäähdytysjärjestelmän oma sähkönkulutus, yksikkö **kW(e)**. Tämä ei ole sama asia kuin (Q(t)).
 
-* **Teho** (P) = hetkellinen otto/anto (**W, kW, MW**).
-* **Energia** (E) = teho ajanjaksolla (**Wh, kWh, MWh, GWh**), missä **(E = P \times t)**.
-* **IT-työkuorma (kuorma)** = palvelupyyntöjen / työpyyntöjen määrä ja ominaisuudet ajan funktiona (kuorman “muoto” ja vaihtelu) .
-* **IT-kapasiteetti (kapasiteetti)** = käytössä oleva IT-resurssikapasiteetti, jolla työkuorma ajetaan sovitulla palvelutasolla (esim. palvelinmäärä, CPU/GPU-resurssit, muisti, tallennus, verkko). Tämä on kapasiteettisuunnittelun tulos .
-* **IT-teho** (P_\mathrm{IT}(t)) = IT-laitteiden (palvelimet, tallennus, verkko) hetkellinen **sähköteho** (**kW IT**).
-* **Jäähdytyskuorma / lämpökuorma** (Q(t)) = poistettava **lämpöteho** (**kW(th)**). Käytännössä IT-teho muuttuu lähes kokonaan lämmöksi, joten (Q \approx P_\mathrm{IT}) (lisäksi tulevat sähköketjun häviöt).
-* **Jäähdytyksen sähköteho** (P_{\mathrm{cool},e}(t)) = jäähdytyslaitteiden oma sähkönkulutus (**kW(e)**), joka on eri asia kuin poistettava lämpöteho.
+### Tehomitoitusketju 
 
-**Mitoitusketju:**
-Datakeskuksen sähköenergiantarve voidaan jäsentää mitoitusketjuna, jossa **IT-työkuormasta** johdetaan tarvittava **IT-kapasiteetti**, kapasiteetista johdetaan **IT-tehon** taso ja vaihtelu, ja IT-tehon perusteella mitoitetaan **sähkönsyöttö ja jäähdytys** (eli sähkö- ja jäähdytysinfrastruktuuri) :
+Tehomitoitusketju tarkoittaa päätöksentekoketjua, jossa IT-palvelun vaatimuksista edetään vaiheittain datakeskuksen sähkö- ja jäähdytysinfrastruktuurin tehomitoitukseen (ml. sähköliittymä, varmistus ja jäähdytyskapasiteetti).
 
-**IT-työkuorma → IT-kapasiteetti → IT-teho (kW IT) → sähkönsyöttö ja jäähdytys**
+Ketju esitetään seuraavasti:
 
-Tämä ketju selittää, miksi datakeskuksen energiankulutukseen ja päästöihin vaikuttavat valinnat eivät rajaudu yksittäiseen laitevalintaan. Kun palvelupyyntöjen määrä, IT-työkuorman rakenne ja palvelutasovaatimukset on määritelty, kapasiteettisuunnittelu ja siitä seuraava IT-teho ohjaavat sähkö- ja jäähdytysjärjestelmien mitoitusta sekä käytettävyys- ja vikasietoisuusvaatimusten (redundanssi, N+1/2N) kautta tehtäviä valintoja (Geng, 2015; Wang et al., 2020) .
+**IT-työkuorma (L(t)) → IT-kapasiteetti (C) → IT-tehoprofiili (P_\mathrm{IT}(t)) → sähkönsyöttö ja jäähdytys (tehomitoitus)**
 
-Vihreän datakeskuksen näkökulmasta sama ketju säilyy, mutta siihen liitetään (i) **energian alkuperän todentaminen**, (ii) **energian käytön mittausrajat** (mistä pisteestä kokonaisenergia mitataan ja mihin asti IT-energia lasketaan) sekä (iii) **hukkalämmön talteenoton ja hyötykäytön rajapinnat** (Jin et al., 2016; Uddin & Rahman, 2012) .
+Ketju selittää, miksi datakeskuksen energiankulutukseen ja päästöihin vaikuttavat valinnat eivät rajaudu yksittäiseen laitevalintaan. Kun työkuorman rakenne, huiput ja palvelutasovaatimukset on määritelty, kapasiteettisuunnittelu ja siitä seuraava IT-tehoprofiili ohjaavat sähkö- ja jäähdytysjärjestelmien mitoitusta sekä käytettävyyteen ja vikasietoisuuteen liittyviä ratkaisuja (redundanssi, N+1/2N) (Geng, 2015; Wang et al., 2020).
 
+Vihreän datakeskuksen näkökulmasta sama tehomitoitusketju säilyy, mutta siihen liitetään lisäksi (i) **sähkön alkuperän todentaminen**, (ii) **energian käytön mittausrajat** (mistä pisteestä kokonaisenergia mitataan ja mihin asti IT-energia lasketaan) sekä (iii) **hukkalämmön talteenoton ja hyötykäytön rajapinnat** (Jin et al., 2016; Uddin & Rahman, 2012).
 
 ---
 
