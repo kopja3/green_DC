@@ -145,7 +145,7 @@ Datakeskuksen hiilijalanjälkeä voidaan käyttöaikaisen sähkönkulutuksen osa
 ---
 
 ### P1.8 Vihreän datakeskuksen elementit ja päätöspisteet
-datakeskuksen toteutus jäsennetään päätöspisteiksi. Päätökset esitetään muodossa päätös → tuotos → luku, jotta etenemisjärjestys ja kunkin vaiheen tulokset näkyvät yhdestä paikasta. Osa-alueet on kuvattu kohdassa P1.2 ja mitoitusketjun merkinnät kohdassa P1.4.
+Tässä perusoppaassa vihreändatakeskuksen toteutus jäsennetään päätöspisteiksi. Päätökset esitetään muodossa päätös → tuotos → luku, jotta etenemisjärjestys ja kunkin vaiheen tulokset näkyvät yhdestä paikasta. Osa-alueet on kuvattu kohdassa P1.2 ja mitoitusketjun merkinnät kohdassa P1.4.
 
 Kirjallisuudessa vihreä datakeskus kytkee IT-, sähkö- ja jäähdytysjärjestelmät energian ja ympäristövaikutusten mittaamiseen sekä seurantaan, ja tarkastelu esitetään tyypillisesti mittareina ja osa-alueina (kuorma–kapasiteetti, sähköketju, jäähdytys, hukkalämpö, todentaminen) (Uddin & Rahman, 2012; Jin et al., 2016; Geng, 2015; Wang et al., 2020; Barroso & Hölzle, 2007).
 
