@@ -48,8 +48,15 @@ Osa-alueiden päätökset kuvataan kohdassa P1.8 ja toteutus käsitellään luvu
 
 ### P1.3 Miten opasta käytetään?
 
-Opas on kirjoitettu päätöksenteon tueksi. Luvuissa 2–7 käsitellään datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet, vihreän datakeskuksen peruselementit ja -periaatteet, datakeskuksen elinkaaren ja toiminnan vaiheet, energian kulutus ja uudelleenkäyttö sekä datakeskuksen energiatehokkuuden mittaus.
-Menetelmäopas täydentää tätä perusopasta tuomalla laskenta- ja toteutusmenettelyjä mittaamiseen ja optimointiin (Uddin & Rahman, 2012; Jin et al., 2016), esimerkiksi: mittaa → analysoi → muutos → todenna → vakioi.
+Opas on kirjoitettu päätöksenteon ja dokumentoinnin tueksi. Käytä opasta siten, että etenet kysymyksestä päätökseen ja päätöksestä mitattaviin lähtötietoihin.
+
+Määritä lähtötiedot ja rajaukset. Kirjaa työkuorman ja palvelutason vaatimukset sekä mittausrajat (mistä kokonaisenergia mitataan ja mihin asti IT-energia rajataan).
+
+Johda mitoitusketju. Johda työkuormasta kapasiteetti ja IT-tehon vaihtelu ajassa, ja mitoita niiden perusteella sähköliittymä, jakelu, varmistus ja jäähdytys. Ketjun merkinnät ja suureet esitellään kohdassa P1.4.
+
+Valitse mittarit ja todennus. Valitse mittarit ja määritä mittauspisteet sekä dokumentoi sähkön alkuperän todentaminen ja päästökertoimet raportointia varten.
+
+Kun toteutus on käynnissä, käytä menettelyä: mittaa → analysoi → muutos → todenna → vakioi.
 
 ---
 
