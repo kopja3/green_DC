@@ -124,17 +124,22 @@ Tässä oppaassa sama tehomitoitusketju säilyy, mutta hankkeessa määritetää
 
 ### P1.5 Tausta: perinteisen datakeskuksen energian- ja laitemitoitus
 
-Edellä esitetty tehomitoitusketju (IT-työkuorma L(t) → IT-kapasiteetti C → IT-tehoprofiili P_IT(t) → sähkönsyöttö ja jäähdytys) kertoo, mitä vaiheita datakeskuksen mitoitus sisältää. Tässä kappaleessa tarkennetaan ketjun alkupäätä: miten työpyynnöistä muodostetaan työtyypit ja niiden resurssiprofiilit (kuorman rakenne), ja miten kuorman määrä ennustetaan aikajaksoittain. Näiden perusteella mitoitetaan kapasiteetti ja johdetaan IT-tehoprofiili P_IT(t). Tämä on perinteinen lähtötapa, jota vihreän datakeskuksen tarkastelu täydentää myöhemmin mittausrajoilla, sähkön alkuperän todentamisella ja hukkalämpörajapinnoilla (Geng, 2015; Wang et al., 2020).
+P1.4 määritteli tehomitoitusketjun muodossa:
+
+`L(t)` + (SLA/deadline, saatavuus) → `C_act(t)` (+ `C_res`) → `P_IT(t)` → sähkö- ja jäähdytysinfrastruktuurin mitoitus. (Geng, 2015; Wang et al., 2020)
+
+Tässä kappaleessa tarkennetaan ketjun alkupäätä eli sitä, miten **saapuvista työpyynnöistä** muodostetaan kuvanus työkuormasta `L(t)` ja miten tämän perusteella johdetaan kapasiteettisuunnittelun päätökset (`C_act(t)`, `C_res`) ja niistä edelleen IT-tehoprofiili `P_IT(t)`. (Wang et al., 2020)
+
 
 #### Keskeiset termit (katso myös sanasto, s. X)
 
-- **Työpyyntö (job)**: yksittäinen suoritettava tehtävä tai pyyntö, jolle määritetään resurssitarve ja aikavaatimus. [W]
-- **IT-työkuorma (workload)**: työpyyntöjen määrä ja ominaisuudet ajan funktiona. [W]
-- **Työtyyppien muodostus (workload characterization)**: työpyyntöjen ryhmittely työtyypeiksi ja niiden resurssiprofiilien kuvaus. [W]
-- **Kuorman ennuste (workload prediction)**: tulevien aikajaksojen työpyyntömäärän arviointi historiadatan perusteella. [W]
-- **Palvelutasovaatimus (SLA / deadline)**: vaatimus vasteajasta, saatavuudesta tai määräajasta, jonka puitteissa työpyyntö on käsiteltävä. [W]
-- **Kelpoisuussidonta (job–server mapping)**: sääntö, jolla määritetään, millä palvelintyypeillä työpyyntö voidaan suorittaa (esim. CPU- ja muistirajat). [W]
-- Kapasiteettisuunnittelu (capacity planning / provisioning): päätös siitä, mitkä ja kuinka monet palvelimet/resurssit pidetään käytössä Cact(t) ja miten työpyynnöt sijoitetaan niille, niin että resurssirajat eivät ylity ja SLA/deadline täyttyy. [W]
+- **Työpyyntö (job)**: yksittäinen suoritettava tehtävä tai pyyntö, jolle määritetään resurssitarpeet ja aikavaatimus. (Wang et al., 2020)
+- **IT-työkuorma `L(t)` (workload)**: työpyyntöjen määrä ja ominaisuudet ajan funktiona (esim. työpyyntöjä/aikaväli, pyyntöä/s, transaktiota/s) sekä kuorman vaihtelu ja huiput. (Wang et al., 2020)
+- **Työtyyppien muodostus (workload characterization)**: työpyyntöjen ryhmittely työtyypeiksi ja työtyyppikohtaisten resurssiprofiilien kuvaus. (Wang et al., 2020)
+- **Kuorman ennuste (workload prediction)**: työpyyntöjen määrän (ja tarvittaessa työtyyppijakauman) ennustaminen tuleville aikajaksoille historiadatan perusteella. (Wang et al., 2020)
+- **Palvelutasovaatimus (SLA/deadline, saatavuus)**: ehto, jonka puitteissa työpyyntö käsitellään (esim. vasteaika, määräaika) ja jonka perusteella kapasiteettia pidetään käytössä ja/tai varalla. (Wang et al., 2020)
+- **Kelpoisuussidonta (job–server mapping)**: sääntö, jolla määritetään, millä palvelin-/resurssityypeillä työpyyntö voidaan suorittaa (esim. CPU-, muisti- ja laitevaatimukset). (Wang et al., 2020)
+- **Kapasiteettisuunnittelu**: päätös siitä, mitkä resurssit pidetään käytössä `C_act(t)` (ja mitä pidetään varalla `C_res`) sekä miten työpyynnöt sijoitetaan niin, että resurssirajat ja SLA/deadline täyttyvät. (Wang et al., 2020)
 
 #### Lähtötieto perinteisessä mitoituksessa
 
