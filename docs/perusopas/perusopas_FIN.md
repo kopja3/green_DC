@@ -58,13 +58,6 @@ Valitse mittarit ja todennus. Valitse mittarit ja määritä mittauspisteet sek�
 
 Kun toteutus on käynnissä, käytä menettelyä: mittaa → analysoi → muutos → todenna → vakioi.
 
----
-
-Tässä on **P1.4** kirjoitettuna uudelleen niin, että
-
-* muuttujat toimivat GitHub `.md` → Word -polussa (käytän koodimuotoa `...`)
-* “vihreä”-kytkentä on **lyhyt ennakkohuomio** (ei toista P1.8:aa)
-* sisältö ja viittaukset pysyvät samoina (vain jäsentely ja esitystapa tarkentuu)
 
 ---
 
