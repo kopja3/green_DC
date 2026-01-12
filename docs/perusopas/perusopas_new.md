@@ -206,5 +206,33 @@ Tämä perusopas tuo samaan kokonaisuuteen **päätös→tuotos→luku**-rakente
 
 **Huom.** Jäähdytysratkaisujen vaihtoehdot ja valintaperusteet (esim. ekonomaiseri, hybridi, direct-to-chip, immersio) käsitellään luvussa 6. Mittareiden mittauspisteet ja laskentasäännöt käsitellään luvussa 7.
 
+---
+
+## P1.9 Miksi sijainti käsitellään ennen ratkaisujen valintaa
+
+Luku 2 käsittelee rakentamisen syitä ja sijaintipäätöksiä, koska sijainti määrittää useita tämän oppaan myöhempiä reunaehtoja. Sijaintipäätöksessä tarkastellaan sähköverkon kapasiteettia ja luotettavuutta, palvelutasoon liittyviä vaatimuksia (mm. saatavuus ja redundanssi), sähkön päästöintensiteettia ja uusiutuvan energian todentamista sekä jäähdytys- ja hukkalämpöratkaisujen edellyttämiä liityntöjä ja infrastruktuuria (Geng, 2015; Jin et al., 2016; LVM, 2020).
+
+Lisäksi sijainti kytkeytyy viive- ja käyttäjävaatimuksiin: kuorman siirto alueiden välillä on mahdollista vain, jos palvelutaso sallii viiveen ja saatavuuden näkökulmasta (Wang et al., 2020; Jin et al., 2016).
+
+---
+
+## Lähteet (APA)
+
+- Andrae, A. S. G., & Edler, T. (2015). *On global electricity usage of communication technology: Trends to 2030*. **Challenges, 6**(1), 117–157.
+- Barroso, L. A., & Hölzle, U. (2007). *The case for energy-proportional computing*. **Computer, 40**(12), 33–37.
+- Elavarasi, J., Thilagam, T., Amudha, G., Saratha, B., Ananthi, S. N., & Siva Subramanian, R. (2025). *Green data centers: Advancing sustainability in the digital era*. In *Proceedings of the International Conference on Trends in Material Science and Inventive Materials (ICTMIM-2025)* (pp. 1817–1823). IEEE.
+- Garey, M. R., & Johnson, D. S. (1979). *Computers and intractability: A guide to the theory of NP-completeness*. W. H. Freeman.
+- Geng, H. (Ed.). (2015). *Data center handbook*. John Wiley & Sons.
+- Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). *Green data centers: A survey, perspectives, and future directions*. arXiv. (arXiv:1608.00687)
+- LVM. (2020). *The ICT sector, climate and the environment – Interim report* (Publications of the Ministry of Transport and Communications 2020:14). Ministry of Transport and Communications, Finland.
+- Masanet, E., Shehabi, A., Lei, N., Smith, S., & Koomey, J. (2020). *Recalibrating global data center energy-use estimates*. **Science, 367**(6481), 984–986.
+- Sabree, R. M. S. (2025). *Achieving sustainability in computing by minimizing data center carbon footprints*. **Journal of Information Processing and Management**.
+- Shehabi, A., Smith, S. J., Sartor, D., Brown, R., Herrlin, M., Koomey, J. G., Masanet, E., Horner, N., Azevedo, I. L., & Lintner, W. (2016). *United States data center energy usage report*. Lawrence Berkeley National Laboratory.
+- Uddin, M., & Rahman, A. A. (2012). *Energy efficiency and low carbon enabler green IT framework for data centers considering green metrics*. **Renewable and Sustainable Energy Reviews, 16**(6), 4078–4094.
+- Wang, J., Palanisamy, B., & Xu, J. (2020). *Sustainability-aware resource provisioning in data centers*. In *2020 IEEE 6th International Conference on Collaboration and Internet Computing (CIC)* (pp. 60–67). IEEE. https://doi.org/10.1109/CIC50333.2020.00018
+- Whitney, J., & Delforge, P. (2014, August). *Data center efficiency assessment: Scaling up energy efficiency across the data center industry: Evaluating key drivers and barriers* (Issue Paper IP:14-08-a). Natural Resources Defense Council (NRDC) & Anthesis. https://www.nrdc.org/sites/default/files/data-center-efficiency-assessment-IP.pdf
+
+
+
 
 
