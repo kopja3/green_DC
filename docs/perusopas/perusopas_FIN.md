@@ -59,8 +59,6 @@ Valitse mittarit ja todennus. Valitse mittarit ja määritä mittauspisteet sek�
 Kun toteutus on käynnissä, käytä menettelyä: mittaa → analysoi → muutos → todenna → vakioi.
 
 
----
-
 ### P1.4 Datakeskuksen sähkö- ja jäähdytysinfrastruktuurin tehomitoitusketju
 
 #### Perustermit ja yksiköt
@@ -85,7 +83,6 @@ Kun toteutus on käynnissä, käytä menettelyä: mittaa → analysoi → muutos
 
 * **Jäähdytyksen sähköteho `P_cool(t)`**: jäähdytysjärjestelmän (esim. chillerit, pumput, puhaltimet, CRAH/CRAC) ottama sähköteho. Yksikkö kW(e). Huomio: `P_cool(t)` (sähköteho) ja `Q_th(t)` (poistettava lämpöteho) ovat eri suureita. (Geng, 2015)
 
----
 
 #### Tehomitoitusketju
 
@@ -101,7 +98,6 @@ Ketju esitetään seuraavasti:
 
 **Varmistusperiaate (esim. N+1, 2N)** tarkoittaa, että infrastruktuuri mitoitetaan siten, että kuorma voidaan ylläpitää myös yksittäisen komponentin vikaantuessa. Tämä näkyy sekä asennettuna infrastruktuurikapasiteettina että osakuormalla toimivien laitteiden hyötysuhteina. (Geng, 2015; Whitney & Delforge, 2014)
 
----
 
 #### Huomio (vihreä tarkastelu)
 
@@ -113,7 +109,6 @@ Tässä oppaassa sama tehomitoitusketju säilyy, mutta hankkeessa määritetää
 
 **Mittausrajalla** tarkoitetaan, mistä pisteestä kokonaisenergia mitataan (esim. sähköliittymä / pääkeskus) ja mistä pisteestä IT-energia mitataan (esim. UPS/PDU-lähdöt tai räkki-/PDU-mittaus). Rajaus määrittää, mitkä häviöt ja kuormat sisältyvät energiatehokkuuslukuihin (esim. PUE). (Jin et al., 2016; Uddin & Rahman, 2012)
 
----
 
 ### P1.5 Tausta: perinteisen datakeskuksen energian- ja laitemitoitus
 
@@ -150,7 +145,6 @@ Toinen perinteinen mitoitus perustuu sovellus- ja alustatasoon, jonka kapasiteet
 
 Perinteinen datakeskus voidaan mitoittaa joko (a) sovellus- ja alustatasosta tai (b) ennustetuista työpyynnöistä, työtyypeistä ennusteista. Molemmissa tapauksissa lopputuloksena johdetaan IT-teho (kW), jonka varaan sähkö- ja jäähdytysinfrastruktuuri mitoitetaan (Geng, 2015; Wang et al., 2020).
 
----
 
 ### P1.6 Perinteisten datakeskusten käyttöaste ja IT-laitteiden sähkönkulutuksen kuormariippuvuus
 
@@ -160,7 +154,6 @@ Käyttöastetta laskevat kuorman vaihtelu ja kuorman ennustamisen epävarmuus (w
 
 Palvelinten sähkönkulutus ei historiallisesti ole ollut täysin energiaproportionaalista: tyhjäkäynnillä ja matalalla käyttöasteella sähkönkulutus ei alene samassa suhteessa kuin kuormitus (Barroso & Hölzle, 2007; Whitney & Delforge, 2014). Tämän vuoksi kapasiteetin mitoitus ja kuormanohjaus vaikuttavat suoraan datakeskuksen energiankulutukseen ja siitä johdettuihin päästöihin (Jin et al., 2016; Whitney & Delforge, 2014).
 
----
 
 ### P1.7 Kansainvälinen kehitys ja Suomen reunaehdot
 
@@ -168,7 +161,6 @@ Datakeskuksia rakennetaan digitalisaation, pilvipalvelujen ja verkottuneiden sov
 
 Datakeskuksen käyttöaikaisia kasvihuonekaasupäästöjä voidaan arvioida kertomalla datakeskuksen käyttämä sähköenergia (kWh) käytetyn sähkön päästökertoimella (kgCO₂e/kWh). Tämä kattaa sähkönkulutukseen liittyvän osuuden; laajemmassa hiilijalanjälkirajauksessa voidaan lisäksi huomioida mm. varavoiman polttoaine, jäähdytyksen kylmäainepäästöt sekä laitteiden ja rakennuksen elinkaaren aikaiset päästöt. (Jin et al., 2016; Sabree, 2025)
 
----
 
 ### P1.8 Vihreän datakeskuksen elementit ja päätöspisteet
 Tässä perusoppaassa vihreändatakeskuksen toteutus jäsennetään päätöspisteiksi. Päätökset esitetään muodossa päätös → tuotos → luku, jotta etenemisjärjestys ja kunkin vaiheen tulokset näkyvät yhdestä paikasta. Osa-alueet on kuvattu kohdassa P1.2 ja mitoitusketjun merkinnät kohdassa P1.4.
@@ -203,13 +195,11 @@ Elinkaaren loppu → käytöstäpoisto, tietojen hävittäminen ja materiaalivir
 
 Huom: jäähdytysratkaisujen vaihtoehdot ja valintaperusteet (esim. ekonomaiseri, hybridi, direct-to-chip, immersio) käsitellään luvussa 6. Mittareiden mittauspisteet ja laskentasäännöt käsitellään luvussa 7.
 
----
 
 ### P1.9 Miksi sijainti käsitellään ennen ratkaisujen valintaa
 
 Luku 2 käsittelee rakentamisen syitä ja sijaintipäätöksiä, koska sijainti määrittää useita tämän oppaan myöhempiä reunaehtoja. Sijaintipäätöksessä tarkastellaan sähköverkon kapasiteettia ja luotettavuutta, palvelutasoon liittyviä vaatimuksia (mm. saatavuus ja redundanssi), sähkön päästöintensiteettiä ja uusiutuvan energian todentamista sekä jäähdytys- ja hukkalämpöratkaisujen edellyttämiä liityntöjä ja infrastruktuuria (Geng, 2015; Jin et al., 2016; LVM, 2020). Lisäksi sijainti kytkeytyy viive- ja käyttäjävaatimuksiin: kuorman siirto alueiden välillä on mahdollista vain, jos palvelutaso sallii viiveen ja saatavuuden näkökulmasta (Wang et al., 2020; Jin et al., 2016).
 
----
 
 ## Lähteet (APA)
 
@@ -239,8 +229,6 @@ Wang, J., Palanisamy, B., & Xu, J. (2020). Sustainability-aware resource provisi
 
 Whitney, J., & Delforge, P. (2014, August). *Data center efficiency assessment: Scaling up energy efficiency across the data center industry: Evaluating key drivers and barriers* (Issue Paper IP:14-08-a). Natural Resources Defense Council (NRDC) & Anthesis. `https://www.nrdc.org/sites/default/files/data-center-efficiency-assessment-IP.pdf`
 
----
-
 
 
 # Perusopas vihreän datakeskuksen rakentamiseksi Suomessa
@@ -259,7 +247,6 @@ Sijaintipäätös kannattaa tehdä sähkö- ja energiavirtojen ehdoilla varhaise
 
 Tutkimus- ja asiantuntijatiedon perusteella sijaintiin kytkeytyvät ratkaisevat tekijät voidaan tiivistää neljään kokonaisuuteen (sähkö, sähköntuotannon päästöt/todentaminen, jäähdytysilmasto, hukkalämpö) sekä yhteen reunaehtoon (viive/saatavuus). [1][6][7][9]
 
----
 
 #### Mitä tehdään
 
@@ -339,7 +326,6 @@ Esimerkkipainotus: sähkö 35 %, lämpöintegraatio 20 %, jäähdytysilmasto 15 
 - tee vähintään yksi **painotusten vaikutuksen tarkistus**: muuta painoja kohtuullisesti (esim. sähkö 35 % → 45 % ja vähennä muista vastaavasti) ja katso, muuttuuko sijaintien järjestys.  
 - nosta päätökseksi 1–2 parasta sijaintia jatkoselvitykseen ja varasuunnitelma (plan B) [7][9]
 
----
 
 #### Tuotokset (deliverables)
 
@@ -363,7 +349,6 @@ Minimissään:
 - **Viive- ja saavutettavuusreunaehdot**  
   - kuormatyypeittäin (latenssiherkkä / ei-latenssiherkkä) hyväksyttävä viive ja redundanssi [6][8]
 
----
 
 #### Jos vaihe tehdään huonosti / ohitetaan
 
@@ -373,7 +358,6 @@ Minimissään:
 - **Hukkalämpöpotentiaali menetetään**: vastaanottajaa ei kartoiteta ajoissa → integraatio ei onnistu myöhemmin kohtuukustannuksella. [7][9]  
 - **Verkko/latenssi unohtuu**: sijainti rajoittaa palveluiden laatua tai estää kuorman siirron energian mukaan → operointi kallistuu ja “vihreä optimointi” jää vajaaksi. [6][8]
 
----
 
 #### Lähteet (viitenumerointi)
 
@@ -387,7 +371,6 @@ Minimissään:
 [8] A Taxonomy and Survey on Green Data Center Networks.  
 [9] The ICT sector, climate and the environment – Interim report (LVM 2020:14).
 
----
 
 ## 3-Vihreän datakeskuksen peruselementit ja periaatteet
 Vihreä datakeskus on kokonaisuus, jossa IT-kuorma, sähköketju, jäähdytys, rakennus sekä ohjaus ja valvonta suunnitellaan yhtenä järjestelmänä, ja toimintaa johdetaan sovituilla, mitattavilla energia- ja ympäristötunnusluvuilla. 
@@ -419,7 +402,6 @@ Tavoite: saavuttaa korkea käytettävyys mahdollisimman pienin häviöin ja mito
 Tuntien mittakaavan varakesto ja energian ajallinen siirto. Jos tavoitteena on pidempi varakesto tai energian ajallinen siirto (tuntien mittakaavassa), akkuvarasto on tyypillinen vaihtoehto. Litiumioni-BESS (Battery Energy Storage System) koostuu akustosta sekä ohjaus- ja suojajärjestelmistä ja tehoelektroniikasta, joiden avulla energiaa voidaan varastoida ja syöttää takaisin kuormalle tai sähköverkkoon; tyypillinen purkukesto on usein 1–6 tuntia. Superkondensaattorit soveltuvat puolestaan erityisesti lyhytkestoiseen UPS- ja power quality -tukeen suurille hetkellisille kuormille. [13]
 
 Elinkaariperustelu. “Vihreys” kannattaa perustella myös elinkaarella: elinkaariarvioinneissa litiumioniakkujen ympäristövaikutusten on raportoitu olevan useissa tarkastelluissa vaikutusluokissa pienemmät kuin lyijyakkujen (per toimitettu kWh). Samalla korostuu käyttö­vaiheen sähkön merkitys: lataussähkön päästöintensiteetti (millä sähköllä varasto käytännössä ladataan) vaikuttaa kokonaisvaikutukseen olennaisesti. [14]
-
 
 
 3.3 Jäähdytys ja lämpötilanhallinta: ilma, neste, free cooling ja “kuuma–kylmä”
@@ -508,7 +490,6 @@ ENERGY STAR
 
 Tämä osio kokoaa vihreän datakeskuksen elinkaaren vaiheet ja avaa, mitä kullakin vaiheella tarkoitetaan, miksi se on kriittinen energiatehokkuuden, ympäristövastuun ja kustannusten hallinnan kannalta – sekä mitä seuraa, jos vaihe jää vajaaksi. Elinkaaren logiikka on “ketju”: jokainen vaihe tuottaa dokumentteja ja päätöksiä, joita seuraava vaihe käyttää lähtötietoina. Elinkaariketjun suurin riski on se, että tehdään päätöksiä ilman riittävää dataa ja dokumentaatiota, jolloin virheet näkyvät vasta myöhemmin – silloin korjaus on kallista ja hidasta. [1][3][4]
 
----
 
 ## Yleiskuva elinkaaresta ja riippuvuuksista
 
@@ -523,7 +504,6 @@ Tämä osio kokoaa vihreän datakeskuksen elinkaaren vaiheet ja avaa, mitä kull
 
 Seuraavissa kappaleissa avataan kunkin vaiheen keskeiset toimet ja vihreät huomionaiheet.
 
----
 
 ## 4.1) Tarvekartoitus ja esiselvitys
 
@@ -546,7 +526,6 @@ Minimissään:
 - Koko hanke voi “lukittua” väärään kokoon → myöhemmin rakennetaan kiireessä lisää (kalliimpaa, epäoptimoitua) tai pyöritetään vajaakuormalla (häviöt).  
 - KPI:t jäävät “toiveiksi” → suunnittelussa ei ole tarkkaa mittaus- ja todentamispolkua, jolloin käyttöönotossa ei tiedetä, saavutettiinko vihreys oikeasti. [2][3]  
 
----
 
 ## 4.2) Suunnittelu
 
@@ -561,8 +540,6 @@ Suunnittelussa päätetään, miten vihreys toteutuu konkreettisina teknisinä r
 ---
 
 **Liite A:** Mittauspisteiden minimirunko (konkreettinen mittaripistekartta).
-
----
 
 
 #### B) Automaatiot ja rajapinnat
@@ -593,7 +570,6 @@ Suunnittelussa päätetään, miten vihreys toteutuu konkreettisina teknisinä r
   - ja aikataulu sekä kustannusarviot venyvät  
   Tämä on tyypillisin syy “vihreys jäi tavoitteeksi” -lopputulokseen. [1][3]  
 
----
 
 ## 4.3) Päätöksenteko ja luvitus
 
@@ -612,7 +588,6 @@ Ilman lupia ei rakenneta – ja ilman sääntelyyn sopivaa mittaamista/raportoin
 - Luvat viivästyvät → rakentaminen seisoo.  
 - Raportointivelvoite huomataan myöhään → joudutaan lisäämään mittauspisteitä jälkikäteen (kallis ja häiritsee käyttöä). [6][7]  
 
----
 
 ## 4.4) Rakentaminen
 
@@ -632,7 +607,6 @@ Rakentamisessa “vihreä suunnitelma” muuttuu todellisuudeksi. Tyypillisin en
 - Et pysty todentamaan PUE/WUE/CUE luotettavasti → optimointi ja raportointi kärsii.  
 - “Pienet” asennusvirheet (sensoripaikka, tiiveys) → jatkuva energiahukka koko elinkaaren ajan.  
 
----
 
 ## 4.5) Käyttöönotto, käyttö ja modernisointi
 
@@ -651,7 +625,6 @@ Vihreä datakeskus ei ole “rakennettu ja valmis”, vaan operoinnissa optimoit
 - Energiatehokkuus heikkenee “hiljaa” (setpoint drift, ohivirtaus, osakuormat).  
 - Laajennukset tehdään ilman vaikutusmittausta → uusi kapasiteetti tuo suhteettomasti häviöitä.  
 
----
 
 ## 4.6) Käytöstäpoisto ja uudelleenkäyttö
 
@@ -667,7 +640,6 @@ Elinkaaren loppu vaikuttaa sekä ympäristöön että tietoturvaan. Vihreys ei o
 - Tietoturvariski + mainehaitta.  
 - E-jäte menee väärään kanavaan → vastuullisuus- ja compliance-riski.  
 
----
 
 ## Tiivis “vihreän onnistumisen” sääntö
 
@@ -676,7 +648,6 @@ Elinkaaren loppu vaikuttaa sekä ympäristöön että tietoturvaan. Vihreys ei o
 - Rakentamisessa varmista toteuma + as-built + testaus, muuten operointi on sokkona. [3][12]  
 - Operoinnissa optimoi jatkuvasti, muuten vihreys rapautuu. [3][11][12]  
 
----
 
 ## Lähteet
 
@@ -725,7 +696,6 @@ Tässä luvussa kuvataan datakeskuksen toiminta ketjuna, jossa sähkö ja palvel
 
 Rakenteena käytetään kolmen vaiheen mallia (sähkönsyöttö ja jäähdytys → verkkopalvelupyynnöt → palvelimet ja lämmöntuotanto) ja täydennetään sitä hukkalämmön hyödyntämisellä sekä mittauksen ja jatkuvan parantamisen toimintamallilla. [1–4][6–9]
 
----
 
 ### 5.1 Vaihe 1: Sähkönsyöttö ja jäähdytys
 
@@ -769,7 +739,6 @@ Jäähdytyksen energiankulutus määräytyy ohjauksen ja osakuormakäyttäytymis
 > **Jos vaihe ohitetaan / tehdään puutteellisesti**
 > - Jäähdytys jää “muu kuorma” -luokkaan ilman erottelua; asetuspisteiden muutoksia ei voida kytkeä mitattuun vaikutukseen. [2][4]
 
----
 
 ### 5.2 Vaihe 2: Verkkopalvelupyynnöt internetistä palvelimille
 
@@ -792,7 +761,6 @@ Verkon energiankäytön tarkastelu edellyttää liikenteen ja laitteiden kuormit
 > **Jos vaihe ohitetaan / tehdään puutteellisesti**
 > - Verkon energiankäyttö jää erottelematta, eikä sen vaikutusta kokonaiskulutukseen tai lämpökuormaan voida arvioida mittauksen kautta. [1][8]
 
----
 
 ### 5.3 Vaihe 3: Palvelinten toiminta ja lämmöntuotanto
 
@@ -816,7 +784,6 @@ Kuormanohjaus kytketään mittaukseen siten, että kuormamittarit (esim. käytt�
 > **Jos vaihe ohitetaan / tehdään puutteellisesti**
 > - Tyhjäkäynti jää hallitsematta, ja energiankulutuksen muutos ei kytkeydy palvelutason mittareihin. [1][4]
 
----
 
 ### 5.4 Takaisin lämpönä: hukkalämmön talteenotto ja hyötykäyttö
 
@@ -840,7 +807,6 @@ Hukkalämmön hyödyntäminen kuvataan toimitusketjuna: (i) talteenoton tekninen
 > **Jos vaihe ohitetaan / tehdään puutteellisesti**
 > - Lämpö poistetaan ilman toimitetun energian todentamista; yhteys ilmastovaikutuksiin ja raportointiin jää puutteelliseksi. [9]
 
----
 
 ### 5.5 Mittaus, johtaminen ja jatkuva parantaminen
 
@@ -873,7 +839,6 @@ Datakeskuksen toiminta muodostuu kokonaisuudesta, jossa sähkö, IT, verkko, jä
 > **Jos ketju jää osa-alueiksi**
 > - Kokonaisvaikutusta ei saada näkyviin mittauksessa ja raportoinnissa, ja toimenpiteiden kohdistaminen jää epäselväksi. [2]
 
----
 
 ## Lähteet
 
@@ -902,7 +867,6 @@ Datakeskuksen toiminta muodostuu kokonaisuudesta, jossa sähkö, IT, verkko, jä
 
 Tässä kappaleessa käsitellään, mistä datakeskuksen kWh-lukemat muodostuvat, miten työkuorma ja tietoliikenne näkyvät kulutuksessa, miten kulutus vaihtelee ajassa, mikä on jäähdytyksen rooli sekä mitä hukkalämpö tarkoittaa ja miten sitä voidaan hyödyntää. Lisäksi kuvataan, miten energiankäyttö sidotaan päästöihin ja miten luvut viedään raportointiin ja indikaattoreihin standardoidulla tavalla. Energiadata ja sen rakenteet ovat pohja myöhemmälle, analytiikkaan perustuvalle optimoinnille (menetelmäopas jatkaa tästä).
 
----
 
 ### 6.1 Peruskuva: mistä kWh:t syntyvät
 
@@ -932,8 +896,6 @@ Tässä kappaleessa käsitellään, mistä datakeskuksen kWh-lukemat muodostuvat
 * Kokonaiskulutus ja IT-kulutus sekoittuvat (PUE vääristyy) ja toimenpiteiden vaikutus jää epäselväksi.
 * Mittaus ei kata kriittisiä kuormia (esim. jäähdytyksen osia tai UPS-häviöitä), jolloin optimointi kohdistuu virheelliseen “suurimpaan” kuluerään.
 * Myöhemmän analytiikan lähtötaso puuttuu: poikkeamia ei tunnisteta eikä ennusteita voi sitoa todellisiin mittauksiin.
-
----
 
 ### 6.2 Miten tietoliikenne ja työkuorma näkyvät kWh-luvuissa
 
@@ -966,7 +928,6 @@ Tässä kappaleessa käsitellään, mistä datakeskuksen kWh-lukemat muodostuvat
 * Kapasiteettisuunnittelu perustuu huipputehon oletuksiin ilman palvelutasomittareita, mikä kasvattaa ylimitoituksen riskiä.
 * Monitoimijaympäristössä (colocation) kulutusta ei pystytä kohdistamaan asiakkaalle/kuormalle, mikä vaikeuttaa kustannus- ja päästöallokointia.
 
----
 
 ### 6.3 Kulutusprofiilit ja kuormituksen vaihtelu
 
@@ -1004,7 +965,6 @@ Tässä kappaleessa käsitellään, mistä datakeskuksen kWh-lukemat muodostuvat
 * Raportoinnissa näkyy ristiriitoja (esim. PUE “paranee” vain siksi, että IT-kuorma nousi, vaikka jäähdytyksen ohjaus ei muuttunut). [1]
 * Hukkalämmön hyödyntämisen mitoitus tehdään keskiarvoilla, jolloin lämpöteho tai lämpötilataso ei riitä lämmityskauden huippuun.
 
----
 
 ##¤ 6.4 Jäähdytyksen osuus energiankulutuksesta
 
@@ -1036,8 +996,6 @@ Tässä kappaleessa käsitellään, mistä datakeskuksen kWh-lukemat muodostuvat
 * Jäähdytyksen kulutus jää “muu kuorma” -luokkaan, jolloin muutokset näkyvät vain PUE:ssa ilman selitystä. [1]
 * Asetusarvoja muutetaan ilman mittausta, mikä voi siirtää ongelman ilmavirroista paikallisiin hotspotteihin.
 * Hukkalämmön hyödyntämisen mahdollisuus jää arvioimatta, koska lämpötilataso ja lämpöteho eivät ole mitattuna.
-
----
 
 ### 6.5 Mitä hukkalämmöllä tarkoitetaan
 
@@ -1074,7 +1032,6 @@ Tässä kappaleessa käsitellään, mistä datakeskuksen kWh-lukemat muodostuvat
 * Lämpömäärä arvioidaan nimellistehosta, vaikka käytännön kuormitus ei yllä mitoitushetken oletuksiin.
 * Uudelleenkäyttö jää raportoimatta, jolloin vaikutus ei näy energiadataan eikä sidosryhmäraportointiin. [7]
 
----
 
 ### 6.6 Konkreettiset esimerkit hukkalämmön hyödyntämisestä
 
@@ -1110,7 +1067,6 @@ Tässä kappaleessa käsitellään, mistä datakeskuksen kWh-lukemat muodostuvat
 * Lämmön saatavuus ei vastaa lämpöverkon tarvetta (kausivaihtelu) ja projekti jää “teknisesti toimivaksi mutta käytännössä vajaakäyttöiseksi”.
 * Ratkaisu lukitaan yhteen käyttötapaan ilman vaihtoehtoista lämpönielua (esim. vain kaukolämpö ilman varapolkua), jolloin käyttökatkot kasvavat.
 
----
 
 ### 6.7 Milloin hukkalämmön hyödyntäminen on taloudellisesti optimaalisinta
 
@@ -1146,7 +1102,6 @@ Tässä kappaleessa käsitellään, mistä datakeskuksen kWh-lukemat muodostuvat
 * Lämpöpumpun sähkönkulutus tai tehomaksut jäävät huomioimatta, jolloin nettosäästö ei vastaa laskelmaa.
 * Sopimus (toimitusvelvoite vs. saatavuus) jää epäselväksi ja riskit realisoituvat seisokeissa.
 
----
 
 ### 6.8 Milloin hukkalämmön hyödyntäminen on ekologisesti optimaalisinta
 
@@ -1176,7 +1131,6 @@ Tässä kappaleessa käsitellään, mistä datakeskuksen kWh-lukemat muodostuvat
 * Päästölukuja ei voi auditoida (puuttuvat kertoimet, rajaukset ja laskentasäännöt).
 * Päätöksenteko ohjautuu pelkkään energiamäärään (MWh) ilman hiili-intensiteettiä.
 
----
 
 ### 6.9 Energian käytön ja päästöjen yhteys
 
@@ -1222,7 +1176,6 @@ Tässä kappaleessa käsitellään, mistä datakeskuksen kWh-lukemat muodostuvat
 * KPI:t muuttuvat raportista toiseen, koska mittausrajat tai laskentasäännöt eivät ole dokumentoituja.
 * Sääntelyraportoinnissa syntyy aukkoja (puuttuva data tai puutteelliset määrittelyt), ja sisäinen optimointi perustuu epätasalaatuiseen mittaukseen. [12]
 
----
 
 ## Lähteet
 
