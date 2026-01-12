@@ -64,47 +64,28 @@ Kun toteutus on käynnissä, käytä menettelyä: mittaa → analysoi → muutos
 
 #### Perustermit ja yksiköt
 
-- **Teho** $P$: hetkellinen sähköteho. Yksikkö W, kW, MW.
-- **Energia** $E$: teho integroituna ajassa. Yksikkö Wh, kWh, MWh, GWh.  
-  (Esim. $E = P \cdot \Delta t$, kun $P$ on vakio tarkastelujaksolla.)
+- **Teho (P)**: hetkellinen sähköteho. Yksikkö W, kW, MW.  
+- **Energia (E)**: teho ajanjaksolla. Yksikkö Wh, kWh, MWh, GWh. (Esim. `kWh = kW × h`.)  
 
-- **IT-työkuorma** $L(t)$: palvelupyyntöjen / työpyyntöjen määrä ja ominaisuudet ajan funktiona sekä niiden vaihtelu ja huiput  
-  (esim. pyyntöä/s, transaktiota/s, jobeja/aikaväli, datavirta).
+- **IT-työkuorma**: datakeskukseen saapuvien palvelu- ja työpyyntöjen määrä ja ominaisuudet ajan funktiona (esim. pyyntöä/s, transaktiota/s, jobeja/eräajoja, I/O, datavirtoja).  
+- **Palvelutaso (SLA / deadline / saatavuus)**: ehto, jonka puitteissa pyyntö käsitellään (esim. vasteaika, määräaika tai saatavuustaso). (Wang et al., 2020)
 
-- **Laskentakapasiteetti (IT-kapasiteetti)** $C$: IT-resurssit, joilla $L(t)$ voidaan suorittaa sovituilla palvelutasovaatimuksilla  
-  (esim. CPU/GPU, muisti, tallennus, verkko; resurssivektorina tai palvelinmääränä).
-  - **Asennettu laskentakapasiteetti** $C_{\text{inst}}$: hankittu ja asennettu resurssipooli (yläraja).
-  - **Käyttöön otettu laskentakapasiteetti** $C_{\text{act}}(t)$: ajossa pidettävä osa resurssipoolista ajanhetkellä $t$ (aktiiviset palvelimet ja niiden resurssit).
-  - **Varakapasiteetti** $C_{\text{res}}$: kapasiteetti, jota pidetään käytettävissä kuormahuippuja, ennusteen epävarmuutta tai vikatilanteita varten  
-    (SLA ja varmistusperiaate). (Whitney & Delforge, 2014; Wang et al., 2020)
+- **Laskentakapasiteetti (IT-kapasiteetti)**: IT-resurssit, joilla IT-työkuorma suoritetaan sovituilla palvelutasoilla (palvelimet, CPU/GPU, muisti, tallennus, verkko). Kapasiteetti on kapasiteettisuunnittelun tulos. (Wang et al., 2020)
+  - **Asennettu kapasiteetti (`C_inst`)**: hankittu ja asennettu resurssipooli.  
+  - **Aktiivinen kapasiteetti (`C_act(t)`)**: se osa resurssipoolista, joka pidetään käytössä ajanhetkellä `t` (aktiiviset palvelimet ja niiden resurssit).  
+  - **Varakapasiteetti (`C_res`)**: kapasiteetti, joka pidetään käytettävissä kuormahuippujen, ennusteen epävarmuuden tai vikatilanteiden varalta (SLA ja varmistusperiaate). (Whitney & Delforge, 2014; Wang et al., 2020)
 
-- **IT-teho** $P_{\text{IT}}(t)$: IT-laitteiden (palvelimet, tallennus, verkko) hetkellinen sähköteho ajanhetkellä $t$. Yksikkö $kW_{\text{IT}}$.
-- **IT-tehoprofiili** $P_{\text{IT}}(t)$: IT-tehon aikasarja, joka seuraa $L(t)$:n vaihtelua (huiput ja perustaso). Yksikkö $kW_{\text{IT}}$.
-
-- **Lämpökuorma / jäähdytyskuorma** $Q_{\text{th}}(t)$: poistettava lämpöteho tilasta tai lämpöpiiristä. Yksikkö $kW_{\text{th}}$.  
-  Käytännössä $Q_{\text{th}}(t)$ määräytyy IT-tehon ja muiden sisäisten sähköhäviöiden perusteella.
-
-- **Jäähdytyksen sähköteho** $P_{\text{cool}}(t)$: jäähdytysjärjestelmien (esim. chillerit, pumput, puhaltimet, CRAH/CRAC) ottama sähköteho.  
-  Yksikkö $kW_{\text{e}}$. Huom: $P_{\text{cool}}(t)$ (sähköteho) ja $Q_{\text{th}}(t)$ (poistettava lämpöteho) ovat eri suureita.
+- **IT-teho (`P_IT(t)`)**: IT-laitteiden (palvelimet, tallennus, verkko) ottama sähköteho ajanhetkellä `t`. Yksikkö kW (IT).  
+- **Lämpökuorma / jäähdytyskuorma (`Q_th(t)`)**: poistettava lämpöteho tilasta tai jäähdytyspiiristä. Yksikkö kW(th). Käytännössä `Q_th(t)` määräytyy IT-tehon ja muiden sähkökuormien (mm. sähköketjun häviöt) perusteella. (Geng, 2015)  
+- **Jäähdytyksen sähköteho (`P_cool(t)`)**: jäähdytysjärjestelmän (esim. chillerit, pumput, puhaltimet, CRAH/CRAC) ottama sähköteho. Yksikkö kW(e). `P_cool(t)` ja `Q_th(t)` ovat eri suureita. (Geng, 2015)
 
 #### Tehomitoitusketju
 
-Tehomitoitusketju tarkoittaa päätöksentekoketjua, jossa **IT-työkuorman** $L(t)$ ja **palvelutasovaatimusten** (SLA/deadline sekä saatavuus) perusteella johdetaan vaiheittain datakeskuksen **sähkö- ja jäähdytysinfrastruktuurin mitoitus** (ml. sähköliittymä, UPS/varavoima, jakelu ja jäähdytysjärjestelmät). (Geng, 2015; Wang et al., 2020)
+Tehomitoitusketju tarkoittaa päätösketjua, jossa IT-työkuorman ja palvelutason perusteella johdetaan datakeskuksen sähkö- ja jäähdytysinfrastruktuurin tehomitoitus (sähköliittymä, UPS/varavoima, jakelu ja jäähdytysjärjestelmät). (Geng, 2015; Wang et al., 2020)
 
-Ketju esitetään seuraavasti:
+IT-työkuorma + palvelutaso  ->  aktiivinen kapasiteetti (+ varakapasiteetti)
+-> IT-tehoprofiili  ->  sähkö- ja jäähdytysinfrastruktuurin mitoitus
 
-$$
-L(t) + \text{SLA/deadline (+ saatavuus)} \rightarrow C_{\text{act}}(t)\,(\,+C_{\text{res}}\,) \rightarrow P_{\text{IT}}(t) \rightarrow \text{sähkö- ja jäähdytysinfrastruktuurin mitoitus}
-$$
-
-- $L(t)$ ja palvelutasovaatimukset $\rightarrow C_{\text{act}}(t)$ ja $C_{\text{res}}$:  
-  kuorman määrä, kuorman resurssiprofiilit ja palvelutasoehdot määräävät, kuinka suuri osa $C_{\text{inst}}$:stä pidetään aktiivisena ja kuinka paljon kapasiteettia pidetään varalla. (Whitney & Delforge, 2014; Wang et al., 2020)
-
-- $C_{\text{act}}(t) \rightarrow P_{\text{IT}}(t)$:  
-  aktiivisten resurssien määrä ja kuormitusaste muodostavat IT-tehoprofiilin, jota käytetään mitoituksen lähtötietona. (Geng, 2015; Wang et al., 2020)
-
-- $P_{\text{IT}}(t) \rightarrow$ infrastruktuurin mitoitus:  
-  IT-teho ja siihen liittyvät sähköketjun häviöt määrittävät sähköjärjestelmän mitoitustarpeen (liittymä, UPS/varavoima, jakelu) sekä poistettavan lämpökuorman $Q_{\text{th}}(t)$, jonka perusteella jäähdytys mitoitetaan. (Geng, 2015)
 
 **Varmistusperiaate** (esim. N+1, 2N) tarkoittaa, että infrastruktuuri mitoitetaan siten, että kuorma voidaan ylläpitää myös yksittäisen komponentin vikaantuessa. Tämä näkyy asennettuna infrastruktuurikapasiteettina ja osakuormalla toimivien laitteiden hyötysuhteina. (Geng, 2015; Whitney & Delforge, 2014)
 
