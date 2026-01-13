@@ -242,6 +242,36 @@ Datakeskusten määrä ja koko kasvavat pilvipalveluiden ja digitaalisten palvel
 Yhdysvaltain datakeskusten sähkönkulutus oli 2013 noin 91 mrd kWh ja ennuste 2020 noin 140 mrd kWh, ja globaalisti datakeskusten sähkönkulutuksen osuuden on arvioitu kasvavan merkittävästi [1]. Lisäksi tutkimusviitteet korostavat käyttöasteongelmaa: tyypillisiä palvelinkäyttöasteita on raportoitu noin 6–12 % tasolla, kun taas parhaat toimijat ovat pystyneet nostamaan käyttöastetta selvästi korkeammaksi (esim. 20–40 %) [1]. Tämä tarkoittaa sähkö- ja jäähdytysinfran näkökulmasta, että “vihreän datakeskuksen” rakentamisen keskeinen perustelu on usein saman palvelukyvyn tuottaminen pienemmällä energialla, joko parantamalla käyttöastetta (konsolidointi, virtualisointi, kuormanohjaus) tai pienentämällä infrastruktuurin häviöitä ja jäähdytyksen tarvetta – mielellään molempia [1]. 
 Jin ym. (2016) jäsentävät vihreät ratkaisut kahteen pääluokkaan: (1) suunnittelu- ja rakennusvaiheen “vihreät laitteet ja infrastruktuuri” sekä (2) operoinnin aikaiset tehokkuus- ja optimointimenetelmät (energiatehokkuus, resurssien hallinta, lämpötilan ja jäähdytyksen ohjaus, mittarointi). arXiv Oppaan näkökulmasta tämä on tärkeä periaate: sijainti ja sähköinen infrastruktuuri luovat tehokkuuskaton, mutta operointi ratkaisee, päästäänkö kattoon. [1] Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). Green Data Centers: A Survey, Perspectives, and Future Directions (arXiv:1608.00687). arXiv.
 
+### Rakentamisen syyt: teknologiset, liiketoiminnalliset ja yhteiskunnalliset
+
+Datakeskus rakennetaan eri toimijoilla eri “pääajurilla”. Oppaan kannalta on hyödyllistä luokitella syyt kolmeen pääluokkaan:
+
+- **Teknologiset syyt:** palvelun tekniset vaatimukset ohjaavat (esim. latenssi, paikallinen käsittely, tehotiheys, suorituskyky).
+- **Liiketoiminnalliset syyt:** kapasiteetti, SLA:t, kustannukset ja kilpailukyky ohjaavat.
+- **Yhteiskunnalliset syyt:** kriittisten palvelujen jatkuvuus, huoltovarmuus ja velvoitteet ohjaavat.
+
+Luokat eivät ole täysin erillisiä: sama hanke voi sisältää kaikkia kolmea. Päätöksissä näkyy silti yleensä yksi pääajuri, joka määrää painotukset (mitä optimoidaan ensin) ja kompromissit.
+
+#### Toimijakartta: mikä kunkin päätavoite on?
+
+| Toimija | Päätavoite (1 lause) | Pääluokka |
+|---|---|---|
+| Hyperscale / pilvitoimija | Lisää kapasiteettia nopeasti ja skaalautuvasti. | Liiketoiminnallinen |
+| Colocation / konesalipalvelu | Myy asiakkaille todennettavasti luotettavaa kapasiteettia (SLA). | Liiketoiminnallinen |
+| Enterprise / yrityksen oma konesali | Pidä oma liiketoiminta käynnissä hallitusti ja turvallisesti. | Liiketoiminnallinen |
+| Edge | Tuo laskenta lähelle käyttäjää/tuotantoa (matala viive, paikallinen käsittely). | Teknologinen |
+| HPC/AI-klusterit | Maksimoi suorituskyky erikoiskuormille (usein korkea tehotiheys). | Teknologinen |
+| Julkinen/kriittinen infra | Varmista kriittisten palvelujen jatkuvuus ja suvereniteetti. | Yhteiskunnallinen |
+
+#### Miksi tämä tulee ennen sijaintipäätöstä?
+
+Toimijaprofiili vaikuttaa suoraan:
+1) **Go/no-go-kriteereihin** (mikä kaataa hankkeen, jos ei täyty)  
+2) **Painotuksiin** (sähkö, viive, redundanssi, hukkalämpö, kustannus…)  
+3) **Kompromisseihin** (esim. redundanssi vs. energiatehokkuus, latenssi vs. energiapotentiaali)
+
+Seuraavassa osiossa nämä konkretisoidaan sijainnin porttikriteereiksi ja pisteytykseksi.
+
 
 ### Sijaintipäätös sähköisen infrastruktuurin ja energian näkökulmasta (Suomi)
 
