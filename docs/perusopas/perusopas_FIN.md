@@ -73,7 +73,7 @@ Kun toteutus on käynnissä, käytä menettelyä: mittaa → analysoi → muutos
 
 * **SLO (Service Level Objective)**: yksittäisen palveluominaisuuden **mitattava tavoitetaso** (esim. saatavuus, vasteaika, virheosuus) tietyllä aikajaksolla; määritellään numeerisena tavoitteena ja mittaustapana (esim. 99,9 %/kk tai p95 < 200 ms).
 
-* **Palvelutasovaatimus mitoituksessa** : mitoitus johdetaan käytännössä SLO-tavoitteista (mitä pitää saavuttaa), kun taas SLA on niiden sopimusmuotoinen sitoumus (kenelle ja millä ehdoilla).
+* **Palvelutasovaatimus mitoituksessa**: mitoitus johdetaan käytännössä SLO-tavoitteista (mitä pitää saavuttaa), kun taas SLA on niiden sopimusmuotoinen sitoumus (kenelle ja millä ehdoilla).
 
 * **Laskentakapasiteetti (IT-kapasiteetti)**: IT-resurssit, joilla `L(t)` suoritetaan sovituilla palvelutasoilla (palvelimet, CPU/GPU, muisti, tallennus, verkko). Kapasiteetti on kapasiteettisuunnittelun tulos. (Wang et al., 2020)
 
