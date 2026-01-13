@@ -94,9 +94,9 @@ Tehomitoitusketju tarkoittaa päätöksentekoketjua, jossa IT-työkuorman `L(t)`
 
 Ketju esitetään seuraavasti:
 
-`L(t)` + (SLA/SLO, saatavuus) → `C_act(t)` (+ `C_res`) → `P_IT(t)` → sähkö- ja jäähdytysinfrastruktuurin mitoitus
+`L(t)` + (SLA/SLO, saatavuus) → `C_act(t)` + (`C_res`) → `P_IT(t)` → sähkö- ja jäähdytysinfrastruktuurin mitoitus
 
-* `L(t)` + SLA/SLO (+ saatavuus) → `C_act(t)` (+ `C_res`): kuorman määrä ja vaihtelu sekä palvelutasoehdot määrittävät, kuinka suuri osa `C_inst`:stä pidetään aktiivisena ja kuinka paljon kapasiteettia pidetään varalla. (Whitney & Delforge, 2014; Wang et al., 2020)
+* `L(t)` + SLA/SLO (+ saatavuus) → `C_act(t)` + (`C_res`): kuorman määrä ja vaihtelu sekä palvelutasoehdot määrittävät, kuinka suuri osa `C_inst`:stä pidetään aktiivisena ja kuinka paljon kapasiteettia pidetään varalla. (Whitney & Delforge, 2014; Wang et al., 2020)
 * `C_act(t)` → `P_IT(t)`: aktiivisten resurssien määrä ja kuormitusaste muodostavat IT-tehoprofiilin, joka toimii sähkö- ja jäähdytysjärjestelmien mitoituksen lähtötietona. (Geng, 2015; Wang et al., 2020)
 * `P_IT(t)` → infrastruktuurin mitoitus: IT-teho ja siihen liittyvät häviöt määrittävät sähköketjun mitoitustehoja (liittymä, UPS, jakelu) sekä lämpökuorman `Q_th(t)`, jonka perusteella jäähdytysjärjestelmät mitoitetaan. (Geng, 2015)
 
@@ -118,7 +118,7 @@ Tässä oppaassa sama tehomitoitusketju säilyy, mutta hankkeessa määritetää
 
 P1.4 määritteli tehomitoitusketjun muodossa:
 
-`L(t)` + (SLA/SLO, saatavuus) → `C_act(t)` (+ `C_res`) → `P_IT(t)` → sähkö- ja jäähdytysinfrastruktuurin mitoitus. (Geng, 2015; Wang et al., 2020)
+`L(t)` + (SLA/SLO, saatavuus) → `C_act(t)` + (`C_res`) → `P_IT(t)` → sähkö- ja jäähdytysinfrastruktuurin mitoitus. (Geng, 2015; Wang et al., 2020)
 
 Tässä kappaleessa tarkennetaan ketjun alkupäätä eli sitä, miten **saapuvista työpyynnöistä** muodostetaan kuvanus työkuormasta `L(t)` ja miten tämän perusteella johdetaan kapasiteettisuunnittelun päätökset (`C_act(t)`, `C_res`) ja niistä edelleen IT-tehoprofiili `P_IT(t)`. (Wang et al., 2020)
 
