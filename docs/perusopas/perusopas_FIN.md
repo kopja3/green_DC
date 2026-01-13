@@ -244,17 +244,18 @@ Jin ym. (2016) jäsentävät vihreät ratkaisut kahteen pääluokkaan: (1) suunn
 
 ### Rakentamisen syyt: teknologiset, liiketoiminnalliset ja yhteiskunnalliset
 
-Datakeskus rakennetaan eri toimijoilla eri “pääajurilla”. Oppaan kannalta on hyödyllistä luokitella syyt kolmeen pääluokkaan:
+Tässä oppaassa datakeskuksen rakentamisen syyt jäsennetään kolmeen pääluokkaan. Jaottelu auttaa tunnistamaan hankkeen “pääajurin”, joka myöhemmin näkyy sijainnin go/no-go-kriteereissä ja pisteytyksen painotuksissa.
 
-- **Teknologiset syyt:** palvelun tekniset vaatimukset ohjaavat (esim. latenssi, paikallinen käsittely, tehotiheys, suorituskyky).
-- **Liiketoiminnalliset syyt:** kapasiteetti, SLA:t, kustannukset ja kilpailukyky ohjaavat.
-- **Yhteiskunnalliset syyt:** kriittisten palvelujen jatkuvuus, huoltovarmuus ja velvoitteet ohjaavat.
+- **Teknologiset syyt:** palvelun tekniset vaatimukset ohjaavat (esim. viive, saatavuus ja palvelutasotavoitteet), jolloin kapasiteettia ja varmistusta pidetään yllä vaatimusten vuoksi. (Wang et al., 2020; Jin et al., 2016)  
+- **Liiketoiminnalliset syyt:** kapasiteetti rakennetaan digitalisaation ja pilvipalvelujen kasvun sekä keskittämisen/tehostamisen vuoksi; tavoitteena on tuottaa sama palvelukyky pienemmällä energialla ja paremmalla operoitavuudella. (Jin et al., 2016; Shehabi et al., 2016; Masanet et al., 2020)  
+- **Yhteiskunnalliset syyt:** korostuvat, kun datakeskus liittyy kriittisiin palveluihin, toimintavarmuuteen, ympäristövaikutuksiin ja kansallisiin reunaehtoihin; tällöin korostuu läpinäkyvä mittaus ja dokumentointi. (LVM, 2020; Jin et al., 2016)
+
 
 Luokat eivät ole täysin erillisiä: sama hanke voi sisältää kaikkia kolmea. Päätöksissä näkyy silti yleensä yksi pääajuri, joka määrää painotukset (mitä optimoidaan ensin) ja kompromissit.
 
 #### Toimijakartta: mikä kunkin päätavoite on?
 
-| Toimija | Päätavoite (1 lause) | Pääluokka |
+| Toimija | Päätavoite  | Pääluokka |
 |---|---|---|
 | Hyperscale / pilvitoimija | Lisää kapasiteettia nopeasti ja skaalautuvasti. | Liiketoiminnallinen |
 | Colocation / konesalipalvelu | Myy asiakkaille todennettavasti luotettavaa kapasiteettia (SLA). | Liiketoiminnallinen |
