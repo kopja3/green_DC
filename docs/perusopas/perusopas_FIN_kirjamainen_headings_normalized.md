@@ -520,7 +520,22 @@ Kestävä datakeskusajattelu ulottuu myös infrastruktuurin materiaalivalintoihi
 
 ## 🔹 4. Datakeskuksen elinkaaren vaiheet  
 
-> **Tavoite:** kuvata vihreän datakeskuksen elinkaari esiselvityksestä suunnitteluun, rakentamiseen, käyttöön, modernisointiin ja lopulta purkuun. Luku syventää M3-moduulin sisältöä (eli elinkaaren hallintaa). Palvelutasojen hallinnan näkökulmasta elinkaariajattelu tarkoittaa, että jokaisessa vaiheessa määritellään vastuuhenkilöt ja tarkennetut tavoitteet – näin varmistetaan jatkuva vastuunotto ja palvelutason pitävyys koko hankkeen ajan [1]. Datakeskuksen elinkaari voidaan jakaa selkeisiin vaiheisiin, joista jokaisessa on omat päämääränsä ja haasteensa. Hyvä elinkaaren hallinta varmistaa, että alkuvaiheen tavoitteet – mukaan lukien vihreät tavoitteet – eivät huku matkalla, vaan toteutuvat valmiissa keskuksessa ja sen toiminnassa. Seuraavassa käydään läpi päävaiheet:
+> **Tavoite:** kuvata datakeskuksen elinkaari esiselvityksestä suunnitteluun, rakentamiseen, käyttöönottoon, käyttöön, modernisointiin ja lopulta käytöstäpoistoon niin, että vihreä ICT -näkökulma (energia, päästöt, vesi, materiaalit ja raportointi) on mukana jokaisessa vaiheessa.
+>
+> **Luku kattaa:**
+> - elinkaaren vaiheet ja niiden päätöspisteet (mitä päätetään missäkin vaiheessa)
+> - vastuut ja dokumentointi (kuka tuottaa mitäkin tietoa ja milloin)
+> - energia-, data- ja materiaalivirrat elinkaaren aikana (mitä syntyy, mitä mitataan, mitä siirretään eteenpäin)
+> - modernisointi ja kapasiteetin muutokset (laajennus/supistus) sekä niiden vaikutus tehokkuuteen
+> - käytöstäpoisto: tietoturvallinen purku, laitekierto ja materiaalien kierrätys
+>
+> **Tuotokset (dokumentoitavat päätökset):**
+> - elinkaarisuunnitelma (vaiheet, aikataulu, riippuvuudet)
+> - rooli- ja vastuumatriisi (suunnittelu–rakentaminen–operointi–raportointi)
+> - modernisointipolku (päivityssyklit, kapasiteetin kasvu/supistus, vaikutus mittareihin)
+> - käytöstäpoisto- ja kierrätyssuunnitelma (datahävitys, materiaalivirrat, toimittajaketju)
+> - luvun lopussa: lähteet ja viittaukset (jos käytössä)
+
 
 ### P4.1 Esiselvitys ja tavoitteiden asettaminen 
 
