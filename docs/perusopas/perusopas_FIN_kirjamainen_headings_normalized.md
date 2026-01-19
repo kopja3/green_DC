@@ -1,4 +1,17 @@
 ## P1 – Johdanto vihreään datakeskukseen
+
+> **Tavoite:** määrittää oppaan rajaus ja käsitteet sekä yhtenäinen mitoitus- ja mittauskieli (E, P, C, SLA/SLO), jotta myöhemmät luvut voidaan kytkeä päätös→tuotos→mittaus -ketjuun.
+>
+> **Luku kattaa:**
+> - oppaan tarkoituksen, käyttölogiikan ja etenemisen lukurakenteen kautta
+> - peruskäsitteet ja symbolit (E, P, L(t), C_inst/C_act/C_res, P_IT(t), Q_th(t), P_cool(t), SLA/SLO)
+> - tehomitoitusketjun ja mittausrajauksen periaatteen
+>
+> **Tuotokset (dokumentoitavat päätökset):**
+> - oppaan rajaus: mitä vihreys tarkoittaa tässä oppaassa
+> - lähtötietokehys kuormalle ja palvelutasolle (SLA/SLO) sekä mitoitusketjun perusmuoto
+> - mittausrajauksen periaate: mistä kokonaisenergia ja IT-energia mitataan (täsmennykset luvussa P7)
+
 ### P1.1 Miksi perusopas?
 
 Tämä perusopas tukee vihreän datakeskuksen suunnittelua ja toteutusta Suomessa. Opas jäsentää päätökset vaiheisiin ja liittää ne mitattaviin suureisiin: energia (E), teho (P), kapasiteetti (C) ja palvelutaso (SLA/SLO) (Jin et al., 2016; Uddin & Rahman, 2012; Geng, 2015). Väitteet sidotaan lähteisiin.
@@ -213,6 +226,19 @@ Whitney, J., & Delforge, P. (2014, August). *Data center efficiency assessment: 
 
 
 ## P2 – Miksi datakeskus rakennetaan ja miten sijainti valitaan
+
+> **Tavoite:** jäsentää datakeskushankkeen ajurit ja tehdä sijaintivalinta läpinäkyvästi porttikriteereillä ja pisteytyksellä, ennen kuin ratkaisuja lukitaan suunnittelussa ja mitoituksessa.
+>
+> **Luku kattaa:**
+> - rakentamisen ajurit (teknologiset / liiketoiminnalliset / yhteiskunnalliset) ja niiden vaikutuksen painotuksiin
+> - toteutusmallin valinnan (oma / colocation / pilvi / hybridi) suhteessa käyttötarkoitukseen ja palvelutasoon
+> - sijaintivertailun kahdessa vaiheessa: porttikriteerit (go/no-go) ja pisteytys (1–5) + herkkyystarkistus
+>
+> **Tuotokset (dokumentoitavat päätökset):**
+> - hankkeen ajurit, palvelutasolähtökohta (SLA/SLO) ja valittu toteutusmalli
+> - sijaintivaihtoehtojen esikarsinta (go/no-go) perusteluineen
+> - pisteytystaulukko, painotukset ja herkkyystarkastelu sekä valitut 1–2 jatkoselvitettävää sijaintia (+ varavaihtoehto)
+> - alustava tavoitemittaristo (PUE/CUE/WUE/ERF/REF) ja periaate todennukselle/raportoinnille
 
 Datakeskusten määrä ja koko kasvavat pilvipalveluiden ja digitaalisten palveluketjujen vuoksi. Samalla datakeskusten energiankulutus sekä siitä seuraavat kustannus- ja päästövaikutukset ovat nousseet keskeiseksi suunnittelukriteeriksi. Osa energiankulutuksesta liittyy työkuormien kasvuun, mutta merkittävä osa voi johtua myös rakenteellisesta tehottomuudesta: kapasiteettia pidetään varalla, järjestelmiä ylivarmistetaan ja käyttöaste jää matalaksi, mikä kasvattaa myös jäähdytyksen ja sähkönjakelun “tyhjäkäyntiä” [1].
 
@@ -440,10 +466,25 @@ Lopputuloksena P2-luvusta organisaatiolla tulisi olla selkeä käsitys datakesku
 
 
 ## 🔹 3. Vihreän datakeskuksen peruselementit ja periaatteet 
+## P3 – Vihreän datakeskuksen peruselementit ja periaatteet
 
-> **Tavoite: kuvata, mitä kaikkea vihreässä datakeskuksessa on – rakennus, sähköjärjestelmä, jäähdytys,** hukkalämmön hyödyntäminen, uusiutuvan energian integraatio, automaatio, materiaalit – ja miten nämä suunnitellaan kestävän kehityksen periaatteiden mukaisesti. Vihreä datakeskus on datakeskus, jonka suunnittelussa ja operoinnissa pyritään kuluttamaan mahdollisimman vähän energiaa ja aiheuttamaan mahdollisimman pieniä ympäristövaikutuksia. Tämän saavuttamiseksi hyödynnetään uusiutuvia energialähteitä (esim. aurinko- ja tuulivoimaa) ja optimoidaan energiankäyttöä sekä jäähdytystä modernein ratkaisuin. Hukkalämmön talteenotolla datakeskuksen palvelimissa muodostuva lämpö voidaan käyttää hyödyksi esimerkiksi kaukolämpöverkossa lähialueen rakennusten lämmitykseen, mikä vähentää hiilidioksidipäästöjä tuottavan erillisen lämmöntuotannon tarvetta. Toisin sanoen vihreä datakeskus minimoi sekä energiankulutuksensa että hiilijalanjälkensä hyödyntämällä tehokkaita laitteisto- ja ohjelmistoratkaisuja sekä uusiutuvaa energiaa [14].
+> **Tavoite:** kuvata, mitä kaikkea vihreässä datakeskuksessa on (rakennus, sähköjärjestelmä, jäähdytys, hukkalämmön hyödyntäminen, uusiutuvan energian integraatio, automaatio ja materiaalit) ja miten nämä suunnitellaan kestävän kehityksen periaatteiden mukaisesti.
 
-Energiatehokkuuden parantamiseksi hyödynnetään mm. kuormanhallintaa, virtualisointia ja sähkönsyötön häviöiden minimointia. Älykkäät automaatiojärjestelmät, tekoäly ja data-analytiikka tukevat energiankulutuksen reaaliaikaista seurantaa ja optimointia – esimerkiksi palvelinkuormia voidaan siirtää dynaamisesti, ja jäähdytystä säätää tarkasti tarpeen mukaan. Modulaarinen suunnittelu puolestaan mahdollistaa datakeskuksen joustavan laajentamisen tai supistamisen tarpeen mukaan sekä kierrätettävien komponenttien käytön, mikä tukee kiertotaloutta ja vähentää ylimääräistä kapasiteettia. Tavoitteena on täyttää alan tiukentuvat ympäristöstandardit ja -säädökset, kuten EU:n energiatehokkuusdirektiivin vaatimukset, sekä mahdollisesti saavuttaa ympäristösertifikaatteja (LEED, BREEAM tms.). Yhteenvetona: vihreän datakeskuksen suunnittelussa jokainen osa-alue palvelee yhteisiä ympäristötavoitteita. Tämä lähestymistapa vastaa SLA-kehyksessä tavoitteiden määrittelyä ja niiden integrointia toteutukseen – esimerkiksi voidaan asettaa palvelutasotavoite PUE-arvolle, ja varmistaa että kaikki suunnittelupäätökset (sähkönsyöttö, jäähdytys jne.) tukevat tuon tavoitetason saavuttamista [1]. Seuraavaksi käsitellään vihreän datakeskuksen keskeiset elementit yksitellen.
+**Luku kattaa:**
+- Vihreän datakeskuksen määrittelyn ja rajauksen (mitä “vihreys” tarkoittaa tässä oppaassa).
+- Keskeiset osa-alueet: rakennus- ja tilaratkaisut, sähkö- ja energiajärjestelmä, jäähdytys ja ilmankierto, hukkalämmön talteenotto, uusiutuvan energian integrointi, automaatio ja mittaus sekä kestävät materiaalivalinnat.
+- Periaatteet, joilla ratkaisut sidotaan tavoitteisiin ja vaatimuksiin (energiatehokkuus, ympäristövaikutukset, mitattavuus ja raportointikyky).
+
+**Tuotokset (dokumentoitavat päätökset):**
+- Päälinjaukset siitä, millä ratkaisuilla energian kulutusta ja ympäristövaikutuksia pienennetään (sähkö, jäähdytys, hukkalämpö, uusiutuva energia, automaatio).
+- Perustelut ja tavoitteet, joihin valinnat sidotaan (esim. energiatehokkuus ja mitattavuus; tarvittaessa tavoitearvot myöhemmän mittariston pohjaksi).
+- Suunnittelua ohjaavat reunaehdot (modulaarisuus, skaalautuvuus, elinkaariajattelu sekä raportointi-/sertifiointitarpeet).
+
+Vihreä datakeskus on datakeskus, jonka suunnittelussa ja operoinnissa pyritään kuluttamaan mahdollisimman vähän energiaa ja aiheuttamaan mahdollisimman pienet ympäristövaikutukset. Tavoitetta tuetaan hyödyntämällä uusiutuvia energialähteitä (esim. aurinko- ja tuulivoimaa) sekä optimoimalla energiankäyttöä ja jäähdytystä modernein ratkaisuin. Hukkalämmön talteenotolla datakeskuksen palvelimissa muodostuva lämpö voidaan ohjata hyötykäyttöön (esim. kaukolämpöverkkoon), mikä vähentää erillisen lämmöntuotannon tarvetta. Toisin sanoen vihreä datakeskus minimoi sekä energiankulutuksensa että hiilijalanjälkensä hyödyntämällä tehokkaita laitteisto- ja ohjelmistoratkaisuja sekä uusiutuvaa energiaa [14].
+
+Energiatehokkuuden parantamisessa hyödynnetään mm. kuormanhallintaa, virtualisointia ja sähkönsyötön häviöiden minimointia. Älykkäät automaatiojärjestelmät, tekoäly ja data-analytiikka tukevat energiankulutuksen reaaliaikaista seurantaa ja optimointia: kuormia voidaan siirtää dynaamisesti ja jäähdytystä säätää tarpeen mukaan. Modulaarinen suunnittelu mahdollistaa laajentamisen tai supistamisen kysynnän mukaan sekä kierrätettävien komponenttien käytön, mikä tukee kiertotaloutta ja vähentää ylimääräistä kapasiteettia. Tavoitteena on täyttää alan tiukentuvat ympäristövaatimukset (esim. EU:n energiatehokkuusdirektiivin linja) ja tukea ympäristösertifiointeja (LEED, BREEAM tms.). Kokonaisuutena vihreän datakeskuksen suunnittelussa jokainen osa-alue palvelee yhteisiä ympäristötavoitteita. Tämä on rinnastettavissa SLA-kehyksen tavoiteajatteluun: voidaan asettaa palvelutasotavoite (esim. PUE-taso) ja varmistaa, että suunnittelupäätökset (sähkönsyöttö, jäähdytys jne.) tukevat tavoitetason saavuttamista [1].
+
+Seuraavaksi käsitellään vihreän datakeskuksen keskeiset elementit yksitellen.
 
 ### P3.1 Mitä tarkoitetaan vihreällä datakeskuksella
 
