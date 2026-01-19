@@ -1,16 +1,16 @@
 ## P1 – Johdanto vihreään datakeskukseen
 
-> **Tavoite:** määrittää oppaan rajaus ja käsitteet sekä yhtenäinen mitoitus- ja mittauskieli (E, P, C, SLA/SLO), jotta myöhemmät luvut voidaan kytkeä päätös→tuotos→mittaus -ketjuun.
->
-> **Luku kattaa:**
-> - oppaan tarkoituksen, käyttölogiikan ja etenemisen lukurakenteen kautta
-> - peruskäsitteet ja symbolit (E, P, L(t), C_inst/C_act/C_res, P_IT(t), Q_th(t), P_cool(t), SLA/SLO)
-> - tehomitoitusketjun ja mittausrajauksen periaatteen
->
-> **Tuotokset (dokumentoitavat päätökset):**
-> - oppaan rajaus: mitä vihreys tarkoittaa tässä oppaassa
-> - lähtötietokehys kuormalle ja palvelutasolle (SLA/SLO) sekä mitoitusketjun perusmuoto
-> - mittausrajauksen periaate: mistä kokonaisenergia ja IT-energia mitataan (täsmennykset luvussa P7)
+**Tavoite:** määrittää oppaan rajaus ja käsitteet sekä yhtenäinen mitoitus- ja mittauskieli (E, P, C, SLA/SLO), jotta myöhemmät luvut voidaan kytkeä päätös→tuotos→mittaus -ketjuun.
+
+ **Luku kattaa:**
+ - oppaan tarkoituksen, käyttölogiikan ja etenemisen lukurakenteen kautta
+ - peruskäsitteet ja symbolit (E, P, L(t), C_inst/C_act/C_res, P_IT(t), Q_th(t), P_cool(t), SLA/SLO)
+ - tehomitoitusketjun ja mittausrajauksen periaatteen
+
+ **Tuotokset (dokumentoitavat päätökset):**
+ - oppaan rajaus: mitä vihreys tarkoittaa tässä oppaassa
+ - lähtötietokehys kuormalle ja palvelutasolle (SLA/SLO) sekä mitoitusketjun perusmuoto
+ - mittausrajauksen periaate: mistä kokonaisenergia ja IT-energia mitataan (täsmennykset luvussa P7)
 
 ### P1.1 Miksi perusopas?
 
@@ -227,18 +227,18 @@ Whitney, J., & Delforge, P. (2014, August). *Data center efficiency assessment: 
 
 ## P2 – Miksi datakeskus rakennetaan ja miten sijainti valitaan
 
-> **Tavoite:** jäsentää datakeskushankkeen ajurit ja tehdä sijaintivalinta läpinäkyvästi porttikriteereillä ja pisteytyksellä, ennen kuin ratkaisuja lukitaan suunnittelussa ja mitoituksessa.
->
-> **Luku kattaa:**
-> - rakentamisen ajurit (teknologiset / liiketoiminnalliset / yhteiskunnalliset) ja niiden vaikutuksen painotuksiin
-> - toteutusmallin valinnan (oma / colocation / pilvi / hybridi) suhteessa käyttötarkoitukseen ja palvelutasoon
-> - sijaintivertailun kahdessa vaiheessa: porttikriteerit (go/no-go) ja pisteytys (1–5) + herkkyystarkistus
->
-> **Tuotokset (dokumentoitavat päätökset):**
-> - hankkeen ajurit, palvelutasolähtökohta (SLA/SLO) ja valittu toteutusmalli
-> - sijaintivaihtoehtojen esikarsinta (go/no-go) perusteluineen
-> - pisteytystaulukko, painotukset ja herkkyystarkastelu sekä valitut 1–2 jatkoselvitettävää sijaintia (+ varavaihtoehto)
-> - alustava tavoitemittaristo (PUE/CUE/WUE/ERF/REF) ja periaate todennukselle/raportoinnille
+ **Tavoite:** jäsentää datakeskushankkeen ajurit ja tehdä sijaintivalinta läpinäkyvästi porttikriteereillä ja pisteytyksellä, ennen kuin ratkaisuja lukitaan suunnittelussa ja mitoituksessa.
+
+ **Luku kattaa:**
+ - rakentamisen ajurit (teknologiset / liiketoiminnalliset / yhteiskunnalliset) ja niiden vaikutuksen painotuksiin
+ - toteutusmallin valinnan (oma / colocation / pilvi / hybridi) suhteessa käyttötarkoitukseen ja palvelutasoon
+ - sijaintivertailun kahdessa vaiheessa: porttikriteerit (go/no-go) ja pisteytys (1–5) + herkkyystarkistus
+
+ **Tuotokset (dokumentoitavat päätökset):**
+ - hankkeen ajurit, palvelutasolähtökohta (SLA/SLO) ja valittu toteutusmalli
+ - sijaintivaihtoehtojen esikarsinta (go/no-go) perusteluineen
+ - pisteytystaulukko, painotukset ja herkkyystarkastelu sekä valitut 1–2 jatkoselvitettävää sijaintia (+ varavaihtoehto)
+ - alustava tavoitemittaristo (PUE/CUE/WUE/ERF/REF) ja periaate todennukselle/raportoinnille
 
 Datakeskusten määrä ja koko kasvavat pilvipalveluiden ja digitaalisten palveluketjujen vuoksi. Samalla datakeskusten energiankulutus sekä siitä seuraavat kustannus- ja päästövaikutukset ovat nousseet keskeiseksi suunnittelukriteeriksi. Osa energiankulutuksesta liittyy työkuormien kasvuun, mutta merkittävä osa voi johtua myös rakenteellisesta tehottomuudesta: kapasiteettia pidetään varalla, järjestelmiä ylivarmistetaan ja käyttöaste jää matalaksi, mikä kasvattaa myös jäähdytyksen ja sähkönjakelun “tyhjäkäyntiä” [1].
 
@@ -468,7 +468,7 @@ Lopputuloksena P2-luvusta organisaatiolla tulisi olla selkeä käsitys datakesku
 ## 🔹 3. Vihreän datakeskuksen peruselementit ja periaatteet 
 ## P3 – Vihreän datakeskuksen peruselementit ja periaatteet
 
-> **Tavoite:** kuvata, mitä kaikkea vihreässä datakeskuksessa on (rakennus, sähköjärjestelmä, jäähdytys, hukkalämmön hyödyntäminen, uusiutuvan energian integraatio, automaatio ja materiaalit) ja miten nämä suunnitellaan kestävän kehityksen periaatteiden mukaisesti.
+ **Tavoite:** kuvata, mitä kaikkea vihreässä datakeskuksessa on (rakennus, sähköjärjestelmä, jäähdytys, hukkalämmön hyödyntäminen, uusiutuvan energian integraatio, automaatio ja materiaalit) ja miten nämä suunnitellaan kestävän kehityksen periaatteiden mukaisesti.
 
 **Luku kattaa:**
 - Vihreän datakeskuksen määrittelyn ja rajauksen (mitä “vihreys” tarkoittaa tässä oppaassa).
@@ -520,21 +520,21 @@ Kestävä datakeskusajattelu ulottuu myös infrastruktuurin materiaalivalintoihi
 
 ## 🔹 4. Datakeskuksen elinkaaren vaiheet  
 
-> **Tavoite:** kuvata datakeskuksen elinkaari esiselvityksestä suunnitteluun, rakentamiseen, käyttöönottoon, käyttöön, modernisointiin ja lopulta käytöstäpoistoon niin, että vihreä ICT -näkökulma (energia, päästöt, vesi, materiaalit ja raportointi) on mukana jokaisessa vaiheessa.
->
-> **Luku kattaa:**
-> - elinkaaren vaiheet ja niiden päätöspisteet (mitä päätetään missäkin vaiheessa)
-> - vastuut ja dokumentointi (kuka tuottaa mitäkin tietoa ja milloin)
-> - energia-, data- ja materiaalivirrat elinkaaren aikana (mitä syntyy, mitä mitataan, mitä siirretään eteenpäin)
-> - modernisointi ja kapasiteetin muutokset (laajennus/supistus) sekä niiden vaikutus tehokkuuteen
-> - käytöstäpoisto: tietoturvallinen purku, laitekierto ja materiaalien kierrätys
->
-> **Tuotokset (dokumentoitavat päätökset):**
-> - elinkaarisuunnitelma (vaiheet, aikataulu, riippuvuudet)
-> - rooli- ja vastuumatriisi (suunnittelu–rakentaminen–operointi–raportointi)
-> - modernisointipolku (päivityssyklit, kapasiteetin kasvu/supistus, vaikutus mittareihin)
-> - käytöstäpoisto- ja kierrätyssuunnitelma (datahävitys, materiaalivirrat, toimittajaketju)
-> - luvun lopussa: lähteet ja viittaukset (jos käytössä)
+ **Tavoite:** kuvata datakeskuksen elinkaari esiselvityksestä suunnitteluun, rakentamiseen, käyttöönottoon, käyttöön, modernisointiin ja lopulta käytöstäpoistoon niin, että vihreä ICT -näkökulma (energia, päästöt, vesi, materiaalit ja raportointi) on mukana jokaisessa vaiheessa.
+
+ **Luku kattaa:**
+ - elinkaaren vaiheet ja niiden päätöspisteet (mitä päätetään missäkin vaiheessa)
+ - vastuut ja dokumentointi (kuka tuottaa mitäkin tietoa ja milloin)
+ - energia-, data- ja materiaalivirrat elinkaaren aikana (mitä syntyy, mitä mitataan, mitä siirretään eteenpäin)
+ - modernisointi ja kapasiteetin muutokset (laajennus/supistus) sekä niiden vaikutus tehokkuuteen
+ - käytöstäpoisto: tietoturvallinen purku, laitekierto ja materiaalien kierrätys
+
+ **Tuotokset (dokumentoitavat päätökset):**
+ - elinkaarisuunnitelma (vaiheet, aikataulu, riippuvuudet)
+ - rooli- ja vastuumatriisi (suunnittelu–rakentaminen–operointi–raportointi)
+ - modernisointipolku (päivityssyklit, kapasiteetin kasvu/supistus, vaikutus mittareihin)
+ - käytöstäpoisto- ja kierrätyssuunnitelma (datahävitys, materiaalivirrat, toimittajaketju)
+ - luvun lopussa: lähteet ja viittaukset (jos käytössä)
 
 
 ### P4.1 Esiselvitys ja tavoitteiden asettaminen 
@@ -585,7 +585,7 @@ Tulevaisuuteen varautuminen on olennainen osa vihreän datakeskuksen elinkaarisu
 
 ## 🔹 5. Datakeskuksen toiminta vaiheittain  
 
-> **Tavoite:** kuvata, miten energia kulkee datakeskuksessa vaiheesta toiseen – sähköverkosta palvelimille, sieltä digitaalisten palvelujen muodossa käyttäjille, ja lopulta lämpönä ulos. Luku seuraa ketjua: sähköenergia → palvelimet → verkko → jäähdytys → hukkalämpö → mittaus.
+ **Tavoite:** kuvata, miten energia kulkee datakeskuksessa vaiheesta toiseen – sähköverkosta palvelimille, sieltä digitaalisten palvelujen muodossa käyttäjille, ja lopulta lämpönä ulos. Luku seuraa ketjua: sähköenergia → palvelimet → verkko → jäähdytys → hukkalämpö → mittaus.
 
 ### P5.0 Mitä tässä luvussa tapahtuu
 Tässä luvussa seurataan datakeskuksen energiaketjua ja jaetaan se käytännön osiin (P5.2–P5.7).
@@ -799,16 +799,16 @@ Suurissa yksiköissä pieni prosentuaalinen parannus (esim. PUE 1.15 vs. 1.3) ta
 
 ## 🔹 7. Datakeskusten energiatehokkuuden mittaaminen, sääntely ja muut keskeiset tunnusluvut. 
 
-> **Luku kattaa:**  
-> Tässä luvussa kuvataan, **mitä datakeskuksesta mitataan, mistä se mitataan ja miten tunnusluvut lasketaan** niin, että luvut ovat vertailukelpoisia ja raportoitavissa. Luku kokoaa EN 50600-4 -mittarilogiikan (mittausrajat ja mittauspisteet) sekä keskeiset tunnusluvut (PUE, WUE, CUE sekä uusiutuvan energian ja energian uudelleenkäytön osuudet). Lisäksi luvussa tuodaan mukaan **sääntely- ja raportointinäkökulma**: miksi mittaustapa ja dokumentointi kannattaa tehdä jo suunnittelussa niin, että raportointi onnistuu ilman jälkikäteen tehtäviä korjauksia. Luvun lopuksi käsitellään, miten mittareita käytetään käytännössä kehittämisen ja optimoinnin tukena (ei vain seurannan vuoksi).
+ **Luku kattaa:**  
+ Tässä luvussa kuvataan, **mitä datakeskuksesta mitataan, mistä se mitataan ja miten tunnusluvut lasketaan** niin, että luvut ovat vertailukelpoisia ja raportoitavissa. Luku kokoaa EN 50600-4 -mittarilogiikan (mittausrajat ja mittauspisteet) sekä keskeiset tunnusluvut (PUE, WUE, CUE sekä uusiutuvan energian ja energian uudelleenkäytön osuudet). Lisäksi luvussa tuodaan mukaan **sääntely- ja raportointinäkökulma**: miksi mittaustapa ja dokumentointi kannattaa tehdä jo suunnittelussa niin, että raportointi onnistuu ilman jälkikäteen tehtäviä korjauksia. Luvun lopuksi käsitellään, miten mittareita käytetään käytännössä kehittämisen ja optimoinnin tukena (ei vain seurannan vuoksi).
 
-> **Tuotokset (dokumentoitavat päätökset):**
-> - **Mittausrajat:** mistä kokonaisenergia mitataan ja mistä IT-energia mitataan (rajat PUE/WUE/CUE-laskentaan).  
-> - **Mittauspisteet ja mittausvastuut:** mitä mitataan (sähkö/vesi/lämpö), missä pisteissä ja kuka vastaa mittareiden toimivuudesta.  
-> - **Laskentasäännöt ja oletukset:** käytetyt kaavat, aikajaksot ja oletukset (esim. mitä sisältyy IT-kuormaan, miten uusiutuvuus todennetaan).  
-> - **Raportointivalmius:** mitä dataa säilytetään, miten audit trail varmistetaan ja mitä julkaistaan/raportoidaan.  
-> - **Tavoitearvojen kirjaus:** asetetut tavoitetasot (esim. PUE/CUE/WUE/REF/ERF) ja mihin ne sidotaan (suunnittelu, operointi, sopimukset).  
-> - **Käyttötapa kehittämisessä:** miten mittareita käytetään päätöksenteossa (priorisointi, investointien arviointi, operoinnin ohjaus).
+ **Tuotokset (dokumentoitavat päätökset):**
+ - **Mittausrajat:** mistä kokonaisenergia mitataan ja mistä IT-energia mitataan (rajat PUE/WUE/CUE-laskentaan).  
+ - **Mittauspisteet ja mittausvastuut:** mitä mitataan (sähkö/vesi/lämpö), missä pisteissä ja kuka vastaa mittareiden toimivuudesta.  
+ - **Laskentasäännöt ja oletukset:** käytetyt kaavat, aikajaksot ja oletukset (esim. mitä sisältyy IT-kuormaan, miten uusiutuvuus todennetaan).  
+ - **Raportointivalmius:** mitä dataa säilytetään, miten audit trail varmistetaan ja mitä julkaistaan/raportoidaan.  
+ - **Tavoitearvojen kirjaus:** asetetut tavoitetasot (esim. PUE/CUE/WUE/REF/ERF) ja mihin ne sidotaan (suunnittelu, operointi, sopimukset).  
+ - **Käyttötapa kehittämisessä:** miten mittareita käytetään päätöksenteossa (priorisointi, investointien arviointi, operoinnin ohjaus).
 
 ### Luvun rakenne
 - **P7.1** EN 50600-4 -sarjan rooli datakeskuksissa  
