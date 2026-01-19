@@ -1,32 +1,21 @@
 
 
 ## P1 – Johdanto vihreään datakeskukseen
-
 ### P1.1 Miksi perusopas?
 
 Tämä perusopas tukee vihreän datakeskuksen suunnittelua ja toteutusta Suomessa. Opas jäsentää päätökset vaiheisiin ja liittää ne mitattaviin suureisiin: energia (E), teho (P), kapasiteetti (C) ja palvelutaso (SLA/SLO) (Jin et al., 2016; Uddin & Rahman, 2012; Geng, 2015). Väitteet sidotaan lähteisiin.
 
 Opas etenee luvuittain seuraavasti:
 
-Luku 2: Datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet
-Sijainnin reunaehdot: sähkö, verkko, viive, jäähdytys ja hukkalämpöliitynnät.
-
-Luku 3: Vihreän datakeskuksen peruselementit ja periaatteet
-Osa-alueet ja käsitteet, joilla vihreyttä tarkastellaan; mittausrajat ja arvioinnin periaatteet.
-
-Luku 4: Datakeskuksen elinkaaren vaiheet
-Suunnittelu, rakentaminen, käyttö ja käytöstäpoisto; data ja materiaalivirrat.
-
-Luku 5: Datakeskuksen toiminta vaiheittain
-Kuorma ja palvelutaso → kapasiteettisuunnittelu → IT-tehon vaihtelu ajassa → sähköliittymän, jakelun, varmistuksen ja jäähdytyksen mitoitus.
-
-Luku 6: Energian kulutus ja uudelleenkäyttö
-Kulutuserät, jäähdytyksen sähkönkulutus, hukkalämmön talteenotto, rajapinnat ja mittaustieto.
-
-Luku 7: Datakeskusten energiatehokkuuden mittaaminen
-EN 50600-4 -mittarit ja mittauspisteet; mittarikortit (PUE, REF, ERF, CER, CUE, WUE).
+- **Luku 2:** Datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet. Sijainnin reunaehdot: sähkö, verkko, viive, jäähdytys ja hukkalämpöliitynnät.
+- **Luku 3:** Vihreän datakeskuksen peruselementit ja periaatteet. Osa-alueet ja käsitteet, joilla vihreyttä tarkastellaan; mittausrajat ja arvioinnin periaatteet.
+- **Luku 4:** Datakeskuksen elinkaaren vaiheet. Suunnittelu, rakentaminen, käyttö ja käytöstäpoisto; data ja materiaalivirrat.
+- **Luku 5:** Datakeskuksen toiminta vaiheittain. Kuorma ja palvelutaso → kapasiteettisuunnittelu → IT-tehon vaihtelu ajassa → sähköliittymän, jakelun, varmistuksen ja jäähdytyksen mitoitus.
+- **Luku 6:** Energian kulutus ja uudelleenkäyttö. Kulutuserät, jäähdytyksen sähkönkulutus, hukkalämmön talteenotto, rajapinnat ja mittaustieto.
+- **Luku 7:** Datakeskusten energiatehokkuuden mittaaminen. EN 50600-4 -mittarit ja mittauspisteet; mittarikortit (PUE, REF, ERF, CER, CUE, WUE).
 
 Merkinnät ja mitoitusketjun symbolit esitellään kohdassa P1.4.
+
 
 ### P1.2 Mikä on vihreä datakeskus?
 
