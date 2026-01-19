@@ -1,36 +1,229 @@
 ## P2 – Miksi datakeskus rakennetaan ja miten sijainti valitaan
 
-## 🔹 2. Datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet  
+Datakeskusten määrä ja koko kasvavat pilvipalveluiden ja digitaalisten palveluketjujen vuoksi. Samalla datakeskusten energiankulutus sekä siitä seuraavat kustannus- ja päästövaikutukset ovat nousseet keskeiseksi suunnittelukriteeriksi. Osa energiankulutuksesta liittyy työkuormien kasvuun, mutta merkittävä osa voi johtua myös rakenteellisesta tehottomuudesta: kapasiteettia pidetään varalla, järjestelmiä ylivarmistetaan ja käyttöaste jää matalaksi, mikä kasvattaa myös jäähdytyksen ja sähkönjakelun “tyhjäkäyntiä” [1].
 
-> **Tavoite:** perustella, miksi datakeskus rakennetaan ja miten sijainti valitaan.
+Yhdysvaltain datakeskusten sähkönkulutus oli 2013 noin 91 mrd kWh ja ennuste 2020 noin 140 mrd kWh, ja globaalisti datakeskusten sähkönkulutuksen osuuden on arvioitu kasvavan merkittävästi [1]. Lisäksi tutkimusviitteet korostavat käyttöasteongelmaa: tyypillisiä palvelinkäyttöasteita on raportoitu noin 6–12 % tasolla, kun taas parhaat toimijat ovat pystyneet nostamaan käyttöastetta selvästi korkeammaksi (esim. 20–40 %) [1]. Vihreän datakeskuksen rakentamisen keskeinen perustelu on usein saman palvelukyvyn tuottaminen pienemmällä energialla: parantamalla käyttöastetta (konsolidointi, virtualisointi, kuormanohjaus) ja/tai pienentämällä infrastruktuurin häviöitä ja jäähdytyksen tarvetta [1].
 
-Pilvipalveluiden ja digitaalisten palvelujen voimakas kasvu on lisännyt datakeskusten tarvetta. Maailman datakeskukset kuluttavat arviolta 1–2 % kaikesta sähköstä [2], ja ilman jatkuvia tehokkuusparannuksia tämän osuuden on pelätty kasvavan moninkertaiseksi tulevina vuosikymmeninä [3]. Lisäksi palvelinten käyttöaste on perinteisesti ollut alhainen, eräissä selvityksissä on raportoitu keskimäärin vain noin 6–12 % palvelinkapasiteetin hyödyntämisestä [7], mikä tarkoittaa, että merkittävä osa kapasiteetista kuluttaa energiaa tuottamatta hyötyä. Nämä seikat ajavat etsimään ratkaisuja, joilla sama palvelukapasiteetti voidaan tuottaa pienemmällä energiankulutuksella. Palvelutasosopimusten (SLA) kehittämisen viitekehys auttaa muuttamaan nämä ajurit mitattaviksi palvelutavoitteiksi (esim. saatavuus, vasteaika, palautumiskyky ja tietoturva), joista voidaan johtaa sijaintipaikan valintakriteerit [1]. Esimerkiksi latenssitavoitteet ohjaavat lähemmäs käyttäjiä ja runkoverkkoja, korkea saatavuus edellyttää luotettavaa sähkö- ja verkkoinfrastruktuuria sekä riskienhallintaa, ja palautumistavoitteet voivat edellyttää erillistä varasijaintia. Näin perustelut, sijaintivalinta ja hankkeen onnistumisen mittarit muodostavat yhtenäisen, seurattavan ketjun [1].
+Jin ym. (2016) jäsentävät vihreät ratkaisut kahteen pääluokkaan: (1) suunnittelu- ja rakennusvaiheen vihreät laitteet ja infrastruktuuri sekä (2) operoinnin aikaiset tehokkuus- ja optimointimenetelmät (energiatehokkuus, resurssien hallinta, lämpötilan ja jäähdytyksen ohjaus, mittarointi). Oppaan näkökulmasta periaate on käytännöllinen: sijainti ja sähköinen infrastruktuuri luovat toteutettavuuden ja “tehokkuuskaton”, mutta operointi ratkaisee, päästäänkö siihen [1].
 
-### P2.1 Tehtävä, kapasiteetti ja käyttötarkoitus
+### P2.1 Tehtävä, kapasiteetti, palvelutaso ja toteutusmalli
 
-Datakeskuksen suunnittelun perustana on selkeä käsitys siitä, mitä yhteiskunnallista tai liiketoiminnallista tarvetta se palvelee. On määriteltävä, ratkaiseeko keskus esimerkiksi kasvavaa tekoälymallien laskentatehon kysyntää (jolloin tarvitaan korkean suorituskyvyn palvelimia), vai palveleeko se tiettyä sovellusta, kuten verkkosivustojen tai mobiilisovellusten käyttäjäkysyntää (jolloin painopiste on palvelupyyntöjen tehokkaassa käsittelyssä). Jos datakeskus tukee pilvipohjaista tallennuspalvelua, korostuvat tallennuskapasiteetin ja datan hallinnan tarpeet. 
+Datakeskuksen suunnittelun perustana on selkeä käsitys siitä, mitä yhteiskunnallista tai liiketoiminnallista tarvetta se palvelee. On määriteltävä, ratkaiseeko keskus esimerkiksi kasvavaa tekoälymallien laskentatehon kysyntää (jolloin tarvitaan korkean suorituskyvyn palvelimia), vai palveleeko se tiettyä sovellusta, kuten verkkosivustojen tai mobiilisovellusten käyttäjäkysyntää (jolloin painopiste on palvelupyyntöjen tehokkaassa käsittelyssä). Jos datakeskus tukee pilvipohjaista tallennuspalvelua, korostuvat tallennuskapasiteetin ja datan hallinnan tarpeet.
 
-Käyttötarkoituksen määrittely antaa pohjan arvioida tarvittava laitekapasiteetti (palvelinmäärät, laitekaappien lukumäärä ja tallennusratkaisut ja verkkokapasitetti) sekä tätä kautta sähkönsyötön ja jäähdytyksen vaatimukset: IT-laitteiden kuorma määrittää suoraan sekä sähkön että jäähdytyksen mitoitusta. https://datacenters.lbl.gov/sites/default/files/2025-07/best-practice-guide-data-center-design.pdf Näiden perusteella voidaan mitoittaa myös datakeskuksen tilatarpeet ja muu infrastruktuuri. Samassa yhteydessä on syytä määritellä tavoiteltu palvelutaso (SLA/SLO), kuten saatavuus-, vasteaika-ja palatumistavoitteet (RTO/RPO), koska ne vaikuttavat sekä palvelukapasiteetin (laskenta-, tallennus- ja verkkokapasiteetti) mitoitukseen että tarvittavaan teho-, jäähdytys- ja jatkuvuuskapasiteettiin (redundanssi ja varajärjestelyt). https://learn.microsoft.com/en-us/azure/well-architected/reliability/metrics Oma datakeskus, kolmannen osapuolen konesali vai pilvipalvelu. Ennen rakennuspäätöstä on arvioitava, mikä toteutusmalli on tarkoituksenmukaisin käyttötarkoituksen ja tavoitellun palvelutason kannalta: Oma datakeskus: järkevä vaihtoehto, kun organisaatiolla on pitkäjänteinen kapasiteettitarve, tiukat tietoturvavaatimukset tai tarve räätälöidyille ratkaisuille ja integraatioille (esim. tehdasympäristössä tai kampuksella). Oma konesali tarjoaa maksimaalisen kontrollin, mutta edellyttää merkittäviä investointeja ja operointikyvykkyyttä. Kolmannen osapuolen konesali (colocation): sopii, kun halutaan pienentää omia rakennus- ja perusinfrastrukstuurin investointeja, mutta säilyttää kontrolli omasta laitteistoista ja ympäristöstä. Tyypillisesti palveluntarjoaja tuottaa tilan, sähkön ja jäähdytyksen, fyysisen turvallisuuden ja usien myös teleoperaaattoriyhteydet, kun taas asiakas tuo ja hallitsee omat palvelimensa, tallennuksen ja verkkolaitteet. https://www.hpe.com/emea_europe/en/what-is/data-center-colocation.html  Julkiset pilvipalvelut: sopivat eritysesti silloin, kun kapasiteetin joustavuus, nopea skaalautuvuus ja palvelujen saatavuus laajasti internetin yli ovat keskeisiä tavoitteita. Julkisessa pilvessä laskenta- ja tallennuspalvelut tuotetaan tyypillisesti palveluntarjoajan toimesta "on-demand" julkisen internetin kautta, mikä vähentää oman fyysisen infran tarvetta, mutta samalla kontrolli fyysisestä ympäristöstä ja osasta toteutusvalintoja jää palveluntarjoajalle. https://cloud.google.com/learn/what-is-public-cloud?
+Käyttötarkoituksen määrittely antaa pohjan arvioida tarvittava laite- ja palvelukapasiteetti (palvelinmäärät, laitekaappien lukumäärä, tallennusratkaisut ja verkkokapasiteetti) sekä tätä kautta sähkönsyötön ja jäähdytyksen vaatimukset: IT-laitteiden kuorma määrittää suoraan sekä sähkön että jäähdytyksen mitoitusta.  
+https://datacenters.lbl.gov/sites/default/files/2025-07/best-practice-guide-data-center-design.pdf
+
+Samassa yhteydessä on syytä määritellä tavoiteltu palvelutaso (SLA/SLO), kuten saatavuus-, vasteaika- ja palautumistavoitteet (RTO/RPO), koska ne vaikuttavat sekä palvelukapasiteetin (laskenta-, tallennus- ja verkkokapasiteetti) mitoitukseen että tarvittavaan teho-, jäähdytys- ja jatkuvuuskapasiteettiin (redundanssi ja varajärjestelyt).  
+https://learn.microsoft.com/en-us/azure/well-architected/reliability/metrics
+
+#### Rakentamisen syyt: teknologiset, liiketoiminnalliset ja yhteiskunnalliset
+
+Tässä oppaassa datakeskuksen rakentamisen syyt jäsennetään kolmeen pääluokkaan. Jaottelu auttaa tunnistamaan hankkeen pääajurin, joka myöhemmin näkyy sijainnin porttikriteereissä ja pisteytyksen painotuksissa.
+
+- **Teknologiset syyt:** palvelun tekniset vaatimukset ohjaavat (esim. viive, saatavuus ja palvelutasotavoitteet), jolloin kapasiteettia ja varmistusta pidetään yllä vaatimusten vuoksi. (Wang et al., 2020; Jin et al., 2016)  
+- **Liiketoiminnalliset syyt:** kapasiteetti rakennetaan digitalisaation ja pilvipalvelujen kasvun sekä keskittämisen/tehostamisen vuoksi; tavoitteena on tuottaa sama palvelukyky pienemmällä energialla ja paremmalla operoitavuudella. (Jin et al., 2016; Shehabi et al., 2016; Masanet et al., 2020)  
+- **Yhteiskunnalliset syyt:** korostuvat, kun datakeskus liittyy kriittisiin palveluihin, toimintavarmuuteen, ympäristövaikutuksiin ja kansallisiin reunaehtoihin; tällöin korostuu läpinäkyvä mittaus ja dokumentointi. (LVM, 2020; Jin et al., 2016)
+
+Luokat eivät ole täysin erillisiä: sama hanke voi sisältää kaikkia kolmea. Päätöksissä näkyy silti yleensä yksi pääajuri, joka määrää painotukset ja kompromissit.
+
+#### Toimijakartta: mikä kunkin päätavoite on?
+
+| Toimija | Päätavoite | Pääluokka |
+|---|---|---|
+| Hyperscale / pilvitoimija | Lisää kapasiteettia nopeasti ja skaalautuvasti. | Liiketoiminnallinen |
+| Colocation / konesalipalvelu | Myy asiakkaille todennettavasti luotettavaa kapasiteettia (SLA). | Liiketoiminnallinen |
+| Enterprise / yrityksen oma konesali | Pidä oma liiketoiminta käynnissä hallitusti ja turvallisesti. | Liiketoiminnallinen |
+| Edge | Tuo laskenta lähelle käyttäjää/tuotantoa (matala viive, paikallinen käsittely). | Teknologinen |
+| HPC/AI-klusterit | Maksimoi suorituskyky erikoiskuormille (usein korkea tehotiheys). | Teknologinen |
+| Julkinen/kriittinen infra | Varmista kriittisten palvelujen jatkuvuus ja suvereniteetti. | Yhteiskunnallinen |
+
+#### Oma datakeskus, kolmannen osapuolen konesali vai pilvipalvelu?
+
+Ennen rakennuspäätöstä on arvioitava, mikä toteutusmalli on tarkoituksenmukaisin käyttötarkoituksen ja tavoitellun palvelutason kannalta:
+
+- **Oma datakeskus:** järkevä vaihtoehto, kun organisaatiolla on pitkäjänteinen kapasiteettitarve, tiukat tietoturvavaatimukset tai tarve räätälöidyille ratkaisuille ja integraatioille (esim. tehdasympäristössä tai kampuksella). Oma konesali tarjoaa maksimaalisen kontrollin, mutta edellyttää merkittäviä investointeja ja operointikyvykkyyttä.  
+- **Kolmannen osapuolen konesali (colocation):** sopii, kun halutaan pienentää omia rakennus- ja perusinfrastruktuurin investointeja, mutta säilyttää kontrolli omasta laitteistosta ja ympäristöstä. Tyypillisesti palveluntarjoaja tuottaa tilan, sähkön ja jäähdytyksen, fyysisen turvallisuuden ja usein myös teleoperaattoriyhteydet, kun taas asiakas tuo ja hallitsee omat palvelimensa, tallennuksen ja verkkolaitteet.  
+  https://www.hpe.com/emea_europe/en/what-is/data-center-colocation.html  
+- **Julkiset pilvipalvelut:** sopivat erityisesti silloin, kun kapasiteetin joustavuus, nopea skaalautuvuus ja palvelujen saatavuus laajasti internetin yli ovat keskeisiä tavoitteita. Pilvessä laskenta- ja tallennuspalvelut tuotetaan tyypillisesti palveluntarjoajan toimesta “on-demand”, mikä vähentää oman fyysisen infran tarvetta, mutta samalla kontrolli fyysisestä ympäristöstä ja osasta toteutusvalintoja jää palveluntarjoajalle.  
+  https://cloud.google.com/learn/what-is-public-cloud?
 
 Käytännössä monet ratkaisut ovat hybridiympäristöjä: kriittiset tai sääntelyä ja matalaa latenssia vaativat palvelut sijoitetaan omaan tai kumppanin datakeskukseen, kun taas muut työkuormat ajetaan julkisessa pilvessä kustannustehokkuuden ja skaalautuvuuden vuoksi.
 
 ### P2.2 Sijainnin tekniset tekijät – sähkö, verkko, ilmasto ja vesihuolto
 
-Datakeskuksen sijainnin valinnassa on huomioitava useita reunaehtoja. Ensinnäkin sähkönsaannin varmuus ja kapasiteetti on ratkaisevan tärkeää: sijainnin tulee mahdollistaa liittymä valtakunnalliseen kantaverkkoon tai muuhun riittävän kapasiteetin sähköverkkoon. Alueelta on löydyttävä riittävä sähköteho nyt ja tulevaisuudessa, ja varasyöttöjen järjestäminen on oltava mahdollista. Sähköverkkoyhteyksien ohella nopeat ja luotettavat tietoliikenneyhteydet ovat keskeisiä – datakeskuksen tulisi sijaita lähellä kuituverkkoa tai Internet-runkoyhteyksiä, jotta viive käyttäjien ja palveluiden välillä pysyy alhaisena. Useiden operaattoreiden läsnäolo parantaa yhteyksien redundanssia ja kapasiteettia. Myös ilmasto-olosuhteet vaikuttavat sijaintipäätökseen. Viileässä ilmastossa datakeskus voi hyödyntää kylmää ulkoilmaa jäähdytyksessä suurimman osan vuodesta (vapaajäähdytys), mikä vähentää jäähdytysjärjestelmän energiankulutusta. Kuumassa ja kosteassa ilmastossa jäähdytys joudutaan toteuttamaan energiaintensiivisemmin, mikä heikentää energiatehokkuutta. Lisäksi vesihuollon saatavuus on huomioitava: jos datakeskus käyttää vedenjäähdytystä, on varmistettava riittävä veden saanti kestävästi. Vesilähteen kapasiteetti ja mahdolliset vaikutukset paikalliseen vesistöön on arvioitava jo etukäteen.
+Datakeskuksen sijainnin valinnassa on huomioitava useita reunaehtoja.
+
+Ensinnäkin sähkönsaannin varmuus ja kapasiteetti on ratkaisevan tärkeää: sijainnin tulee mahdollistaa liittymä valtakunnalliseen kantaverkkoon tai muuhun riittävän kapasiteetin sähköverkkoon. Alueelta on löydyttävä riittävä sähköteho nyt ja tulevaisuudessa, ja varasyöttöjen järjestäminen on oltava mahdollista.
+
+Sähköverkkoyhteyksien ohella nopeat ja luotettavat tietoliikenneyhteydet ovat keskeisiä: datakeskuksen tulisi sijaita lähellä kuituverkkoa tai internetin runkoyhteyksiä, jotta viive käyttäjien ja palveluiden välillä pysyy alhaisena. Useiden operaattoreiden läsnäolo parantaa yhteyksien redundanssia ja kapasiteettia.
+
+Myös ilmasto-olosuhteet vaikuttavat sijaintipäätökseen. Viileässä ilmastossa datakeskus voi hyödyntää kylmää ulkoilmaa jäähdytyksessä suuren osan vuodesta (vapaajäähdytys), mikä vähentää jäähdytysjärjestelmän energiankulutusta. Kuumassa ja kosteassa ilmastossa jäähdytys joudutaan toteuttamaan energiaintensiivisemmin, mikä heikentää energiatehokkuutta.
+
+Lisäksi vesihuollon saatavuus on huomioitava: jos datakeskus käyttää vedenjäähdytystä, on varmistettava riittävä veden saanti kestävästi. Vesilähteen kapasiteetti ja mahdolliset vaikutukset paikalliseen vesistöön on arvioitava jo etukäteen.
 
 ### P2.3 Sijainnin ympäristö- ja energiatehokkuustekijät
 
-Sijainti vaikuttaa suoraan datakeskuksen energiatehokkuuteen ja ympäristövaikutuksiin. Päätösvaiheessa on tärkeää arvioida mm.: Uusiutuvan energian saatavuus: Onko alueella mahdollisuus hyödyntää paikallista uusiutuvaa sähköntuotantoa, kuten tuuli- tai aurinkovoimaa, tai ostaa sertifioidusti uusiutuvaa energiaa sähköverkosta? Jos datakeskus voidaan liittää esimerkiksi tuulipuistoon tai vesivoimaan, sen käyttämän sähkön hiilijalanjälki pienenee olennaisesti. Hukkalämmön hyödyntämismahdollisuudet: Onko lähettyvillä kaukolämpöverkkoa tai muita kohteita (esim. asuinkortteleita, kasvihuoneita, teollisuuslaitoksia), joille datakeskuksen tuottamaa hukkalämpöä voidaan johtaa hyötykäyttöön? Jos datakeskus rakennetaan kaukolämpöverkon yhteyteen, palvelimien tuottama lämpö voidaan suoraan hyödyntää korvaamaan fossiilista lämmöntuotantoa [8]. Jäähdytysratkaisujen tarve ilmaston mukaan: Miten paikallinen ulkolämpötila ja vuodenajat vaikuttavat jäähdytystarpeeseen? Suomessa viileämpi ilmasto tarjoaa mahdollisuuden merkittävään energiansäästöön jäähdytyksessä verrattuna eteläisempiin maihin – vastaavasti hyvin lämpimissä oloissa datakeskuksen jäähdytyksen suhteellinen osuus energiankulutuksesta kasvaa. Yllä olevat tekijät määrittävät vihreän datakeskuksen potentiaalin jo sijaintivalinnan hetkellä. Esimerkiksi datakeskus, joka sijaitsee kaukolämpöverkkoon kytkettynä alueella, voi saavuttaa huomattavan energiansäästön ohjaamalla hukkalämmön verkkoon, kun taas syrjäseudulla ilman lämpöverkkoa hukkalämpö jää todennäköisesti hyödyntämättä. Sijaintipäätöksessä onkin hyvä hahmotella skenaarioita eri ympäristötekijöiden suhteen ja arvioida, miten ne vaikuttavat kokonaisenergiatehokkuuteen sekä hiilijalanjälkeen. Paikalliset vesivarat on syytä kartoittaa: runsaasti vettä vaativat jäähdytysmenetelmät eivät ole kestäviä alueilla, joilla vesistä on niukkuutta. (Tähän alalukuun voidaan tarvittaessa koota tiiviisti yhteenvedoksi sijaintiin liittyvät uusiutuvan energian, hukkalämmön hyödyntämisen ja vesihuollon tekijät, joita muissa luvuissa käsitellään tarkemmin.)
+Sijainti vaikuttaa suoraan datakeskuksen energiatehokkuuteen ja ympäristövaikutuksiin. Päätösvaiheessa on tärkeää arvioida mm.:
 
-### P2.4 Riskit, resilienssi ja regulaatio sijaintipäätöksissä 
+- **Uusiutuvan energian saatavuus ja todentaminen:** onko alueella mahdollisuus hyödyntää paikallista uusiutuvaa sähköntuotantoa (tuuli/aurinko) tai ostaa sertifioidusti uusiutuvaa energiaa? Jos datakeskus voidaan liittää esimerkiksi tuulipuistoon tai vesivoimaan, sen käyttämän sähkön hiilijalanjälki pienenee olennaisesti.  
+- **Hukkalämmön hyödyntämismahdollisuudet:** onko lähettyvillä kaukolämpöverkkoa tai muita kohteita (esim. asuinkortteleita, kasvihuoneita, teollisuuslaitoksia), joille datakeskuksen tuottamaa lämpöä voidaan johtaa hyötykäyttöön? Jos datakeskus rakennetaan kaukolämpöverkon yhteyteen, palvelimien tuottama lämpö voidaan hyödyntää korvaamaan erillistä lämmöntuotantoa [8].  
+- **Jäähdytysratkaisujen tarve ilmaston mukaan:** miten paikallinen ulkolämpötila ja vuodenajat vaikuttavat jäähdytystarpeeseen? Suomessa viileä ilmasto mahdollistaa merkittävää energiansäästöä jäähdytyksessä verrattuna eteläisempiin maihin; vastaavasti hyvin lämpimissä oloissa jäähdytyksen suhteellinen osuus kasvaa.  
+- **Vesivarat ja vedenkäytön kestävyys:** runsaasti vettä vaativat jäähdytysmenetelmät eivät ole kestäviä alueilla, joilla vesistä on niukkuutta.
 
-Sijaintipäätökseen liittyy aina myös riskejä, jotka on tunnistettava ja arvioitava etukäteen. Näitä ovat esimerkiksi: Sähkökatkot ja sähköverkon häiriöt: Onko alueella historiaa pitkistä sähkökatkoista tai jänniteongelmista? Kantaverkon ja jakeluverkon luotettavuus vaikuttaa suoraan datakeskuksen käytettävyyteen. Myrskyt, helleaallot, lumikuormat ja routaolosuhteet tulee huomioida rakennus- ja infrastruktuuriratkaisuissa. Paikalliset turvallisuusriskit: Entä alueen rikostilanne, ilkivallan tai terrorismin riski?
+Yllä olevat tekijät määrittävät vihreän datakeskuksen potentiaalin jo sijaintivalinnan hetkellä. Sijaintipäätöksessä on hyvä hahmotella skenaarioita eri ympäristötekijöiden suhteen ja arvioida, miten ne vaikuttavat kokonaisenergiatehokkuuteen sekä hiilijalanjälkeen.
 
-Datakeskuksen fyysisen turvallisuuden takaamiseksi ympäristön on oltava vakaaja, tai turvatoimet suunniteltava sen mukaisesti. Yhteyksien katkeamiset: Kuinka todennäköisiä ovat laajakaapeliviat tai operaattorien häiriöt alueella? Kahdennetut reitit ja monen operaattorin käyttö voivat parantaa resilienssiä. Kyberuhat ja geopolitiikka: Sijainnin valintaan voi vaikuttaa myös kyberturvallisuus (esim. välttää alueita, joissa on runsaasti strategisia kyberuhkia) sekä geopoliittiset tekijät, jotka voivat vaikuttaa energiantoimituksiin tai lupakäytäntöihin. Riskienhallinnan näkökulmasta on tärkeää ymmärtää muutamia peruskäsitteitä: varmistus (redundanssi) tarkoittaa, että kriittisillä komponenteilla on varajärjestelmiä – esimerkiksi sähkönsyötössä, jäähdytyksessä ja verkkoyhteyksissä tulee olla moninkertaiset ratkaisut. Varayhteys viittaa toiseen fyysisesti erilliseen tietoliikenneyhteyteen, jota voidaan käyttää ensisijaisen yhteyden vikaantuessa. Varakonesali puolestaan on erillinen toinen datakeskus, jonne kriittiset palvelut voidaan häiriötilanteessa siirtää (tai joka toimii rinnakkaisena ympäristönä jatkuvasti). Lisäksi sijaintipäätöksissä on huomioitava regulaatio ja lupakäytännöt . Rakentamiseen saattaa liittyä paikallisia kaavamääräyksiä tai ympäristölupia, jotka rajoittavat esimerkiksi varavoimageneraattorien käyttöä (melu- ja päästörajat) tai edellyttävät hukkalämmön talteenoton selvittämistä. Myös datan sijaintiin liittyvät lait (kuten EU:n GDPR tietosuojassa) voivat sanella vaatimuksia siitä, mihin maahan kriittinen data fyysisesti sijoitetaan. Hankkeen alkuvaiheessa tulee siis kartoittaa tarvittavat luvat ja varmistaa, että sijainti mahdollistaa vaatimustenmukaisuuden koko elinkaaren ajan. (Myöhemmissä luvuissa esiintyvät riskienhallinta- ja sääntelyteemat voidaan lopuksi tiivistää ja koota tähän alalukuun yhteenvetona, kun kaikki näkökulmat on käsitelty.)
+### P2.4 Riskit, resilienssi ja regulaatio sijaintipäätöksissä
+
+Sijaintipäätökseen liittyy aina myös riskejä, jotka on tunnistettava ja arvioitava etukäteen. Näitä ovat esimerkiksi:
+
+- **Sähkökatkot ja sähköverkon häiriöt:** onko alueella historiaa pitkistä sähkökatkoista tai jänniteongelmista? Kantaverkon ja jakeluverkon luotettavuus vaikuttaa suoraan datakeskuksen käytettävyyteen.  
+- **Sää- ja ilmastoriskit:** myrskyt, helleaallot, lumikuormat ja routaolosuhteet tulee huomioida rakennus- ja infrastruktuuriratkaisuissa.  
+- **Paikalliset turvallisuusriskit:** alueen rikostilanne, ilkivallan tai terrorismin riski. Datakeskuksen fyysisen turvallisuuden takaamiseksi ympäristön on oltava vakaa tai turvatoimet suunniteltava sen mukaisesti.  
+- **Yhteyksien katkeamiset:** kuinka todennäköisiä ovat kaapeliviat tai operaattorien häiriöt alueella? Kahdennetut reitit ja monen operaattorin käyttö parantavat resilienssiä.  
+- **Kyberuhat ja geopolitiikka:** sijainnin valintaan voi vaikuttaa myös kyberturvallisuus sekä geopoliittiset tekijät, jotka voivat vaikuttaa energiantoimituksiin, lupakäytäntöihin tai datan sijaintivaatimuksiin.
+
+Riskienhallinnan peruskäsitteitä:
+
+- **Varmistus (redundanssi):** kriittisillä komponenteilla on varajärjestelmiä (sähkönsyöttö, jäähdytys, verkkoyhteydet).  
+- **Varayhteys:** toinen fyysisesti erillinen tietoliikenneyhteys ensisijaisen vikaantuessa.  
+- **Varakonesali:** erillinen toinen datakeskus, jonne kriittiset palvelut voidaan siirtää häiriötilanteessa (tai joka toimii rinnakkaisena ympäristönä).
+
+Lisäksi on huomioitava **regulaatio ja lupakäytännöt**: rakentamiseen voi liittyä kaavamääräyksiä, ympäristölupia ja rajoitteita (esim. varavoimageneraattorien melu- ja päästörajat) sekä vaatimuksia hukkalämmön talteenoton selvittämisestä. Datan sijaintiin liittyvät vaatimukset (esim. GDPR) voivat asettaa rajoitteita sille, mihin maahan data fyysisesti sijoitetaan. Hankkeen alkuvaiheessa tulee kartoittaa tarvittavat luvat ja varmistaa vaatimustenmukaisuus koko elinkaaren ajalle.
 
 ### P2.5 Tavoitetason ja mittareiden määrittely
 
-Datakeskuksen suunnittelun alkuvaiheessa on suositeltavaa määritellä selkeä tavoitetaso energiatehokkuudelle ja ympäristövaikutuksille – toisin sanoen projektille asetetaan konkreettiset avainluvut , joilla vihreyttä mitataan. Nämä tavoitteet ohjaavat sekä suunnitteluratkaisuja että myöhempää operointia. Datakeskusten energiatehokkuutta mitataan kansainvälisesti useilla vakiintuneilla tunnusluvuilla. EN 50600-4 -standardiperhe kuvaa keskeiset mittarit, joista tärkeitä ovat esimerkiksi: PUE (Power Usage Effectiveness): kertoo, kuinka suuri osa datakeskuksen kokonaisenergiankulutuksesta päätyy varsinaiselle IT-kuormalle (palvelimille, tallennusjärjestelmille ja verkkolaitteille). Mitä lähemmäs arvoa 1,0 päästään, sitä tehokkaammin keskus käyttää energiansa IT-laitteisiin eikä hukkaa sitä tukijärjestelmiin. CUE (Carbon Usage Effectiveness): kuvaa hiilidioksidipäästöjen määrää suhteessa IT-laitteiden kuluttamaan energiaan. Matala CUE tarkoittaa, että joko energiankulutus on pientä tai käytetty sähkö on vähäpäästöistä (tai molempia). WUE (Water Usage Effectiveness): ilmaisee vedenkulutuksen suhteessa IT- energiankulutukseen. Esimerkiksi vedenkäyttö jäähdytyksessä nostaa WUE-arvoa. Vihreässä datakeskuksessa pyritään minimoimaan makean veden kulutus, tai käyttämään kierrätys- tai hulevettä mahdollisuuksien mukaan. Muut ympäristömittarit: kuten ERF (Energy Reuse Factor , uudelleenkäytetyn energian osuus) ja REF (Renewable Energy Factor , uusiutuvan energian osuus). ERF kertoo, kuinka paljon datakeskuksen käyttämästä energiasta saadaan kierrätettyä hyötykäyttöön datakeskuksen ulkopuolella, ja REF kuinka suuri osa syötetystä sähköstä on peräisin uusiutuvista lähteistä . Jo projektin alkuvaiheessa voidaan tehdä yksinkertaisia esimerkkilaskelmia tavoitteista. Esimerkiksi PUE- tavoitteen havainnollistamiseksi: jos datakeskuksen arvioitu kokonaisteho on 1,5 MW ja IT-laitteiden osuus tästä 1,0 MW, tavoite PUE = 1,5 antaisi suunnittelulle raamin (tässä esimerkissä tukijärjestelmille sallitaan 0,5 MW häviöitä). Tavoitelukujen määrittäminen toimii ikään kuin hankkeen sisäisenä palvelutasositoumuksena : suunnitteluratkaisut ja lopulta käyttöönotto on tarkoitus hyväksyä sen perusteella, täyttyvätkö asetetut tavoitteet [1]. Lopputuloksena P2-luvusta organisaatiolla tulisi olla selkeä käsitys datakeskusinvestoinnin ajureista, valintakriteereistä ja hankkeen keskeisistä tavoitteista. Nämä muodostavat perustan seuraaville vaiheille: luvussa P3 tarkennetaan vihreän datakeskuksen periaatteet ja tekniset ratkaisut, ja myöhemmissä luvuissa pureudutaan elinkaareen (P4), operointiin (P5) sekä energiankulutukseen (P6) ja mittaristoon (P7).
+Datakeskuksen suunnittelun alkuvaiheessa on suositeltavaa määritellä selkeä tavoitetaso energiatehokkuudelle ja ympäristövaikutuksille. Toisin sanoen projektille asetetaan konkreettiset avainluvut, joilla vihreyttä mitataan. Tavoitteet ohjaavat sekä suunnitteluratkaisuja että myöhempää operointia.
+
+EN 50600-4 -standardiperhe kuvaa keskeiset mittarit, joista tärkeitä ovat esimerkiksi:
+
+- **PUE (Power Usage Effectiveness):** kokonaisenergian suhde IT-energian käyttöön. Mitä lähemmäs arvoa 1,0 päästään, sitä suurempi osuus energiasta menee IT-kuormalle eikä tukijärjestelmien häviöihin.  
+- **CUE (Carbon Usage Effectiveness):** hiilidioksidipäästöjen määrä suhteessa IT-energiankulutukseen. Matala CUE tarkoittaa pienempiä päästöjä (tehokkuuden ja/tai vähäpäästöisen sähkön vuoksi).  
+- **WUE (Water Usage Effectiveness):** vedenkulutus suhteessa IT-energiankulutukseen. Vihreässä datakeskuksessa pyritään minimoimaan makean veden käyttö tai käyttämään vaihtoehtoisia vesilähteitä (esim. kierrätysvesi) mahdollisuuksien mukaan.  
+- **ERF (Energy Reuse Factor):** uudelleenkäytetyn energian (tyypillisesti hukkalämmön) osuus.  
+- **REF (Renewable Energy Factor):** uusiutuvan energian osuus.
+
+Jo projektin alkuvaiheessa voidaan tehdä esimerkkilaskelmia tavoitteista. Esimerkiksi PUE-tavoitteen havainnollistamiseksi: jos datakeskuksen arvioitu kokonaisteho on 1,5 MW ja IT-laitteiden osuus tästä 1,0 MW, tavoite PUE = 1,5 antaa suunnittelulle raamin (tukijärjestelmille sallitaan 0,5 MW häviöitä). Tavoitelukujen määrittäminen toimii hankkeessa käytännössä hyväksymiskriteereinä: suunnittelu ja käyttöönotto arvioidaan sen perusteella, täyttyvätkö asetetut tavoitteet [1].
+
+### P2.6 Sijaintivalinnan menettely: porttikriteerit ja pisteytys
+
+Sijaintipäätös kannattaa tehdä sähkö- ja energiavirtojen ehdoilla varhaisessa vaiheessa, koska teho- ja liittymärajoitteet, redundanssivaatimukset sekä energian alkuperä lukitsevat investoinnin toteutettavuuden ja elinkaaren päästöprofiilin. Vihreän datakeskuksen näkökulmasta sijainti on käytännössä päätös siitä, mistä sähkö tulee, miten se todennetaan ja millä energiatehokkuudella lämpö poistetaan ja (mahdollisesti) hyödynnetään [1][7][9].
+
+Käytännöllinen malli on kaksivaiheinen: **(1) porttikriteerit (go/no-go)** ja **(2) pisteytys ja painotettu vertailu (1–5)**.
+
+#### Vaihe 1: Porttikriteerit (go/no-go)
+
+Karsi sijainnit, jos jokin näistä ei täyty:
+
+1) **Sähköverkon kapasiteetti ja luotettavuus (liittymäpolku + aikataulu)**  
+- varmista liityntämahdollisuus (MW), aikataulu ja kustannusrakenne (liityntä- ja tehomaksut)  
+- määritä palvelutasotarpeen mukaan redundanssi (N+1 / 2N) ja tarkista kahden syötön realismi  
+- dokumentoi kriittiset epävarmuudet (mitä pitää vielä varmistaa ja keneltä) [7][9]
+
+2) **Sähkön päästöintensiteetti ja uusiutuvan energian todentaminen**  
+- valitse hankintamalli: PPA, alkuperätakuut (GoO), oma tuotanto tai portfolio  
+- dokumentoi todentaminen ja raportointi (mitä väitetään ja millä todisteella)  
+- arvioi, voiko kuormaa ohjata (aikaperusteinen optimointi) palvelutasoa rikkomatta [1][9]
+
+3) **Ilmasto ja vapaajäähdytys (free cooling) – jäähdytyksen edellytykset**  
+- laske free cooling -tuntipotentiaali (lämpötila + kosteus) ja tee oletus näkyväksi  
+- valitse jäähdytysarkkitehtuuri olosuhteiden mukaan (air-/water-side economizer, hybridi, neste)  
+- kirjaa rajoitteet (kosteudenhallinta, kondenssi, käyttörajat) [4][7]
+
+4) **Hukkalämmön hyödyntäminen – vastaanottaja ja integraation realismi**  
+- tee vastaanottajakartoitus (kaukolämpö / teollisuus / kiinteistöt)  
+- tarkista lämpötaso, tehovaatimus, siirtomatka, liittymiskustannukset ja toteutusmalli (esim. lämpöpumppu)  
+- dokumentoi go/no-go: onko realistinen vastaanottaja ja miksi [1][7][9]
+
+5) **Riskit, resilienssi ja regulaatio (turvallisuus, georiskit, lupakäytännöt)**  
+- arvioi turvallisuus- ja toimitusketjuriskit sekä paikalliset riskit ja viranomaislinjaukset  
+- varmista lupa- ja vaatimustenmukaisuus (melu, päästöt, kaavoitus, datan sijainti) [9]
+
+**Reunaehto: latenssi ja käyttäjävaatimukset (viive, saatavuus, redundanssi)**  
+- varmista, että sijainti täyttää kuorman viive- ja saatavuusvaatimukset  
+- huomioi, että kuorman siirto puhtaamman/halvemman energian alueille onnistuu vain, jos palvelutaso sallii sen [6][8]
+
+#### Vaihe 2: Pisteytys ja painotettu vertailu (1–5)
+
+Pisteytä vain portista läpäisseet sijainnit (1 = heikko/korkea riski, 5 = erinomainen/matala riski).  
+Esimerkkipainotus: sähkö 35 %, lämpöintegraatio 20 %, jäähdytysilmasto 15 %, kuitu 15 %, vesi + lupitus 15 %.
+
+- kirjaa jokaiselle pisteelle **1 lauseen perustelu**  
+- tee vähintään yksi **herkkyystarkistus**: muuta painoja kohtuullisesti ja tarkista, muuttuuko järjestys  
+- nosta päätökseksi 1–2 parasta sijaintia jatkoselvitykseen ja varasuunnitelma (plan B) [7][9]
+
+#### Avoimet tietolähteet (pisteytyksen syöttödata)
+
+Porttivaiheessa varmistetaan toteutettavuus (go/no-go) ja pisteytysvaiheessa verrataan vaihtoehtoja yhtenäisillä mittareilla. Läpinäkyvyyden ja toistettavuuden vuoksi suositellaan hyödyntämään ensisijaisesti avoimia tietolähteitä ja viranomaisten/järjestelmätoimijoiden julkaisuja:
+
+- **Sähköliittymä ja kantaverkko:** Fingrid (liityntätilanne, pullonkaulat, vahvistushankkeet; Grid Scope)  
+  URL: https://www.fingrid.fi/  
+  (Avoin data: https://data.fingrid.fi/ )
+
+- **Aurinkopotentiaali:** PVGIS (JRC) – säteily ja PV-tuotto  
+  URL: https://joint-research-centre.ec.europa.eu/pvgis_en
+
+- **Tuulipotentiaali:** Ilmatieteen laitoksen Tuuliatlas  
+  URL: https://tuuliatlas.fi/
+
+- **Free cooling -potentiaali:** Ilmatieteen laitoksen avoin data (lämpötila + kosteus tuntiprofiileina)  
+  URL: https://www.ilmatieteenlaitos.fi/avoin-data
+
+- **Tulvariskit:** SYKE/Tulvakeskus – tulvakartat ja riskialueet  
+  URL: https://www.vesi.fi/aiheet/vesiymparisto-ja-maankaytto/tulvat/
+
+- **Kuitu ja peitto:** Traficom – laajakaistan saatavuus/peitto (täydennä tarvittaessa operaattoriselvityksellä)  
+  URL: https://www.traficom.fi/
+
+- **Tontti ja kaavoitus:** kunnan kaavat + paikkatietoaineistot  
+  URL (MML rajapinnat): https://www.maanmittauslaitos.fi/rajapinnat  
+  URL (kunta): [lisää kohdekunnan kaavapalvelun URL]
+
+#### Tuotokset (deliverables)
+
+Minimissään:
+
+- **Sijaintivaihtoehtojen esikarsinta (go/no-go) -muistio**  
+  - porttikriteerit täyttyvät / eivät täyty + perustelu + avoimet kysymykset
+
+- **Pisteytystaulukko (1–5) + painotukset + herkkyystarkastelu**  
+  - oletukset ja perustelut näkyviin → päätös on läpinäkyvä myös sidosryhmille
+
+- **Sähkö- ja energiadokumentaatio**  
+  - liittymäpolku (MW, aikataulu, kustannukset, redundanssi)  
+  - uusiutuvan hankintamalli ja todentaminen (PPA/GoO/oma tuotanto)  
+  - suunnitelma päästö- ja energiaraportoinnista [1][9]
+
+- **Jäähdytyksen ja hukkalämmön alustava toteutettavuuskuvaus**  
+  - free cooling -tuntipotentiaalin laskentaoletus  
+  - hukkalämmön vastaanottajakartoitus + integraatiopolku (jos realistinen) [4][7][9]
+
+- **Viive- ja saavutettavuusreunaehdot**  
+  - kuormatyypeittäin (latenssiherkkä / ei-latenssiherkkä) hyväksyttävä viive ja redundanssi [6][8]
+
+#### Jos vaihe tehdään huonosti / ohitetaan
+
+- **Sähköliittymän varmistus epäonnistuu**, jos tarvittava kapasiteetti (MW), toteutusaikataulu, kustannusarvio tai vaadittu toimitusvarmuus eivät toteudu oletetusti → seurauksena viiveitä, lisäinvestointeja tai palvelutason heikkenemistä. [7][9]  
+- **Vihreät tavoitteet jäävät toiveiksi:** uusiutuvan todentaminen, päästöraportointi tai kuormanohjaus ei toteudu käytännössä, vaikka ne on kirjattu tavoitteiksi. [1][2][9]  
+- **Jäähdytys suunnitellaan väärille oletuksille:** vapaajäähdytyksen etu jää realisoitumatta tai kosteudenhallinta aiheuttaa käyttörajoitteita → energiankulutus ja riskit kasvavat. [4][7]  
+- **Hukkalämpöpotentiaali menetetään:** vastaanottajaa ei kartoiteta ajoissa → integraatio ei onnistu myöhemmin kohtuukustannuksella. [7][9]  
+- **Verkko/latenssi unohtuu:** sijainti rajoittaa palveluiden laatua tai estää kuorman siirron energian mukaan → “vihreä optimointi” jää vajaaksi. [6][8]
+
+### P2.7 Yhteenveto luvusta
+
+Lopputuloksena P2-luvusta organisaatiolla tulisi olla selkeä käsitys datakeskusinvestoinnin ajureista, toteutusmallista, sijainnin valintakriteereistä sekä hankkeen keskeisistä tavoite- ja mittaritasoista. Nämä muodostavat perustan seuraaville vaiheille: luvussa P3 tarkennetaan vihreän datakeskuksen periaatteet ja tekniset ratkaisut, ja myöhemmissä luvuissa käsitellään elinkaari (P4), operointi (P5), energiankulutus ja uudelleenkäyttö (P6) sekä mittarit, standardit ja sääntely (P7).
+
+#### Lähteet (viitenumerointi)
+
+[1] Green Data Centers: A Survey, Perspectives, and Future Directions.  
+[2] Energy efficiency and low carbon enabler green IT framework for data centers (Uddin & Rahman).  
+[3] DATAZERO – Datacenter With Zero Emission and Robust Management Using Renewable Energy.  
+[4] Design and Operational Analysis of a Green Data Center (MGHPCC).  
+[5] Energy storage techniques, applications, and recent trends – A sustainable solution for power storage.  
+[6] The Datacenter as a Computer – An Introduction to the Design of Warehouse-Scale Machines.  
+[7] Data Center Handbook (toim. Hwaiyu Geng).  
+[8] A Taxonomy and Survey on Green Data Center Networks.  
+[9] The ICT sector, climate and the environment – Interim report (LVM 2020:14).
+
 
 ## 🔹 3. Vihreän datakeskuksen peruselementit ja periaatteet 
 
