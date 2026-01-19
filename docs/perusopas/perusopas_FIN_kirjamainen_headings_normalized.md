@@ -2,6 +2,8 @@
 
 ## 🔹 2. Datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet  
 
+> **Tavoite:** perustella, miksi datakeskus rakennetaan ja miten sijainti valitaan.
+
 Pilvipalveluiden ja digitaalisten palvelujen voimakas kasvu on lisännyt datakeskusten tarvetta. Maailman datakeskukset kuluttavat arviolta 1–2 % kaikesta sähköstä [2], ja ilman jatkuvia tehokkuusparannuksia tämän osuuden on pelätty kasvavan moninkertaiseksi tulevina vuosikymmeninä [3]. Lisäksi palvelinten käyttöaste on perinteisesti ollut alhainen, eräissä selvityksissä on raportoitu keskimäärin vain noin 6–12 % palvelinkapasiteetin hyödyntämisestä [7], mikä tarkoittaa, että merkittävä osa kapasiteetista kuluttaa energiaa tuottamatta hyötyä. Nämä seikat ajavat etsimään ratkaisuja, joilla sama palvelukapasiteetti voidaan tuottaa pienemmällä energiankulutuksella. Palvelutasosopimusten (SLA) kehittämisen viitekehys auttaa muuttamaan nämä ajurit mitattaviksi palvelutavoitteiksi (esim. saatavuus, vasteaika, palautumiskyky ja tietoturva), joista voidaan johtaa sijaintipaikan valintakriteerit [1]. Esimerkiksi latenssitavoitteet ohjaavat lähemmäs käyttäjiä ja runkoverkkoja, korkea saatavuus edellyttää luotettavaa sähkö- ja verkkoinfrastruktuuria sekä riskienhallintaa, ja palautumistavoitteet voivat edellyttää erillistä varasijaintia. Näin perustelut, sijaintivalinta ja hankkeen onnistumisen mittarit muodostavat yhtenäisen, seurattavan ketjun [1].
 
 ### P2.1 Tehtävä, kapasiteetti ja käyttötarkoitus
