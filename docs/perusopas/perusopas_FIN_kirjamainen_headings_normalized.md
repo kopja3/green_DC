@@ -700,7 +700,31 @@ Vihreässä datakeskuksessa nämä kaikki toimivat yhdessä, mitattujen tavoitte
 
 # 🔹 6. Energian kulutus ja uudelleenkäyttö  
 
-> **Tavoite:** syventää M5-moduulin sisältöä ja selittää, mistä datakeskuksen kilowattitunnit syntyvät, miten** ne jakautuvat eri komponenttien kesken ja miten tämä näkyy hiilidioksidipäästöissä sekä hukkalämmön hyödyntämisen potentiaalissa.
+## 6. Energian kulutus ja uudelleenkäyttö
+
+> **Luku kattaa:**  
+> Tässä luvussa käydään läpi, mistä datakeskuksen kilowattitunnit käytännössä syntyvät ja mihin ne jakautuvat. Ensin hahmotetaan kokonaisjakauma (IT vs. jäähdytys vs. sähköketjun häviöt), sitten katsotaan tärkeimmät IT-alakomponentit (CPU, RAM, PSU, verkko, UPS/tehonhallinta). Luvussa avataan myös perusfysiikka (energia kWh, teho kW) ja se, miten sähkön kulutus kytkeytyy päästöihin. Lopuksi tarkastellaan energiatehokkuuden parantamista sekä hukkalämmön potentiaalia ja energiataseen ajatusta.
+
+> **Tuotokset (dokumentoitavat päätökset):**
+> - **Energian rajausten kirjaus:** mistä pisteestä kokonaisenergia ja IT-energia mitataan (rajaukset myöhempiin mittareihin).  
+> - **Energian jakautuman oletus / lähtöarvio:** karkea arvio (tai mitattu lähtötila), mihin energia menee (IT, jäähdytys, sähköketjun häviöt, muut).  
+> - **Päästölaskennan perusvalinnat:** käytettävä päästökerroin / todentamistapa (mitä arvoa käytetään ja miksi).  
+> - **Jäähdytyksen energianäkymä:** mitä jäähdytysratkaisua kohti mitoitus ohjaa ja mitä halutaan seurata (kulutusosuus, olosuhteet).  
+> - **Hukkalämmön tarkastelutapa:** mitä lämpöä voidaan ottaa talteen, missä rajapinnassa ja millä oletuksilla (taso, määrä, kausivaihtelu).  
+> - **Tehokkuustavoitteiden “energia-ajattelu”:** mihin kohtiin halutaan vaikuttaa ensin (käyttöaste, häviöt, jäähdytys, talteenotto).
+
+### Luvun rakenne
+- **P6.1** Energiankulutuksen jakautuminen datakeskuksessa  
+  - **P6.1.1** Prosessorit (CPU)  
+  - **P6.1.2** Muisti (RAM)  
+  - **P6.1.3** Virtalähteet (PSU)  
+  - **P6.1.4** Verkkolaitteet  
+  - **P6.1.5** Tehonhallinta ja UPS-järjestelmät  
+- **P6.2** Jäähdytyksen energiankulutus ja suhteellinen osuus  
+- **P6.3** Energia, kWh ja päästöt (perusfysiikka)  
+- **P6.4** Miksi datakeskus aiheuttaa hiilidioksidipäästöjä?  
+- **P6.5** Vihreä datakeskus ja energiatehokkuus  
+- **P6.6** Hukkalämmön potentiaali ja energiatase
 
 ### P6.1 Energiankulutuksen jakautuminen datakeskuksessa. 
 
