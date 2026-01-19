@@ -799,7 +799,26 @@ Suurissa yksiköissä pieni prosentuaalinen parannus (esim. PUE 1.15 vs. 1.3) ta
 
 ## 🔹 7. Datakeskusten energiatehokkuuden mittaaminen, sääntely ja muut keskeiset tunnusluvut. 
 
-> **Tavoite:** syventää M6-moduulin sisältöä ja kuvata, miten EN 50600-4 -standardisarja, PUE/CUE/WUE ja muut mittarit, ympäristöstandardit sekä EU-sääntely liittyvät vihreän datakeskuksen suunnitteluun, käyttöön ja raportointiin.
+> **Luku kattaa:**  
+> Tässä luvussa kuvataan, **mitä datakeskuksesta mitataan, mistä se mitataan ja miten tunnusluvut lasketaan** niin, että luvut ovat vertailukelpoisia ja raportoitavissa. Luku kokoaa EN 50600-4 -mittarilogiikan (mittausrajat ja mittauspisteet) sekä keskeiset tunnusluvut (PUE, WUE, CUE sekä uusiutuvan energian ja energian uudelleenkäytön osuudet). Lisäksi luvussa tuodaan mukaan **sääntely- ja raportointinäkökulma**: miksi mittaustapa ja dokumentointi kannattaa tehdä jo suunnittelussa niin, että raportointi onnistuu ilman jälkikäteen tehtäviä korjauksia. Luvun lopuksi käsitellään, miten mittareita käytetään käytännössä kehittämisen ja optimoinnin tukena (ei vain seurannan vuoksi).
+
+> **Tuotokset (dokumentoitavat päätökset):**
+> - **Mittausrajat:** mistä kokonaisenergia mitataan ja mistä IT-energia mitataan (rajat PUE/WUE/CUE-laskentaan).  
+> - **Mittauspisteet ja mittausvastuut:** mitä mitataan (sähkö/vesi/lämpö), missä pisteissä ja kuka vastaa mittareiden toimivuudesta.  
+> - **Laskentasäännöt ja oletukset:** käytetyt kaavat, aikajaksot ja oletukset (esim. mitä sisältyy IT-kuormaan, miten uusiutuvuus todennetaan).  
+> - **Raportointivalmius:** mitä dataa säilytetään, miten audit trail varmistetaan ja mitä julkaistaan/raportoidaan.  
+> - **Tavoitearvojen kirjaus:** asetetut tavoitetasot (esim. PUE/CUE/WUE/REF/ERF) ja mihin ne sidotaan (suunnittelu, operointi, sopimukset).  
+> - **Käyttötapa kehittämisessä:** miten mittareita käytetään päätöksenteossa (priorisointi, investointien arviointi, operoinnin ohjaus).
+
+### Luvun rakenne
+- **P7.1** EN 50600-4 -sarjan rooli datakeskuksissa  
+- **P7.2** PUE, WUE, CUE ja muut keskeiset mittarit (perustaso)  
+- **P7.3** Mistä mittareiden tarvitsemat luvut tulevat  
+- **P7.4** Ympäristöstandardit ja sertifioinnit  
+- **P7.5** Lainsäädäntö, direktiivit ja raportointivaatimukset  
+- **P7.6** Mittarit johtamisen ja raportoinnin välineinä  
+- **P7.7** Mittareiden käyttö kehittämisen ja optimoinnin tukena  
+
 
 ### P7.1 EN 50600-4 -sarjan rooli datakeskuksissa 
 
