@@ -585,22 +585,17 @@ Tulevaisuuteen varautuminen on olennainen osa vihreän datakeskuksen elinkaarisu
 
 ## 🔹 5. Datakeskuksen toiminta vaiheittain  
 
-> **Tavoite: kuvata, miten energia kulkee datakeskuksessa vaiheesta toiseen – sähköverkosta palvelimille,** sieltä digitaalisten palvelujen muodossa käyttäjille, ja lopulta lämpönä ulos. Luku vastaa M4-moduulia ja seuraa ketjua: sähköenergia → palvelimet → verkko → jäähdytys → hukkalämpö → mittaus.
+> **Tavoite:** kuvata, miten energia kulkee datakeskuksessa vaiheesta toiseen – sähköverkosta palvelimille, sieltä digitaalisten palvelujen muodossa käyttäjille, ja lopulta lämpönä ulos. Luku seuraa ketjua: sähköenergia → palvelimet → verkko → jäähdytys → hukkalämpö → mittaus.
 
-### P5.0 Mitä tässä luvussa tapahtuu – ketju sähköenergiasta lämmöksi. 
+### P5.0 Mitä tässä luvussa tapahtuu
+Tässä luvussa käydään läpi datakeskuksen energian ja lämmön “perusketju” ja jaetaan se käytännön osiin (P5.2–P5.7), jotta tiedät missä kohdissa energiaa kuluu ja missä syntyy hukkalämpöä.
 
-Datakeskus näyttää ulospäin ehkä vain suurelta rakennukselta, mutta sen sisällä pyörii jatkuvasti sama perusprosessi. Sen voi nähdä yhtenä energian ja informaation ketjuna:
-
-Sähkösyöttö saapuu valtakunnanverkosta datakeskuksen muuntajille ja edelleen pääsähkökeskuksiin. Sähköenergia kulkee muuntajien, UPS-laitteiden, jakokeskusten ja PDU-yksiköiden kautta palvelinkaappeihin. Palvelimet ja tallennuslaitteet muuttavat sähköenergian laskentatehoksi ja tietojen käsittelyksi, syntyy digitaalista palvelua: verkkosivuja, tietokantavastauksia, tekoälylaskentaa, tallennettua dataa. Käytetty sähköenergia muuntuu lähes kokonaan lämmöksi palvelimissa ja muissa datakeskuksen sähkölaitteissa. Jäähdytysjärjestelmä kerää tämän lämpöenergian ja siirtää sen pois palvelinsalista, joko ulkoilmaan tai hyötykäyttöön vaikkapa kaukolämpöverkkoon. Koko ketjua seurataan ja ohjataan mittaus- ja automaatiojärjestelmillä reaaliaikaisesti, jotta toiminta pysyy luotettavana ja energiatehokkaana. Tässä luvussa tarkastelemme ensin tätä ketjua ylätasolla (P5.1) ja sen jälkeen pilkomme sen osiin vaihe vaiheelta:
-
--**P5.2** -miten sähköenergia siirtyy verkosta palvelinkaappiin (sähkösyöttö ja varmistus)
--**P5.3** -mitä tapahtuu palvelimissa ja tallennusjärjestelmissä (sähköenergia -> laskenta ja data)
--**P5.4** – miten jäähdytys poistaaa tietojen käsittelyssä syntyneen lämmön palvelinsalista
--**P5.5** – miten tietoliikenneverkko kuljettaa palvelupyynnöt ja vastaukset ulos datakeskuksesta
--**P5.6** – miten lämpöenergia otetaan talteen ja voidaan hyödyntää
--**P5.7** – miten energiankulutusta, lämpöenergiaa ja muita suureita mitataan ja käytetään koko datakeskuksen toimintaketjun optimointiin. 
-
-Luvun päätteeksi lukijalla on selkeä käsitys siitä, missä kohdissa ketjua energiaa kuluu ja missä syntyy hukkalämpöä, ja miten nämä vaiheet linkittyvät oppaan seuraaviin lukuihin energiankulutuksesta (P6) sekä mittareista ja sääntelystä (P7).
+- **P5.2** miten sähköenergia siirtyy verkosta palvelinkaappiin (sähkösyöttö ja varmistus)  
+- **P5.3** mitä tapahtuu palvelimissa ja tallennusjärjestelmissä (sähköenergia → laskenta ja data)  
+- **P5.4** miten jäähdytys poistaa tietojen käsittelyssä syntyneen lämmön palvelinsalista  
+- **P5.5** miten tietoliikenneverkko kuljettaa palvelupyynnöt ja vastaukset ulos datakeskuksesta  
+- **P5.6** miten lämpöenergia otetaan talteen ja voidaan hyödyntää  
+- **P5.7** miten energiankulutusta, lämpöenergiaa ja muita suureita mitataan ja käytetään ketjun optimointiin  
 
 ### P5.1 Sähköstä palveluksi – ketjun ylätason kuvaus  
 
