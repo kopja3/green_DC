@@ -466,7 +466,7 @@ Lopputuloksena P2-luvusta organisaatiolla tulisi olla selkeä käsitys datakesku
 
 
 ## 🔹 3. Vihreän datakeskuksen peruselementit ja periaatteet 
-## P3 – Vihreän datakeskuksen peruselementit ja periaatteet
+
 
  **Tavoite:** kuvata, mitä kaikkea vihreässä datakeskuksessa on (rakennus, sähköjärjestelmä, jäähdytys, hukkalämmön hyödyntäminen, uusiutuvan energian integraatio, automaatio ja materiaalit) ja miten nämä suunnitellaan kestävän kehityksen periaatteiden mukaisesti.
 
@@ -475,14 +475,7 @@ Lopputuloksena P2-luvusta organisaatiolla tulisi olla selkeä käsitys datakesku
 - Keskeiset osa-alueet: rakennus- ja tilaratkaisut, sähkö- ja energiajärjestelmä, jäähdytys ja ilmankierto, hukkalämmön talteenotto, uusiutuvan energian integrointi, automaatio ja mittaus sekä kestävät materiaalivalinnat.
 - Periaatteet, joilla ratkaisut sidotaan tavoitteisiin ja vaatimuksiin (energiatehokkuus, ympäristövaikutukset, mitattavuus ja raportointikyky).
 
-**Tuotokset (dokumentoitavat päätökset):**
-- Päälinjaukset siitä, millä ratkaisuilla energian kulutusta ja ympäristövaikutuksia pienennetään (sähkö, jäähdytys, hukkalämpö, uusiutuva energia, automaatio).
-- Perustelut ja tavoitteet, joihin valinnat sidotaan (esim. energiatehokkuus ja mitattavuus; tarvittaessa tavoitearvot myöhemmän mittariston pohjaksi).
-- Suunnittelua ohjaavat reunaehdot (modulaarisuus, skaalautuvuus, elinkaariajattelu sekä raportointi-/sertifiointitarpeet).
-
-Vihreä datakeskus on datakeskus, jonka suunnittelussa ja operoinnissa pyritään kuluttamaan mahdollisimman vähän energiaa ja aiheuttamaan mahdollisimman pienet ympäristövaikutukset. Tavoitetta tuetaan hyödyntämällä uusiutuvia energialähteitä (esim. aurinko- ja tuulivoimaa) sekä optimoimalla energiankäyttöä ja jäähdytystä modernein ratkaisuin. Hukkalämmön talteenotolla datakeskuksen palvelimissa muodostuva lämpö voidaan ohjata hyötykäyttöön (esim. kaukolämpöverkkoon), mikä vähentää erillisen lämmöntuotannon tarvetta. Toisin sanoen vihreä datakeskus minimoi sekä energiankulutuksensa että hiilijalanjälkensä hyödyntämällä tehokkaita laitteisto- ja ohjelmistoratkaisuja sekä uusiutuvaa energiaa [14].
-
-Energiatehokkuuden parantamisessa hyödynnetään mm. kuormanhallintaa, virtualisointia ja sähkönsyötön häviöiden minimointia. Älykkäät automaatiojärjestelmät, tekoäly ja data-analytiikka tukevat energiankulutuksen reaaliaikaista seurantaa ja optimointia: kuormia voidaan siirtää dynaamisesti ja jäähdytystä säätää tarpeen mukaan. Modulaarinen suunnittelu mahdollistaa laajentamisen tai supistamisen kysynnän mukaan sekä kierrätettävien komponenttien käytön, mikä tukee kiertotaloutta ja vähentää ylimääräistä kapasiteettia. Tavoitteena on täyttää alan tiukentuvat ympäristövaatimukset (esim. EU:n energiatehokkuusdirektiivin linja) ja tukea ympäristösertifiointeja (LEED, BREEAM tms.). Kokonaisuutena vihreän datakeskuksen suunnittelussa jokainen osa-alue palvelee yhteisiä ympäristötavoitteita. Tämä on rinnastettavissa SLA-kehyksen tavoiteajatteluun: voidaan asettaa palvelutasotavoite (esim. PUE-taso) ja varmistaa, että suunnittelupäätökset (sähkönsyöttö, jäähdytys jne.) tukevat tavoitetason saavuttamista [1].
+Luvuissa 1–2 on määritelty oppaan rajaus ja lähtökohdat (miksi datakeskus rakennetaan ja miksi sijainti ratkaisee Suomessa). Tässä luvussa siirrytään itse ratkaisuun: mitä “vihreä datakeskus” käytännössä tarkoittaa ja mitkä osa-alueet muodostavat kokonaisuuden. Taustalla on ajatus siitä, että vihreyttä ei “oleteta”, vaan se perustellaan ratkaisuilla ja mitattavilla vaikutuksilla kirjallisuuden pohjalta [14] ja se voidaan kytkeä myös tavoiteajatteluun (esim. PUE-taso) [1].
 
 Seuraavaksi käsitellään vihreän datakeskuksen keskeiset elementit yksitellen.
 
@@ -585,7 +578,7 @@ Tulevaisuuteen varautuminen on olennainen osa vihreän datakeskuksen elinkaarisu
 
 ## 🔹 5. Datakeskuksen toiminta vaiheittain  
 
- **Tavoite:** kuvata, miten energia kulkee datakeskuksessa vaiheesta toiseen – sähköverkosta palvelimille, sieltä digitaalisten palvelujen muodossa käyttäjille, ja lopulta lämpönä ulos. Luku seuraa ketjua: sähköenergia → palvelimet → verkko → jäähdytys → hukkalämpö → mittaus.
+ **Tavoite:** kuvata, miten energia kulkee datakeskuksessa vaiheesta toiseen – sähköverkosta palvelimille, sieltä digitaalisten palvelujen muodossa käyttäjille, ja lopulta lämpönä ulos. 
 
 ### P5.0 Mitä tässä luvussa tapahtuu
 Tässä luvussa seurataan datakeskuksen energiaketjua ja jaetaan se käytännön osiin (P5.2–P5.7).
@@ -700,31 +693,33 @@ Vihreässä datakeskuksessa nämä kaikki toimivat yhdessä, mitattujen tavoitte
 
 # 🔹 6. Energian kulutus ja uudelleenkäyttö  
 
-## 6. Energian kulutus ja uudelleenkäyttö
+ **Tavoite:** kuvata, mistä datakeskuksen kilowattitunnit syntyvät, mihin ne kuluvat ja miten kulutus näkyy päästöinä sekä hukkalämmön potentiaalina.
 
-**Luku kattaa:**  
-Tässä luvussa käydään läpi, mistä datakeskuksen kilowattitunnit käytännössä syntyvät ja mihin ne jakautuvat. Ensin hahmotetaan kokonaisjakauma (IT vs. jäähdytys vs. sähköketjun häviöt), sitten katsotaan tärkeimmät IT-alakomponentit (CPU, RAM, PSU, verkko, UPS/tehonhallinta). Luvussa avataan myös perusfysiikka (energia kWh, teho kW) ja se, miten sähkön kulutus kytkeytyy päästöihin. Lopuksi tarkastellaan energiatehokkuuden parantamista sekä hukkalämmön potentiaalia ja energiataseen ajatusta.
+ **Luku kattaa:**
+ - energiankulutuksen pääerät (IT, jäähdytys, sähköketju, verkko)
+ - perusfysiikan: teho, energia ja päästöjen muodostuminen (kWh → CO₂e)
+ - jäähdytyksen suhteellisen osuuden ja miksi osakuorma muuttaa kokonaiskuvaa
+ - hukkalämmön energiataseen ja hyötykäytön “realismitarkastuksen”
+ - energiatehokkuuden yhteyden käytännön päätöksiin (mitä kannattaa muuttaa ja miksi)
 
-**Tuotokset (dokumentoitavat päätökset):**
-- **Energian rajausten kirjaus:** mistä pisteestä kokonaisenergia ja IT-energia mitataan (rajaukset myöhempiin mittareihin).  
-- **Energian jakautuman oletus / lähtöarvio:** karkea arvio (tai mitattu lähtötila), mihin energia menee (IT, jäähdytys, sähköketjun häviöt, muut).  
-- **Päästölaskennan perusvalinnat:** käytettävä päästökerroin / todentamistapa (mitä arvoa käytetään ja miksi).  
-- **Jäähdytyksen energianäkymä:** mitä jäähdytysratkaisua kohti mitoitus ohjaa ja mitä halutaan seurata (kulutusosuus, olosuhteet).  
-- **Hukkalämmön tarkastelutapa:** mitä lämpöä voidaan ottaa talteen, missä rajapinnassa ja millä oletuksilla (taso, määrä, kausivaihtelu).  
-- **Tehokkuustavoitteiden “energia-ajattelu”:** mihin kohtiin halutaan vaikuttaa ensin (käyttöaste, häviöt, jäähdytys, talteenotto).
+ **Tuotokset (dokumentoitavat päätökset):**
+ - energian mittausraja tälle luvulle: mitä lasketaan “kokonaisenergiaksi” ja mitä “IT-energiaksi”
+ - karkea kulutusjakauma (IT / jäähdytys / sähköketju / verkko) ja oletukset (kuormataso, olosuhteet)
+ - valittu päästölaskennan logiikka (päästökertoimet ja ajallinen tarkkuus: vuosi/kk/tunti)
+ - alustava hukkalämmön energiatase (mitä lämpöä on tarjolla, missä lämpötilatasossa, millä ehdoilla)
 
-### Luvun rakenne
-- **P6.1** Energiankulutuksen jakautuminen datakeskuksessa  
-  - **P6.1.1** Prosessorit (CPU)  
-  - **P6.1.2** Muisti (RAM)  
-  - **P6.1.3** Virtalähteet (PSU)  
-  - **P6.1.4** Verkkolaitteet  
-  - **P6.1.5** Tehonhallinta ja UPS-järjestelmät  
-- **P6.2** Jäähdytyksen energiankulutus ja suhteellinen osuus  
-- **P6.3** Energia, kWh ja päästöt (perusfysiikka)  
-- **P6.4** Miksi datakeskus aiheuttaa hiilidioksidipäästöjä?  
-- **P6.5** Vihreä datakeskus ja energiatehokkuus  
-- **P6.6** Hukkalämmön potentiaali ja energiatase
+ **Luvun rakenne:**
+ - P6.1 Energiankulutuksen jakautuminen datakeskuksessa  
+   - P6.1.1 Prosessorit (CPU)  
+   - P6.1.2 Muisti (RAM)  
+   - P6.1.3 Virtalähteet (PSU)  
+   - P6.1.4 Verkkolaitteet  
+   - P6.1.5 Tehonhallinta ja UPS-järjestelmät  
+ - P6.2 Jäähdytyksen energiankulutus ja suhteellinen osuus  
+ - P6.3 Energia, kWh ja päästöt (perusfysiikka)  
+ - P6.4 Miksi datakeskus aiheuttaa hiilidioksidipäästöjä?  
+ - P6.5 Vihreä datakeskus ja energiatehokkuus  
+ - P6.6 Hukkalämmön potentiaali ja energiatase  
 
 ### P6.1 Energiankulutuksen jakautuminen datakeskuksessa. 
 
@@ -799,25 +794,31 @@ Suurissa yksiköissä pieni prosentuaalinen parannus (esim. PUE 1.15 vs. 1.3) ta
 
 ## 🔹 7. Datakeskusten energiatehokkuuden mittaaminen, sääntely ja muut keskeiset tunnusluvut. 
 
- **Luku kattaa:**  
- Tässä luvussa kuvataan, **mitä datakeskuksesta mitataan, mistä se mitataan ja miten tunnusluvut lasketaan** niin, että luvut ovat vertailukelpoisia ja raportoitavissa. Luku kokoaa EN 50600-4 -mittarilogiikan (mittausrajat ja mittauspisteet) sekä keskeiset tunnusluvut (PUE, WUE, CUE sekä uusiutuvan energian ja energian uudelleenkäytön osuudet). Lisäksi luvussa tuodaan mukaan **sääntely- ja raportointinäkökulma**: miksi mittaustapa ja dokumentointi kannattaa tehdä jo suunnittelussa niin, että raportointi onnistuu ilman jälkikäteen tehtäviä korjauksia. Luvun lopuksi käsitellään, miten mittareita käytetään käytännössä kehittämisen ja optimoinnin tukena (ei vain seurannan vuoksi).
+ **Tavoite:** kuvata, mitä mitataan, mistä mitataan ja miten mittareita käytetään johtamisessa, raportoinnissa ja jatkuvassa parantamisessa.
+
+ **Luku kattaa:**
+ - EN 50600-4 -sarjan roolin (miten mittarit ja mittausrajat yhdenmukaistetaan)
+ - keskeiset mittarit (PUE, WUE, CUE jne.) perustasolla
+ - mistä mittareiden tarvitsemat luvut tulevat (mittauspisteet, rajaukset, datalähteet)
+ - sertifioinnit ja ympäristöstandardit käytännön näkökulmasta
+ - direktiivit, lainsäädäntö ja raportointivaatimukset (miksi niitä mitataan)
+ - miten mittareita käytetään kehittämisen ja optimoinnin tukena (ei vain “pakollinen seuranta”)
 
  **Tuotokset (dokumentoitavat päätökset):**
- - **Mittausrajat:** mistä kokonaisenergia mitataan ja mistä IT-energia mitataan (rajat PUE/WUE/CUE-laskentaan).  
- - **Mittauspisteet ja mittausvastuut:** mitä mitataan (sähkö/vesi/lämpö), missä pisteissä ja kuka vastaa mittareiden toimivuudesta.  
- - **Laskentasäännöt ja oletukset:** käytetyt kaavat, aikajaksot ja oletukset (esim. mitä sisältyy IT-kuormaan, miten uusiutuvuus todennetaan).  
- - **Raportointivalmius:** mitä dataa säilytetään, miten audit trail varmistetaan ja mitä julkaistaan/raportoidaan.  
- - **Tavoitearvojen kirjaus:** asetetut tavoitetasot (esim. PUE/CUE/WUE/REF/ERF) ja mihin ne sidotaan (suunnittelu, operointi, sopimukset).  
- - **Käyttötapa kehittämisessä:** miten mittareita käytetään päätöksenteossa (priorisointi, investointien arviointi, operoinnin ohjaus).
+ - mittausrajat ja mittauspisteet (missä mitataan kokonaisenergia, IT-energia, jäähdytys, mahdollinen uudelleenkäyttö)
+ - valitut mittarit ja laskentasäännöt (miten PUE/CUE/WUE ym. lasketaan juuri tässä kohteessa)
+ - raportointikäytäntö (tiheys, vastuut, datalähteet: BMS/DCIM/lokit/rajapinnat)
+ - vaatimuskartta: mitä standardeja/vaatimuksia seurataan ja mihin mittareihin ne kytketään
+ - perusmalli mittareiden hyötykäyttöön (mittaa → analysoi → muutos → todenna → vakioi)
 
-### Luvun rakenne
-- **P7.1** EN 50600-4 -sarjan rooli datakeskuksissa  
-- **P7.2** PUE, WUE, CUE ja muut keskeiset mittarit (perustaso)  
-- **P7.3** Mistä mittareiden tarvitsemat luvut tulevat  
-- **P7.4** Ympäristöstandardit ja sertifioinnit  
-- **P7.5** Lainsäädäntö, direktiivit ja raportointivaatimukset  
-- **P7.6** Mittarit johtamisen ja raportoinnin välineinä  
-- **P7.7** Mittareiden käyttö kehittämisen ja optimoinnin tukena  
+ **Luvun rakenne:**
+ - P7.1 EN 50600-4 -sarjan rooli datakeskuksissa  
+ - P7.2 PUE, WUE, CUE ja muut keskeiset mittarit (perustaso)  
+ - P7.3 Mistä mittareiden tarvitsemat luvut tulevat  
+ - P7.4 Ympäristöstandardit ja sertifioinnit  
+ - P7.5 Lainsäädäntö, direktiivit ja raportointivaatimukset  
+ - P7.6 Mittarit johtamisen ja raportoinnin välineinä  
+ - P7.7 Mittareiden käyttö kehittämisen ja optimoinnin tukena  
 
 
 ### P7.1 EN 50600-4 -sarjan rooli datakeskuksissa 
