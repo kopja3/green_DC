@@ -156,37 +156,28 @@ Datakeskuksen käyttöaikaisia kasvihuonekaasupäästöjä voidaan arvioida kert
 
 
 ### P1.8 Vihreän datakeskuksen elementit ja päätöspisteet
+
 Tässä perusoppaassa vihreändatakeskuksen toteutus jäsennetään päätöspisteiksi. Päätökset esitetään muodossa päätös → tuotos → luku, jotta etenemisjärjestys ja kunkin vaiheen tulokset näkyvät yhdestä paikasta. Osa-alueet on kuvattu kohdassa P1.2 ja mitoitusketjun merkinnät kohdassa P1.4.
 
 Kirjallisuudessa vihreä datakeskus kytkee IT-, sähkö- ja jäähdytysjärjestelmät energian ja ympäristövaikutusten mittaamiseen sekä seurantaan, ja tarkastelu esitetään tyypillisesti mittareina ja osa-alueina (kuorma–kapasiteetti, sähköketju, jäähdytys, hukkalämpö, todentaminen) (Uddin & Rahman, 2012; Jin et al., 2016; Geng, 2015; Wang et al., 2020; Barroso & Hölzle, 2007).
 
 Tämä perusopas tuo samaan kokonaisuuteen päätös→tuotos→luku-rakenteen, jotta mitoitusketju ja mittausrajat voidaan viedä suunnittelusta toteutukseen ja raportointiin ilman, että lähtötietoja kootaan useista eri kohdista.
 
-Päätökset (päätös → tuotos → luku)
+#### Päätökset (päätös → tuotos → luku)
 
-Sijainti → sähkö-, verkko- ja liityntäehdot (jäähdytys ja hukkalämpö), viive- ja saatavuusrajat → Luku 2
+- Sijainti → sähkö-, verkko- ja liityntäehdot (jäähdytys ja hukkalämpö), viive- ja saatavuusrajat → Luku 2
+- Työkuorma ja palvelutaso (SLA/SLO) → kuormakuvaus L(t) ja palvelutasorajat (vasteajat/saatavuus/deadline) → Luku 5 (Wang et al., 2020)
+- Kapasiteetti → C_inst, C_act(t) ja C_res(t) (asennettu, käytössä pidettävä, varalla pidettävä) → Luku 5 (Wang et al., 2020)
+- IT-tehoprofiili → P_IT(t) (IT-teho ajan funktiona; huiput ja niiden kesto) → Luku 5 (Barroso & Hölzle, 2007; Wang et al., 2020)
+- Sähköketju ja varmistus → liittymäteho, jakelu, UPS/varavoima, varmistusperiaate (N / N+1 / 2N) ja häviöiden huomiointi → Luku 5 (Geng, 2015; LVM, 2020)
+- Sähkön alkuperä ja päästöt → todentamistapa (hankintamalli) ja päästökertoimien valinta raportointiin → Luku 6 (Jin et al., 2016; LVM, 2020)
+- Jäähdytysratkaisu → jäähdytysarkkitehtuuri ja jäähdytyksen sähköteho P_cool(t); mitoituksen lähtötiedot (lämpökuorma ja olosuhteet) → Luku 6 (Geng, 2015; Elavarasi et al., 2025)
+- Jäähdytyksen mittaus → mittauspisteet ja aikasarjat (jäähdytyksen sähkö, lämpötilat, virtaus/ilmamäärä) IT-kuorman vertailuun → Luku 7 (Geng, 2015; Elavarasi et al., 2025)
+- Hukkalämpö → rajapinta, mitattava lämpöenergia (MWh), toimitusvastuut ja sopimuslähtötiedot → Luku 6 (Geng, 2015; LVM, 2020)
+- Mittausrajat, mittarit ja raportointi → mittausrajat, mittarit (PUE, REF, ERF, CER, CUE, WUE), mittauspisteet ja dokumentoidut laskentasäännöt → Luku 7 (Uddin & Rahman, 2012; Jin et al., 2016; Geng, 2015)
+- Elinkaaren loppu → käytöstäpoisto, tietojen hävittäminen ja materiaalivirrat (prosessit ja vastuut) → Luku 4 (Geng, 2015)
 
-Työkuorma ja palvelutaso (SLA/SLO) → kuormakuvaus L(t) ja palvelutasorajat (vasteajat/saatavuus/deadline) → Luku 5 (Wang et al., 2020)
-
-Kapasiteetti → C_inst, C_act(t) ja C_res(t) (asennettu, käytössä pidettävä, varalla pidettävä) → Luku 5 (Wang et al., 2020)
-
-IT-tehoprofiili → P_IT(t) (IT-teho ajan funktiona; huiput ja niiden kesto) → Luku 5 (Barroso & Hölzle, 2007; Wang et al., 2020)
-
-Sähköketju ja varmistus → liittymäteho, jakelu, UPS/varavoima, varmistusperiaate (N / N+1 / 2N) ja häviöiden huomiointi → Luku 5 (Geng, 2015; LVM, 2020)
-
-Sähkön alkuperä ja päästöt → todentamistapa (hankintamalli) ja päästökertoimien valinta raportointiin → Luku 6 (Jin et al., 2016; LVM, 2020)
-
-Jäähdytysratkaisu → jäähdytysarkkitehtuuri ja jäähdytyksen sähköteho P_cool(t); mitoituksen lähtötiedot (lämpökuorma ja olosuhteet) → Luku 6 (Geng, 2015; Elavarasi et al., 2025)
-
-Jäähdytyksen mittaus → mittauspisteet ja aikasarjat (jäähdytyksen sähkö, lämpötilat, virtaus/ilmamäärä) IT-kuorman vertailuun → Luku 7 (Geng, 2015; Elavarasi et al., 2025)
-
-Hukkalämpö → rajapinta, mitattava lämpöenergia (MWh), toimitusvastuut ja sopimuslähtötiedot → Luku 6 (Geng, 2015; LVM, 2020)
-
-Mittausrajat, mittarit ja raportointi → mittausrajat, mittarit (PUE, REF, ERF, CER, CUE, WUE), mittauspisteet ja dokumentoidut laskentasäännöt → Luku 7 (Uddin & Rahman, 2012; Jin et al., 2016; Geng, 2015)
-
-Elinkaaren loppu → käytöstäpoisto, tietojen hävittäminen ja materiaalivirrat (prosessit ja vastuut) → Luku 4 (Geng, 2015)
-
-Huom: jäähdytysratkaisujen vaihtoehdot ja valintaperusteet (esim. ekonomaiseri, hybridi, direct-to-chip, immersio) käsitellään luvussa 6. Mittareiden mittauspisteet ja laskentasäännöt käsitellään luvussa 7.
+> Huom: jäähdytysratkaisujen vaihtoehdot ja valintaperusteet (esim. ekonomaiseri, hybridi, direct-to-chip, immersio) käsitellään luvussa 6. Mittareiden mittauspisteet ja laskentasäännöt käsitellään luvussa 7.
 
 
 ### P1.9 Miksi sijainti käsitellään ennen ratkaisujen valintaa
