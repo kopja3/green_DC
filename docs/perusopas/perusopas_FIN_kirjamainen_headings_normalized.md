@@ -2,35 +2,40 @@
 
 **Tavoite:** määrittää oppaan rajaus ja käsitteet sekä yhtenäinen mitoitus- ja mittauskieli (E, P, C, SLA/SLO), jotta myöhemmät luvut voidaan kytkeä päätös→tuotos→mittaus -ketjuun.
 
- **Luku kattaa:**
- - oppaan tarkoituksen, käyttölogiikan ja etenemisen lukurakenteen kautta
- - peruskäsitteet ja symbolit (E, P, L(t), C_inst/C_act/C_res, P_IT(t), Q_th(t), P_cool(t), SLA/SLO)
- - tehomitoitusketjun ja mittausrajauksen periaatteen
+**Luku kattaa:**
 
- **Tuotokset (dokumentoitavat päätökset):**
- - oppaan rajaus: mitä vihreys tarkoittaa tässä oppaassa
- - lähtötietokehys kuormalle ja palvelutasolle (SLA/SLO) sekä mitoitusketjun perusmuoto
- - mittausrajauksen periaate: mistä kokonaisenergia ja IT-energia mitataan (täsmennykset luvussa P7)
+* oppaan tarkoituksen, käyttölogiikan ja etenemisen lukurakenteen kautta
+* peruskäsitteet ja symbolit (E, P, L(t), C_inst/C_act/C_res, P_IT(t), Q_th(t), P_cool(t), SLA/SLO)
+* tehomitoitusketjun ja mittausrajauksen periaatteen
+
+**Tuotokset (dokumentoitavat päätökset):**
+
+* oppaan rajaus: mitä vihreys tarkoittaa tässä oppaassa
+* lähtötietokehys kuormalle ja palvelutasolle (SLA/SLO) sekä mitoitusketjun perusmuoto
+* mittausrajauksen periaate: mistä kokonaisenergia ja IT-energia mitataan (täsmennykset luvussa P7)
+
+---
 
 ### P1.1 Miksi perusopas?
 
-Tämä perusopas tukee vihreän datakeskuksen suunnittelua ja toteutusta Suomessa. Opas jäsentää päätökset vaiheisiin ja liittää ne mitattaviin suureisiin: energia (E), teho (P), kapasiteetti (C) ja palvelutaso (SLA/SLO) [1, 2, 3]. Väitteet sidotaan lähteisiin.
+Tämä perusopas tukee vihreän datakeskuksen suunnittelua ja toteutusta Suomessa. Opas jäsentää päätökset vaiheisiin ja liittää ne mitattaviin suureisiin: energia (E), teho (P), kapasiteetti (C) ja palvelutaso (SLA/SLO) [1][2][3]. Väitteet sidotaan lähteisiin.
 
 Opas etenee luvuittain seuraavasti:
 
-- **Luku 2:** Datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet. Sijainnin reunaehdot: sähkö, verkko, viive, jäähdytys ja hukkalämpöliitynnät.
-- **Luku 3:** Vihreän datakeskuksen peruselementit ja periaatteet. Osa-alueet ja käsitteet, joilla vihreyttä tarkastellaan; mittausrajat ja arvioinnin periaatteet.
-- **Luku 4:** Datakeskuksen elinkaaren vaiheet. Suunnittelu, rakentaminen, käyttö ja käytöstäpoisto; data ja materiaalivirrat.
-- **Luku 5:** Datakeskuksen toiminta vaiheittain. Kuorma ja palvelutaso → kapasiteettisuunnittelu → IT-tehon vaihtelu ajassa → sähköliittymän, jakelun, varmistuksen ja jäähdytyksen mitoitus.
-- **Luku 6:** Energian kulutus ja uudelleenkäyttö. Kulutuserät, jäähdytyksen sähkönkulutus, hukkalämmön talteenotto, rajapinnat ja mittaustieto.
-- **Luku 7:** Datakeskusten energiatehokkuuden mittaaminen. EN 50600-4 -mittarit ja mittauspisteet; mittarikortit (PUE, REF, ERF, CER, CUE, WUE)[4].
+* **Luku 2:** Datakeskuksen rakentamisen syyt ja sijaintipäätösten perusteet. Sijainnin reunaehdot: sähkö, verkko, viive, jäähdytys ja hukkalämpöliitynnät.
+* **Luku 3:** Vihreän datakeskuksen peruselementit ja periaatteet. Osa-alueet ja käsitteet, joilla vihreyttä tarkastellaan; mittausrajat ja arvioinnin periaatteet.
+* **Luku 4:** Datakeskuksen elinkaaren vaiheet. Suunnittelu, rakentaminen, käyttö ja käytöstäpoisto; data ja materiaalivirrat.
+* **Luku 5:** Datakeskuksen toiminta vaiheittain. Kuorma ja palvelutaso → kapasiteettisuunnittelu → IT-tehon vaihtelu ajassa → sähköliittymän, jakelun, varmistuksen ja jäähdytyksen mitoitus.
+* **Luku 6:** Energian kulutus ja uudelleenkäyttö. Kulutuserät, jäähdytyksen sähkönkulutus, hukkalämmön talteenotto, rajapinnat ja mittaustieto.
+* **Luku 7:** Datakeskusten energiatehokkuuden mittaaminen. EN 50600-4 -mittarit ja mittauspisteet; mittarikortit (PUE, REF, ERF, CER, CUE, WUE) [4].
 
 Merkinnät ja mitoitusketjun symbolit esitellään kohdassa P1.4.
 
+---
 
 ### P1.2 Mikä on vihreä datakeskus?
 
-Vihreä datakeskus on datakeskus, jossa suunnittelu ja operointi sidotaan energian ja päästöjen mittaamiseen sekä raportointiin [2]. Tässä oppaassa vihreys kuvataan kokonaisenergiankulutuksena, energiatehokkuusmittareina ja päästöintensiteettinä [1, 3]. Vihreä datakeskus käsitellään seuraavina osa-alueina:
+Vihreä datakeskus on datakeskus, jossa suunnittelu ja operointi sidotaan energian ja päästöjen mittaamiseen sekä raportointiin [2]. Tässä oppaassa vihreys kuvataan kokonaisenergiankulutuksena, energiatehokkuusmittareina ja päästöintensiteettinä [1][3]. Vihreä datakeskus käsitellään seuraavina osa-alueina:
 
 Kuorma ja kapasiteetti: työkuorman kuvaus, kapasiteetin mitoitus ja IT-tehon vaihtelu ajassa.
 
@@ -43,8 +48,10 @@ Jäähdytys: jäähdytysarkkitehtuuri ja jäähdytyksen sähkönkulutus suhteess
 Hukkalämpö: talteenotto, mittaus ja luovutusrajapinta.
 
 Elinkaaren loppu: käytöstäpoisto, tietojen hävittäminen ja materiaalivirrat.
-   
+
 Osa-alueiden päätökset kuvataan kohdassa P1.8 ja toteutus käsitellään luvussa 3.
+
+---
 
 ### P1.3 Miten opasta käytetään?
 
@@ -58,51 +65,49 @@ Valitse mittarit ja todennus. Valitse mittarit ja määritä mittauspisteet sek�
 
 Kun toteutus on käynnissä, käytä menettelyä: mittaa → analysoi → muutos → todenna → vakioi.
 
+---
 
 ### P1.4 Datakeskuksen sähkö- ja jäähdytysinfrastruktuurin tehomitoitusketju
 
-Perustermit ja yksiköt
+#### Perustermit ja yksiköt
 
-Teho P: hetkellinen sähköteho. Yksikkö W, kW, MW.
+* **Teho `P`**: hetkellinen sähköteho. Yksikkö W, kW, MW.
 
-Energia E: teho aikajaksolla. Yksikkö Wh, kWh, MWh, GWh. (Esim. kWh = kW × h.)
+* **Energia `E`**: teho aikajaksolla. Yksikkö Wh, kWh, MWh, GWh. (Esim. `kWh = kW × h`.)
 
-IT-työkuorma L(t): datakeskukseen saapuvien palvelu- ja työpyyntöjen määrä ja ominaisuudet ajan funktiona (esim. pyyntöä/s, transaktiota/s, jobeja/eräajoja, datavirtoja).
+* **IT-työkuorma `L(t)`**: datakeskukseen saapuvien palvelu- ja työpyyntöjen määrä ja ominaisuudet ajan funktiona (esim. pyyntöä/s, transaktiota/s, jobeja/eräajoja, datavirtoja).
 
-SLA (Service Level Agreement): sopimus / sitoumus palvelutasosta, jossa määritellään yksi tai useampi SLO sekä mittaus- ja raportointikäytäntö ja mahdolliset seuraamukset (esim. hyvitykset), jos taso ei toteudu; omassa datakeskuksessa “asiakas” on usein sisäinen (liiketoiminta, palvelun omistaja tai toinen tiimi).
+* **SLA (Service Level Agreement)**: **sopimus / sitoumus** palvelutasosta, jossa määritellään yksi tai useampi SLO sekä mittaus- ja raportointikäytäntö ja mahdolliset seuraamukset (esim. hyvitykset), jos taso ei toteudu; omassa datakeskuksessa “asiakas” on usein **sisäinen** (liiketoiminta, palvelun omistaja tai toinen tiimi).
 
-SLO (Service Level Objective): yksittäisen palveluominaisuuden mitattava tavoitetaso (esim. saatavuus, vasteaika, virheosuus) tietyllä aikajaksolla; määritellään numeerisena tavoitteena ja mittaustapana (esim. 99,9 %/kk tai p95 < 200 ms).
+* **SLO (Service Level Objective)**: yksittäisen palveluominaisuuden **mitattava tavoitetaso** (esim. saatavuus, vasteaika, virheosuus) tietyllä aikajaksolla; määritellään numeerisena tavoitteena ja mittaustapana (esim. 99,9 %/kk tai p95 < 200 ms).
 
-Palvelutasovaatimus mitoituksessa: mitoitus johdetaan käytännössä SLO-tavoitteista (mitä pitää saavuttaa), kun taas SLA on niiden sopimusmuotoinen sitoumus (kenelle ja millä ehdoilla).
+* **Palvelutasovaatimus mitoituksessa**: mitoitus johdetaan käytännössä SLO-tavoitteista (mitä pitää saavuttaa), kun taas SLA on niiden sopimusmuotoinen sitoumus (kenelle ja millä ehdoilla).
 
-Laskentakapasiteetti (IT-kapasiteetti): IT-resurssit, joilla L(t) suoritetaan sovituilla palvelutasoilla (palvelimet, CPU/GPU, muisti, tallennus, verkko). Kapasiteetti on kapasiteettisuunnittelun tulos [5].
+* **Laskentakapasiteetti (IT-kapasiteetti)**: IT-resurssit, joilla `L(t)` suoritetaan sovituilla palvelutasoilla (palvelimet, CPU/GPU, muisti, tallennus, verkko). Kapasiteetti on kapasiteettisuunnittelun tulos [5].
 
-Asennettu kapasiteetti C_inst: hankittu ja asennettu resurssipooli (teoreettinen enimmäistaso).
+  * **Asennettu kapasiteetti `C_inst`**: hankittu ja asennettu resurssipooli (teoreettinen enimmäistaso).
+  * **Aktiivinen kapasiteetti `C_act(t)`**: se osa resurssipoolista, joka pidetään käytössä ajanhetkellä `t` (aktiiviset palvelimet ja niiden resurssit).
+  * **Varakapasiteetti `C_res`**: kapasiteetti, jota pidetään käytettävissä kuormahuippujen, ennusteen epävarmuuden tai vikatilanteiden varalta (SLA/SLO ja varmistusperiaate) [6][5].
 
-Aktiivinen kapasiteetti C_act(t): se osa resurssipoolista, joka pidetään käytössä ajanhetkellä t (aktiiviset palvelimet ja niiden resurssit).
+* **IT-teho `P_IT(t)`**: IT-laitteiden (palvelimet, tallennus, verkko) ottama sähköteho ajanhetkellä `t`. Yksikkö kW (IT).
 
-Varakapasiteetti C_res: kapasiteetti, jota pidetään käytettävissä kuormahuippujen, ennusteen epävarmuuden tai vikatilanteiden varalta (SLA/SLO ja varmistusperiaate) [5, 6].
+* **Lämpökuorma / jäähdytyskuorma `Q_th(t)`**: poistettava lämpöteho tilasta tai jäähdytyspiiristä. Yksikkö kW(th). Käytännön mitoituksessa `Q_th(t)` määräytyy IT-tehon ja muiden sähkökuormien (ml. sähköketjun häviöt) perusteella [3].
 
-IT-teho P_IT(t): IT-laitteiden (palvelimet, tallennus, verkko) ottama sähköteho ajanhetkellä t. Yksikkö kW (IT).
-
-Lämpökuorma / jäähdytyskuorma Q_th(t): poistettava lämpöteho tilasta tai jäähdytyspiiristä. Yksikkö kW(th). Käytännön mitoituksessa Q_th(t) määräytyy IT-tehon ja muiden sähkökuormien (ml. sähköketjun häviöt) perusteella [3].
-
-Jäähdytyksen sähköteho P_cool(t): jäähdytysjärjestelmän (esim. chillerit, pumput, puhaltimet, CRAH/CRAC) ottama sähköteho. Yksikkö kW(e). Huomio: P_cool(t) (sähköteho) ja Q_th(t) (poistettava lämpöteho) ovat eri suureita [3].
+* **Jäähdytyksen sähköteho `P_cool(t)`**: jäähdytysjärjestelmän (esim. chillerit, pumput, puhaltimet, CRAH/CRAC) ottama sähköteho. Yksikkö kW(e). Huomio: `P_cool(t)` (sähköteho) ja `Q_th(t)` (poistettava lämpöteho) ovat eri suureita [3].
 
 #### Tehomitoitusketju
 
-Tehomitoitusketju tarkoittaa päätöksentekoketjua, jossa IT-työkuorman `L(t)` sekä palvelutasotavoitteiden (SLO) ja niistä johdettujen palvelutasositoumusten (SLA) perusteella määritetään vaiheittain datakeskuksen tarvittava sähkö- ja jäähdytysteho. Ketju etenee tyypillisesti IT-kuormasta (palvelimet, tallennus, verkko) kokonaistehoon ja edelleen infrastruktuurin mitoitukseen (sähköliittymä, UPS ja varavoima, sähkönjakelu sekä jäähdytysjärjestelmät). Saatavuus- ja toipumisvaatimukset (esim. redundanssi N+1/2N, RTO/RPO) kasvattavat mitoitusvaraa ja ohjaavat rakenteellisia valintoja. (Geng, 2015; Wang et al., 2020)
+Tehomitoitusketju tarkoittaa päätöksentekoketjua, jossa IT-työkuorman `L(t)` sekä palvelutasotavoitteiden (SLO) ja niistä johdettujen palvelutasositoumusten (SLA) perusteella määritetään vaiheittain datakeskuksen tarvittava sähkö- ja jäähdytysteho. Ketju etenee tyypillisesti IT-kuormasta (palvelimet, tallennus, verkko) kokonaistehoon ja edelleen infrastruktuurin mitoitukseen (sähköliittymä, UPS ja varavoima, sähkönjakelu sekä jäähdytysjärjestelmät). Saatavuus- ja toipumisvaatimukset (esim. redundanssi N+1/2N, RTO/RPO) kasvattavat mitoitusvaraa ja ohjaavat rakenteellisia valintoja [3][5].
 
 Ketju esitetään seuraavasti:
 
 `L(t)` + (SLA/SLO, saatavuus) → `C_act(t)` + (`C_res`) → `P_IT(t)` → sähkö- ja jäähdytysinfrastruktuurin mitoitus
 
-* `L(t)` + SLA/SLO (+ saatavuus) → `C_act(t)` + (`C_res`): kuorman määrä ja vaihtelu sekä palvelutasoehdot määrittävät, kuinka suuri osa `C_inst`:stä pidetään aktiivisena ja kuinka paljon kapasiteettia pidetään varalla. (Whitney & Delforge, 2014; Wang et al., 2020)
-* `C_act(t)` → `P_IT(t)`: aktiivisten resurssien määrä ja kuormitusaste muodostavat IT-tehoprofiilin, joka toimii sähkö- ja jäähdytysjärjestelmien mitoituksen lähtötietona. (Geng, 2015; Wang et al., 2020)
-* `P_IT(t)` → infrastruktuurin mitoitus: IT-teho ja siihen liittyvät häviöt määrittävät sähköketjun mitoitustehoja (liittymä, UPS, jakelu) sekä lämpökuorman `Q_th(t)`, jonka perusteella jäähdytysjärjestelmät mitoitetaan. (Geng, 2015)
+* `L(t)` + SLA/SLO (+ saatavuus) → `C_act(t)` + (`C_res`): kuorman määrä ja vaihtelu sekä palvelutasoehdot määrittävät, kuinka suuri osa `C_inst`:stä pidetään aktiivisena ja kuinka paljon kapasiteettia pidetään varalla [6][5].
+* `C_act(t)` → `P_IT(t)`: aktiivisten resurssien määrä ja kuormitusaste muodostavat IT-tehoprofiilin, joka toimii sähkö- ja jäähdytysjärjestelmien mitoituksen lähtötietona [3][5].
+* `P_IT(t)` → infrastruktuurin mitoitus: IT-teho ja siihen liittyvät häviöt määrittävät sähköketjun mitoitustehoja (liittymä, UPS, jakelu) sekä lämpökuorman `Q_th(t)`, jonka perusteella jäähdytysjärjestelmät mitoitetaan [3].
 
-**Varmistusperiaate (esim. N+1, 2N)** tarkoittaa, että infrastruktuuri mitoitetaan siten, että kuorma voidaan ylläpitää myös yksittäisen komponentin vikaantuessa. Tämä näkyy sekä asennettuna infrastruktuurikapasiteettina että osakuormalla toimivien laitteiden hyötysuhteina. (Geng, 2015; Whitney & Delforge, 2014)
-
+**Varmistusperiaate (esim. N+1, 2N)** tarkoittaa, että infrastruktuuri mitoitetaan siten, että kuorma voidaan ylläpitää myös yksittäisen komponentin vikaantuessa. Tämä näkyy sekä asennettuna infrastruktuurikapasiteettina että osakuormalla toimivien laitteiden hyötysuhteina [3][6].
 
 #### Huomio (vihreä tarkastelu)
 
@@ -110,120 +115,127 @@ Tässä oppaassa sama tehomitoitusketju säilyy, mutta hankkeessa määritetää
 
 1. **sähkön alkuperän todentaminen**,
 2. **energian käytön mittausrajat**, ja
-3. **hukkalämmön talteenoton ja hyötykäytön rajapinnat**. (Jin et al., 2016; Uddin & Rahman, 2012)
+3. **hukkalämmön talteenoton ja hyötykäytön rajapinnat** [1][2].
 
-**Mittausrajalla** tarkoitetaan, mistä pisteestä kokonaisenergia mitataan (esim. sähköliittymä / pääkeskus) ja mistä pisteestä IT-energia mitataan (esim. UPS/PDU-lähdöt tai räkki-/PDU-mittaus). Rajaus määrittää, mitkä häviöt ja kuormat sisältyvät energiatehokkuuslukuihin (esim. PUE). (Jin et al., 2016; Uddin & Rahman, 2012)
+**Mittausrajalla** tarkoitetaan, mistä pisteestä kokonaisenergia mitataan (esim. sähköliittymä / pääkeskus) ja mistä pisteestä IT-energia mitataan (esim. UPS/PDU-lähdöt tai räkki-/PDU-mittaus). Rajaus määrittää, mitkä häviöt ja kuormat sisältyvät energiatehokkuuslukuihin (esim. PUE) [1][2].
 
+---
 
 ### P1.5 Tausta: perinteisen datakeskuksen energian- ja laitemitoitus
 
 P1.4 määritteli tehomitoitusketjun muodossa:
 
-`L(t)` + (SLA/SLO, saatavuus) → `C_act(t)` + (`C_res`) → `P_IT(t)` → sähkö- ja jäähdytysinfrastruktuurin mitoitus. (Geng, 2015; Wang et al., 2020)
+`L(t)` + (SLA/SLO, saatavuus) → `C_act(t)` + (`C_res`) → `P_IT(t)` → sähkö- ja jäähdytysinfrastruktuurin mitoitus [3][5].
 
-Tässä kappaleessa tarkennetaan ketjun alkupäätä eli sitä, miten **saapuvista työpyynnöistä** muodostetaan kuvanus työkuormasta `L(t)` ja miten tämän perusteella johdetaan kapasiteettisuunnittelun päätökset (`C_act(t)`, `C_res`) ja niistä edelleen IT-tehoprofiili `P_IT(t)`. (Wang et al., 2020)
-
+Tässä kappaleessa tarkennetaan ketjun alkupäätä eli sitä, miten **saapuvista työpyynnöistä** muodostetaan kuvanus työkuormasta `L(t)` ja miten tämän perusteella johdetaan kapasiteettisuunnittelun päätökset (`C_act(t)`, `C_res`) ja niistä edelleen IT-tehoprofiili `P_IT(t)` [5].
 
 #### Keskeiset termit (katso myös sanasto, s. X)
 
-- **Työpyyntö (job)**: yksittäinen suoritettava tehtävä tai pyyntö, jolle määritetään resurssitarpeet ja aikavaatimus. (Wang et al., 2020)
-- **IT-työkuorma `L(t)` (workload)**: työpyyntöjen määrä ja ominaisuudet ajan funktiona (esim. työpyyntöjä/aikaväli, pyyntöä/s, transaktiota/s) sekä kuorman vaihtelu ja huiput. (Wang et al., 2020)
-- **Työtyyppien muodostus (workload characterization)**: työpyyntöjen ryhmittely työtyypeiksi ja työtyyppikohtaisten resurssiprofiilien kuvaus. (Wang et al., 2020)
-- **Kuorman ennuste (workload prediction)**: työpyyntöjen määrän (ja tarvittaessa työtyyppijakauman) ennustaminen tuleville aikajaksoille historiadatan perusteella. (Wang et al., 2020)
-- **Palvelutasovaatimus (SLA/SLO, saatavuus)**: ehto, jonka puitteissa työpyyntö käsitellään (esim. vasteaika, määräaika) ja jonka perusteella kapasiteettia pidetään käytössä ja/tai varalla. (Wang et al., 2020)
-- **Kelpoisuussidonta (job–server mapping)**: sääntö, jolla määritetään, millä palvelin-/resurssityypeillä työpyyntö voidaan suorittaa (esim. CPU-, muisti- ja laitevaatimukset). (Wang et al., 2020)
-- **Kapasiteettisuunnittelu**: päätös siitä, mitkä resurssit pidetään käytössä `C_act(t)` (ja mitä pidetään varalla `C_res`) sekä miten työpyynnöt sijoitetaan niin, että resurssirajat ja SLA/SLO täyttyvät. (Wang et al., 2020)
+* **Työpyyntö (job)**: yksittäinen suoritettava tehtävä tai pyyntö, jolle määritetään resurssitarpeet ja aikavaatimus [5].
+* **IT-työkuorma `L(t)` (workload)**: työpyyntöjen määrä ja ominaisuudet ajan funktiona (esim. työpyyntöjä/aikaväli, pyyntöä/s, transaktiota/s) sekä kuorman vaihtelu ja huiput [5].
+* **Työtyyppien muodostus (workload characterization)**: työpyyntöjen ryhmittely työtyypeiksi ja työtyyppikohtaisten resurssiprofiilien kuvaus [5].
+* **Kuorman ennuste (workload prediction)**: työpyyntöjen määrän (ja tarvittaessa työtyyppijakauman) ennustaminen tuleville aikajaksoille historiadatan perusteella [5].
+* **Palvelutasovaatimus (SLA/SLO, saatavuus)**: ehto, jonka puitteissa työpyyntö käsitellään (esim. vasteaika, määräaika) ja jonka perusteella kapasiteettia pidetään käytössä ja/tai varalla [5].
+* **Kelpoisuussidonta (job–server mapping)**: sääntö, jolla määritetään, millä palvelin-/resurssityypeillä työpyyntö voidaan suorittaa (esim. CPU-, muisti- ja laitevaatimukset) [5].
+* **Kapasiteettisuunnittelu**: päätös siitä, mitkä resurssit pidetään käytössä `C_act(t)` (ja mitä pidetään varalla `C_res`) sekä miten työpyynnöt sijoitetaan niin, että resurssirajat ja SLA/SLO täyttyvät [5].
 
 #### Lähtötieto perinteisessä mitoituksessa
 
-Perinteinen mitoitus perustuu usein historiadataan ja sen avulla kuvattuihin työpyyntöihin ja kuormituskäyttäytymiseen. Yksi tapa esittää tämä on erottaa (i) työtyyppien muodostaminen (workload characterization) ja (ii) kuorman ennustaminen (workload prediction) (Wang et al., 2020).
+Perinteinen mitoitus perustuu usein historiadataan ja sen avulla kuvattuihin työpyyntöihin ja kuormituskäyttäytymiseen. Yksi tapa esittää tämä on erottaa (i) työtyyppien muodostaminen (workload characterization) ja (ii) kuorman ennustaminen (workload prediction) [5].
 
-Työkuorma tyypitetään klusteroimalla, jolloin saadaan joukko työtyyppejä ja niiden tyyppijakauma (Wang et al., 2020). IT-työkuorma ennusteessa tulevien aikajaksojen työpyyntöjen määrää ennustetaan aikasarjamallilla, jolloin saadaan arvio työpyyntöjen määrästä per aikaväli (Wang et al., 2020). Tällöin kapasiteettiperusta voidaan ilmaista muodossa: **ennustettu työpyyntöjen määrä + työtyyppien resurssiprofiilit** (Wang et al., 2020).
+Työkuorma tyypitetään klusteroimalla, jolloin saadaan joukko työtyyppejä ja niiden tyyppijakauma [5]. IT-työkuorma ennusteessa tulevien aikajaksojen työpyyntöjen määrää ennustetaan aikasarjamallilla, jolloin saadaan arvio työpyyntöjen määrästä per aikaväli [5]. Tällöin kapasiteettiperusta voidaan ilmaista muodossa: **ennustettu työpyyntöjen määrä + työtyyppien resurssiprofiilit** [5].
 
-Kun työtyypit ja palvelutasovaatimukset on kuvattu, palvelintarve johdetaan työpyyntöjen resurssivaatimuksista ja aikavaatimuksista (deadline/SLA/SLO). Työtyypit sidotaan niihin palvelintyyppeihin, joilla työpyyntö voidaan ajaa (job–server mapping), ja kapasiteetin mitoitus voidaan muotoilla kokonaislukusuunnitteluongelmana (ILP) (Wang et al., 2020). Koska vastaavat ongelmaluokat kytkeytyvät bin packing -tyyppisiin pakkausongelmiin, käytännön mitoituksessa käytetään usein heuristiikkoja täsmäratkaisun sijaan (Garey & Johnson, 1979; Wang et al., 2020).
+Kun työtyypit ja palvelutasovaatimukset on kuvattu, palvelintarve johdetaan työpyyntöjen resurssivaatimuksista ja aikavaatimuksista (deadline/SLA/SLO). Työtyypit sidotaan niihin palvelintyyppeihin, joilla työpyyntö voidaan ajaa (job–server mapping), ja kapasiteetin mitoitus voidaan muotoilla kokonaislukusuunnitteluongelmana (ILP) [5]. Koska vastaavat ongelmaluokat kytkeytyvät bin packing -tyyppisiin pakkausongelmiin, käytännön mitoituksessa käytetään usein heuristiikkoja täsmäratkaisun sijaan [7][5].
 
 #### Vaihtoehtoinen lähtötieto: sovellus- ja alustataso
 
-Toinen perinteinen mitoitus perustuu sovellus- ja alustatasoon, jonka kapasiteettisuunnittelu kytketään palveluarkkitehtuuriin ja kasvuennusteisiin, ja mitoituksessa huomioidaan myös järjestelmäuudistusten siirtymävaiheet (refresh capacity) (Geng, 2015). Sähkötehon mitoituksessa erotetaan pätöteho (W), loisteho (VAR), näennäisteho (VA) ja tehokerroin (PF), koska kuorman sähköinen luonne vaikuttaa verkosta ja varavoimasta tarvittavaan kapasiteettiin (Geng, 2015).
+Toinen perinteinen mitoitus perustuu sovellus- ja alustatasoon, jonka kapasiteettisuunnittelu kytketään palveluarkkitehtuuriin ja kasvuennusteisiin, ja mitoituksessa huomioidaan myös järjestelmäuudistusten siirtymävaiheet (refresh capacity) [3]. Sähkötehon mitoituksessa erotetaan pätöteho (W), loisteho (VAR), näennäisteho (VA) ja tehokerroin (PF), koska kuorman sähköinen luonne vaikuttaa verkosta ja varavoimasta tarvittavaan kapasiteettiin [3].
 
 #### Yhteenveto
 
-Perinteinen datakeskus voidaan mitoittaa joko (a) sovellus- ja alustatasosta tai (b) ennustetuista työpyynnöistä, työtyypeistä ennusteista. Molemmissa tapauksissa lopputuloksena johdetaan IT-teho (kW), jonka varaan sähkö- ja jäähdytysinfrastruktuuri mitoitetaan (Geng, 2015; Wang et al., 2020).
+Perinteinen datakeskus voidaan mitoittaa joko (a) sovellus- ja alustatasosta tai (b) ennustetuista työpyynnöistä, työtyypeistä ennusteista. Molemmissa tapauksissa lopputuloksena johdetaan IT-teho (kW), jonka varaan sähkö- ja jäähdytysinfrastruktuuri mitoitetaan [3][5].
 
+---
 
 ### P1.6 Perinteisten datakeskusten käyttöaste ja IT-laitteiden sähkönkulutuksen kuormariippuvuus
 
-Käyttöaste vaikuttaa tehonkulutukseen ja sitä kautta energiankulutukseen, koska IT-laitteiden teho koostuu kuormaan sidotusta osasta ja kuormasta riippumattomasta perustehosta. Katsauksissa perinteisten yritysdatasalien käyttöaste on raportoitu matalaksi ja hyperskaalan korkeammaksi, kun kuormia voidaan konsolidoida ja ohjata laajassa resurssipoolissa (Whitney & Delforge, 2014). 
+Käyttöaste vaikuttaa tehonkulutukseen ja sitä kautta energiankulutukseen, koska IT-laitteiden teho koostuu kuormaan sidotusta osasta ja kuormasta riippumattomasta perustehosta. Katsauksissa perinteisten yritysdatasalien käyttöaste on raportoitu matalaksi ja hyperskaalan korkeammaksi, kun kuormia voidaan konsolidoida ja ohjata laajassa resurssipoolissa [6].
 
-Käyttöastetta laskevat kuorman vaihtelu ja kuorman ennustamisen epävarmuus (workload, workload prediction) sekä palvelutasovaatimukset (SLA/SLO/deadline), joiden vuoksi kapasiteettisuunnittelussa pidetään varakapasiteettia (Whitney & Delforge, 2014; Wang et al., 2020). Lisäksi saatavuusvaatimukset näkyvät infrastruktuurissa varmistusratkaisuina (esim. N+1, 2N), jotka lisäävät jatkuvasti valmiina pidettävää laite- ja järjestelmäkantaa sekä niiden aiheuttamaa perustason sähkönkulutusta (Whitney & Delforge, 2014).
+Käyttöastetta laskevat kuorman vaihtelu ja kuorman ennustamisen epävarmuus (workload, workload prediction) sekä palvelutasovaatimukset (SLA/SLO/deadline), joiden vuoksi kapasiteettisuunnittelussa pidetään varakapasiteettia [6][5]. Lisäksi saatavuusvaatimukset näkyvät infrastruktuurissa varmistusratkaisuina (esim. N+1, 2N), jotka lisäävät jatkuvasti valmiina pidettävää laite- ja järjestelmäkantaa sekä niiden aiheuttamaa perustason sähkönkulutusta [6].
 
-Palvelinten sähkönkulutus ei historiallisesti ole ollut täysin energiaproportionaalista: tyhjäkäynnillä ja matalalla käyttöasteella sähkönkulutus ei alene samassa suhteessa kuin kuormitus (Barroso & Hölzle, 2007; Whitney & Delforge, 2014). Tämän vuoksi kapasiteetin mitoitus ja kuormanohjaus vaikuttavat suoraan datakeskuksen energiankulutukseen ja siitä johdettuihin päästöihin (Jin et al., 2016; Whitney & Delforge, 2014).
+Palvelinten sähkönkulutus ei historiallisesti ole ollut täysin energiaproportionaalista: tyhjäkäynnillä ja matalalla käyttöasteella sähkönkulutus ei alene samassa suhteessa kuin kuormitus [8][6]. Tämän vuoksi kapasiteetin mitoitus ja kuormanohjaus vaikuttavat suoraan datakeskuksen energiankulutukseen ja siitä johdettuihin päästöihin [1][6].
 
+---
 
 ### P1.7 Kansainvälinen kehitys ja Suomen reunaehdot
 
-Datakeskuksia rakennetaan digitalisaation, pilvipalvelujen ja verkottuneiden sovellusten IT-kapasiteetin (laskenta-, tallennus- ja verkkokapasiteetti) toteuttamiseksi. Samalla hajautettuja ja teknisesti vanhentuneita ympäristöjä korvataan keskistetyillä ratkaisuilla, joissa kapasiteettia ja operointia voidaan ohjata järjestelmätasolla (Jin et al., 2016; Shehabi et al., 2016). Datakeskusten osuus maailman sähkönkulutuksesta on ollut suuruusluokkaa noin yksi prosentti, vaikka laskentakapasiteetti ja datamäärät ovat kasvaneet (Masanet et al., 2020). Skenaarioissa on arvioitu, että ilman lisätoimia ICT-sektorin sähkönkäyttö voi kasvaa useisiin prosentteihin maailman kokonaiskulutuksesta, jos liikennemäärät ja kuormat jatkavat kasvuaan (Andrae & Edler, 2015). Uudemmissa tarkasteluissa on nostettu esiin myös suuritehoisen laskennan ja generatiivisen tekoälyn kuormien vaikutus energiatiheyksiin ja käyttöönoton nopeuteen (Sabree, 2025; Masanet et al., 2020).
+Datakeskuksia rakennetaan digitalisaation, pilvipalvelujen ja verkottuneiden sovellusten IT-kapasiteetin (laskenta-, tallennus- ja verkkokapasiteetti) toteuttamiseksi. Samalla hajautettuja ja teknisesti vanhentuneita ympäristöjä korvataan keskistetyillä ratkaisuilla, joissa kapasiteettia ja operointia voidaan ohjata järjestelmätasolla [1][9]. Datakeskusten osuus maailman sähkönkulutuksesta on ollut suuruusluokkaa noin yksi prosentti, vaikka laskentakapasiteetti ja datamäärät ovat kasvaneet [10]. Skenaarioissa on arvioitu, että ilman lisätoimia ICT-sektorin sähkönkäyttö voi kasvaa useisiin prosentteihin maailman kokonaiskulutuksesta, jos liikennemäärät ja kuormat jatkavat kasvuaan [11]. Uudemmissa tarkasteluissa on nostettu esiin myös suuritehoisen laskennan ja generatiivisen tekoälyn kuormien vaikutus energiatiheyksiin ja käyttöönoton nopeuteen [12][10].
 
-Datakeskuksen käyttöaikaisia kasvihuonekaasupäästöjä voidaan arvioida kertomalla datakeskuksen käyttämä sähköenergia (kWh) käytetyn sähkön päästökertoimella (kgCO₂e/kWh). Tämä kattaa sähkönkulutukseen liittyvän osuuden; laajemmassa hiilijalanjälkirajauksessa voidaan lisäksi huomioida mm. varavoiman polttoaine, jäähdytyksen kylmäainepäästöt sekä laitteiden ja rakennuksen elinkaaren aikaiset päästöt. (Jin et al., 2016; Sabree, 2025)
+Datakeskuksen käyttöaikaisia kasvihuonekaasupäästöjä voidaan arvioida kertomalla datakeskuksen käyttämä sähköenergia (kWh) käytetyn sähkön päästökertoimella (kgCO₂e/kWh). Tämä kattaa sähkönkulutukseen liittyvän osuuden; laajemmassa hiilijalanjälkirajauksessa voidaan lisäksi huomioida mm. varavoiman polttoaine, jäähdytyksen kylmäainepäästöt sekä laitteiden ja rakennuksen elinkaaren aikaiset päästöt [1][12].
 
+---
 
 ### P1.8 Vihreän datakeskuksen elementit ja päätöspisteet
 
 Tässä perusoppaassa vihreändatakeskuksen toteutus jäsennetään päätöspisteiksi. Päätökset esitetään muodossa päätös → tuotos → luku, jotta etenemisjärjestys ja kunkin vaiheen tulokset näkyvät yhdestä paikasta. Osa-alueet on kuvattu kohdassa P1.2 ja mitoitusketjun merkinnät kohdassa P1.4.
 
-Kirjallisuudessa vihreä datakeskus kytkee IT-, sähkö- ja jäähdytysjärjestelmät energian ja ympäristövaikutusten mittaamiseen sekä seurantaan, ja tarkastelu esitetään tyypillisesti mittareina ja osa-alueina (kuorma–kapasiteetti, sähköketju, jäähdytys, hukkalämpö, todentaminen) (Uddin & Rahman, 2012; Jin et al., 2016; Geng, 2015; Wang et al., 2020; Barroso & Hölzle, 2007).
+Kirjallisuudessa vihreä datakeskus kytkee IT-, sähkö- ja jäähdytysjärjestelmät energian ja ympäristövaikutusten mittaamiseen sekä seurantaan, ja tarkastelu esitetään tyypillisesti mittareina ja osa-alueina (kuorma–kapasiteetti, sähköketju, jäähdytys, hukkalämpö, todentaminen) [2][1][3][5][8].
 
 Tämä perusopas tuo samaan kokonaisuuteen päätös→tuotos→luku-rakenteen, jotta mitoitusketju ja mittausrajat voidaan viedä suunnittelusta toteutukseen ja raportointiin ilman, että lähtötietoja kootaan useista eri kohdista.
 
 #### Päätökset (päätös → tuotos → luku)
 
-- Sijainti → sähkö-, verkko- ja liityntäehdot (jäähdytys ja hukkalämpö), viive- ja saatavuusrajat → Luku 2
-- Työkuorma ja palvelutaso (SLA/SLO) → kuormakuvaus L(t) ja palvelutasorajat (vasteajat/saatavuus/deadline) → Luku 5 (Wang et al., 2020)
-- Kapasiteetti → C_inst, C_act(t) ja C_res(t) (asennettu, käytössä pidettävä, varalla pidettävä) → Luku 5 (Wang et al., 2020)
-- IT-tehoprofiili → P_IT(t) (IT-teho ajan funktiona; huiput ja niiden kesto) → Luku 5 (Barroso & Hölzle, 2007; Wang et al., 2020)
-- Sähköketju ja varmistus → liittymäteho, jakelu, UPS/varavoima, varmistusperiaate (N / N+1 / 2N) ja häviöiden huomiointi → Luku 5 (Geng, 2015; LVM, 2020)
-- Sähkön alkuperä ja päästöt → todentamistapa (hankintamalli) ja päästökertoimien valinta raportointiin → Luku 6 (Jin et al., 2016; LVM, 2020)
-- Jäähdytysratkaisu → jäähdytysarkkitehtuuri ja jäähdytyksen sähköteho P_cool(t); mitoituksen lähtötiedot (lämpökuorma ja olosuhteet) → Luku 6 (Geng, 2015; Elavarasi et al., 2025)
-- Jäähdytyksen mittaus → mittauspisteet ja aikasarjat (jäähdytyksen sähkö, lämpötilat, virtaus/ilmamäärä) IT-kuorman vertailuun → Luku 7 (Geng, 2015; Elavarasi et al., 2025)
-- Hukkalämpö → rajapinta, mitattava lämpöenergia (MWh), toimitusvastuut ja sopimuslähtötiedot → Luku 6 (Geng, 2015; LVM, 2020)
-- Mittausrajat, mittarit ja raportointi → mittausrajat, mittarit (PUE, REF, ERF, CER, CUE, WUE), mittauspisteet ja dokumentoidut laskentasäännöt → Luku 7 (Uddin & Rahman, 2012; Jin et al., 2016; Geng, 2015)
-- Elinkaaren loppu → käytöstäpoisto, tietojen hävittäminen ja materiaalivirrat (prosessit ja vastuut) → Luku 4 (Geng, 2015)
+* Sijainti → sähkö-, verkko- ja liityntäehdot (jäähdytys ja hukkalämpö), viive- ja saatavuusrajat → Luku 2
+* Työkuorma ja palvelutaso (SLA/SLO) → kuormakuvaus L(t) ja palvelutasorajat (vasteajat/saatavuus/deadline) → Luku 5 [5]
+* Kapasiteetti → C_inst, C_act(t) ja C_res(t) (asennettu, käytössä pidettävä, varalla pidettävä) → Luku 5 [5]
+* IT-tehoprofiili → P_IT(t) (IT-teho ajan funktiona; huiput ja niiden kesto) → Luku 5 [8][5]
+* Sähköketju ja varmistus → liittymäteho, jakelu, UPS/varavoima, varmistusperiaate (N / N+1 / 2N) ja häviöiden huomiointi → Luku 5 [3][13]
+* Sähkön alkuperä ja päästöt → todentamistapa (hankintamalli) ja päästökertoimien valinta raportointiin → Luku 6 [1][13]
+* Jäähdytysratkaisu → jäähdytysarkkitehtuuri ja jäähdytyksen sähköteho P_cool(t); mitoituksen lähtötiedot (lämpökuorma ja olosuhteet) → Luku 6 [3][14]
+* Jäähdytyksen mittaus → mittauspisteet ja aikasarjat (jäähdytyksen sähkö, lämpötilat, virtaus/ilmamäärä) IT-kuorman vertailuun → Luku 7 [3][14]
+* Hukkalämpö → rajapinta, mitattava lämpöenergia (MWh), toimitusvastuut ja sopimuslähtötiedot → Luku 6 [3][13]
+* Mittausrajat, mittarit ja raportointi → mittausrajat, mittarit (PUE, REF, ERF, CER, CUE, WUE), mittauspisteet ja dokumentoidut laskentasäännöt → Luku 7 [2][1][3]
+* Elinkaaren loppu → käytöstäpoisto, tietojen hävittäminen ja materiaalivirrat (prosessit ja vastuut) → Luku 4 [3]
 
 > Huom: jäähdytysratkaisujen vaihtoehdot ja valintaperusteet (esim. ekonomaiseri, hybridi, direct-to-chip, immersio) käsitellään luvussa 6. Mittareiden mittauspisteet ja laskentasäännöt käsitellään luvussa 7.
 
+---
 
 ### P1.9 Miksi sijainti käsitellään ennen ratkaisujen valintaa
 
-Luku 2 käsittelee rakentamisen syitä ja sijaintipäätöksiä, koska sijainti määrittää useita tämän oppaan myöhempiä reunaehtoja. Sijaintipäätöksessä tarkastellaan sähköverkon kapasiteettia ja luotettavuutta, palvelutasoon liittyviä vaatimuksia (mm. saatavuus ja redundanssi), sähkön päästöintensiteettiä ja uusiutuvan energian todentamista sekä jäähdytys- ja hukkalämpöratkaisujen edellyttämiä liityntöjä ja infrastruktuuria (Geng, 2015; Jin et al., 2016; LVM, 2020). Lisäksi sijainti kytkeytyy viive- ja käyttäjävaatimuksiin: kuorman siirto alueiden välillä on mahdollista vain, jos palvelutaso sallii viiveen ja saatavuuden näkökulmasta (Wang et al., 2020; Jin et al., 2016).
+Luku 2 käsittelee rakentamisen syitä ja sijaintipäätöksiä, koska sijainti määrittää useita tämän oppaan myöhempiä reunaehtoja. Sijaintipäätöksessä tarkastellaan sähköverkon kapasiteettia ja luotettavuutta, palvelutasoon liittyviä vaatimuksia (mm. saatavuus ja redundanssi), sähkön päästöintensiteettiä ja uusiutuvan energian todentamista sekä jäähdytys- ja hukkalämpöratkaisujen edellyttämiä liityntöjä ja infrastruktuuria [3][1][13]. Lisäksi sijainti kytkeytyy viive- ja käyttäjävaatimuksiin: kuorman siirto alueiden välillä on mahdollista vain, jos palvelutaso sallii viiveen ja saatavuuden näkökulmasta [5][1].
 
+---
 
-## Lähteet (APA)
+## Lähteet (numeroitu)
 
-Andrae, A. S. G., & Edler, T. (2015). On global electricity usage of communication technology: Trends to 2030. *Challenges, 6*(1), 117–157.
+[1] *Green data centers: A survey, perspectives, and future directions* — Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). **arXiv** (arXiv:1608.00687).
 
-Barroso, L. A., & Hölzle, U. (2007). The case for energy-proportional computing. *Computer, 40*(12), 33–37.
+[2] *Energy efficiency and low carbon enabler green IT framework for data centers considering green metrics* — Uddin, M., & Rahman, A. A. (2012). **Renewable and Sustainable Energy Reviews, 16**(6), 4078–4094.
 
-Elavarasi, J., Thilagam, T., Amudha, G., Saratha, B., Ananthi, S. N., & Siva Subramanian, R. (2025). Green data centers: Advancing sustainability in the digital era. In *Proceedings of the International Conference on Trends in Material Science and Inventive Materials (ICTMIM-2025)* (pp. 1817–1823). IEEE.
+[3] *Data center handbook* — Geng, H. (Ed.). (2015). John Wiley & Sons.
 
-Garey, M. R., & Johnson, D. S. (1979). *Computers and intractability: A guide to the theory of NP-completeness*. W. H. Freeman.
+[4] *Information technology — Data centre facilities and infrastructures — Part 4: Key performance indicators (EN 50600-4)* — CENELEC. (n.d.). European Committee for Electrotechnical Standardization.
 
-Geng, H. (Ed.). (2015). *Data center handbook*. John Wiley & Sons.
+[5] *Sustainability-aware resource provisioning in data centers* — Wang, J., Palanisamy, B., & Xu, J. (2020). In **2020 IEEE 6th International Conference on Collaboration and Internet Computing (CIC)** (pp. 60–67). IEEE. [https://doi.org/10.1109/CIC50333.2020.00018](https://doi.org/10.1109/CIC50333.2020.00018)
 
-Jin, X., Zhang, F., Vasilakos, A. V., & Liu, Z. (2016). Green data centers: A survey, perspectives, and future directions. *arXiv*. (arXiv:1608.00687)
+[6] *Data center efficiency assessment: Scaling up energy efficiency across the data center industry: Evaluating key drivers and barriers* — Whitney, J., & Delforge, P. (2014, August). Natural Resources Defense Council (NRDC) & Anthesis (Issue Paper IP:14-08-a). [https://www.nrdc.org/sites/default/files/data-center-efficiency-assessment-IP.pdf](https://www.nrdc.org/sites/default/files/data-center-efficiency-assessment-IP.pdf)
 
-LVM. (2020). *The ICT sector, climate and the environment – Interim report* (Publications of the Ministry of Transport and Communications 2020:14). Ministry of Transport and Communications, Finland.
+[7] *Computers and intractability: A guide to the theory of NP-completeness* — Garey, M. R., & Johnson, D. S. (1979). W. H. Freeman.
 
-Masanet, E., Shehabi, A., Lei, N., Smith, S., & Koomey, J. (2020). Recalibrating global data center energy-use estimates. *Science, 367*(6481), 984–986.
+[8] *The case for energy-proportional computing* — Barroso, L. A., & Hölzle, U. (2007). **Computer, 40**(12), 33–37.
 
-Sabree, R. M. S. (2025). Achieving sustainability in computing by minimizing data center carbon footprints. *Journal of Information Processing and Management*.
+[9] *United States data center energy usage report* — Shehabi, A., Smith, S. J., Sartor, D., Brown, R., Herrlin, M., Koomey, J. G., Masanet, E., Horner, N., Azevedo, I. L., & Lintner, W. (2016). Lawrence Berkeley National Laboratory.
 
-Shehabi, A., Smith, S. J., Sartor, D., Brown, R., Herrlin, M., Koomey, J. G., Masanet, E., Horner, N., Azevedo, I. L., & Lintner, W. (2016). *United States data center energy usage report*. Lawrence Berkeley National Laboratory.
+[10] *Recalibrating global data center energy-use estimates* — Masanet, E., Shehabi, A., Lei, N., Smith, S., & Koomey, J. (2020). **Science, 367**(6481), 984–986.
 
-Uddin, M., & Rahman, A. A. (2012). Energy efficiency and low carbon enabler green IT framework for data centers considering green metrics. *Renewable and Sustainable Energy Reviews, 16*(6), 4078–4094.
+[11] *On global electricity usage of communication technology: Trends to 2030* — Andrae, A. S. G., & Edler, T. (2015). **Challenges, 6**(1), 117–157.
 
-Wang, J., Palanisamy, B., & Xu, J. (2020). Sustainability-aware resource provisioning in data centers. In *2020 IEEE 6th International Conference on Collaboration and Internet Computing (CIC)* (pp. 60–67). IEEE. `https://doi.org/10.1109/CIC50333.2020.00018`
+[12] *Achieving sustainability in computing by minimizing data center carbon footprints* — Sabree, R. M. S. (2025). **Journal of Information Processing and Management**.
 
-Whitney, J., & Delforge, P. (2014, August). *Data center efficiency assessment: Scaling up energy efficiency across the data center industry: Evaluating key drivers and barriers* (Issue Paper IP:14-08-a). Natural Resources Defense Council (NRDC) & Anthesis. `https://www.nrdc.org/sites/default/files/data-center-efficiency-assessment-IP.pdf`
+[13] *The ICT sector, climate and the environment – Interim report* — LVM. (2020). Publications of the Ministry of Transport and Communications 2020:14. Ministry of Transport and Communications, Finland.
+
+[14] *Green data centers: Advancing sustainability in the digital era* — Elavarasi, J., Thilagam, T., Amudha, G., Saratha, B., Ananthi, S. N., & Siva Subramanian, R. (2025). In **Proceedings of the International Conference on Trends in Material Science and Inventive Materials (ICTMIM-2025)** (pp. 1817–1823). IEEE.
 
 
 ## P2 – Miksi datakeskus rakennetaan ja miten sijainti valitaan
