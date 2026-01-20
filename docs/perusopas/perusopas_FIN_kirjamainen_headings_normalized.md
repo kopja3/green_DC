@@ -14,7 +14,7 @@
 
 ### P1.1 Miksi perusopas?
 
-Tämä perusopas tukee vihreän datakeskuksen suunnittelua ja toteutusta Suomessa. Opas jäsentää päätökset vaiheisiin ja liittää ne mitattaviin suureisiin: energia (E), teho (P), kapasiteetti (C) ja palvelutaso (SLA/SLO) (Jin et al., 2016; Uddin & Rahman, 2012; Geng, 2015). Väitteet sidotaan lähteisiin.
+Tämä perusopas tukee vihreän datakeskuksen suunnittelua ja toteutusta Suomessa. Opas jäsentää päätökset vaiheisiin ja liittää ne mitattaviin suureisiin: energia (E), teho (P), kapasiteetti (C) ja palvelutaso (SLA/SLO) [1, 2, 3]. Väitteet sidotaan lähteisiin.
 
 Opas etenee luvuittain seuraavasti:
 
@@ -23,14 +23,14 @@ Opas etenee luvuittain seuraavasti:
 - **Luku 4:** Datakeskuksen elinkaaren vaiheet. Suunnittelu, rakentaminen, käyttö ja käytöstäpoisto; data ja materiaalivirrat.
 - **Luku 5:** Datakeskuksen toiminta vaiheittain. Kuorma ja palvelutaso → kapasiteettisuunnittelu → IT-tehon vaihtelu ajassa → sähköliittymän, jakelun, varmistuksen ja jäähdytyksen mitoitus.
 - **Luku 6:** Energian kulutus ja uudelleenkäyttö. Kulutuserät, jäähdytyksen sähkönkulutus, hukkalämmön talteenotto, rajapinnat ja mittaustieto.
-- **Luku 7:** Datakeskusten energiatehokkuuden mittaaminen. EN 50600-4 -mittarit ja mittauspisteet; mittarikortit (PUE, REF, ERF, CER, CUE, WUE).
+- **Luku 7:** Datakeskusten energiatehokkuuden mittaaminen. EN 50600-4 -mittarit ja mittauspisteet; mittarikortit (PUE, REF, ERF, CER, CUE, WUE)[4].
 
 Merkinnät ja mitoitusketjun symbolit esitellään kohdassa P1.4.
 
 
 ### P1.2 Mikä on vihreä datakeskus?
 
-Vihreä datakeskus on datakeskus, jossa suunnittelu ja operointi sidotaan energian ja päästöjen mittaamiseen sekä raportointiin (Uddin & Rahman, 2012). Tässä oppaassa vihreys kuvataan kokonaisenergiankulutuksena, energiatehokkuusmittareina ja päästöintensiteettinä (Jin et al., 2016; Geng, 2015). Vihreä datakeskus käsitellään seuraavina osa-alueina:
+Vihreä datakeskus on datakeskus, jossa suunnittelu ja operointi sidotaan energian ja päästöjen mittaamiseen sekä raportointiin [2]. Tässä oppaassa vihreys kuvataan kokonaisenergiankulutuksena, energiatehokkuusmittareina ja päästöintensiteettinä [1, 3]. Vihreä datakeskus käsitellään seuraavina osa-alueina:
 
 Kuorma ja kapasiteetti: työkuorman kuvaus, kapasiteetin mitoitus ja IT-tehon vaihtelu ajassa.
 
@@ -61,32 +61,33 @@ Kun toteutus on käynnissä, käytä menettelyä: mittaa → analysoi → muutos
 
 ### P1.4 Datakeskuksen sähkö- ja jäähdytysinfrastruktuurin tehomitoitusketju
 
-#### Perustermit ja yksiköt
+Perustermit ja yksiköt
 
-* **Teho `P`**: hetkellinen sähköteho. Yksikkö W, kW, MW.
+Teho P: hetkellinen sähköteho. Yksikkö W, kW, MW.
 
-* **Energia `E`**: teho aikajaksolla. Yksikkö Wh, kWh, MWh, GWh. (Esim. `kWh = kW × h`.)
+Energia E: teho aikajaksolla. Yksikkö Wh, kWh, MWh, GWh. (Esim. kWh = kW × h.)
 
-* **IT-työkuorma `L(t)`**: datakeskukseen saapuvien palvelu- ja työpyyntöjen määrä ja ominaisuudet ajan funktiona (esim. pyyntöä/s, transaktiota/s, jobeja/eräajoja, datavirtoja).
+IT-työkuorma L(t): datakeskukseen saapuvien palvelu- ja työpyyntöjen määrä ja ominaisuudet ajan funktiona (esim. pyyntöä/s, transaktiota/s, jobeja/eräajoja, datavirtoja).
 
-* **SLA (Service Level Agreement)**: **sopimus / sitoumus** palvelutasosta, jossa määritellään yksi tai useampi SLO sekä mittaus- ja raportointikäytäntö ja mahdolliset seuraamukset (esim. hyvitykset), jos taso ei toteudu; omassa datakeskuksessa “asiakas” on usein **sisäinen** (liiketoiminta, palvelun omistaja tai toinen tiimi).
+SLA (Service Level Agreement): sopimus / sitoumus palvelutasosta, jossa määritellään yksi tai useampi SLO sekä mittaus- ja raportointikäytäntö ja mahdolliset seuraamukset (esim. hyvitykset), jos taso ei toteudu; omassa datakeskuksessa “asiakas” on usein sisäinen (liiketoiminta, palvelun omistaja tai toinen tiimi).
 
-* **SLO (Service Level Objective)**: yksittäisen palveluominaisuuden **mitattava tavoitetaso** (esim. saatavuus, vasteaika, virheosuus) tietyllä aikajaksolla; määritellään numeerisena tavoitteena ja mittaustapana (esim. 99,9 %/kk tai p95 < 200 ms).
+SLO (Service Level Objective): yksittäisen palveluominaisuuden mitattava tavoitetaso (esim. saatavuus, vasteaika, virheosuus) tietyllä aikajaksolla; määritellään numeerisena tavoitteena ja mittaustapana (esim. 99,9 %/kk tai p95 < 200 ms).
 
-* **Palvelutasovaatimus mitoituksessa**: mitoitus johdetaan käytännössä SLO-tavoitteista (mitä pitää saavuttaa), kun taas SLA on niiden sopimusmuotoinen sitoumus (kenelle ja millä ehdoilla).
+Palvelutasovaatimus mitoituksessa: mitoitus johdetaan käytännössä SLO-tavoitteista (mitä pitää saavuttaa), kun taas SLA on niiden sopimusmuotoinen sitoumus (kenelle ja millä ehdoilla).
 
-* **Laskentakapasiteetti (IT-kapasiteetti)**: IT-resurssit, joilla `L(t)` suoritetaan sovituilla palvelutasoilla (palvelimet, CPU/GPU, muisti, tallennus, verkko). Kapasiteetti on kapasiteettisuunnittelun tulos. (Wang et al., 2020)
+Laskentakapasiteetti (IT-kapasiteetti): IT-resurssit, joilla L(t) suoritetaan sovituilla palvelutasoilla (palvelimet, CPU/GPU, muisti, tallennus, verkko). Kapasiteetti on kapasiteettisuunnittelun tulos [5].
 
-  * **Asennettu kapasiteetti `C_inst`**: hankittu ja asennettu resurssipooli (teoreettinen enimmäistaso).
-  * **Aktiivinen kapasiteetti `C_act(t)`**: se osa resurssipoolista, joka pidetään käytössä ajanhetkellä `t` (aktiiviset palvelimet ja niiden resurssit).
-  * **Varakapasiteetti `C_res`**: kapasiteetti, jota pidetään käytettävissä kuormahuippujen, ennusteen epävarmuuden tai vikatilanteiden varalta (SLA/SLO ja varmistusperiaate). (Whitney & Delforge, 2014; Wang et al., 2020)
+Asennettu kapasiteetti C_inst: hankittu ja asennettu resurssipooli (teoreettinen enimmäistaso).
 
-* **IT-teho `P_IT(t)`**: IT-laitteiden (palvelimet, tallennus, verkko) ottama sähköteho ajanhetkellä `t`. Yksikkö kW (IT).
+Aktiivinen kapasiteetti C_act(t): se osa resurssipoolista, joka pidetään käytössä ajanhetkellä t (aktiiviset palvelimet ja niiden resurssit).
 
-* **Lämpökuorma / jäähdytyskuorma `Q_th(t)`**: poistettava lämpöteho tilasta tai jäähdytyspiiristä. Yksikkö kW(th). Käytännön mitoituksessa `Q_th(t)` määräytyy IT-tehon ja muiden sähkökuormien (ml. sähköketjun häviöt) perusteella. (Geng, 2015)
+Varakapasiteetti C_res: kapasiteetti, jota pidetään käytettävissä kuormahuippujen, ennusteen epävarmuuden tai vikatilanteiden varalta (SLA/SLO ja varmistusperiaate) [5, 6].
 
-* **Jäähdytyksen sähköteho `P_cool(t)`**: jäähdytysjärjestelmän (esim. chillerit, pumput, puhaltimet, CRAH/CRAC) ottama sähköteho. Yksikkö kW(e). Huomio: `P_cool(t)` (sähköteho) ja `Q_th(t)` (poistettava lämpöteho) ovat eri suureita. (Geng, 2015)
+IT-teho P_IT(t): IT-laitteiden (palvelimet, tallennus, verkko) ottama sähköteho ajanhetkellä t. Yksikkö kW (IT).
 
+Lämpökuorma / jäähdytyskuorma Q_th(t): poistettava lämpöteho tilasta tai jäähdytyspiiristä. Yksikkö kW(th). Käytännön mitoituksessa Q_th(t) määräytyy IT-tehon ja muiden sähkökuormien (ml. sähköketjun häviöt) perusteella [3].
+
+Jäähdytyksen sähköteho P_cool(t): jäähdytysjärjestelmän (esim. chillerit, pumput, puhaltimet, CRAH/CRAC) ottama sähköteho. Yksikkö kW(e). Huomio: P_cool(t) (sähköteho) ja Q_th(t) (poistettava lämpöteho) ovat eri suureita [3].
 
 #### Tehomitoitusketju
 
