@@ -153,40 +153,74 @@ Vihreässä datakeskuksessa sama tehomitoitusketju säilyy, mutta hankkeessa mä
 Mittausrajalla tarkoitetaan pistettä, josta kokonaisenergia mitataan (esim. sähköliittymä tai pääkeskus), sekä pistettä, josta IT-energia mitataan (esim. UPS- tai PDU-lähdöt, räkki- tai PDU-mittaus). Rajaus määrittää, mitkä häviöt ja kuormat sisältyvät energiatehokkuuslukuihin, kuten PUE-arvoon [1][2].
 
 ---
+### P1.5 IT-työkuorman ja kapasiteetin mallinnus tehomitoitusketjun alkupäässä
 
-### P1.5 Tausta: perinteisen datakeskuksen energian- ja laitemitoitus
-
-P1.4 määritteli tehomitoitusketjun muodossa:
+P1.4 määritteli datakeskuksen sähkö- ja jäähdytysinfrastruktuurin tehomitoitusketjun muodossa:
 
 `L(t)` + (SLA/SLO, saatavuus) → `C_act(t)` + (`C_res`) → `P_IT(t)` → sähkö- ja jäähdytysinfrastruktuurin mitoitus [3][5].
 
-Tässä kappaleessa tarkennetaan ketjun alkupäätä eli sitä, miten **saapuvista työpyynnöistä** muodostetaan kuvanus työkuormasta `L(t)` ja miten tämän perusteella johdetaan kapasiteettisuunnittelun päätökset (`C_act(t)`, `C_res`) ja niistä edelleen IT-tehoprofiili `P_IT(t)` [5].
+Tässä kappaleessa tarkennetaan ketjun alkupäätä, eli sitä, miten saapuvista työpyynnöistä muodostetaan kuvaus IT-työkuormasta L(t) ja miten tämän perusteella johdetaan kapasiteettisuunnittelun päätökset (C_act(t), C_res) sekä niistä edelleen IT-tehoprofiili P_IT(t) [5].
 
-#### Keskeiset termit (katso myös sanasto, s. X)
+### Keskeiset termit  
+(katso myös sanasto, s. X)
 
-* **Työpyyntö (job)**: yksittäinen suoritettava tehtävä tai pyyntö, jolle määritetään resurssitarpeet ja aikavaatimus [5].
-* **IT-työkuorma `L(t)` (workload)**: työpyyntöjen määrä ja ominaisuudet ajan funktiona (esim. työpyyntöjä/aikaväli, pyyntöä/s, transaktiota/s) sekä kuorman vaihtelu ja huiput [5].
-* **Työtyyppien muodostus (workload characterization)**: työpyyntöjen ryhmittely työtyypeiksi ja työtyyppikohtaisten resurssiprofiilien kuvaus [5].
-* **Kuorman ennuste (workload prediction)**: työpyyntöjen määrän (ja tarvittaessa työtyyppijakauman) ennustaminen tuleville aikajaksoille historiadatan perusteella [5].
-* **Palvelutasovaatimus (SLA/SLO, saatavuus)**: ehto, jonka puitteissa työpyyntö käsitellään (esim. vasteaika, määräaika) ja jonka perusteella kapasiteettia pidetään käytössä ja/tai varalla [5].
-* **Kelpoisuussidonta (job–server mapping)**: sääntö, jolla määritetään, millä palvelin-/resurssityypeillä työpyyntö voidaan suorittaa (esim. CPU-, muisti- ja laitevaatimukset) [5].
-* **Kapasiteettisuunnittelu**: päätös siitä, mitkä resurssit pidetään käytössä `C_act(t)` (ja mitä pidetään varalla `C_res`) sekä miten työpyynnöt sijoitetaan niin, että resurssirajat ja SLA/SLO täyttyvät [5].
+**Työpyyntö (job)**  
+Yksittäinen suoritettava tehtävä tai pyyntö, jolle määritetään resurssitarpeet ja aikavaatimus [5].
 
-#### Lähtötieto perinteisessä mitoituksessa
+**IT-työkuorma L(t) (workload)**  
+Työpyyntöjen määrä ja ominaisuudet ajan funktiona (esim. työpyyntöjä/aikaväli, pyyntöä/s, transaktiota/s) sekä kuorman vaihtelu ja huiput [5].
 
-Perinteinen mitoitus perustuu usein historiadataan ja sen avulla kuvattuihin työpyyntöihin ja kuormituskäyttäytymiseen. Yksi tapa esittää tämä on erottaa (i) työtyyppien muodostaminen (workload characterization) ja (ii) kuorman ennustaminen (workload prediction) [5].
+**Työtyyppien muodostus (workload characterization)**  
+Työpyyntöjen ryhmittely työtyypeiksi ja työtyyppikohtaisten resurssiprofiilien kuvaus [5].
 
-Työkuorma tyypitetään klusteroimalla, jolloin saadaan joukko työtyyppejä ja niiden tyyppijakauma [5]. IT-työkuorma ennusteessa tulevien aikajaksojen työpyyntöjen määrää ennustetaan aikasarjamallilla, jolloin saadaan arvio työpyyntöjen määrästä per aikaväli [5]. Tällöin kapasiteettiperusta voidaan ilmaista muodossa: **ennustettu työpyyntöjen määrä + työtyyppien resurssiprofiilit** [5].
+**Kuorman ennuste (workload prediction)**  
+Työpyyntöjen määrän ja tarvittaessa työtyyppijakauman ennustaminen tuleville aikajaksoille historiadatan perusteella [5].
 
-Kun työtyypit ja palvelutasovaatimukset on kuvattu, palvelintarve johdetaan työpyyntöjen resurssivaatimuksista ja aikavaatimuksista (deadline/SLA/SLO). Työtyypit sidotaan niihin palvelintyyppeihin, joilla työpyyntö voidaan ajaa (job–server mapping), ja kapasiteetin mitoitus voidaan muotoilla kokonaislukusuunnitteluongelmana (ILP) [5]. Koska vastaavat ongelmaluokat kytkeytyvät bin packing -tyyppisiin pakkausongelmiin, käytännön mitoituksessa käytetään usein heuristiikkoja täsmäratkaisun sijaan [7][5].
+**Palvelutasovaatimus (SLA/SLO, saatavuus)**  
+Ehto, jonka puitteissa työpyyntö käsitellään (esim. vasteaika, määräaika tai saatavuus), ja jonka perusteella kapasiteettia pidetään aktiivisena ja/tai varalla [5].
 
-#### Vaihtoehtoinen lähtötieto: sovellus- ja alustataso
+**Kelpoisuussidonta (job–server mapping)**  
+Sääntö, jolla määritetään, millä palvelin- tai resurssityypeillä työpyyntö voidaan suorittaa (esim. CPU-, muisti- ja laitevaatimukset) [5].
 
-Toinen perinteinen mitoitus perustuu sovellus- ja alustatasoon, jonka kapasiteettisuunnittelu kytketään palveluarkkitehtuuriin ja kasvuennusteisiin, ja mitoituksessa huomioidaan myös järjestelmäuudistusten siirtymävaiheet (refresh capacity) [3]. Sähkötehon mitoituksessa erotetaan pätöteho (W), loisteho (VAR), näennäisteho (VA) ja tehokerroin (PF), koska kuorman sähköinen luonne vaikuttaa verkosta ja varavoimasta tarvittavaan kapasiteettiin [3].
+**Kapasiteettisuunnittelu**  
+Päätös siitä, mitkä resurssit pidetään käytössä aktiivisena kapasiteettina C_act(t), mitä pidetään varalla C_res, sekä miten työpyynnöt sijoitetaan niin, että resurssirajat ja SLA/SLO-vaatimukset täyttyvät [5].
 
-#### Yhteenveto
+---
 
-Perinteinen datakeskus voidaan mitoittaa joko (a) sovellus- ja alustatasosta tai (b) ennustetuista työpyynnöistä, työtyypeistä ennusteista. Molemmissa tapauksissa lopputuloksena johdetaan IT-teho (kW), jonka varaan sähkö- ja jäähdytysinfrastruktuuri mitoitetaan [3][5].
+### Lähtötieto perinteisessä kapasiteettisuunnittelussa
+
+Perinteinen kapasiteettisuunnittelu perustuu usein historiadataan ja sen avulla kuvattuihin työpyyntöihin ja kuormituskäyttäytymiseen. Tyypillisesti erotetaan:
+
+1. työtyyppien muodostus (workload characterization) ja  
+2. kuorman ennustaminen (workload prediction) [5].
+
+Työkuorma tyypitetään klusteroimalla, jolloin saadaan joukko työtyyppejä ja niiden suhteellinen jakauma [5]. IT-työkuorman ennusteessa tulevien aikajaksojen työpyyntöjen määrää ennustetaan aikasarjamalleilla, jolloin saadaan arvio työpyyntöjen määrästä per aikaväli [5].
+
+Tällöin kapasiteettiperusta voidaan ilmaista muodossa:
+
+
+Kun työtyypit ja palvelutasovaatimukset on kuvattu, palvelintarve johdetaan työpyyntöjen resurssivaatimuksista ja aikavaatimuksista (deadline, SLA/SLO). Työtyypit sidotaan niihin palvelintyyppeihin, joilla työpyyntö voidaan suorittaa (job–server mapping). Kapasiteetin mitoitus voidaan tällöin muotoilla kokonaislukusuunnitteluongelmana (ILP) [5].
+
+Koska ongelmaluokka vastaa bin packing -tyyppisiä pakkausongelmia, käytännön mitoituksessa käytetään usein heuristiikkoja täsmäratkaisujen sijaan [7][5].
+
+---
+
+### Vaihtoehtoinen lähtötieto: sovellus- ja alustataso
+
+Toinen perinteinen lähestymistapa kapasiteettisuunnitteluun perustuu sovellus- ja alustatasoon. Tällöin mitoitus kytketään palveluarkkitehtuuriin, kasvuennusteisiin ja järjestelmäuudistusten siirtymävaiheisiin (refresh capacity) [3].
+
+Sähkötehon mitoituksen kannalta erotetaan pätöteho (W), loisteho (VAR), näennäisteho (VA) ja tehokerroin (PF), koska kuorman sähköinen luonne vaikuttaa verkosta, UPS-järjestelmistä ja varavoimasta tarvittavaan kapasiteettiin [3].
+
+---
+
+### Yhteenveto
+
+Perinteisessä datakeskuksessa IT-kapasiteetti voidaan mitoittaa joko:
+
+a) sovellus- ja alustatason palveluarkkitehtuurista, tai  
+b) ennustetuista työpyynnöistä, työtyypeistä ja niiden resurssiprofiileista.
+
+Molemmissa tapauksissa lopputuloksena johdetaan mitoitustilannetta vastaava IT-teho P_IT,max, jonka perusteella sähkö- ja jäähdytysinfrastruktuuri mitoitetaan P1.4:ssa kuvatun tehomitoitusketjun mukaisesti [3][5].
 
 ---
 
