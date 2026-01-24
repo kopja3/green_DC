@@ -276,13 +276,6 @@ Luku 2 käsittelee rakentamisen syitä ja sijaintipäätöksiä, koska sijainti 
 
 Lisäksi sijainti kytkeytyy viive- ja käyttäjävaatimuksiin: kuorman siirto alueiden välillä on mahdollista vain, jos palvelutaso sallii viiveen ja saatavuuden näkökulmasta [5][1]. Suomessa etäisyydet ja viiveet ovat usein pienempi haaste kuin trooppisilla alueilla, mutta sijainti vaikuttaa myös ulkoilmajäähdytyksen mahdollisuuksiin ja hukkalämmön hyötykäyttöön.
 
-
----
-
-### P1.9 Miksi sijainti käsitellään ennen ratkaisujen valintaa
-
-Luku 2 käsittelee rakentamisen syitä ja sijaintipäätöksiä, koska sijainti määrittää useita tämän oppaan myöhempiä reunaehtoja. Sijaintipäätöksessä tarkastellaan sähköverkon kapasiteettia ja luotettavuutta, palvelutasoon liittyviä vaatimuksia (mm. saatavuus ja redundanssi), sähkön päästöintensiteettiä ja uusiutuvan energian todentamista sekä jäähdytys- ja hukkalämpöratkaisujen edellyttämiä liityntöjä ja infrastruktuuria [3][1][13]. Lisäksi sijainti kytkeytyy viive- ja käyttäjävaatimuksiin: kuorman siirto alueiden välillä on mahdollista vain, jos palvelutaso sallii viiveen ja saatavuuden näkökulmasta [5][1].
-
 ---
 
 ## Lähteet (numeroitu)
