@@ -226,11 +226,11 @@ Molemmissa tapauksissa lopputuloksena johdetaan mitoitustilannetta vastaava IT-t
 
 ### P1.6 Perinteisten datakeskusten käyttöaste ja IT-laitteiden sähkönkulutuksen kuormariippuvuus
 
-Käyttöaste vaikuttaa tehonkulutukseen ja sitä kautta energiankulutukseen, koska IT-laitteiden teho koostuu kuormaan sidotusta osasta ja kuormasta riippumattomasta perustehosta. Katsauksissa perinteisten yritysdatasalien käyttöaste on raportoitu matalaksi ja hyperskaalan korkeammaksi, kun kuormia voidaan konsolidoida ja ohjata laajassa resurssipoolissa [6].
+IT-kapasiteetin käyttöaste vaikuttaa IT-laitteiden hetkelliseen sähkönkulutukseen ja sitä kautta aikajaksolla kertyvään energiankulutukseen. IT-laitteiden sähköteho koostuu tyypillisesti kuormaan sidotusta osasta ja kuormasta riippumattomasta perustehosta. Katsauksissa perinteisten yritysdatasalien käyttöaste on raportoitu matalaksi, kun taas hyperskaaladatasaleissa käyttöaste on korkeampi, koska kuormia voidaan konsolidoida ja ohjata laajassa resurssipoolissa [6].
 
-Käyttöastetta laskevat kuorman vaihtelu ja kuorman ennustamisen epävarmuus (workload, workload prediction) sekä palvelutasovaatimukset (SLA/SLO/deadline), joiden vuoksi kapasiteettisuunnittelussa pidetään varakapasiteettia [6][5]. Lisäksi saatavuusvaatimukset näkyvät infrastruktuurissa varmistusratkaisuina (esim. N+1, 2N), jotka lisäävät jatkuvasti valmiina pidettävää laite- ja järjestelmäkantaa sekä niiden aiheuttamaa perustason sähkönkulutusta [6].
+Käyttöastetta alentavat IT-työkuorman vaihtelu ja kuorman ennustamisen epävarmuus (workload, workload prediction) sekä palvelutasovaatimukset (SLA/SLO, deadline), joiden vuoksi kapasiteettisuunnittelussa pidetään varakapasiteettia C_res [6][5]. Lisäksi saatavuusvaatimukset näkyvät infrastruktuurissa varmistusratkaisuina (esim. N+1, 2N), jotka lisäävät jatkuvasti valmiina pidettävää laite- ja järjestelmäkantaa sekä niiden aiheuttamaa kuormasta riippumatonta perustason sähkönkulutusta [6].
 
-Palvelinten sähkönkulutus ei historiallisesti ole ollut täysin energiaproportionaalista: tyhjäkäynnillä ja matalalla käyttöasteella sähkönkulutus ei alene samassa suhteessa kuin kuormitus [8][6]. Tämän vuoksi kapasiteetin mitoitus ja kuormanohjaus vaikuttavat suoraan datakeskuksen energiankulutukseen ja siitä johdettuihin päästöihin [1][6].
+Palvelinten sähkönkulutus ei historiallisesti ole ollut täysin energiaproportionaalista: tyhjäkäynnillä ja matalalla käyttöasteella sähkönkulutus ei alene samassa suhteessa kuin kuormitus [8][6]. Tämän vuoksi kapasiteetin mitoitus, aktiivisen kapasiteetin määrä C_act(t) sekä kuormanohjaus vaikuttavat suoraan datakeskuksen energiankulutukseen ja siitä johdettuihin päästöihin [1][6].
 
 ---
 
@@ -240,31 +240,42 @@ Datakeskuksia rakennetaan digitalisaation, pilvipalvelujen ja verkottuneiden sov
 
 Datakeskuksen käyttöaikaisia kasvihuonekaasupäästöjä voidaan arvioida kertomalla datakeskuksen käyttämä sähköenergia (kWh) käytetyn sähkön päästökertoimella (kgCO₂e/kWh). Tämä kattaa sähkönkulutukseen liittyvän osuuden; laajemmassa hiilijalanjälkirajauksessa voidaan lisäksi huomioida mm. varavoiman polttoaine, jäähdytyksen kylmäainepäästöt sekä laitteiden ja rakennuksen elinkaaren aikaiset päästöt [1][12].
 
+**Suomen erityispiirteet:** Suomessa sähköverkko on pääosin uusiutuvalla energialla tuotettua, ja ulkoilmaolosuhteet mahdollistavat usein free cooling -ratkaisut. Tämä vaikuttaa sekä energiatehokkuuteen että hukkalämmön hyödyntämismahdollisuuksiin.
+
 ---
 
 ### P1.8 Vihreän datakeskuksen elementit ja päätöspisteet
 
-Tässä perusoppaassa vihreändatakeskuksen toteutus jäsennetään päätöspisteiksi. Päätökset esitetään muodossa päätös → tuotos → luku, jotta etenemisjärjestys ja kunkin vaiheen tulokset näkyvät yhdestä paikasta. Osa-alueet on kuvattu kohdassa P1.2 ja mitoitusketjun merkinnät kohdassa P1.4.
+Tässä perusoppaassa vihreän datakeskuksen toteutus jäsennetään päätöspisteiksi. Päätökset esitetään muodossa **päätös → tuotos → luku**, jotta etenemisjärjestys ja kunkin vaiheen tulokset näkyvät yhdestä paikasta. Osa-alueet on kuvattu kohdassa P1.2 ja mitoitusketjun merkinnät kohdassa P1.4.
 
 Kirjallisuudessa vihreä datakeskus kytkee IT-, sähkö- ja jäähdytysjärjestelmät energian ja ympäristövaikutusten mittaamiseen sekä seurantaan, ja tarkastelu esitetään tyypillisesti mittareina ja osa-alueina (kuorma–kapasiteetti, sähköketju, jäähdytys, hukkalämpö, todentaminen) [2][1][3][5][8].
 
-Tämä perusopas tuo samaan kokonaisuuteen päätös→tuotos→luku-rakenteen, jotta mitoitusketju ja mittausrajat voidaan viedä suunnittelusta toteutukseen ja raportointiin ilman, että lähtötietoja kootaan useista eri kohdista.
+Tämä perusopas tuo samaan kokonaisuuteen **päätös → tuotos → luku** -rakenteen, jotta mitoitusketju ja mittausrajat voidaan viedä suunnittelusta toteutukseen ja raportointiin ilman, että lähtötietoja kootaan useista eri kohdista.
 
 #### Päätökset (päätös → tuotos → luku)
 
-* Sijainti → sähkö-, verkko- ja liityntäehdot (jäähdytys ja hukkalämpö), viive- ja saatavuusrajat → Luku 2
-* Työkuorma ja palvelutaso (SLA/SLO) → kuormakuvaus L(t) ja palvelutasorajat (vasteajat/saatavuus/deadline) → Luku 5 [5]
-* Kapasiteetti → C_inst, C_act(t) ja C_res(t) (asennettu, käytössä pidettävä, varalla pidettävä) → Luku 5 [5]
-* IT-tehoprofiili → P_IT(t) (IT-teho ajan funktiona; huiput ja niiden kesto) → Luku 5 [8][5]
-* Sähköketju ja varmistus → liittymäteho, jakelu, UPS/varavoima, varmistusperiaate (N / N+1 / 2N) ja häviöiden huomiointi → Luku 5 [3][13]
-* Sähkön alkuperä ja päästöt → todentamistapa (hankintamalli) ja päästökertoimien valinta raportointiin → Luku 6 [1][13]
-* Jäähdytysratkaisu → jäähdytysarkkitehtuuri ja jäähdytyksen sähköteho P_cool(t); mitoituksen lähtötiedot (lämpökuorma ja olosuhteet) → Luku 6 [3][14]
-* Jäähdytyksen mittaus → mittauspisteet ja aikasarjat (jäähdytyksen sähkö, lämpötilat, virtaus/ilmamäärä) IT-kuorman vertailuun → Luku 7 [3][14]
-* Hukkalämpö → rajapinta, mitattava lämpöenergia (MWh), toimitusvastuut ja sopimuslähtötiedot → Luku 6 [3][13]
-* Mittausrajat, mittarit ja raportointi → mittausrajat, mittarit (PUE, REF, ERF, CER, CUE, WUE), mittauspisteet ja dokumentoidut laskentasäännöt → Luku 7 [2][1][3]
-* Elinkaaren loppu → käytöstäpoisto, tietojen hävittäminen ja materiaalivirrat (prosessit ja vastuut) → Luku 4 [3]
+* **Sijainti** → sähkö-, verkko- ja liityntäehdot (jäähdytys ja hukkalämpö), viive- ja saatavuusrajat → Luku 2
+* **Työkuorma ja palvelutaso (SLA/SLO)** → kuormakuvaus L(t) ja palvelutasorajat (vasteajat/saatavuus/deadline) → Luku 5 [5]
+* **Kapasiteetti** → C_inst, C_act(t) ja C_res(t) (asennettu, käytössä pidettävä, varalla pidettävä) → Luku 5 [5]
+* **IT-tehoprofiili** → P_IT(t) (IT-teho ajan funktiona; huiput ja niiden kesto) → Luku 5 [8][5]
+* **Sähköketju ja varmistus** → liittymäteho, jakelu, UPS/varavoima, varmistusperiaate (N / N+1 / 2N) ja häviöiden huomiointi → Luku 5 [3][13]
+* **Sähkön alkuperä ja päästöt** → todentamistapa (hankintamalli) ja päästökertoimien valinta raportointiin → Luku 6 [1][13]
+* **Jäähdytysratkaisu** → jäähdytysarkkitehtuuri ja jäähdytyksen sähköteho P_cool(t); mitoituksen lähtötiedot (lämpökuorma ja olosuhteet) → Luku 6 [3][14]
+* **Jäähdytyksen mittaus** → mittauspisteet ja aikasarjat (jäähdytyksen sähkö, lämpötilat, virtaus/ilmamäärä) IT-kuorman vertailuun → Luku 7 [3][14]
+* **Hukkalämpö** → rajapinta, mitattava lämpöenergia (MWh), toimitusvastuut ja sopimuslähtötiedot → Luku 6 [3][13]
+* **Mittausrajat, mittarit ja raportointi** → mittausrajat, mittarit (PUE, REF, ERF, CER, CUE, WUE), mittauspisteet ja dokumentoidut laskentasäännöt → Luku 7 [2][1][3]
+* **Elinkaaren loppu** → käytöstäpoisto, tietojen hävittäminen, materiaalivirrat ja kierrätys, prosessit ja vastuut → Luku 4 [3]
 
 > Huom: jäähdytysratkaisujen vaihtoehdot ja valintaperusteet (esim. ekonomaiseri, hybridi, direct-to-chip, immersio) käsitellään luvussa 6. Mittareiden mittauspisteet ja laskentasäännöt käsitellään luvussa 7.
+
+---
+
+### P1.9 Miksi sijainti käsitellään ennen ratkaisujen valintaa
+
+Luku 2 käsittelee rakentamisen syitä ja sijaintipäätöksiä, koska sijainti määrittää useita tämän oppaan myöhempiä reunaehtoja. Sijaintipäätöksessä tarkastellaan sähköverkon kapasiteettia ja luotettavuutta, palvelutasoon liittyviä vaatimuksia (mm. saatavuus ja redundanssi), sähkön päästöintensiteettiä ja uusiutuvan energian todentamista sekä jäähdytys- ja hukkalämpöratkaisujen edellyttämiä liityntöjä ja infrastruktuuria [3][1][13].  
+
+Lisäksi sijainti kytkeytyy viive- ja käyttäjävaatimuksiin: kuorman siirto alueiden välillä on mahdollista vain, jos palvelutaso sallii viiveen ja saatavuuden näkökulmasta [5][1]. Suomessa etäisyydet ja viiveet ovat usein pienempi haaste kuin trooppisilla alueilla, mutta sijainti vaikuttaa myös ulkoilmajäähdytyksen mahdollisuuksiin ja hukkalämmön hyötykäyttöön.
+
 
 ---
 
