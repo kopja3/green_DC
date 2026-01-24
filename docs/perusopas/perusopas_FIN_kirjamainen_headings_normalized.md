@@ -69,55 +69,88 @@ Kun toteutus on käynnissä, käytä menettelyä: mittaa → analysoi → muutos
 
 ### P1.4 Datakeskuksen sähkö- ja jäähdytysinfrastruktuurin tehomitoitusketju
 
-#### Perustermit ja yksiköt
+### Perustermit ja yksiköt
 
-* **Teho `P`**: hetkellinen sähköteho. Yksikkö W, kW, MW.
+**Teho (P)**  
+Hetkellinen sähköteho.  
+Yksikkö: W, kW, MW.
 
-* **Energia `E`**: teho aikajaksolla. Yksikkö Wh, kWh, MWh, GWh. (Esim. `kWh = kW × h`.)
+**Energia (E)**  
+Teho aikajaksolla.  
+Yksikkö: Wh, kWh, MWh, GWh.  
+Esimerkki: 1 kWh = 1 kW × 1 h.
 
-* **IT-työkuorma `L(t)`**: datakeskukseen saapuvien palvelu- ja työpyyntöjen määrä ja ominaisuudet ajan funktiona (esim. pyyntöä/s, transaktiota/s, jobeja/eräajoja, datavirtoja).
+**IT-työkuorma L(t)**  
+Datakeskukseen saapuvien palvelu- ja työpyyntöjen määrä ja ominaisuudet ajan funktiona, esimerkiksi pyyntöä/s, transaktiota/s, eräajoja tai datavirtoja.
 
-* **SLA (Service Level Agreement)**: **sopimus / sitoumus** palvelutasosta, jossa määritellään yksi tai useampi SLO sekä mittaus- ja raportointikäytäntö ja mahdolliset seuraamukset (esim. hyvitykset), jos taso ei toteudu; omassa datakeskuksessa “asiakas” on usein **sisäinen** (liiketoiminta, palvelun omistaja tai toinen tiimi).
+**SLA (Service Level Agreement)**  
+Sopimus tai sitoumus palvelutasosta. SLA määrittää yhden tai useamman palvelutasotavoitteen (SLO), mittaus- ja raportointikäytännöt sekä mahdolliset seuraamukset (esim. hyvitykset), jos sovittu taso ei toteudu. Omassa datakeskuksessa asiakas on usein sisäinen (liiketoiminta, palvelun omistaja tai toinen tiimi).
 
-* **SLO (Service Level Objective)**: yksittäisen palveluominaisuuden **mitattava tavoitetaso** (esim. saatavuus, vasteaika, virheosuus) tietyllä aikajaksolla; määritellään numeerisena tavoitteena ja mittaustapana (esim. 99,9 %/kk tai p95 < 200 ms).
+**SLO (Service Level Objective)**  
+Yksittäisen palveluominaisuuden mitattava tavoitetaso (esim. saatavuus, vasteaika tai virheosuus) tietyllä aikajaksolla. SLO määritellään numeerisena tavoitteena ja mittaustapana (esim. 99,9 %/kk tai p95 < 200 ms).
 
-* **Palvelutasovaatimus mitoituksessa**: mitoitus johdetaan käytännössä SLO-tavoitteista (mitä pitää saavuttaa), kun taas SLA on niiden sopimusmuotoinen sitoumus (kenelle ja millä ehdoilla).
+**Palvelutasovaatimus mitoituksessa**  
+Tehomitoitus johdetaan käytännössä SLO-tavoitteista (mitä on saavutettava), kun taas SLA on näiden tavoitteiden sopimusmuotoinen sitoumus (kenelle ja millä ehdoilla).
 
-* **Laskentakapasiteetti (IT-kapasiteetti)**: IT-resurssit, joilla `L(t)` suoritetaan sovituilla palvelutasoilla (palvelimet, CPU/GPU, muisti, tallennus, verkko). Kapasiteetti on kapasiteettisuunnittelun tulos [5].
+**Laskentakapasiteetti (IT-kapasiteetti)**  
+IT-resurssit, joilla IT-työkuorma L(t) suoritetaan sovituilla palvelutasoilla. Kapasiteetti sisältää palvelimet, suorittimet (CPU/GPU), muistin, tallennuksen ja verkon, ja se on kapasiteettisuunnittelun tulos [5].
 
-  * **Asennettu kapasiteetti `C_inst`**: hankittu ja asennettu resurssipooli (teoreettinen enimmäistaso).
-  * **Aktiivinen kapasiteetti `C_act(t)`**: se osa resurssipoolista, joka pidetään käytössä ajanhetkellä `t` (aktiiviset palvelimet ja niiden resurssit).
-  * **Varakapasiteetti `C_res`**: kapasiteetti, jota pidetään käytettävissä kuormahuippujen, ennusteen epävarmuuden tai vikatilanteiden varalta (SLA/SLO ja varmistusperiaate) [6][5].
+**Asennettu kapasiteetti (C_inst)**  
+Hankittu ja asennettu resurssipooli; teoreettinen enimmäiskapasiteetti.
 
-* **IT-teho `P_IT(t)`**: IT-laitteiden (palvelimet, tallennus, verkko) ottama sähköteho ajanhetkellä `t`. Yksikkö kW (IT).
+**Aktiivinen kapasiteetti (C_act(t))**  
+Se osa asennetusta kapasiteetista, joka pidetään käytössä ajanhetkellä t.
 
-* **Lämpökuorma / jäähdytyskuorma `Q_th(t)`**: poistettava lämpöteho tilasta tai jäähdytyspiiristä. Yksikkö kW(th). Käytännön mitoituksessa `Q_th(t)` määräytyy IT-tehon ja muiden sähkökuormien (ml. sähköketjun häviöt) perusteella [3].
+**Varakapasiteetti (C_res)**  
+Kapasiteetti, joka pidetään käytettävissä kuormahuippujen, ennusteen epävarmuuden tai vikatilanteiden varalta palvelutasovaatimusten ja varmistusperiaatteiden mukaisesti [6][5].
 
-* **Jäähdytyksen sähköteho `P_cool(t)`**: jäähdytysjärjestelmän (esim. chillerit, pumput, puhaltimet, CRAH/CRAC) ottama sähköteho. Yksikkö kW(e). Huomio: `P_cool(t)` (sähköteho) ja `Q_th(t)` (poistettava lämpöteho) ovat eri suureita [3].
+**IT-teho (P_IT(t))**  
+IT-laitteiden (palvelimet, tallennus, verkko) ottama sähköteho ajanhetkellä t.  
+Yksikkö: kW (IT).
 
-#### Tehomitoitusketju
+**Lämpökuorma / jäähdytyskuorma (Q_th(t))**  
+Poistettava lämpöteho tilasta tai jäähdytyspiiristä.  
+Yksikkö: kW(th).  
+Käytännön mitoituksessa lämpökuorma määräytyy IT-tehon sekä muiden sähkökuormien ja sähköketjun häviöiden perusteella [3].
 
-Tehomitoitusketju tarkoittaa päätöksentekoketjua, jossa IT-työkuorman `L(t)` sekä palvelutasotavoitteiden (SLO) ja niistä johdettujen palvelutasositoumusten (SLA) perusteella määritetään vaiheittain datakeskuksen tarvittava sähkö- ja jäähdytysteho. Ketju etenee tyypillisesti IT-kuormasta (palvelimet, tallennus, verkko) kokonaistehoon ja edelleen infrastruktuurin mitoitukseen (sähköliittymä, UPS ja varavoima, sähkönjakelu sekä jäähdytysjärjestelmät). Saatavuus- ja toipumisvaatimukset (esim. redundanssi N+1/2N, RTO/RPO) kasvattavat mitoitusvaraa ja ohjaavat rakenteellisia valintoja [3][5].
+**Jäähdytyksen sähköteho (P_cool(t))**  
+Jäähdytysjärjestelmien (esim. chillerit, pumput, puhaltimet, CRAH/CRAC) ottama sähköteho.  
+Yksikkö: kW(e).  
+Huomio: jäähdytyksen sähköteho P_cool(t) ja poistettava lämpöteho Q_th(t) ovat eri suureita [3].
 
-Ketju esitetään seuraavasti:
+---
 
-`L(t)` + (SLA/SLO, saatavuus) → `C_act(t)` + (`C_res`) → `P_IT(t)` → sähkö- ja jäähdytysinfrastruktuurin mitoitus
+### Tehomitoitusketju
 
-* `L(t)` + SLA/SLO (+ saatavuus) → `C_act(t)` + (`C_res`): kuorman määrä ja vaihtelu sekä palvelutasoehdot määrittävät, kuinka suuri osa `C_inst`:stä pidetään aktiivisena ja kuinka paljon kapasiteettia pidetään varalla [6][5].
-* `C_act(t)` → `P_IT(t)`: aktiivisten resurssien määrä ja kuormitusaste muodostavat IT-tehoprofiilin, joka toimii sähkö- ja jäähdytysjärjestelmien mitoituksen lähtötietona [3][5].
-* `P_IT(t)` → infrastruktuurin mitoitus: IT-teho ja siihen liittyvät häviöt määrittävät sähköketjun mitoitustehoja (liittymä, UPS, jakelu) sekä lämpökuorman `Q_th(t)`, jonka perusteella jäähdytysjärjestelmät mitoitetaan [3].
+Tehomitoitusketju tarkoittaa päätöksentekoketjua, jossa IT-työkuorman L(t) sekä palvelutasotavoitteiden (SLO) ja niistä johdettujen palvelutasositoumusten (SLA) perusteella määritetään vaiheittain datakeskuksen tarvittava sähkö- ja jäähdytysteho.
 
-**Varmistusperiaate (esim. N+1, 2N)** tarkoittaa, että infrastruktuuri mitoitetaan siten, että kuorma voidaan ylläpitää myös yksittäisen komponentin vikaantuessa. Tämä näkyy sekä asennettuna infrastruktuurikapasiteettina että osakuormalla toimivien laitteiden hyötysuhteina [3][6].
+Ketju etenee IT-kuormasta (palvelimet, tallennus, verkko) kokonaismitoitustehoon ja edelleen infrastruktuurin mitoitukseen, joka kattaa sähköliittymän, UPS- ja varavoimajärjestelmät, sähkönjakelun sekä jäähdytysjärjestelmät. Saatavuus- ja toipumisvaatimukset (esim. redundanssi N+1 tai 2N, RTO/RPO) kasvattavat mitoitusvaraa ja ohjaavat rakenteellisia valintoja [3][5].
 
-#### Huomio (vihreä tarkastelu)
+Tehomitoitusketju esitetään seuraavasti:
 
-Tässä oppaassa sama tehomitoitusketju säilyy, mutta hankkeessa määritetään lisäksi:
+**L(t) + SLA/SLO (+ saatavuus) → C_act(t) + C_res**  
+IT-kuorman määrä ja ajallinen vaihtelu sekä palvelutasovaatimukset määrittävät, kuinka suuri osa asennetusta kapasiteetista C_inst pidetään aktiivisena ja kuinka paljon kapasiteettia varataan kuormahuippujen ja vikatilanteiden varalle [6][5].
 
-1. **sähkön alkuperän todentaminen**,
-2. **energian käytön mittausrajat**, ja
-3. **hukkalämmön talteenoton ja hyötykäytön rajapinnat** [1][2].
+**C_act(t) → P_IT(t)**  
+Aktiivisten resurssien määrä ja niiden kuormitusaste muodostavat IT-tehoprofiilin, joka toimii sähkö- ja jäähdytysjärjestelmien mitoituksen lähtötietona [3][5].
 
-**Mittausrajalla** tarkoitetaan, mistä pisteestä kokonaisenergia mitataan (esim. sähköliittymä / pääkeskus) ja mistä pisteestä IT-energia mitataan (esim. UPS/PDU-lähdöt tai räkki-/PDU-mittaus). Rajaus määrittää, mitkä häviöt ja kuormat sisältyvät energiatehokkuuslukuihin (esim. PUE) [1][2].
+**P_IT(t) → infrastruktuurin mitoitus**  
+IT-teho ja siihen liittyvät häviöt määrittävät sähköketjun mitoitustehoja (sähköliittymä, UPS, jakelu) sekä syntyvän lämpökuorman Q_th(t), jonka perusteella jäähdytysjärjestelmät mitoitetaan [3].
+
+**Varmistusperiaate**  
+Varmistusperiaate (esim. N+1 tai 2N) tarkoittaa, että infrastruktuuri mitoitetaan siten, että vaadittu IT-kuorma voidaan ylläpitää myös yksittäisen komponentin vikaantuessa. Tämä näkyy sekä asennettuna infrastruktuurikapasiteettina että osakuormalla toimivien laitteiden hyötysuhteissa [3][6].
+
+---
+
+### Huomio (vihreä tarkastelu)
+
+Vihreässä datakeskuksessa sama tehomitoitusketju säilyy, mutta hankkeessa määritetään lisäksi:
+
+- sähkön alkuperän todentaminen,
+- energian käytön mittausrajat, sekä
+- hukkalämmön talteenoton ja hyötykäytön rajapinnat [1][2].
+
+Mittausrajalla tarkoitetaan pistettä, josta kokonaisenergia mitataan (esim. sähköliittymä tai pääkeskus), sekä pistettä, josta IT-energia mitataan (esim. UPS- tai PDU-lähdöt, räkki- tai PDU-mittaus). Rajaus määrittää, mitkä häviöt ja kuormat sisältyvät energiatehokkuuslukuihin, kuten PUE-arvoon [1][2].
 
 ---
 
