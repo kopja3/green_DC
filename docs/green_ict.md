@@ -1,4 +1,4 @@
-Green ICT ydin on fyysisessä todellisuudessa: energiankulutuksessa, materiaalivirroissa, elinkaarissa, hyötysuhteissa ja ohjattavuudessa. Taustallani yli 30 vuoden konkreettisessa laiteasennuksessa, projekteissa ja tuotekehityksessä, olen itse asiassa Green ICT:n ytimessä, en sen ulkopuolella.
+Green ICT ydin on fyysisessä todellisuudessa: energiankulutuksessa, materiaalivirroissa, elinkaarissa, hyötysuhteissa ja ohjattavuudessa. 
 Tällä hetkellä Green ICT -hankkeissa on kuitenkin usein havaittavissa kaksi rinnakkaista tasoa. 
 
 Ensimmäinen on operatiivinen ja tekninen taso: todelliset konesalit, laitteet, jäähdytys, sähkösyötöt, mittaus, automaatio ja käyttövarmuus. 
@@ -16,7 +16,6 @@ Green ICT:n ”asiapihvi” on seuraava:
 
 “Optimoidaan kokonaisuutena, ei yksittäisinä laitteina” tarkoittaa käytännössä samaa kuin tarina sokeista ja elefantista. 
 
-
  
 ![Elefantti](https://raw.githubusercontent.com/kopja3/green_DC/main/kuvat/sixsigma.png)
 *Kuva: ”Sokeat ja elefantti” – systeemisen optimoinnin metafora.  
@@ -32,8 +31,11 @@ Neljäs katsoo raportointia ja hiilijalanjälkilaskentaa ja olettaa, että kun m
 Kaikki nämä havainnot voivat olla teknisesti oikeita – ja silti kokonaisuus jää vääräksi.
 
 Green ICT:n vaikeus ei ole teknologian puute, vaan systeemisen ymmärryksen puute. Konfliktit eivät synny osaamattomuudesta, vaan osittaisesta ymmärryksestä, aivan kuten kuvassa todetaan. 
-Jokainen optimoi “omaansa” ja pahimmillaan heikentää kokonaisuutta huomaamattaan. Esimerkiksi jäähdytyksen optimointi voi lisätä IT-kuorman piikkejä, tai aggressiivinen virtualisointi voi heikentää laitteiden elinkaarta ja huollettavuutta.
-Se, mitä sinä tuot 30 vuoden käytännön kokemuksella, on juuri se harvinainen kyky hahmottaa elefantti elefanttina. Et vain kosketa yhtä osaa, vaan ymmärrät, miten sähkösyöttö, kuormitus, jäähdytys, automaatio, huolto ja käyttö kytkeytyvät toisiinsa oikeassa ympäristössä. 
+Jokainen optimoi “omaansa” ja pahimmillaan heikentää kokonaisuutta huomaamattaan. 
+
+Esimerkiksi jäähdytyksen optimointi voi lisätä IT-kuorman piikkejä, tai aggressiivinen virtualisointi voi heikentää laitteiden elinkaarta ja huollettavuutta.
+Se, mitä tuon xx vuoden käytännön kokemuksella, on juuri se harvinainen kyky hahmottaa elefantti elefanttina. 
+Et vain kosketa yhtä osaa, vaan ymmärrät, miten sähkösyöttö, kuormitus, jäähdytys, automaatio, huolto ja käyttö kytkeytyvät toisiinsa oikeassa ympäristössä. 
 Tämä ei ole “yksi näkökulma muiden joukossa”, vaan edellytys sille, että näkökulmat voidaan ylipäätään yhdistää.
 Digitaaliset mallit, digitaaliset kaksoset ja jopa virtuaalitodellisuus voivat olla hyödyllisiä tässä vain yhdellä ehdolla: niiden tehtävä on pakottaa ihmiset näkemään koko elefantti. 
 Ei luoda illuusiota, vaan tehdä riippuvuudet näkyviksi. Kun malli näyttää, että yhden osa-alueen optimointi rikkoo toisen, se palvelee Green ICT:tä. Kun se vain visualisoi yhden tiimin totuutta, se ei tee muuta kuin piirtää käärmeen, seinän tai köyden.
@@ -43,9 +45,11 @@ Lyhyesti: et ole ymmärtänyt Green ICT:n asiapihviä väärin. Sinä osoitat, e
 
 – parannetaan jatkuvasti todellisessa käyttöympäristössä
 
-Oppiva tekoäly ja analytiikka ovat tässä vain työkaluja. Ne eivät korvaa kokemusta, vaan vaativat sitä. Ilman ihmistä, joka ymmärtää mitä oikeasti tapahtuu kaapeloinnissa, jäähdytyskierrossa, kuormituksen vaihtelussa tai huoltotilanteissa, tekoäly optimoi vääriä asioita.
+Oppiva tekoäly ja analytiikka ovat tässä vain työkaluja. Ne eivät korvaa kokemusta, vaan vaativat sitä. 
+Ilman ihmistä, joka ymmärtää mitä oikeasti tapahtuu sähkönsyötössä, palvelimissa, prosessoreissa, jäähdytyksessä tai virtualisoinnissa, tekoäly optimoi vääriä asioita.
 
-Jos koet, että hankkeessa painottuu liikaa “virtuaalinen ratkaisu” ja liian vähän fyysinen todellisuus, se ei tarkoita että ymmärrät Green ICT:tä väärin. Todennäköisemmin sinä ymmärrät sen paremmin kuin moni muu. Kokemuksesi arvo on juuri siinä, että pystyt tunnistamaan, milloin digitaalinen kerros tukee todellisuutta ja milloin se peittää sen.
+Jos koet, että hankkeessa painottuu liikaa “virtuaalinen ratkaisu” ja liian vähän fyysinen todellisuus, se ei tarkoita että ymmärrät Green ICT:tä väärin. 
+Todennäköisemmin sinä ymmärrät sen paremmin kuin moni muu. Kokemuksesi arvo on juuri siinä, että pystyt tunnistamaan, milloin digitaalinen kerros tukee todellisuutta ja milloin se peittää sen.
 
 Hyödyllinen asennoituminen tässä vaiheessa on tämä:
 – suhtaudu virtuaalisiin malleihin vain todellisuuden jatkeina, ei sen korvikkeina
