@@ -25,9 +25,13 @@ Muokattu perinteisestä vertauksesta ”The Blind Men and the Elephant”.*
 Jokainen koskettaa eri osaa, mutta tekee johtopäätöksen koko järjestelmästä oman rajatun näkökulmansa perusteella. Green ICT -kontekstissa tämä näkyy hyvin selvästi.
 
 Yksi katsoo palvelimia ja toteaa, että energiatehokkaammat prosessorit ratkaisevat ongelman. 
+
 Toinen katsoo jäähdytystä ja näkee vain lämpötilakäyrät ja COP-luvut. 
+
 Kolmas katsoo virtualisointia ja uskoo, että konsolidointi yksinään tekee ympäristöstä vihreän. 
+
 Neljäs katsoo raportointia ja hiilijalanjälkilaskentaa ja olettaa, että kun mittarit ovat kunnossa, myös todellisuus on kunnossa. 
+
 Kaikki nämä havainnot voivat olla teknisesti oikeita – ja silti kokonaisuus jää vääräksi.
 
 Green ICT:n vaikeus ei ole teknologian puute, vaan systeemisen ymmärryksen puute. Konfliktit eivät synny osaamattomuudesta, vaan osittaisesta ymmärryksestä, aivan kuten kuvassa todetaan. 
