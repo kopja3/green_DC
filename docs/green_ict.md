@@ -1,4 +1,4 @@
-Green ICT ydin on fyysisessä todellisuudessa: energiankulutuksessa, materiaalivirroissa, elinkaarissa, hyötysuhteissa ja ohjattavuudessa. Taustallani yli 30 vuoden konkreettisessa laiteasennuksessa, projekteissa ja tuotekehityksessä, olen itse asiassa Green ICT:n ytimessä, et sen ulkopuolella.
+Green ICT ydin on fyysisessä todellisuudessa: energiankulutuksessa, materiaalivirroissa, elinkaarissa, hyötysuhteissa ja ohjattavuudessa. Taustallani yli 30 vuoden konkreettisessa laiteasennuksessa, projekteissa ja tuotekehityksessä, olen itse asiassa Green ICT:n ytimessä, en sen ulkopuolella.
 Tällä hetkellä Green ICT -hankkeissa on kuitenkin usein havaittavissa kaksi rinnakkaista tasoa. 
 
 Ensimmäinen on operatiivinen ja tekninen taso: todelliset konesalit, laitteet, jäähdytys, sähkösyötöt, mittaus, automaatio ja käyttövarmuus. 
