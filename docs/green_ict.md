@@ -19,7 +19,8 @@ Green ICT:n ”asiapihvi” on seuraava:
 
  
 
-![Elefantti](green_DC/docs/green_ict.md)
+![Elefantti]![Elefantti](https://raw.githubusercontent.com/kopja3/green_DC/main/kuvat/sixsigma.png)
+
 
 
 Jokainen koskettaa eri osaa, mutta tekee johtopäätöksen koko järjestelmästä oman rajatun näkökulmansa perusteella. Green ICT -kontekstissa tämä näkyy hyvin selvästi.
