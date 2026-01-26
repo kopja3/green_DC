@@ -18,8 +18,7 @@ Green ICT:n ”asiapihvi” on seuraava:
 
 
  
-
-![Elefantti]![Elefantti](https://raw.githubusercontent.com/kopja3/green_DC/main/kuvat/sixsigma.png)
+![Elefantti](https://raw.githubusercontent.com/kopja3/green_DC/main/kuvat/sixsigma.png)
 
 
 
