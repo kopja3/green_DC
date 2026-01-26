@@ -19,7 +19,8 @@ Green ICT:n ”asiapihvi” on seuraava:
 
  
 ![Elefantti](https://raw.githubusercontent.com/kopja3/green_DC/main/kuvat/sixsigma.png)
-
+*Kuva: ”Sokeat ja elefantti” – systeemisen optimoinnin metafora.  
+Muokattu perinteisestä vertauksesta ”The Blind Men and the Elephant”.*
 
 
 Jokainen koskettaa eri osaa, mutta tekee johtopäätöksen koko järjestelmästä oman rajatun näkökulmansa perusteella. Green ICT -kontekstissa tämä näkyy hyvin selvästi.
