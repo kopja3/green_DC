@@ -453,4 +453,573 @@ Snowden, D. J., \& Boone, M. E. (2007). A leader's framework for decision making
 **Kohderyhmä:** ICT-ammattilaiset, datakeskusoperaattorit, tekninen johto
 **Käyttötarkoitus:** Itseopiskelumateriaali, perehdytys, viitekehys
 
+***
+
+## Datakeskus for dummies – peruskäsitteet a–ö
+
+### Adiabaattinen (jäähdytys / kostutus)
+
+Adiabaattinen jäähdytys tai kostutus perustuu veden haihtumiseen ilmaan. Kun vettä sumutetaan tai höyrystetään ilmaan, veden höyrystyminen sitoo lämpöä ilmasta ja ilman lämpötila laskee, samalla ilman kosteus nousee.
+
+### Akkuvarasto
+
+Akkuvarasto on järjestelmä, jossa sähköenergiaa varastoidaan akkuihin ja puretaan takaisin verkkoon tai kuormille tarpeen mukaan. Datakeskuksessa akkuvarasto voi tukea UPS-järjestelmää tai osallistua dynaamiseen energianhallintaan (esimerkiksi hintapiikkien tasaamiseen).
+
+***
+
+### ASHRAE A2 -luokka
+
+ASHRAE A2 -luokka on ilmastointiluokitus, joka määrittelee sallittuja lämpötila- ja kosteusalueita IT-laitteille. A2-luokassa sallittu lämpötila-alue on tyypillisesti 10–35 °C ja suhteellinen kosteus 20–80%.
+
+***
+
+### Automaattinen skaalaus
+
+Automaattinen skaalaus (autoscaling) on järjestelmän kyky lisätä tai vähentää palvelinresursseja automaattisesti kuorman perusteella. Tavoitteena on pitää riittävä kapasiteetti palvelutasotavoitteen täyttämiseksi ilman pysyvää ylisuunnittelua.
+
+***
+
+### Automaattiset hälytykset, hälytysrajat
+
+Automaattiset hälytykset ovat järjestelmän tuottamia ilmoituksia, jotka aktivoituvat, kun mitattu arvo ylittää ennalta määritellyn hälytysrajan. Datakeskuksessa hälytysrajoja määritellään esimerkiksi lämpötilalle, teholle ja PUE-arvolle.
+
+***
+
+### Automaatio
+
+Automaatio tarkoittaa järjestelmiä, jotka ohjaavat laitteita (esimerkiksi pumppuja, puhaltimia ja venttiilejä) ilman jatkuvaa manuaalista ohjausta. Datakeskuksessa automaatio lukee mittaustietoja ja säätää jäähdytystä ja muita tukijärjestelmiä asetettujen tavoitteiden mukaan.
+
+***
+
+### Autonomia (24–72 h)
+
+Autonomia tarkoittaa aikaa, jonka datakeskus voi toimia ilman valtakunnan verkon sähköä. Esimerkiksi 24–72 tunnin autonomialla viitataan varavoima- ja polttoainekapasiteettiin, joka riittää kyseiseksi ajaksi.
+
+***
+
+### Batch-työt
+
+Batch-työt ovat eräajoja, joissa suuri määrä tehtäviä suoritetaan ilman välitöntä käyttäjäinteraktiota. Esimerkkejä ovat raporttien generointi ja analyysilaskenta. Batch-työt voidaan usein ajoittaa aikaan, jolloin sähkö on halvempaa tai vähäpäästöisempää.
+
+***
+
+### Benchmarking
+
+Benchmarking on vertailua, jossa datakeskuksen suorituskykyä tai energiatehokkuutta verrataan muihin datakeskuksiin tai standardoituihin arvoihin. Vertailu voi perustua esimerkiksi PUE-arvoihin tai kapasiteettimittareihin.
+
+***
+
+### Chiller
+
+Chilleri on mekaaninen jäähdytyslaite, joka poistaa lämpöä nesteestä kompressorin avulla. Jäähdytetty neste voidaan käyttää datakeskuksen ilman tai laitteiden jäähdyttämiseen.
+
+***
+
+### Complicated / complex (viitekehys)
+
+Complicated-ympäristö on järjestelmä, jossa syy–seuraussuhteet ovat monimutkaisia mutta analysoitavissa, ja suunnittelu perustuu standardeihin ja laskentaan. Complex-ympäristö on järjestelmä, jossa syy–seuraussuhteet ovat osin ennakoimattomia, ja ohjaus perustuu jatkuvaan mittaamiseen, kokeiluun ja oppimiseen.
+
+***
+
+### Containment
+
+Containment tarkoittaa rakenteita, joilla kuuma ja kylmä ilma erotetaan konesalissa. Esimerkkejä ovat suljetut kylmäkäytävät ja suljetut kuumakäytävät, joissa käytävä rajataan ovilla ja kattorakenteilla.
+
+***
+
+### COP (Coefficient of Performance)
+
+COP on lämpöpumppujen ja jäähdytyslaitteiden suorituskykymittari, joka ilmaisee tuotetun lämpö- tai jäähdytysenergian suhteen käytettyyn sähköenergiaan. Esimerkiksi COP = 3 tarkoittaa, että yhdellä kilowattitunnilla sähköä tuotetaan kolme kilowattituntia lämpöä.
+
+***
+
+### CRAH / CRAC
+
+CRAH (Computer Room Air Handler) käyttää jäähdytykseen kylmävesikiertoa ja puhaltimia.
+CRAC (Computer Room Air Conditioner) käyttää suoraa kylmäainekiertoa ja kompressoria. Molemmat jäähdyttävät konesalin ilmaa.
+
+***
+
+### CUE (Carbon Usage Effectiveness)
+
+CUE on mittari, joka kuvaa datakeskuksen hiilidioksidipäästöjä suhteessa IT-energiankulutukseen. Se lasketaan jakamalla kokonaispäästöt (kg CO₂) IT-energialla (kWh).
+
+***
+
+### Datakeskus
+
+Datakeskus on tila tai rakennus, jossa on palvelimia, tallennus- ja verkkolaitteita sekä niitä tukevat sähkö-, jäähdytys- ja tietoliikennejärjestelmät. Datakeskuksessa ajetaan sovelluksia ja säilytetään dataa keskitetysti.
+
+***
+
+### Dieselgeneraattori
+
+Dieselgeneraattori on polttomoottoriin perustuva varavoimalaite, joka muuntaa dieselpolttoaineen energian sähköksi. Datakeskuksessa dieselgeneraattori käynnistetään, kun valtakunnan verkon syöttö katkeaa pidemmäksi aikaa.
+
+***
+
+### Direct-to-chip
+
+Direct-to-chip on nestejäähdytysratkaisu, jossa neste kiertää suoraan prosessorin ja muiden kriittisten komponenttien kylmälevyissä. Lämpö siirtyy suoraan komponentista nesteeseen ilman välissä olevaa ilmakerrosta.
+
+***
+
+### Dry cooler
+
+Dry cooler on laite, jossa neste jäähdytetään ulkoilmaa käyttäen ilman veden haihduttamista. Neste kiertää lämmönvaihtimen läpi ja jäähtyy ulkolämpötilan mukaan, ilman avointa vesikiertoa.
+
+***
+
+### Dynaaminen energianhallinta
+
+Dynaaminen energianhallinta tarkoittaa sähkönkulutuksen ja kuormien ohjaamista reaaliaikaisen tiedon perusteella. Ohjaus voi ottaa huomioon esimerkiksi sähkön hinnan, päästöintensiteetin ja kuormaprofiilin.
+
+***
+
+### Economizer
+
+Economizer on jäähdytysratkaisu, joka hyödyntää ulkoilmaa tai ulkoilman viileyttä IT-laitteiden jäähdytyksessä. Direct economizer tuo ulkoilman suoraan konesaliin, kun taas indirect economizer käyttää lämmönvaihdinta.
+
+***
+
+### ERF (Energy Reuse Factor)
+
+ERF on mittari, joka kuvaa, kuinka suuri osa datakeskuksen energiasta otetaan talteen ja hyödynnetään uudelleen, esimerkiksi kaukolämmössä. ERF lasketaan hyödynnetyn energian ja kokonaisenergian suhteena.
+
+***
+
+### EU:n raportointivelvoite, auditointi
+
+EU:n raportointivelvoite edellyttää, että tietyt datakeskukset raportoivat vuosittain energiankulutuksesta ja kestävyysmittareista (kuten PUE, WUE, REF, ERF). Auditointi tarkoittaa viranomaisen tai kolmannen osapuolen tekemää tarkastusta, jossa raportoidut tiedot ja mittausjärjestelmä käydään läpi.
+
+***
+
+### Failover-testi
+
+Failover-testi on suunniteltu koe, jossa datakeskus siirretään tahallisesti varajärjestelmän (esimerkiksi varavoiman) varaan. Tarkoitus on varmistaa, että siirtymä toimii suunnitellusti ilman palvelukatkosta.
+
+***
+
+### Fingridin avoin API
+
+Fingridin avoin API on rajapinta, josta voi hakea Suomen sähköjärjestelmään liittyvää ajantasaista dataa, kuten sähkön päästökerrointa ja hintaa. Datakeskus voi käyttää tätä tietoa dynaamisessa energianhallinnassa.
+
+***
+
+### Hot aisle / cold aisle
+
+Hot aisle / cold aisle on räkki- ja salijärjestely, jossa palvelinten etupuoli (kylmä puoli) on vastakkain kylmäkäytävässä ja takapuoli (kuuma puoli) vastakkain kuumakäytävässä. Järjestely erottaa kylmän ja kuuman ilman virtaukset.
+
+***
+
+### Hot spot
+
+Hot spot on paikallinen alue konesalissa, jossa lämpötila nousee muita alueita korkeammaksi. Hot spot voi johtua heikosta ilmankierrosta, epätasaisesta kuormasta tai tukkeutuneista ilmanreiteistä.
+
+***
+
+### HPC / AI-kuormat
+
+HPC (High Performance Computing) ja AI (Artificial Intelligence) -kuormat ovat laskentatehtäviä, jotka vaativat paljon prosessori- ja usein GPU-tehoa. Näiden tehotiheys räkissä on tyypillisesti korkea, mikä asettaa vaatimuksia jäähdytykselle.
+
+***
+
+### HVAC-mittarit
+
+HVAC-mittarit mittaavat lämmitys-, ilmanvaihto- ja ilmastointijärjestelmien suureita, kuten ilmavirtaa, lämpötilaa ja sähkötehoa. Datakeskuksessa niitä käytetään jäähdytyksen toiminnan ja energiankulutuksen seurantaan.
+
+***
+
+### Hukkalämpö
+
+Hukkalämpö on lämpöenergiaa, joka syntyy palvelimien ja muiden laitteiden sähkönkulutuksesta. Lähtökohtaisesti se poistetaan jäähdytysjärjestelmällä, mutta se voidaan myös ottaa talteen ja hyödyntää esimerkiksi rakennusten tai kaukolämmön lämmityksessä.
+
+***
+
+### Hukkalämpöliittymä
+
+Hukkalämpöliittymä on tekninen liityntäpiste datakeskuksen ja lämpöä vastaanottavan järjestelmän (esimerkiksi kaukolämpöverkon) välillä. Se sisältää lämmönvaihtimen, putkiston ja mittauslaitteet.
+
+***
+
+### Hybridi jäähdytys
+
+Hybridi jäähdytys yhdistää vapaajäähdytyksen (economizer) ja mekaanisen jäähdytyksen (chiller) samaan järjestelmään. Käyttötilaa vaihdetaan ulkolämpötilan ja kuorman perusteella.
+
+***
+
+### Hyötysuhde (osakuormalla)
+
+Hyötysuhde osakuormalla kuvaa laitteen, kuten UPS:n tai chillerin, hyötysuhdetta, kun se toimii alle nimelliskuorman. Hyötysuhde on usein matalampi osakuormalla kuin lähellä nimelliskuormaa.
+
+***
+
+### Ilmajäähdytys / nestejäähdytys
+
+Ilmajäähdytyksessä lämpö siirtyy palvelimista ilmaan, jota kierrätetään jäähdytyslaitteiden läpi. Nestejäähdytyksessä lämpö siirtyy suoraan tai epäsuorasti nesteeseen, jota jäähdytetään lämmönvaihtimissa tai dry coolereissa.
+
+***
+
+### IT-kuorma
+
+IT-kuorma tarkoittaa datakeskuksessa ajettavien palveluiden ja sovellusten vaatimaa laskenta-, tallennus- ja verkkokapasiteettia. Se voidaan kuvata esimerkiksi palvelinmääränä, CPU- ja muistikuormana tai IT-tehona (kW).
+
+***
+
+### Jäähdytys
+
+Jäähdytys on järjestelmä, joka poistaa IT-laitteiden tuottaman lämmön ja pitää lämpötilan sallituissa rajoissa. Jäähdytys voi perustua ilmaan, veteen tai muuhun jäähdytysnesteeseen.
+
+***
+
+### Jäähdytysarkkitehtuuri
+
+Jäähdytysarkkitehtuuri kuvaa jäähdytysratkaisun kokonaisrakennetta: käytetyt laitteet (chiller, dry cooler, pumput), ilman ja nesteen reitit, lämpötilatasot ja ohjausperiaatteet.
+
+***
+
+### Kaizen
+
+Kaizen on jatkuvan parantamisen periaate, jossa järjestelmää kehitetään pienin, toistuvin muutoksin. Datakeskuksessa kaizen voi tarkoittaa esimerkiksi säätöjen hienosäätöä ja toimintatapojen iteratiivista kehittämistä.
+
+***
+
+### Kapasiteetin mitoitus, sähkömitoitus
+
+Kapasiteetin mitoitus tarkoittaa IT-laitteiden, jäähdytyksen ja sähköjärjestelmän mitoitusta ennustetun IT-kuorman mukaan. Sähkömitoitus on osa tätä ja sisältää liittymätehon, jakelun ja varavoiman mitoituksen.
+
+***
+
+### Katastrofivalmius
+
+Katastrofivalmius on kyky ylläpitää toiminta tai palautua toimintaan merkittävän häiriön, kuten luonnonkatastrofin tai laajan sähkökatkon jälkeen. Se kattaa tekniset, organisatoriset ja prosessuaaliset varautumistoimet.
+
+***
+
+### Kaukolämpöverkko
+
+Kaukolämpöverkko on putkisto ja siihen liittyvät laitokset, jotka siirtävät lämpöenergiaa lämmön tuotantolaitoksista rakennuksiin. Datakeskus voi syöttää hukkalämpöä verkkoon, jos lämpötila- ja kapasiteettivaatimukset täyttyvät.
+
+***
+
+### Koneoppiminen
+
+Koneoppiminen on menetelmä, jossa algoritmit oppivat datasta ilman erillistä ohjelmointia kutakin tilannetta varten. Datakeskuksessa koneoppimista voidaan käyttää esimerkiksi jäähdytyksen optimointiin ja kuorman ennustamiseen.
+
+***
+
+### Konsolidointi
+
+Konsolidointi tarkoittaa työkuormien keskittämistä harvemmille palvelimille, jolloin osa palvelimista voidaan sammuttaa. Tavoitteena on nostaa käyttöastetta ja vähentää energianhukkaa tyhjäkäynnillä.
+
+***
+
+### Kosteudenhallinta
+
+Kosteudenhallinta tarkoittaa konesalin suhteellisen kosteuden säätelyä. Tavoitteena on välttää sekä liian alhainen kosteus (staattisen sähkön riski) että liian korkea kosteus (kondensaatioriski).
+
+***
+
+### Kostutuslaite
+
+Kostutuslaite lisää kosteutta ilmaan, kun suhteellinen kosteus laskee alle asetetun rajan. Datakeskuksessa kostutus voidaan toteuttaa höyry- tai adiabaattisilla kostutuslaitteilla.
+
+***
+
+### Kuorman siirto
+
+Kuorman siirto tarkoittaa IT-työkuormien ajankohdan tai sijainnin muuttamista. Esimerkki on batch-töiden siirtäminen yöaikaan tai toiseen datakeskukseen, jossa sähkö on halvempaa tai vähäpäästöisempää.
+
+***
+
+### Kytkin
+
+Kytkin (switch) on verkkolaite, joka yhdistää palvelimet ja muut laitteet paikallisverkossa. Se välittää dataa laitteiden välillä MAC-osoitteiden perusteella.
+
+***
+
+### Käyttöaste
+
+Käyttöaste kuvaa, kuinka suuri osa asennetusta kapasiteetista (esimerkiksi IT-tehosta) on käytössä. Se voidaan ilmoittaa prosentteina tai suhteena nimelliskapasiteettiin.
+
+***
+
+### Käyttövarmuus / resiliens
+
+Käyttövarmuus kuvaa järjestelmän kykyä pysyä toiminnassa häiriöittä. Resiliens tarkoittaa kykyä sietää häiriöitä ja palautua niistä. Datakeskuksessa nämä liittyvät redundanssiin, varavoimaan ja palautumisprosesseihin.
+
+***
+
+### Kylmäainekierto
+
+Kylmäainekierto on prosessi, jossa kylmäaine kiertää suljetussa järjestelmässä kompressorin, lauhduttimen, paisuntaventtiilin ja höyrystimen kautta. Kierto poistaa lämpöä jäähdytettävästä kohteesta.
+
+***
+
+### Kylmälevy
+
+Kylmälevy (cold plate) on metallinen levy, joka kiinnitetään suoraan lämpöä tuottavan komponentin, kuten prosessorin, päälle. Levyssä kiertää neste, joka siirtää lämmön pois komponentista.
+
+***
+
+### Liittymäkapasiteetti
+
+Liittymäkapasiteetti on kantaverkon tai jakeluverkon toimittajan kanssa sovittu suurin sähköteho, jonka datakeskus voi ottaa verkosta. Se mitataan yleensä megawatteina (MW).
+
+***
+
+### Liukuva PUE
+
+Liukuva PUE on PUE-mittari, joka lasketaan liukuvan aikaikkunan (esimerkiksi viimeisen tunnin tai vuorokauden) perusteella. Sen avulla voidaan seurata muutoksia energiatehokkuudessa lyhyellä aikavälillä.
+
+***
+
+### Mittaus
+
+Mittaus tarkoittaa tehojen, energioiden, lämpötilojen, kosteuden ja muiden muuttujien seuranta datakeskuksessa. Mittaustietoa käytetään hallintaan, raportointiin ja optimointiin.
+
+***
+
+### Moduulaarinen UPS
+
+Moduulaarinen UPS koostuu useista rinnakkaisista moduuleista, joita voidaan lisätä tai poistaa kuorman mukaan. Tällä pyritään pitämään yksittäisten moduulien käyttöaste korkeampana ja häviöt pienempinä.
+
+***
+
+### N, N+1, 2N
+
+N tarkoittaa mitoitettua peruskapasiteettia, joka riittää kuorman kattamiseen.
+N+1 tarkoittaa, että peruskapasiteetin lisäksi on yksi varakomponentti.
+2N tarkoittaa kahta täysin erillistä, kuorman kantamiseen riittävää järjestelmää.
+
+***
+
+### OT/IT-erottelu
+
+OT (Operational Technology) tarkoittaa fyysisten laitteiden ohjausjärjestelmiä, kuten BMS ja SCADA. IT (Information Technology) tarkoittaa tietojärjestelmiä ja sovelluksia. OT/IT-erottelu tarkoittaa näiden verkkojen ja järjestelmien eriyttämistä tietoturvan ja toimintavarmuuden vuoksi.
+
+***
+
+### Palvelin
+
+Palvelin on verkkoon liitetty tietokone, joka tarjoaa palveluja muille laitteille. Datakeskuksessa palvelimet on optimoitu jatkuvaan käyttöön ja etähallittavuuteen.
+
+***
+
+### Palvelutasopäätökset
+
+Palvelutasopäätökset määrittävät, millaista laatua ja saatavuutta palveluilta vaaditaan. Ne kirjataan usein SLA- ja SLO-tavoitteiksi, jotka ohjaavat kapasiteetin ja redundanssin suunnittelua.
+
+***
+
+### PDCA (Plan–Do–Check–Act)
+
+PDCA on jatkuvan parantamisen malli.
+Plan: suunnitellaan muutos,
+Do: toteutetaan se,
+Check: arvioidaan tulokset,
+Act: vakiinnutetaan tai korjataan toiminta tulosten perusteella.
+
+***
+
+### PDU (Power Distribution Unit)
+
+PDU on räkkitasoinen sähkönjakeluyksikkö, joka jakaa virran UPS:ltä tai jakelukeskukselta palvelimille. Älykkäissä PDU-yksiköissä on myös mittaus- ja kytkentäominaisuuksia.
+
+***
+
+### Pre-cooling
+
+Pre-cooling tarkoittaa ennakoivaa jäähdytystä, jossa tilaa jäähdytetään etukäteen ennen odotettua kuormanhuhka tai lämpötilan nousua. Se voi hyödyntää esimerkiksi viileitä yöolosuhteita.
+
+***
+
+### PUE (Power Usage Effectiveness)
+
+PUE on suhdeluku, joka kuvaa datakeskuksen kokonaisenergiankulutuksen ja IT-laitteiden energiankulutuksen suhdetta. PUE = E_total / E_IT.
+
+***
+
+### Päästöintensiteetti / päästökerroin
+
+Päästöintensiteetti tai päästökerroin kuvaa, kuinka paljon hiilidioksidipäästöjä syntyy tuotettua energiayksikköä kohden, esimerkiksi g CO₂/kWh. Sitä käytetään sähkönkulutuksen muuntamiseen päästöiksi.
+
+***
+
+### Räkki
+
+Räkki on standardoitu kehikko, johon palvelimet ja muut laitteet asennetaan. Tyyppiräkin korkeus on esimerkiksi 42U, ja leveys 19 tuumaa.
+
+***
+
+### Reaaliaikainen dashboard
+
+Reaaliaikainen dashboard on näkymä, jossa keskeiset mittarit, kuten IT-teho, kokonaisteho, PUE, lämpötilat ja hälytykset, esitetään ajantasaisesti. Se tukee operatiivista päätöksentekoa.
+
+***
+
+### Redundanssi
+
+Redundanssi tarkoittaa päällekkäistä kapasiteettia tai laitteita, jotka ottavat toiminnon hoitaakseen vian tai huollon aikana. Redundanssi lisää käyttövarmuutta.
+
+***
+
+### REF (Renewable Energy Factor)
+
+REF kuvaa, kuinka suuri osuus datakeskuksen käyttämästä energiasta on peräisin uusiutuvista lähteistä. Se lasketaan uusiutuvan energian ja kokonaisenergian suhteena.
+
+***
+
+### RH (relative humidity)
+
+RH on suhteellisen kosteuden mitta, joka ilmaisee ilman vesihöyrymäärän prosenttiosuutena ilman maksimikapasiteetista tietyssä lämpötilassa.
+
+***
+
+### Reititin
+
+Reititin (router) ohjaa tietoliikennettä eri verkkojen välillä. Se päättää, mihin reittiin data ohjataan perustuen IP-osoitteisiin ja reititysprotokolliin.
+
+***
+
+### Sähköinfrastruktuuri
+
+Sähköinfrastruktuuri kattaa muuntajat, pää- ja alakeskukset, kaapeloinnin, UPS-laitteet, PDU-yksiköt ja suojalaitteet, jotka tuovat ja jakavat sähkön datakeskuksessa.
+
+***
+
+### Sähkönjakelu datakeskuksessa
+
+Sähkönjakelu datakeskuksessa on ketju muuntajalta pääkeskukseen, edelleen alakeskuksiin, UPS-laitteille ja PDU-yksiköille, ja lopulta IT-laitteille. Jakeluun kuuluu suojalaitteita ja mittareita.
+
+***
+
+### Sähkösyöttö
+
+Sähkösyöttö on kokonaisuus, joka kuvaa, mistä ja miten sähkö tuodaan datakeskukseen. Siihen kuuluu liittymä valtakunnan verkkoon, muuntajat ja jakelujärjestelmä.
+
+***
+
+### SCADA / BMS (Building Management System)
+
+SCADA (Supervisory Control And Data Acquisition) ja BMS ovat järjestelmiä, jotka keräävät mittaustietoja ja ohjaavat laitteita, kuten jäähdytysjärjestelmiä ja ilmanvaihtoa. Ne tarjoavat valvonta- ja ohjausrajapinnan operaatiohenkilöstölle.
+
+***
+
+### SLA / SLO
+
+SLA (Service Level Agreement) on sopimus palvelutasosta asiakkaan ja palveluntarjoajan välillä.
+SLO (Service Level Objective) on mitattava tavoitteellinen arvo palvelutasolle, kuten saatavuusprosentti tai vasteaikaraja.
+
+***
+
+### Supply air / return air
+
+Supply air on jäähdytetty ilma, joka johdetaan palvelimille. Return air on lämmin ilma, joka palaa palvelimilta jäähdytysjärjestelmään.
+
+***
+
+### Tallennusjärjestelmä
+
+Tallennusjärjestelmä varastoi dataa levyjen tai flash-muistien varaan. Järjestelmä voi olla jaettu monelle palvelimelle (SAN, NAS) tai liitetty suoraan yksittäisiin palvelimiin.
+
+***
+
+### The Green Grid
+
+The Green Grid on kansainvälinen organisaatio, joka kehittää datakeskusten energiatehokkuuden mittareita ja ohjeistuksia, kuten PUE-, WUE-, CUE-, REF- ja ERF-mittareita.
+
+***
+
+### Tier-tasot (Tier I/II/III/IV)
+
+Tier-tasot ovat Uptime Instituten määrittelemiä datakeskusten luokitusasteita, jotka kuvaavat käyttövarmuutta ja redundanssia.
+Tier I: yksinkertainen infrastruktuuri, ei redundanssia
+Tier II: osittainen redundanssi
+Tier III: huoltovarma, N+1-ratkaisut
+Tier IV: kahdennettu 2N-infrastruktuuri
+
+***
+
+### Tietoliikenneyhteydet
+
+Tietoliikenneyhteydet yhdistävät datakeskuksen muihin verkkoihin valokuidun ja muiden siirtomedioiden kautta. Yhteyksissä huomioidaan kaistanleveys, viive ja redundanssi.
+
+***
+
+### Turvallisuus
+
+Turvallisuus kattaa fyysisen turvallisuuden (kulunvalvonta, kamerat, lukitukset) ja tietoturvan (verkko- ja järjestelmäsuojaus). Tavoitteena on estää luvaton pääsy ja häiriöt.
+
+***
+
+### UPS (Uninterruptible Power Supply)
+
+UPS on laite, joka tarjoaa katkottoman sähkösyötön lyhyiden katkosten ja jänniteheilahteluiden aikana. Se perustuu tyypillisesti tasasuuntaajaan, invertteriin ja akustoon.
+
+***
+
+### UPS-häviöt
+
+UPS-häviöt ovat energiahäviöitä, jotka syntyvät sähköä muunnettaessa UPS:n läpi. Ne ilmenevät lämpönä ja kasvattavat datakeskuksen kokonaisenergiankulutusta.
+
+***
+
+### Val takunnan verkko
+
+Valtakunnan verkko on kansallinen sähköjärjestelmä, jota kantaverkkoyhtiö operoi. Se siirtää sähkön tuotantolaitoksista kulutuskohteisiin, mukaan lukien datakeskukset.
+
+***
+
+### Varavoima
+
+Varavoima on sähkönsyöttö, joka korvaa valtakunnan verkon syötön sen häiriintyessä. Datakeskuksessa varavoimana käytetään yleensä diesel- tai kaasugeneraattoreita ja UPS-järjestelmiä.
+
+***
+
+### Varmuuskerroin
+
+Varmuuskerroin on suunnittelussa käytetty kerroin, jolla mitoitettua kapasiteettia kasvatetaan ennusteen epävarmuuden ja häiriöiden varalta. Esimerkiksi 1,2 tarkoittaa 20% ylisuunnittelua.
+
+***
+
+### Vapaajäähdytys / free cooling
+
+Vapaajäähdytys hyödyntää ulkoilmaa tai ulkoilman viileyttä jäähdytyksessä ilman tai vähäisellä mekaanisella jäähdytyksellä. Se pienentää jäähdytyksen sähkönkulutusta erityisesti viileässä ilmastossa.
+
+***
+
+### Verkkoheilahtelut
+
+Verkkoheilahtelut ovat jännitteen tai taajuuden vaihteluita sähköverkossa. Ne voivat aiheuttaa häiriöitä laitteissa, minkä vuoksi datakeskuksessa käytetään UPS-laitteita ja suojauksia.
+
+***
+
+### Virtualisointi
+
+Virtualisointi on tekniikka, jossa yksi fyysinen palvelin jakaa resurssinsa useisiin virtuaalisiin palvelimiin. Se mahdollistaa resurssien joustavan käytön ja konsolidoinnin.
+
+***
+
+### Virtausmittarit
+
+Virtausmittarit mittaavat nesteen tai ilman virtausnopeutta ja -määrää putkistoissa tai kanavissa. Datakeskuksessa niitä käytetään esimerkiksi jäähdytysnesteen ja ilmanvaihdon valvontaan.
+
+***
+
+### WUE (Water Usage Effectiveness)
+
+WUE on mittari, joka kuvaa vedenkulutusta suhteessa IT-energiankulutukseen. Se lasketaan vedenkäytön (litraa) ja IT-energian (kWh) suhteena.
+
+***
+
+### Ympäristövaikutus
+
+Ympäristövaikutus on kokonaisuus, joka kuvaa datakeskuksen vaikutusta ympäristöön. Siihen sisältyvät muun muassa sähkönkulutuksesta aiheutuvat päästöt, jäähdytyksen ja mahdollisen vedenkäytön vaikutukset sekä laitteiden elinkaarivaikutukset.
+
+***
+
+### ΔT (lämpötilaero)
+
+ΔT on kahden lämpötilan erotus. Jäähdytyksessä ΔT kuvaa usein sisään- ja ulostulevan ilman tai nesteen lämpötilaeroa, jolla voidaan arvioida siirtyneen lämmön määrää.
 
