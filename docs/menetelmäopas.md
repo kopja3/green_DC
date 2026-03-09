@@ -525,6 +525,24 @@ Jos haluat, teen seuraavaksi **valmiin M6.5-alaluvun (1–2 sivua)** “syvemmä
 * (iv) mitä deliverableja (mallikortti, muutosloki, before–after-raportti) vaaditaan.
 
 
+flowchart LR
+  Grid[Primääri/sekundäärisyöttö (verkko)] --> STS[Siirtokytkin / supply transfer switchgear]
+  Gen[Lisäsyöttö: varavoima] --> STS
+  STS --> MainIn[EDC-mittauspiste: datakeskusjärjestelmän syöttö (ennen STS:n jälkeistä jakelua)]
+  MainIn --> UPS1[UPS (IT-syöttö)]
+  MainIn --> NonIT[Ei-IT kuormat: jäähdytys, ilmanvaihto, valaistus, häviöt]
+  UPS1 --> ITdist[PDU / IT-jakelu]
+  ITdist --> ITload[IT-laitteet]
+  UPS1 --> EITm[EIT-mittaus: UPS-kohtainen vuotuinen energia]
+  WaterIn[WIN-mittaus: kaikki vesi datakeskusrajan yli] --> CoolingSys[Jäähdytysjärjestelmä]
+  ITload --> Heat[Hukkalämpö]
+  Heat --> HX[Lämmönvaihdin / luovutuspiste]
+  HX --> Export[EREUSE-mittaus: luovutus datakeskusrajan ulkopuolelle]
+  RESos[On-site uusiutuva tuotanto] --> RESm[ERES-OS mittaus]
+  GOO[GOO: ostettu + mitätöity] --> REStot[ERES-TOT]
+  PPA[PPA-sähkö (ja GO:t omistettu+mitätöity)] --> REStot
+  RESm --> REStot
+  MainIn --> REStot
 
 
 
