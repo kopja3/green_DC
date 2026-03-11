@@ -1,550 +1,451 @@
+# M – Menetelmäopas (EU-yhteensopiva): konesalin toiminnan optimointi mittausdatan avulla
 
-# M – Menetelmäopas: konesalin toiminnan hiilijalanjäljen optimointi mittausdatan avulla
+## Executive summary (tiivistelmä)
+Tämä menetelmäopas tekee datakeskuksen (oma DC tai colocation) sähkö–IT–jäähdytys–vesi–uusiutuva–hukkalämpö -ketjun mitattavaksi ja todennettavaksi.
+Opas on yhteensopiva EU:n datakeskusraportoinnin ensimmäisen vaiheen kanssa: käytetään EU-muuttujia (EDC, EIT, WIN, WIN-POT, EREUSE, ERES-TOT + alaerät) ja lasketaan EU-ydinindikaattorit PUE/WUE/ERF/REF.
+
+CO2e (Scope 2) käsitellään täydentävänä mittarina (location-based + market-based). CUE ei ole tämän oppaan ydinkori.
+
+Määrittämättä (unspecified): mittarimallit, mittaritoimittaja, DCIM/BMS/EMS-vendorien API:t ja integraatiotekniikat (kuvataan vain vaatimustasolla).
+
+---
 
 ## M0. Tarkoitus ja periaate
 
 ### M0.1 Soveltamisala (mitä tämä opas kattaa)
+Tämä opas koskee datakeskuksen käytönaikaista mittaamista ja optimointia niin, että energiatehokkuus ja kestävyys eivät jää väitteiksi vaan voidaan osoittaa datalla.
 
-Tämä menetelmäopas koskee vihreän datakeskuksen (oma DC tai colocation) **sähkö–IT–jäähdytys–hukkalämpö**-ketjun **mitattavuutta, raportointia ja todennettavuutta**, jotta energiatehokkuus (PUE) ja muut vihreysvaatimukset eivät jää väitteiksi vaan voidaan osoittaa datalla. [2][4][6][7][9][11]
+EU-compliance huomio:
+- Jos datakeskuksen asennettu IT-tehontarve (PDIT) ≥ 500 kW, EU-raportointi on velvoittavaa; muille opas toimii vapaaehtoisena “EU-ready” -mallina.
+- Raportointi tehdään EU-tietokantaan vuosittain edeltävästä kalenterivuodesta (komissio: 15.9.2024 ja sen jälkeen 15.5. vuosittain; kansalliset aikataulut voivat tarkentua).
+
+Ketju, jota mitataan ja optimoidaan:
+- energia: EDC (kokonaisenergia) ja EIT (IT-energia)
+- vesi: WIN (kokonaisvedenotto) ja WIN-POT (talousvesi)
+- hukkalämpö: EREUSE (hyötykäyttöön luovutettu lämpö)
+- uusiutuva energia: ERES-TOT (GOO + PPA + on-site)
+- täydentävä: CO2e (Scope 2), E_cooling, UPS-häviöt, lämpötilat/ΔT, jne.
 
 ### M0.2 Toteutusperiaate (mikä on “pakko olla totta”, jotta optimointi on todennettavaa)
+Optimointi on todennettavaa vain, jos seuraavat ovat yhtä aikaa totta:
 
-PUE:n laskenta ja johtaminen edellyttävät vähintään **kokonaisenergian (E_total)** ja **IT-energian (E_IT)** erottelua. Lisäksi **UPS-häviöt** ja **jäähdytyksen energia** tulee pystyä osoittamaan osajärjestelmätasolla, jotta optimointikohde on yksiselitteinen ja muutos voidaan todentaa “ennen–jälkeen”. [2][4][6][7]
+1) Mittausrajat on määritelty (datakeskusraja, energia-/vesiraja, lämpöluovutusraja).
+2) EU-ydinmuuttujat mitataan EU-mittauspisteistä:
+   - EDC mitataan ennen siirtokytkintä (STS) ja erikseen lisäsyötöissä (esim. varavoima → EDC-BG).
+   - EIT mitataan UPS-lähdöissä (vuosisumma kaikista IT-UPS:istä). Jos ei UPS:ää: PDU tai Category 2 / määritelty piste.
+   - WIN ja WIN-POT mitataan datakeskusrajalla (WUE-kategoria ilmoitetaan).
+   - EREUSE mitataan lämmön luovutuspisteessä datakeskusrajalla.
+3) KPI-laskenta on versionhallittua; sama data tuottaa aina saman tuloksen.
+4) Mittauspisteistä ja mittalaitteista pidetään mittarirekisteri (säilytys ≥ 10 vuotta).
+
+Suositus mittausepävarmuuden hallintaan:
+- pääenergiamittaukset: IEC 62053-22 luokka 0.5S (tai parempi)
+- alajakoon: IEC 62053-21 luokka 1 (tai parempi)
+- vesimittarit ja lämpöenergiamittarit: käytä paikallisesti varmennettavia/mittalain mukaisia ratkaisuja (tarkat standardit ja mittarimallit: unspecified)
 
 ### M0.3 Menetelmän silmukka (mitä tehdään aina samalla tavalla)
+Menetelmä on jatkuva silmukka:
+**mittaa → analysoi → muuta → todenna → vakioi**
 
-Menetelmä perustuu jatkuvaan silmukkaan: **mittaa → analysoi → muuta → todenna → vakioi**. [2][4]
-Ydinajatus on, että datakeskuksessa **kaikki IT:n käyttämä sähkö päätyy lopulta lämmöksi**, joten hiilijalanjäljen optimointi on koko ketjun optimointia (sähkö → IT → verkko → jäähdytys → lämpö → mittaus). [1][6][7]
-
----
-
-## M1. Rajaus (mitä mitataan ja mistä CO₂e syntyy)
-
-### M1.1 Operatiivisen hiilijalanjäljen rajat (käyttövaihe)
-
-Menetelmä kattaa datakeskuksen käyttöaikaisen toiminnan:
-
-* **Sähkön kulutus**: IT-laitteet + jäähdytys + sähköketjun häviöt + muu infrastruktuuri. [6][7]
-* **Hukkalämmön talteenotto ja toimitus** (jos käytössä): mitataan toimitettu lämpöenergia erikseen. [7][9]
-* (Valinnainen) **Varavoiman testiajot/poikkeamat** sekä mahdolliset energianvarastot energianhallinnan osana. [3][5][6]
-
-> Huom: CO₂e raportoidaan **ensisijaisesti mitatun energian perusteella**; muut päästölähteet lisätään vain, jos data on todennettavissa (audit trail). [2][4]
-
-### M1.2 Pakolliset KPI:t (minimivaatimus)
-
-Pakollinen ydin:
-
-* **E_total (kWh)**: koko laitoksen sisään tuleva energia (määritelty mittausrajalla). [6][7]
-* **E_IT (kWh)**: IT-laitteiden energia (PDU/räkki tai vastaava). [6][7]
-* **PUE = E_total / E_IT**. [2][4]
-* **CO₂e_total (kgCO₂e)**: E_total × päästökerroin (raportointiperiaate dokumentoitu). [2][9][20]
-
-Suositeltu täydentävä (nostaa optimoinnin laatua):
-
-* **E_cooling (kWh)** + jäähdytyksen osuus. [4][7]
-* **UPS-häviöt (kWh)**: UPS_in − UPS_out. [6][7]
-* **Lämpöenergian toimitus (MWh_th)** + lämpötaso (L1/L2, lähtevä/paluu). [7][9]
-* **Verkon energia (kWh)** suhteessa liikenteeseen, jos erotettavissa. [8]
+EU-raportointi kytketään silmukkaan näin:
+- “mittaa” tuottaa tunti-/15 min-/5 min -aikasarjat
+- “vakioi” tuottaa vuositasoisen EU-raportin (kalenterivuosi) ja dokumentoidun audit trailin
 
 ---
 
-## M2. Vaaditut dokumentit (todisteaineisto) + mistä ne saat käytännössä
+## M1. Rajaus (mitä mitataan ja mistä vaikutus syntyy)
 
-Alla olevat ovat menetelmän “todisteaineistoa”. Ilman niitä mittausdatan tulkinta jää epävarmaksi ja “optimointi” muuttuu helposti arvaukseksi. [2][4][7]
+### M1.1 Operatiivisen mittauksen rajat (käyttövaihe)
+Energia (EDC/EIT):
+- EDC (kWh) sisältää sähkön lisäksi polttoaineet ja muut jäähdytykseen käytetyt energialähteet. Varavoimaosuus raportoidaan erikseen (EDC-BG).
+- EDC mitataan datakeskusjärjestelmän sisääntulossa ennen STS:ää; mittauspisteet primääri-, sekundääri- ja lisäsyötöille (esim. generaattori).
+- CHP/absorptiojäähdytin:
+  - jos sisäinen: mittaa polttoaine sisäänmenossa (fuel input)
+  - jos ulkoinen: CHP: mittaa sähkö- ja lämpöulostulot; absorptio: mittaa jäähdytysulostulo.
 
-### M2.1 Pakolliset dokumentit (minimi, *pakko olla olemassa*)
+IT-energia (EIT):
+- EIT (kWh) mitataan PUE Category 1 -menetelmällä UPS-tasolla (kaikkien IT-UPS:ien vuosisumma).
+- Jos UPS puuttuu: EIT PDU:ssa tai Category 2 / datakeskuksen määrittelemässä mittauspisteessä.
 
-1. **Mittausrajaus (Measurement Boundary Statement)**
+Vesi (WIN/WIN-POT):
+- WIN (m³) mittaa kaikki datakeskusrajan yli tulevat vesimäärät, joita käytetään datakeskustoimintoihin (ympäristö, sähkö, turvallisuus, IT).
+- WIN mitataan WUE Category 2 -menetelmällä (tai jos ei mahdollista, Category 1) ja raportoija ilmoittaa käytetyn kategorian.
+- WIN-POT (m³) mittaa kaikki talousvesilähteet datakeskusrajan yli (WUE Category 1).
+- Sekakäyttörakennuksessa WIN ja WIN-POT rajataan datakeskuksen laitteiden käyttämään (tai perustellusti arvioituun) osuuteen.
 
-   * missä E_total mitataan (verkko/kiinteistöliityntä), mitä sisältyy ja mitä ei (esim. toimistotilat, ulkoiset laitteet). [2][4][7]
-2. **Mittauspistekartta (Instrumentation & Metering Map)**
+Hukkalämpö (EREUSE):
+- EREUSE (kWh) sisältää vain datakeskusrajan ulkopuolelle luovutetun lämmön, joka korvaa ulkopuolista energiantarvetta.
+- EREUSE mitataan datakeskusrajalla luovutuspisteessä (handover point).
+- Jos osa lämmöstä käytetään datakeskuksen jäähdytykseen, se vähennetään EREUSE:sta.
 
-   * mittauspisteet, mittarityypit/luokka, mittarien tunnisteet, mittausväli ja datan reitti (mittari → järjestelmä → tallennus). [6][7]
-3. **KPI-määrittelyt ja laskentasäännöt (KPI Dictionary & Calculation Rules)**
+Uusiutuva energia (ERES):
+- ERES-TOT (kWh) = ERES-GOO + ERES-PPA + ERES-OS.
+- ERES-GOO: ostetut ja mitätöidyt alkuperätakuut (GO) (ei “synny” PPA:sta tai on-site -tuotannosta samaan aikaan).
+- ERES-PPA: PPA-sopimuksilla toimitettu energia. Jos PPA tuottaa GO:t, niiden on oltava datakeskuksen omistamia ja mitätöityjä; muuten vähennä kyseinen energia ERES-PPA:sta.
+- ERES-OS: datakeskusrajalla tuotettu on-site uusiutuva energia. Jos tuotannosta syntyy GO, se on omistettava ja mitätöitävä; muuten vähennä ERES-OS:sta.
+- Tuplalaskenta ei ole sallittua: sama energiamäärä ei voi kuulua usealle datakeskukselle.
 
-   * PUE:n ajanjaksotus, CO₂e-laskenta (EF-periaate), UPS-häviöiden laskenta, mahdollinen lämpöenergian raportointi. [2][4][9][20]
-4. **Datan omistajuus ja toimitusmuoto (Data Access & Ownership + Delivery Spec)**
+### M1.2 Pakolliset KPI:t (EU-ydinkori) ja täydentävät mittarit
+EU-ydinkori (raportointikelpoinen):
+- PUE = EDC / EIT
+- WUE = WIN / EIT (EIT MWh-yksikössä)
+- ERF = EREUSE / EDC
+- REF = ERES-TOT / EDC
 
-   * kuka omistaa datan, mitä asiakas saa, missä formaatissa (PDF/CSV/JSON/API), aikajänne, granulariteetti, aikavyöhyke, data quality -kentät. [2][4]
-5. **Mittauksen käyttöönottotodennus (Measurement SAT / Commissioning Record)**
+Täydentävät (optimointia varten, ei EU-ydinkori):
+- CO2e_total (Scope 2): EDC_electricity × EF (location-based ja market-based raportoidaan erikseen)
+- E_cooling, UPS-häviöt, lämpötilat/ΔT, verkon sähkö (jos eroteltavissa), jne.
 
-   * end-to-end-testi: mittarit mittaavat oikein, aikaleimat oikein, data tulee perille, KPI:t täsmäävät. [4][7]
-
-**Minimivaatimus käytännössä:** jos nämä 1–5 ovat olemassa ja kunnossa, voit tehdä **audit-kelpoisen** PUE+CO₂e-optimoinnin (Basic/Standard tason mukaan). [2][4]
-
-### M2.2 Suositeltavat dokumentit (nostaa optimoinnin “tason” Standard/Advanced)
-
-6. **Sähköketjun single-line diagram + häviöerittely** (muuntajat–UPS–jakelu). [6][7]
-7. **Jäähdytysjärjestelmän prosessikaaviot + ohjausperiaatteet** (setpointit, ohjauslogiikka, free-cooling). [4][7]
-8. **Kuormaprofiili + SLA + kapasiteettipolitiikat** (konsolidointi/right-sizing, tehorajat). [1][2][16]
-9. **Verkon liikenne- ja energiaprofiilit** (jos optimoidaan myös verkkoa). [8]
-
-### M2.3 “Teenkö itse vai saanko jostain?” (roolipohjainen ohje)
-
-* Jos olet **colocation-asiakas**: vaadi operaattorilta **1–5** osana sopimusliitettä (“Sustainability Data Pack”). Älä tyydy pelkkään PUE-lukuun ilman mittauspistekarttaa ja laskentasääntöjä. [2][4][7]
-* Jos olet **DC-omistaja/rakentaja**: tilaa **2, 6, 7** suunnittelijalta; vaadi **5** käyttöönoton urakkaan (commissioning). [4][7]
-* Jos olet **IT-palveluomistaja**: omistat tyypillisesti **8** (SLA/kuormapolitiikat) ja vaikutat **9** (verkko/traffic). [1][8][16]
-
----
-
-## M3. Minimitasot (Basic / Standard / Advanced) – millä tasolla optimointi on oikeasti mahdollista
-
-### Basic (riittää PUE + CO₂e kuukausitasolla, audit-kelpoinen minimi)
-
-**Mittauspaketti**
-
-* E_total (sisään tuleva), E_IT (PDU/räkki), (suositus) UPS_in/UPS_out. [6][7]
-  **Granulariteetti**
-* vähintään **1 h** aikaväli (tai tiheämpi), kuukausiraportointi. [2][4]
-  **Tuotos**
-* PUE (kk ja viikko), CO₂e (kk) + EF-periaate kirjattuna. [2][9][20]
-
-### Standard (riittää ohjaukseen ja “muutos → vaikutus” -todennukseen)
-
-**Lisäksi**
-
-* E_cooling eritelty + lämpötila/ΔT vähintään sali/alue tasolla + perusvirtaama-indikaattorit. [4][7]
-  **Granulariteetti**
-* suositus **15 min** aikaväli (päivä/viikko trendit). [4][7]
-  **Tuotos**
-* PUE + jäähdytysosuus + UPS-häviöt; CO₂e viikko-/päivätasolla. [2][4][7]
-
-### Advanced (riittää jatkuvaan optimointiin ja automaatioon/AI-ohjaukseen)
-
-**Lisäksi**
-
-* vyöhykekohtainen sähkö + jäähdytys, lämpötoimituksen reaaliaikainen mittaus, datan laatuindikaattorit, (opt.) verkon energia. [4][8]
-  **Granulariteetti**
-* suositus **5 min** aikaväli tai tiheämpi. [4]
-  **Mahdollistaa**
-* kuorman + jäähdytyksen yhteisoptimoinnin, poikkeamien automaattisen havaitsemisen ja mallipohjaisen ohjauksen. [1][3][4][16]
+Suositus: Älä käytä CUE:ta ydinkorissa. Jos raportoit CUE:n, tee se täydentävänä ja kerro selvästi päästökertoimien lähde ja menetelmä.
 
 ---
 
-## M4. Todennukset (miten tuloksista tehdään audit-kelpoisia)
+## M2. Vaaditut dokumentit (todisteaineisto)
 
-### M4.1 Mittauksen todennus (pakollinen, ennen optimointia)
+### M2.1 Pakolliset dokumentit (minimi, “pakko olla olemassa”)
+1. Mittausrajaus (Measurement Boundary Statement)
+   - datakeskusraja: mitä sisältyy EDC/WIN/EREUSE/ERES-OS -rajoihin, mitä rajataan pois
+2. Mittauspistekartta (Instrumentation & Metering Map)
+   - EDC ennen STS; EIT UPS-lähdöt (tai PDU); WIN/WIN-POT rajalla; EREUSE luovutuspisteessä; EDC-BG erikseen
+3. Mittarirekisteri (Meter register) + säilytys
+   - mittauspisteet ja mittalaitteet, tunnisteet, sijoitus, mittausväli, tarkkuusluokka, CT:t, kalibrointi/varmennus
+   - säilytysaika: vähintään 10 vuotta
+4. KPI-sanasto ja laskentasäännöt (KPI Dictionary & Calculation Rules)
+   - PUE/WUE/ERF/REF ja yksiköt, aikajänne (kalenterivuosi), rounding, poikkeamat, versionumero
+5. Uusiutuvan energian todentaminen (ERES evidence pack)
+   - GOO: ostot + mitätöinnit (retired)
+   - PPA: toimitusraportti + GO-omistus/mitätöinti tai vähennys
+   - on-site: tuotantomittaus + GO-omistus/mitätöinti tai vähennys
+6. Datan omistajuus ja toimitusmuoto (Data Access & Delivery Spec)
+   - PDF + CSV/JSON + aikavyöhyke + granulariteetti + data quality -kentät
+7. Mittauksen käyttöönotto- ja todennuspöytäkirja (Measurement SAT / Commissioning Record)
+   - end-to-end: mittari → data → KPI
 
-**End-to-end (“mittari → data → KPI”)**:
+SAT-checklist (minimi):
+- CT-suunta/polaarisuus ja mittauspisteiden vastaavuus (EDC vs syötöt, EIT vs UPS)
+- aikaleimat (NTP/PTP), aikavyöhyke, vuosisummaa vastaavat integraatiot
+- varavoiman erottelu: EDC-BG erikseen (STS-tila + generaattorimittaus)
+- vesimittareiden pulssit/telemetria ja yksikkömuunnokset
+- lämpöenergiamittauksen luovutuspiste ja “sisäinen jäähdytyskäyttö vähennetään” -logiikka
 
-* mittarien luokka/kalibrointi + aikaleimat
-* E_total ja E_IT tuottavat realistisen PUE-alueen
-* UPS_in ja UPS_out tuottavat johdonmukaiset häviöt. [6][7]
+### M2.2 Suositeltavat dokumentit (nostaa Standard/Advanced-tasolle)
+- Sähkön single-line diagram + häviöallokointi (muuntajat–STS–UPS–jakelu)
+- Jäähdytysjärjestelmän prosessikaaviot + ohjausperiaatteet (setpointit, free-cooling)
+- Lämpöluovutuksen rajapintasopimus (handover: mittausvastuut, lämpötaso, mittari)
+- Veden käyttöpolku (mistä vesi tulee, mihin se menee, mahdolliset kierrätykset)
+- Datan laadun valvontamalli (quality flags, missing%, drift, freeze)
 
-**Tuotos:** Measurement SAT -pöytäkirja + poikkeamalista + korjaustoimet. [4][7]
+### M2.3 Roolipohjainen ohje (“teen itse vai saan jostain?”)
+- Colocation-asiakas: vaadi operaattorilta dokumentit 1–7 sopimusliitteeksi (“EU-ready Sustainability Data Pack”).
+- DC-omistaja/rakentaja: vaadi mittausvaraukset suunnitteluun ja SAT käyttöönottoon urakkaan.
+- IT-palveluomistaja: tuo kuormapolitiikat/SLA ja sovellusmittarit “muutos → vaikutus” -todennukseen.
+
+---
+
+## M3. Minimitasot (EU-Compliance / Basic / Standard / Advanced)
+
+### EU-Compliance (vuosiraportointi EU-kehikkoon)
+- Vuositasoinen (kalenterivuosi) EDC/EIT/WIN/WIN-POT/EREUSE/ERES-TOT (+ alaerät) ja johdetut PUE/WUE/ERF/REF.
+- Mittarirekisteri (≥10 v), mittausrajat ja laskentasäännöt versionhallittuna.
+
+### Basic (audit-kelpoinen kuukausiseuranta + vuosiraporttivalmius)
+Mittauspaketti:
+- EDC, EIT, WIN, WIN-POT, (jos käytössä) EREUSE, ERES-TOT (vähintään summa)
+Granulariteetti:
+- suositus ≥ 60 min aikasarja; EU-raporttiin agregoidaan vuositasolle
+Tuotos:
+- PUE/WUE/ERF/REF vuositasolla + kuukausitrendit; CO2e (Scope 2) täydentävänä
+
+### Standard (ohjaukseen ja “muutos → vaikutus” -todennukseen)
+Lisäksi:
+- E_cooling eritelty + UPS_in/UPS_out (häviöt) + lämpötila/ΔT
+Granulariteetti:
+- suositus 15 min
+Tuotos:
+- PUE + jäähdytysosuus + UPS-häviöt; ERF/REF seuranta; poikkeamahavainnointi
+
+### Advanced (jatkuva optimointi ja automaatio/AI)
+Lisäksi:
+- vyöhykemittaukset (sähkö + jäähdytys), lämpöluovutuksen reaaliaikainen mittaus, data quality -indikaattorit, (opt.) verkon energiadata
+Granulariteetti:
+- suositus 5 min (tai tiheämpi)
+Mahdollistaa:
+- kuorman ja jäähdytyksen yhteisoptimoinnin, automaattisen anomalioiden havainnoinnin ja mallipohjaisen ohjauksen
+
+---
+
+## M4. Todennukset (audit-kelpoisuus)
+
+### M4.1 Mittauksen todennus (pakollinen ennen optimointia)
+End-to-end SAT (“mittari → data → KPI”):
+- EDC mitataan ennen STS:ää ja syötöt täsmäävät; EDC-BG eroteltavissa
+- EIT on UPS-summa (tai PDU/Category 2 perusteltu)
+- WIN/WIN-POT rajalla ja WUE-kategoria kirjattu
+- EREUSE luovutuspisteessä ja “sisäinen jäähdytyskäyttö vähennetään” -ehto toteutuu
+Deliverable:
+- SAT-pöytäkirja + poikkeamat + korjaustoimet
 
 ### M4.2 Datan laadun todennus (jatkuva)
-
-* datakatkot, epärealistiset hyppäykset, drift
-* “hiljainen vika” (arvo jäätyy)
-* KPI-laskenta ei saa muuttua ilman versionhallittua muutosta. [2][4]
-
-**Tuotos:** Datan laaturaportti (viikko/kk) + korjaustoimet. [2][4]
+- katkokset, drift, jäätyneet arvot, epärealistiset hyppäykset
+- quality_flag (OK/ESTIMATED/MISSING/CHANGED_POINT) + estimation_note
+- KPI-sääntöjen muutosloki (versiointi)
 
 ### M4.3 Optimoinnin todennus (“ennen–jälkeen”, aina)
-
 Jokaiselle muutokselle:
-
-* baseline, muutos, mittausjakso, vaikutus KPI:hin, riskit/SLA. [4]
-* hyväksyntä vasta, kun vaikutus on **mitattu**, ei oletettu. [2][4]
-
----
-
-## M5. Mittausdata → CO₂e-laskenta (miten hiilijalanjälki tuotetaan datasta)
-
-### M5.1 Peruslaskenta
-
-* Laske ajanjaksolle: E_total, E_IT, PUE. [2][4]
-* Laske CO₂e: **CO₂e_total = E_total × EF_electricity**, missä EF-periaate on dokumentoitu (esim. location-based ja/tai market-based). [9][20]
-* Raportoi erikseen (suositus): IT vs jäähdytys vs häviöt, jos erottelu on mitattu. [2][4][7]
-
-### M5.2 Hukkalämmön mittaus (ei arvio)
-
-* mittaa toimitettu lämpöenergia (MWh_th) + lämpötaso (lähtö/paluu), jos talteenotto käytössä. [7][9]
-* raportoi lämpö erillisenä hyötymittarina, ellei vähennyssääntö ole eksplisiittisesti sovittu ja auditoitavissa. [9][20]
+- baseline-jakso + muutosikkuna + vaikutus (PUE/WUE/ERF/REF ja täydentävät)
+- normalisointi: kuorma, ulkolämpötila (CDD), käyttöaste
+- hyväksyntä vasta, kun vaikutus on mitattu eikä oletettu
 
 ---
 
-## M6. Optimointimenetelmä (mistä CO₂e vähenee käytännössä)
+## M5. Mittausdata → CO2e (täydentävä)
+
+### M5.1 Scope 2 -peruslaskenta (dual reporting)
+- CO2e_location = sähkönkulutus × location-based EF
+- CO2e_market = sähkönkulutus × market-based EF (sopimusinstrumentit)
+- Raportoi molemmat, jos markkina-instrumentteja on käytössä (GHG Protocol Scope 2 Guidance).
+
+Huom:
+- CO2e sidotaan ensisijaisesti sähkönkulutukseen; EDC sisältää myös polttoaineita → Scope 1 erillisenä, jos todennettavissa (unspecified: tarkka Scope 1 -malli).
+
+### M5.2 Hukkalämmön mittaus (EREUSE) ja tulkinta
+- EREUSE raportoidaan mitattuna energiana (kWh) luovutuspisteestä.
+- Älä vähennä CO2e:ta “automaattisesti” EREUSE:n perusteella ilman erillistä, auditoitavaa korvausenergian metodologiamäärittelyä.
+
+---
+
+## M6. Optimointimenetelmä (mistä vaikutus syntyy)
 
 ### M6.1 IT-kuorman optimointi (energia per palvelu)
-
-* konsolidointi + virtualisointi (vähemmän aktiivisia palvelimia samalla SLA:lla). [1][2]
-* right-sizing ja tehoproportionaali toiminta (vähemmän tyhjäkäyntiä). [14][16]
-* idle-energian leikkaus mekanismeilla, jotka mahdollistavat oikean “sleep/idle”-käytöksen. [13]
-
-**Todennus:** E_IT laskee tai palveluyksikkö/energia paranee, SLA säilyy. [1][2][16]
+- konsolidointi, right-sizing, idle-energian leikkaus
+Todennus:
+- EIT laskee tai palveluyksikkö/energia paranee ilman SLA-heikennystä
 
 ### M6.2 Verkon optimointi (liikenne per energia)
-
-* mittaa liikenne ja sovita linkit/laitteet kuormaan SLA-rajoissa. [8]
-
-**Todennus:** verkon kWh laskee tai kWh/GB paranee ilman latenssi-/häiriöpiikkiä. [8]
+- jos verkon energia eroteltavissa, optimoi laite- ja linkkikäyttö kuorman mukaan
+Todennus:
+- verkon kWh laskee tai kWh/GB paranee, latenssi ja häiriöt hallinnassa
 
 ### M6.3 Jäähdytyksen optimointi (lämmön poisto pienemmällä energialla)
+- setpointit, containment, free-cooling, pumppu- ja puhallinohjaukset
+Todennus:
+- E_cooling laskee, hotspotit eivät kasva, PUE/WUE paranee
 
-* setpointit, ilmavirrat/containment, free-cooling-osuuden maksimointi (Suomi). [4][7]
-* ohjauslogiikka: jäähdytys reagoi kuormaan, ei “vakioasetuksilla”. [4]
+### M6.4 Hukkalämmön hyötykäyttö (ERF)
+- vakioi lämpöteho ja lämpötaso vastaanottajalle; mittaa EREUSE luotettavasti
+Todennus:
+- EREUSE kasvaa/vakaantuu (mitattu) ja ERF paranee
 
-**Todennus:** E_cooling pienenee, hotspotit eivät kasva, PUE paranee. [4][7]
+### M6.5 AI/DA-ohjaus (toteutus niin, että vaikutus voidaan todentaa)
+Syöte (Standard/Advanced):
+- EDC/EIT/E_cooling/UPS_in-out, lämpötila/ΔT, CDD, kuormaprofiili, data quality -flagit
 
-### M6.4 Hukkalämmön hyötykäytön optimointi (korvaava energia)
+Ohjausmuuttujat:
+- jäähdytyksen setpointit, pumppu-/puhallinohjaukset, free-cooling-tilat
+- IT-kuorman sijoittelu (SLA-rajoissa)
 
-* vakioi lämpöteho ja lämpötaso niin, että hyötykäyttö on luotettava vastaanottajalle. [7][9]
+Rajoitteet:
+- SLA/viive/kapasiteettirajat, lämpötila/hotspot-rajat, redundanssi ja sähköketjun turvarajat
 
-**Todennus:** toimitettu MWh_th kasvaa/vakaantuu ja on mitattu. [7][9]
-
-### M6.5 Reaaliaikainen valvonta ja AI/DA-ohjaus (toteutus niin, että vaikutus voidaan todentaa)
-
-Tässä osassa “tekoäly ja data-analyysi” sidotaan mittausketjuun ja todennukseen, eikä jätetä yleispuheeksi. [2][4]
-
-**(1) Mitä mitataan reaaliajassa (syöte AI/DA:lle)**
-Vähintään Standard-tasolla:
-
-* E_total, E_IT, E_cooling, UPS_in/out (jos saatavilla), lämpötila/ΔT, kuormaprofiili. [4][7][16]
-  Advanced-tasolla lisäksi vyöhykemittaukset ja data quality -indikaattorit. [4]
-
-**(2) Mitä AI/DA optimoi (ohjausmuuttujat)**
-Tyypilliset ohjausmuuttujat (valitse toteutettavissa olevat):
-
-* jäähdytyksen setpointit, puhallin-/pumppunopeudet, free-cooling-tilat. [4][7]
-* IT-konsolidointi/right-sizing (työkuormien sijoittelu), jolloin jäähdytyskuorma muuttuu hallitusti. [1][2][16]
-* (valinnainen) kuorman ajo/siirto energia-/päästötilanteen mukaan (esim. geo-load balancing, kun SLA sallii). [15][17]
-
-**(3) Rajoitteet joita ei saa rikkoa (turva- ja SLA-kehys)**
-
-* SLA/viive/kapasiteettirajat (IT + verkko). [1][8]
-* lämpötila- ja hotspot-rajat (jäähdytys). [4][7]
-* redundanssi ja sähköketjun turvarajat (UPS/generaattori/kuormitus). [6][7]
-
-**(4) Miten vaikutus todennetaan (ettei AI jää “mustaksi laatikoksi”)**
-
-* jokaiselle mallille/ohjauslogiikalle: versio, käyttöönoton ajankohta, muuttujat ja rajat. [2][4]
-* “ennen–jälkeen”-todennus: baseline + muutos + mittausjakso + KPI-vaikutus + SLA-seuranta. [4]
-* jos AI muuttaa setpointteja: raportoi myös **E_cooling**, hotspot-mittarit ja PUE-muutos samalta jaksolta. [4][7]
-
-**Tuotos (deliverables, AI/DA-osuudesta):**
-
-* **AI/DA-ohjauskuvaus** (mitkä mittarit → mikä malli → mitkä ohjausmuuttujat → mitkä rajoitteet). [2][4]
-* **Malliversiointi + muutosloki** (audit trail). [2][4]
-* **Todennusraportti** (baseline vs jälkeen, KPI-vaikutus + SLA-ehdot). [4]
+Todennus:
+- malliversiointi + muutosloki + “ennen–jälkeen” -raportti KPI-vaikutuksineen
 
 ---
 
-## M7. Mitä asiakkaana saat ulos (raportti + API/CSV) – vähimmäisvaatimus (“Sustainability Data Pack”)
+## M7. Mitä asiakkaana saat ulos (“Sustainability Data Pack”)
 
-Tämä on sopimusliite, jonka colocation-asiakas voi vaatia. Datan pitää tulla **sekä ihmiselle luettavana** että **koneellisesti**, ja mukana pitää olla myös laskentasäännöt sekä datan laatu. [2][4][7][9][20]
+### M7.1 Pakollinen raportti (kuukausi + vuositiivistelmä)
+Sisältö vähintään:
+- EDC, EIT, WIN, WIN-POT, EREUSE (jos käytössä), ERES-TOT (+ alaerät jos saatavilla)
+- PUE, WUE, ERF, REF
+Täydentävä:
+- CO2e (Scope 2 location + market) + EF-lähde ja päivitysrytmi
+Liitteet (audit-kelpoisuus):
+- mittausrajat + mittauspistekartta (versio)
+- mittarirekisteri (versio) + SAT-pöytäkirja
+- KPI-säännöt (versio) + data quality -yhteenveto
 
-### M7.1 Pakollinen asiakasraportti (kuukausi + tiivistelmä)
+### M7.2 Koneellinen toimitus (CSV/JSON/API) – minimikentät
+Minimi:
+- aikaleima + aikavyöhyke + granulariteetti + quality_flag
+- raw: edc_kwh, eit_kwh, win_m3, win_pot_m3, ereuse_kwh, eres_tot_kwh, eres_goo_kwh, eres_ppa_kwh, eres_os_kwh
+- derived: pue, wue_m3_per_mwh, erf, ref
+- optional: co2e_location_kg, co2e_market_kg, ef_source
 
-Raportti sisältää vähintään:
+Esimerkki (CSV, vuosirivi):
+reporting_year,dc_id,edc_kwh,eit_kwh,win_m3,win_pot_m3,ereuse_kwh,eres_tot_kwh,eres_goo_kwh,eres_ppa_kwh,eres_os_kwh,pue,wue_m3_per_mwh,erf,ref,quality_flag,estimation_note
 
-* E_total (kWh), E_IT (kWh), PUE. [2][6][7]
-* CO₂e_total (kgCO₂e) + EF-periaate (location/market, lähde ja päivitysrytmi). [9][20]
-* UPS-häviöt (kWh) jos mitattu. [6][7]
-* (Jos lämpötoimitus) toimitettu lämpö (MWh_th) + mittauspiste + ajanjakso + lämpötaso. [7][9]
-
-**Pakolliset liitteet raporttiin (audit-kelpoisuus):**
-
-* mittausrajaus + mittauspistekartta (versio). [4][7]
-* KPI-sanasto ja laskentasäännöt (versio). [2][4]
-* data quality -yhteenveto (missing %, poikkeamat, korjaukset). [2][4]
-
-### M7.2 Pakollinen koneellinen toimitus (CSV/JSON/API)
-
-**Minimivaatimus:**
-
-* vähintään **päivä- tai viikkotaso** (Basic) ja suositus **15 min** (Standard). [4][7]
-* jokaisella datapisteellä aikaleima + aikavyöhyke. [2][4]
-* mukana data quality -kentät (missing %, flagit). [2][4]
-
-**Pakolliset kentät (minimi):**
-
-* `total_energy_kwh` (E_total)
-* `it_energy_kwh` (E_IT)
-* `pue`
-* `co2e_kg` + `ef_method` + `ef_value` (tai viite ef-dokumenttiin)
-
-**Suositellut lisäkentät:**
-
-* `cooling_energy_kwh` (E_cooling)
-* `ups_losses_kwh`
-* `heat_export_mwh_th` + lämpötaso (jos käytössä)
-* `data_quality_missing_pct`, `data_quality_flags`
-
-**Esimerkkirakenne (JSON):**
-
-```json
+Esimerkki (JSON):
 {
-  "period": "2026-01",
-  "site_id": "DC-FI-001",
+  "reporting_year": 2025,
+  "dc_id": "FI-DC-001",
   "timezone": "Europe/Helsinki",
-  "granularity_minutes": 60,
-  "metrics": {
-    "total_energy_kwh": 1234567,
-    "it_energy_kwh": 1023456,
-    "pue": 1.21,
-    "co2e_kg": 45678,
-    "ef_method": "location-based",
-    "ef_value_kg_per_kwh": 0.037,
-    "ups_losses_kwh": 23456,
-    "cooling_energy_kwh": 167890,
-    "heat_export_mwh_th": 1200.5
+  "raw": {
+    "EDC_kWh": 10000000,
+    "EIT_kWh": 8000000,
+    "WIN_m3": 12000,
+    "WIN_POT_m3": 3000,
+    "EREUSE_kWh": 1500000,
+    "ERES": {
+      "TOT_kWh": 6000000,
+      "GOO_kWh": 2000000,
+      "PPA_kWh": 3000000,
+      "OS_kWh": 1000000
+    }
   },
-  "calculation_rules_version": "v1.3.0",
-  "data_quality": {
-    "missing_data_pct": 0.2,
-    "flags": ["ok"]
-  }
+  "derived": { "PUE": 1.25, "WUE_m3_per_MWh": 1.5, "ERF": 0.15, "REF": 0.60 },
+  "data_quality": { "quality_flag": "OK", "estimation_note": "" },
+  "unspecified": { "meter_models": true, "vendor_apis": true }
 }
+
+### M7.3 Todisteet asiakkaalle (mitä voit pyytää)
+- mittausrajat + mittauspistekartta + mittarirekisteri (≥10 v)
+- SAT/commissioning record
+- GO-omistus ja mitätöinti (retired), PPA‑todenteet, on-site -tuotannon mittaus
+- data quality -raportti ja KPI-sääntöjen muutosloki
+
+---
+
+## Taulukot
+
+### Raakamuuttujat (EU-ydin)
+| Muuttuja | Yksikkö | Mitä sisältää | Pakollinen mittauskohta |
+|---|---:|---|---|
+| EDC | kWh | Sähkö + polttoaineet + muut jäähdytyksen energialähteet | ennen STS, kaikki syötöt |
+| EDC-BG | kWh | varavoimasta tullut EDC-osuus | erikseen varavoimalähteestä |
+| EIT | kWh | IT-kuorman energia | UPS-lähdöt (jos ei UPS:ää: PDU/Category2/määritelty) |
+| WIN | m³ | kaikki vesi datakeskusrajalla (DC-toiminnot) | datakeskusraja, WUE Cat2 (tai Cat1) |
+| WIN-POT | m³ | talousvesi datakeskusrajalla | datakeskusraja, WUE Cat1 |
+| EREUSE | kWh | ulos toimitettu hyödynnetty lämpö (korvaa ulkoista energiaa) | luovutuspiste datakeskusrajalla |
+| ERES-TOT | kWh | uusiutuva energia yhteensä | ERES-GOO + ERES-PPA + ERES-OS |
+| ERES-GOO | kWh | ostetut ja mitätöidyt GO:t | GO-retirement todenteet |
+| ERES-PPA | kWh | PPA-energia (ei tuplalaskentaa) | PPA-todenteet + GO-omistus/retirement tai vähennys |
+| ERES-OS | kWh | on-site tuotanto datakeskusrajalla | tuotantomittaus + GO-omistus/retirement tai vähennys |
+
+### Mittauspisteet ja menetelmät (tiivis)
+| Suure | Mittauspiste | Menetelmä | Huomio |
+|---|---|---|---|
+| EDC | input ennen STS | energiamittaus syötössä | syötöt: primääri/sekundääri/lisäsyötöt |
+| EIT | UPS-lähdöt | UPS-kohtainen vuosisumma | jos ei UPS:ää: PDU/Category2/määritelty piste |
+| WIN | vesiraja | WUE Cat2 (tai Cat1) | mittaa kaikki DC-toimintoihin liittyvä vesi |
+| WIN-POT | vesiraja | WUE Cat1 | talousvesi erikseen |
+| EREUSE | lämmön luovutuspiste | lämpöenergiamittaus | vähennä sisäinen jäähdytyskäyttö |
+| ERES-* | rajalla + todenteet | EN 50600-4-3 tai vastaava | GO/PPA/OS-tuplalaskenta estettävä |
+
+---
+
+## Mermaid-kaaviot
+
+### Mittauspisteiden suhteet
+```mermaid
+flowchart LR
+  Grid["Verkko syöttö"] --> STS["STS / siirtokytkin"]
+  Gen["Varavoima"] --> STS
+  STS --> EDCm["EDC-mittaus ennen STS:n jälkeistä jakelua"]
+  EDCm --> UPS["UPS"]
+  EDCm --> NonIT["Ei-IT kuormat (jäähdytys, häviöt)"]
+  UPS --> EITm["EIT-mittaus UPS-lähdöissä"]
+  EITm --> IT["IT-laitteet"]
+  WaterIn["WIN/WIN-POT datakeskusrajalla"] --> Cooling["Jäähdytys"]
+  IT --> Heat["Hukkalämpö"]
+  Heat --> HX["Lämmönvaihdin / luovutuspiste"]
+  HX --> EREUSEm["EREUSE mittaus rajalla"]
+  RESos["On-site uusiutuva"] --> ERESos["ERES-OS"]
+  GOO["GO-retired"] --> ERESgoo["ERES-GOO"]
+  PPA["PPA"] --> ERESPPA["ERES-PPA"]
+  ERESos --> ERESTOT["ERES-TOT"]
+  ERESgoo --> ERESTOT
+  ERESPPA --> ERESTOT
 ```
 
-### M7.3 Todennus asiakkaalle (mitä voit pyytää “todisteeksi”)
+Käyttöönoton aikajana
+gantt
+  title EU-ready mittausketjun käyttöönotto (esimerkki)
+  dateFormat  YYYY-MM-DD
+  section Suunnittelu
+  Mittausrajat ja mittauspistekartta :a1, 2026-03-15, 21d
+  Mittarivarausten suunnittelu (EDC/EIT/WIN/EREUSE/ERES) :a2, after a1, 21d
+  section Toteutus
+  Mittareiden asennus ja rekisteröinti :b1, after a2, 30d
+  Datan keruu ja tallennus (EMS/DCIM) :b2, after b1, 30d
+  section Commissioning
+  SAT: mittari→data→KPI :c1, after b2, 14d
+  Data quality -hälytykset ja korjaukset :c2, after c1, 21d
+  section Raportointi
+  Vuosiraportin ETL + validointi :d1, after c2, 14d
+  Data Pack + sisäinen hyväksyntä :d2, after d1, 14d
 
-Asiakkaana sinulla on oikeus vaatia:
-
-* mittauksen SAT-pöytäkirja (M4.1) ja datan laadun raportti (M4.2) [4][7]
-* KPI-laskentasäännöt versionumeroituna (M2.1/M4.2) [2][4]
-* EF-periaate dokumentoituna (M5) [9][20]
-
----
-
-# Lähteet (APA, numerointi)
-
-[1] Jin, X., Zhang, Y., Vasilakos, A. V., & Liu, Z. (2016). *Green data centers: A survey, perspectives, and future directions*. arXiv (arXiv:1608.00687).
-
-[2] Uddin, M., & Rahman, A. A. (2012). Energy efficiency and low carbon enabler green IT framework for data centers considering green metrics. *Renewable and Sustainable Energy Reviews, 16*(6), 4078–4094.
-
-[3] Pierson, J.-M., Baudic, G., Caux, S., Celik, B., Costa, G., Grange, L., … Varnier, C. (2019). DATAZERO: Datacenter with zero emission and robust management using renewable energy. *IEEE Access*.
-
-[4] Sharma, P., Pegus II, P., Irwin, D. E., Shenoy, P., Goodhue, J., & Culbert, J. (2017). Design and operational analysis of a green data center. *IEEE Internet Computing, 21*(4), 16–24.
-
-[5] Luo, X., Wang, J., Dooner, M., & Clarke, J. (2015). Overview of current development in electrical energy storage technologies and the application potential in power system operation. *Applied Energy, 137*, 511–536.
-
-[6] Barroso, L. A., Clidaras, J., & Hölzle, U. (2013). *The datacenter as a computer: An introduction to the design of warehouse-scale machines* (2nd ed.). Morgan & Claypool.
-
-[7] Geng, H. (Ed.). (2014). *Data center handbook*. John Wiley & Sons.
-
-[8] Bilal, K., Malik, S. U. R., Khalid, O., Hameed, A., Alvarez, E., Wijaysekara, V., … Khan, S. U. (2014). A taxonomy and survey on green data center networks. *Future Generation Computer Systems, 36*, 189–208.
-
-[9] Liikenne- ja viestintäministeriö. (2020). *The ICT sector, climate and the environment – Interim report* (Publications of the Ministry of Transport and Communications 2020:14).
-
-[10] Andrae, A. S. G., & Edler, T. (2015). On global electricity usage of communication technology: Trends to 2030. *Challenges, 6*(1), 117–157.
-
-[11] Masanet, E., Shehabi, A., Lei, N., Smith, S., & Koomey, J. (2020). Recalibrating global data center energy-use estimates. *Science, 367*(6481), 984–986.
-
-[12] Shehabi, A., Smith, S., Sartor, D., Brown, R., Herrlin, M., Koomey, J., Masanet, E., Horner, N., Azevedo, I., & Lintner, W. (2016). *United States data center energy usage report*. Lawrence Berkeley National Laboratory.
-
-[13] Meisner, D., Gold, B. T., & Wenisch, T. F. (2009). PowerNap: Eliminating server idle power. In *Proceedings of the 14th International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS ’09)* (pp. 205–216). ACM.
-
-[14] Fan, X., Weber, W.-D., & Barroso, L. A. (2007). Power provisioning for a warehouse-sized computer. In *Proceedings of the 34th Annual International Symposium on Computer Architecture (ISCA ’07)* (pp. 13–23). ACM.
-
-[15] Qureshi, A., Weber, R., Balakrishnan, H., Guttag, J., & Maggs, B. (2009). Cutting the electric bill for internet-scale systems. In *Proceedings of the ACM SIGCOMM 2009 Conference* (pp. 123–134). ACM.
-
-[16] Lin, M., Wierman, A., Andrew, L. L. H., & Thereska, E. (2011). Dynamic right-sizing for power-proportional data centers. In *Proceedings of IEEE INFOCOM 2011* (pp. 1098–1106). IEEE.
-
-[17] Liu, Z., Lin, M., Wierman, A., Low, S. H., & Andrew, L. L. H. (2011). Greening geographical load balancing. In *Proceedings of the ACM SIGMETRICS 2011* (pp. 233–244). ACM.
-
-[20] World Resources Institute (WRI) & World Business Council for Sustainable Development (WBCSD). (2015). *GHG Protocol Scope 2 Guidance: An amendment to the GHG Protocol Corporate Standard*.
-
----
-
-Kyllä — sun nykyinen **M0–M7-runko kattaa käytännössä koko tuon “Moduuli 6 / EN 50600-4 ja mittarit” -taulukon sisällön** (EN 50600-4:n rooli, PUE/CUE/WUE/REF/ERF, mittauspisteet, mittaustiheys & datan laatu, mittarit raportoinnissa ja tavoitteissa sekä AI/ML-kytkentä M6.5:ssä). Erityisen hyvin se osuu siihen ajatukseen, että standardi ei “määrää hyvää PUE:ta”, vaan yhdenmukaistaa **miten mitataan ja raportoidaan**, jotta luvut ovat vertailukelpoisia .
-
-Alla on **1–2 sivun opasmainen, selittävä teksti**, jonka voit liittää sellaisenaan M0:n jatkoksi (tai M2:n alkuun). Se tekee lukijalle konkreettiseksi: **mitä dokumentteja vaaditaan, mikä on minimitaso, miten todennetaan ja mitä dataa asiakkaana saat ulos (raportti + API/CSV)** — ja sitoo kaiken EN 50600-4 -ajatteluun  .
-
----
-
-## EN 50600-4 + mittausdata: miten “vihreys” tehdään todennettavaksi (asiakkaalle ja rakentajalle)
-
-### 1) Mikä EN 50600-4:n rooli on tässä menetelmässä?
-
-EN 50600-4 -standardisarjan käytännön arvo on se, että se pakottaa vastaamaan kahteen kysymykseen samalla tavalla joka kerta:
-
-1. **Mitä mitataan ja mistä rajasta?** (measurement boundary, mittausrajaukset)
-2. **Miten mittareita lasketaan ja raportoidaan?** (laskentasäännöt, ajanjaksotus, raportointirakenne)
-
-Standardi ei itsessään kerro mikä arvo on “hyvä”, vaan miten mittaat ja raportoit oikein niin, että datakeskuksia voidaan verrata samoilla periaatteilla . Tämä on kriittistä, koska muuten PUE/CUE/WUE/ERF/REF jäävät helposti “yhdeksi numeroksi”, jonka taustaa ei voi auditoida eikä käyttää optimoinnin ohjauksessa.
-
-**Mitä tämä tarkoittaa käytännössä lukijalle (ICT-yritys)?**
-Jos et saa näkyviin **mittausrajausta + mittauspistekarttaa + laskentasääntöjä**, et voi tietää, ovatko PUE/CUE/WUE-raportit vertailukelpoisia edes saman toimittajan sisällä eri kuukausina.
-
----
-
-### 2) Mitkä mittarit ovat “pakko”, ja mitä mittausdataa ne vaativat?
-
-Perusjoukko muodostuu käytännössä EN 50600-4 -ajattelun “ydinmittareista” (PUE, WUE, CUE sekä energian alkuperään ja uudelleenkäyttöön liittyvät mittarit kuten REF/ERF)  .
-
-**Minimissä (audit-kelpoinen “Basic”) tarvitset:**
-
-* **E_total (kWh)**: laitoksen sisään tuleva energia *määritellyltä mittausrajalla*
-* **E_IT (kWh)**: IT-kuorman energia (tyypillisesti PDU/räkki tai vastaava)
-* Näistä saat: **PUE = E_total / E_IT**
-* Ja kun lisäät **päästökertoimen periaatteen** (location/market tms.), saat **CO₂e_total**
-
-**Standard/Advanced tasolle (todellinen ohjaus & optimointi) tarvitset lisäksi:**
-
-* **UPS_in ja UPS_out** → UPS-häviöt (kWh)
-* **E_cooling (kWh)** (jäähdytys eriteltynä)
-* lämpötila/ΔT ja vähintään perusvirtaamaindikaattorit
-* (jos lämpöä toimitetaan) **heat_export (MWh_th)** + lämpötaso (meno/paluu)
-
-**Miksi tämä on oleellista?**
-Optimointia ei voi “kohdistaa” ellei energia jakaudu osiin. PUE voi parantua “vahingossa” (IT-kuorma kasvaa), mutta CO₂e ei välttämättä parane. Siksi menetelmä vaatii erottelun: **kokonaisenergia vs. IT-energia** ja käytännössä myös **UPS-häviöt + jäähdytyksen energia**, jotta vaikutus näkyy oikeassa paikassa.
-
----
-
-### 3) Vaaditut dokumentit: missä ne konkreettisesti ovat ja kuka ne tuottaa?
-
-Tässä kohtaa lukija yleensä pysähtyy: “Missä nämä deliverablet ovat — teenkö itse vai saanko jostain?”
-
-Ajattele niin, että menetelmä on “audit trail -ketju”: ilman dokumentteja data on irrallista eikä kelpaa todennukseen.
-
-**Pakolliset dokumentit (pyydä/tuota aina):**
-
-1. **Mittausrajaus (Measurement Boundary Statement)**
-
-   * “mistä kohtaa E_total mitataan ja mitä se sisältää/ei sisällä”
-2. **Mittauspistekartta (Instrumentation & Metering Map)**
-
-   * mittarien paikat, tunnisteet, mittausvälit, mittarityyppi/luokka sekä datan reitti (mittari → DCIM/BMS → tietovarasto)
-3. **KPI-sanasto ja laskentasäännöt (KPI Dictionary & Calculation Rules)**
-
-   * PUE/CUE/WUE/REF/ERF, ajanjaksotus, kaavat, rounding, mitä tehdään puuttuvalle datalle
-4. **Datan omistajuus + toimitusmäärittely (Data Access & Delivery Spec)**
-
-   * mitä asiakas saa, missä muodossa (PDF + CSV/JSON/API), aikavyöhyke, granulariteetti, säilytys, data quality -kentät
-5. **Mittauksen käyttöönotto- ja todennuspöytäkirja (Measurement SAT / Commissioning Record)**
-
-   * end-to-end: “mittari → data → KPI” toimii ja on testattu
-
-**Kuka tuottaa nämä (roolipohjainen vastaus):**
-
-* **Colocation-asiakas:** vaadi operaattorilta 1–5 sopimusliitteenä (“Sustainability Data Pack”).
-* **DC-omistaja/rakentaja:** tilaa 1–3 suunnittelun/energiasuunnittelun osana, ja vaadi 5 käyttöönoton (commissioning) urakkaan.
-* **IT-palveluomistaja:** vastaa usein kuormapolitiikoista ja SLA-ehdoista, jotka määrittävät optimoinnin rajat ja baseline-jaksot.
-
----
-
-### 4) Minimitasot (Basic / Standard / Advanced) – ja mitä ne oikeasti mahdollistavat
-
-Pelkkä “PUE kuukausiraportissa” ei vielä tarkoita, että voit optimoida.
-
-**Basic (audit-kelpoinen minimiraportointi):**
-
-* Mittaus: E_total, E_IT (suositus: UPS_in/out)
-* Granulariteetti: ≥ 60 min
-* Tuotos: kuukausi- ja viikkotason PUE + CO₂e (päästökerroinperiaate dokumentoitu)
-
-**Standard (ohjauskelpoinen optimointi):**
-
-* Lisäksi: E_cooling, lämpötila/ΔT vähintään sali/alue, perusvirtaamaindikaattorit
-* Granulariteetti: suositus 15 min
-* Tuotos: “muutos → vaikutus” todentuu (jäähdytyksen osuus, UPS-häviöt, CO₂e trendit)
-
-**Advanced (jatkuva optimointi + automaatio/AI):**
-
-* Lisäksi: vyöhykemittaukset (sähkö + jäähdytys), data quality -indikaattorit, mahdollinen verkon energia, lämpötoimitus reaaliajassa
-* Granulariteetti: suositus 5 min
-* Mahdollistaa: mallit, jotka säätävät ja oppivat (palautesilmukka) — mutta vain jos todennus ja muutosloki ovat kunnossa
-
----
-
-### 5) Todennukset: millä varmistat, että luvut ovat “audit-kelpoisia”?
-
-**(A) Ennen optimointia: Measurement SAT (“mittari → data → KPI”)**
-
-* tarkista mittarien luokka/kalibrointi, aikaleimat, ja että PUE asettuu realistiselle välille
-* UPS_in/out tuottaa järkevät häviöt
-
-**(B) Jatkuva datan laatu**
-
-* datakatkot, epärealistiset hyppäykset, drift, “jäätyneet arvot”
-* KPI-laskenta ei saa muuttua ilman versionumeroitua muutosta
-
-**(C) Ennen–jälkeen -todennus kaikelle optimoinnille**
-
-* baseline-jakso + muutos + mittausjakso + vaikutus KPI:hin + SLA-seuranta
-* hyväksy muutos vasta kun vaikutus on mitattu (ei “arvioitu”)
-
-Tämä rakenne tekee myös AI/DA-osuudesta uskottavan: jos malli säätää setpointteja, sen vaikutus näkyy E_coolingissa, hotspot-mittareissa ja PUE:ssa samalla aikajaksolla (ja muutos on versionhallittu).
-
----
-
-### 6) Mitä mittausdataa asiakkaana saat ulos: raportti + API/CSV (minimivaatimus)
-
-Asiakkaan kannalta tärkein konkretia on: **mitä saat ulos, missä muodossa, millä aikatasolla ja millä todennuksella.**
-
-**Pakollinen kuukausiraportti (PDF):**
-
-* E_total (kWh), E_IT (kWh), PUE
-* CO₂e_total (kgCO₂e) + EF-periaate (lähde, päivitysrytmi, location/market)
-* UPS-häviöt (kWh) jos mitattu
-* (jos lämpöä toimitetaan) heat_export (MWh_th) + lämpötaso + mittauspiste
-  **Pakolliset liitteet:** mittausrajaus + mittauspistekartta (versio), KPI-säännöt (versio), data quality -yhteenveto
-
-**Pakollinen koneellinen toimitus (CSV/JSON/API):**
-
-* vähintään päivä/viikko (Basic), suositus 15 min (Standard)
-* jokaisella datapisteellä aikaleima + aikavyöhyke
-* mukana data quality -kentät (missing %, flagit)
-* mukana KPI-sääntöjen versionumero
-
-**Minimikentät (pakko):**
-
-* `total_energy_kwh`, `it_energy_kwh`, `pue`, `co2e_kg`
-* `ef_method`, `ef_value_kg_per_kwh` (tai viite dokumenttiin)
-* `data_quality_missing_pct`, `data_quality_flags`, `calculation_rules_version`
-
-**Suositellut lisäkentät (nostaa optimointikykyä):**
-
-* `cooling_energy_kwh`, `ups_losses_kwh`
-* `heat_export_mwh_th`, `heat_supply_temp_c`, `heat_return_temp_c`
-* (Advanced) vyöhykekentät + sensoritasoiset flagit
-
----
-
-### 7) Missä “tekoäly ja data-analyysi” näkyy tässä menetelmässä (ilman että se jää maininnaksi)?
-
-Tekoäly ei ole oma irrallinen luku, vaan se on **ohjausosa**, joka käyttää samaa mittausketjua ja samoja todennuksia:
-
-* **Syöte:** Standard/Advanced-tason mittauspisteet (energia + lämpötila + kuorma)
-* **Ohjaus:** setpointit, puhallin/pumppu, free-cooling-tilat, kuorman sijoittelu (SLA-rajoissa)
-* **Rajoitteet:** SLA, lämpöraja/hotspot, redundanssi
-* **Todennus:** aina baseline vs jälkeen + muutosloki + KPI-vaikutus
-
-Tällä tavalla “Konesalien ympäristövaikutusten optimointi tekoälyn ja data-analyysin avulla” on suoraan todennettavissa mittareilla, eikä jää puheeksi.
-
----
-
-Jos haluat, teen seuraavaksi **valmiin M6.5-alaluvun (1–2 sivua)** “syvemmälle menevillä tutkimustuloksilla” niin, että se on *kirjaimellisesti plug-in* tähän sun nykyiseen M-rakenteeseen:
-
-* (i) mallityypit (ennuste, anomalioiden havaitseminen, optimointi / MPC / RL),
-* (ii) mitä tuloksia kirjallisuus raportoi,
-* (iii) millä mittausvaatimuksilla tulokset ovat uskottavia,
-* (iv) mitä deliverableja (mallikortti, muutosloki, before–after-raportti) vaaditaan.
----
-...
 
 ```mermaid
 flowchart LR
-    Grid[Primääri/sekundäärisyöttö (verkko)] --> STS[Siirtokytkin / supply transfer switchgear]
-    Gen[Lisäsyöttö: varavoima] --> STS
-    STS --> MainIn[EDC-mittauspiste: datakeskusjärjestelmän syöttö (ennen STS:n jälkeistä jakelua)]
-    MainIn --> UPS1[UPS (IT-syöttö)]
-    MainIn --> NonIT[Ei-IT kuormat: jäähdytys, ilmanvaihto, valaistus, häviöt]
-    UPS1 --> ITdist[PDU / IT-jakelu]
-    ITdist --> ITload[IT-laitteet]
-    UPS1 --> EITm[EIT-mittaus: UPS-kohtainen vuotuinen energia]
-    WaterIn[WIN-mittaus: kaikki vesi datakeskusrajan yli] --> CoolingSys[Jäähdytysjärjestelmä]
-    ITload --> Heat[Hukkalämpö]
-    Heat --> HX[Lämmönvaihdin / luovutuspiste]
-    HX --> Export[EREUSE-mittaus: luovutus datakeskusrajan ulkopuolelle]
-    RESos[On-site uusiutuva tuotanto] --> RESm[ERES-OS mittaus]
-    GOO[GOO: ostettu + mitätöity] --> REStot[ERES-TOT]
-    PPA[PPA-sähkö (ja GO:t omistettu+mitätöity)] --> REStot
+    Grid["Primääri/sekundäärisyöttö (verkko)"] --> STS["Siirtokytkin / supply transfer switchgear"]
+    Gen["Lisäsyöttö: varavoima"] --> STS
+    STS --> MainIn["EDC-mittauspiste: datakeskusjärjestelmän syöttö (ennen STS:n jälkeistä jakelua)"]
+    MainIn --> UPS1["UPS (IT-syöttö)"]
+    MainIn --> NonIT["Ei-IT kuormat: jäähdytys, ilmanvaihto, valaistus, häviöt"]
+    UPS1 --> ITdist["PDU / IT-jakelu"]
+    ITdist --> ITload["IT-laitteet"]
+    UPS1 --> EITm["EIT-mittaus: UPS-kohtainen vuotuinen energia"]
+    WaterIn["WIN-mittaus: kaikki vesi datakeskusrajan yli"] --> CoolingSys["Jäähdytysjärjestelmä"]
+    ITload --> Heat["Hukkalämpö"]
+    Heat --> HX["Lämmönvaihdin / luovutuspiste"]
+    HX --> Export["EREUSE-mittaus: luovutus datakeskusrajan ulkopuolelle"]
+    RESos["On-site uusiutuva tuotanto"] --> RESm["ERES-OS mittaus"]
+    GOO["GOO: ostettu + mitätöity"] --> REStot["ERES-TOT"]
+    PPA["PPA-sähkö (ja GO:t omistettu+mitätöity)"] --> REStot
     RESm --> REStot
     MainIn --> REStot
+    ...
+
 ```
+```mermaid
 
+flowchart LR
+    %% Sähkönsyöttö ja jakelu
+    Grid["Primääri/sekundäärisyöttö (verkko)"] --> STS["Siirtokytkin / supply transfer switchgear"]
+    Gen["Lisäsyöttö: varavoima"] --> STS
+    STS --> MainIn["EDC-mittauspiste: datakeskusjärjestelmän syöttö (ennen STS:n jälkeistä jakelua)"]
 
+    MainIn --> UPS1["UPS (IT-syöttö)"]
+    MainIn --> NonIT["Ei-IT kuormat: jäähdytys, ilmanvaihto, valaistus, häviöt"]
+
+    UPS1 --> ITdist["PDU / IT-jakelu"]
+    ITdist --> ITload["IT-laitteet"]
+
+    %% Energia- ja IT-mittaukset
+    MainIn --> EDCm["EDC: kokonaisenergiankulutus (vuosi)"]
+    UPS1 --> EITm["EIT: UPS-kohtainen IT-energia (vuosi)"]
+
+    %% Vesi ja jäähdytys
+    WaterIn["WIN: kaikki vesi datakeskusrajan yli"] --> CoolingSys["Jäähdytysjärjestelmä"]
+
+    %% Hukkalämpö ja energian uudelleenkäyttö
+    ITload --> Heat["Hukkalämpö"]
+    Heat --> HX["Lämmönvaihdin / luovutuspiste"]
+    HX --> Export["EREUSE: energia datakeskusrajan ulkopuolelle"]
+
+    %% Uusiutuva energia (on-site + off-site)
+    RESos["On-site uusiutuva tuotanto"] --> RESm["ERES-OS: on-site uusiutuvan energian mittaus"]
+    GOO["GOO: ostettu ja mitätöity alkuperätakuu"] --> REStot["ERES-TOT: uusiutuvan energian kokonaismäärä"]
+    PPA["PPA-sähkö (ja GO:t omistettu+mitätöity)"] --> REStot
+    RESm --> REStot
+    MainIn --> REStot
+
+    %% KPI-solmut (EN 50600-4 / ISO/IEC 30134 -perusteiset)
+    EDCm --> PUE["PUE = EDC / EIT"]
+    EITm --> PUE
+
+    WaterIn --> WUE["WUE = WIN / EIT"]
+    EITm --> WUE
+
+    Export --> ERF["ERF = EREUSE / EDC"]
+    EDCm --> ERF
+
+    REStot --> REF["REF = ERES-TOT / EDC"]
+    EDCm --> REF
+
+    %% Standardiviittaus
+    NoteEN["KPI-määrittelyt EN 50600-4 -sarjan ja ISO/IEC 30134 -sarjan mukaan"]
+    PUE --- NoteEN
+
+```
