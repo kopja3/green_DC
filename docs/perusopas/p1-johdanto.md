@@ -75,3 +75,117 @@ Vihreät suorituskykymittarit – miten datakeskuksen toimintaa mitataan ja seur
 <p> <img src="./img/p1-kuvaX-vihrean-datakeskuksen-osa-alueet.png" alt="Kuva X. Vihreän datakeskuksen keskeiset osa-alueet: ICT-laitteiden energiatehokkuus, resurssienhallinta, lämpötilanhallinta ja vihreät suorituskykymittarit." style="width:100%;height:auto;"> </p>
 
 Kuva X. Vihreän datakeskuksen keskeiset osa-alueet. Kuva toimii karttana oppaan myöhempiin lukuihin, joissa kutakin haaraa käsitellään tarkemmin.
+
+### P1.10 Etenemisjärjestys: tarpeesta suunnitteludokumentteihin
+
+Tässä perusoppaassa vihreän datakeskuksen suunnittelu etenee vaiheittain siten, että varhaiset päätökset tuottavat seuraavan vaiheen lähtötiedot. Tarkoitus ei ole valita teknisiä ratkaisuja irrallisesti, vaan lukita ensin tarve, koko, tyyppi ja sijainti, jotta energianhankinta, hukkalämpö, jäähdytys, sähköjärjestelmä ja mittaus voidaan suunnitella yhtenä kokonaisuutena.
+
+#### 1. Tarve
+
+Ensin määritetään, miksi datakeskus rakennetaan. Tässä vaiheessa päätetään myös, onko kyse omasta datakeskuksesta, colocation-ratkaisusta, pilvestä vai hybridimallista. Tarve määrittää myöhemmät painotukset: viive, kapasiteetti, käytettävyys, energiatehokkuus, hukkalämpö ja kustannusrakenne.
+
+**Tuotos:** hankkeen perustelu, käyttötarkoitus, toteutusmalli ja palvelutasotavoite.
+
+#### 2. Koko ja tyyppi
+
+Kun tarve on määritetty, arvioidaan datakeskuksen koko ja tyyppi. Tässä vaiheessa kuvataan työkuorma `L(t)`, palvelutasovaatimukset (SLA/SLO), kapasiteetin tarve sekä se, onko ratkaisu esimerkiksi edge-, enterprise-, pilvi-, HPC- tai AI-painotteinen.
+
+Tavoitteena on johtaa kuormasta kapasiteettitarve ja siitä edelleen IT-tehoprofiili. Tässä vaiheessa ei vielä valita lopullista jäähdytys- tai sähköarkkitehtuuria, vaan muodostetaan niiden mitoituksen lähtötieto.
+
+**Tuotos:** kuormakuvaus `L(t)`, kapasiteettiarvio, palvelutasorajat ja alustava IT-tehoprofiili `P_IT(t)`.
+
+#### 3. Sijainti
+
+Sijainti valitaan vasta, kun tarve, koko ja tyyppi ovat tiedossa. Sijainti määrittää sähköliittymän realistiset vaihtoehdot, verkko- ja viivereunaehdot, uusiutuvan energian hankinnan mahdollisuudet, free cooling -potentiaalin sekä hukkalämmön hyödyntämisen edellytykset.
+
+Sijainti ei ole vain tonttikysymys, vaan energian, liityntöjen ja liiketoimintalogiikan päätös. Tästä syystä se käsitellään ennen varsinaisia teknisiä ratkaisujen valintoja.
+
+**Tuotos:** sijaintipäätös tai sijaintivertailu, jossa on kuvattu sähkö, verkot, liitynnät, free cooling -potentiaali ja hukkalämmön vastaanottajavaihtoehdot.
+
+#### 4. Hukkalämpö osaksi liiketoimintaa
+
+Hukkalämpö arvioidaan jo alkuvaiheessa osana liiketoimintaa, ei vasta teknisenä lisäominaisuutena. Tässä vaiheessa selvitetään, onko kohteella realistinen lämpönielu, kuten kaukolämpöverkko, teollinen vastaanottaja tai muu paikallinen käyttö.
+
+Arvioinnissa tarkastellaan ainakin:
+- toimitettavissa oleva lämpöteho ja lämpöenergia
+- lämpötilataso
+- vastaanottajan sijainti ja liityntäetäisyys
+- lämpöpumpun tai muun lämpötilanoston tarve
+- sopimus- ja vastuunjakomalli.
+
+Jos hukkalämmön hyödyntäminen on mahdollista, se vaikuttaa jo sijaintiin, järjestelmäarkkitehtuuriin, mitoitukseen ja liiketoimintamalliin.
+
+**Tuotos:** hukkalämmön esiselvitys, rajapintakuvaus, alustava kannattavuus- ja toteutettavuusarvio.
+
+#### 5. Uusiutuvan energian hankinta mukaan heti alkuvaiheessa
+
+Samassa vaiheessa määritetään sähkön hankinnan periaate. Vaihtoehtoja voivat olla esimerkiksi:
+- PPA
+- oma tuotanto
+- alkuperätakuut
+- muu todennettava hankintamalli
+- näiden yhdistelmä.
+
+Tarkoitus on lukita jo alkuvaiheessa, miten sähkön alkuperä todennetaan ja millä päästökertoimilla käyttöaikaiset päästöt raportoidaan. Tämä ei ole vain raportointikysymys, vaan osa datakeskuksen perusratkaisua.
+
+**Tuotos:** energianhankinnan periaate, todentamistapa ja raportoinnin lähtötiedot.
+
+#### 6. Jos hukkalämpöä tai vahvaa uusiutuvan energian ratkaisua ei saada, free cooling korostuu
+
+Jos sijainnissa ei ole realistista hukkalämmön vastaanottajaa tai uusiutuvan energian hankintaratkaisu jää heikoksi, free cooling nousee keskeiseksi suunnitteluperiaatteeksi. Suomessa tämä on usein luonteva vaihtoehto ilmasto-olosuhteiden vuoksi.
+
+Tässä vaiheessa arvioidaan:
+- free cooling -potentiaali
+- ulkolämpötilajakauman vaikutus
+- valittavan jäähdytysarkkitehtuurin toimintaperiaate
+- veden, ilman ja olosuhteiden vaikutus käyttöön
+- vaikutus energiankulutukseen ja käyttökustannuksiin.
+
+**Tuotos:** jäähdytysstrategian päälinja ja arvio siitä, missä määrin free cooling toimii kohteessa.
+
+#### 7. Mitoitus
+
+Kun tarve, koko, tyyppi, sijainti, hukkalämpö, sähkön hankinta ja jäähdytysstrategia on määritetty, voidaan tehdä varsinainen mitoitus.
+
+Mitoituksessa johdetaan:
+`L(t)` + SLA/SLO → `C_act(t)` + `C_res` → `P_IT(t)` → sähkö- ja jäähdytysinfrastruktuurin mitoitus.
+
+Tässä vaiheessa tiedetään jo riittävästi, jotta voidaan arvioida:
+- sähköliittymä ja jakelu
+- UPS / varavoima / varmistusperiaate
+- jäähdytysteho ja lämpökuorma
+- mahdollinen hukkalämmön toimituskapasiteetti
+- infrastruktuurin osakuorma- ja hyötysuhdekäyttäytyminen.
+
+**Tuotos:** sähkö- ja jäähdytysjärjestelmän mitoituksen lähtötiedot sekä alustava mitoitusratkaisu.
+
+#### 8. Mittausrajat suunnittelussa, ei jälkikäteen
+
+Mittausrajat määritetään suunnitteluvaiheessa samaan aikaan energian, jäähdytyksen ja hukkalämmön ratkaisujen kanssa. Tällöin voidaan päättää:
+- mistä kokonaisenergia mitataan
+- mistä IT-energia mitataan
+- miten jäähdytyksen sähkö erotellaan
+- miten hukkalämmön toimitettu energia todennetaan
+- millä laskentasäännöillä KPI:t muodostetaan.
+
+Mittausrajat vaikuttavat suoraan siihen, ovatko PUE-, REF-, ERF-, CER-, CUE- ja WUE-lukuja koskevat raportit vertailukelpoisia ja käyttökelpoisia.
+
+**Tuotos:** mittausrajakuvaukset, mittauspistekartta, KPI-määrittelyt ja raportointisäännöt.
+
+#### 9. Suunnitteludokumentit
+
+Edellisten vaiheiden tuloksena syntyvät suunnitteludokumentit, joilla hanke voidaan viedä tekniseen suunnitteluun, hankintaan ja toteutukseen.
+
+Näitä ovat vähintään:
+- tarve- ja toteutusmallikuvaus
+- kuormakuvaus ja palvelutasorajat
+- kapasiteetti- ja IT-tehoprofiili
+- sijaintiselvitys ja liityntäehdot
+- uusiutuvan energian hankintamalli
+- hukkalämmön rajapinta ja alustava liiketoimintamalli
+- jäähdytysstrategia
+- sähköjärjestelmän mitoituksen lähtötiedot
+- mittausrajat, mittauspisteet ja KPI-laskentasäännöt.
+
+Näin vihreä datakeskus etenee tarpeesta mitoitukseen ja edelleen toteutukseen ilman, että energianhankinta, hukkalämpö, jäähdytys ja mittaus jäävät irrallisiksi lisäosiksi.
+
