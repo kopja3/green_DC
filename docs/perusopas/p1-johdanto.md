@@ -180,7 +180,7 @@ Näin vihreä datakeskus etenee tarpeesta mitoitukseen ja edelleen toteutukseen 
 
 Etenemisjärjestys: tarpeesta suunnitteludokumentteihin
 
-### P1.10 Jos tätä etenemisjärjestystä ei noudateta** 
+### P1.10 Jos tätä etenemisjärjestystä ei noudateta
 
 **Datakeskuksesta tulee helposti kalliimpi, raskaampi ja vähemmän ympäristökestävä kuin sen olisi tarpeen olla** Kun tarvetta, kuormaa ja tyyppiä ei määritellä ensin, sähkö- ja jäähdytysjärjestelmät mitoitetaan väärien oletusten pohjalta. DOE korostaa, että IT-ratkaisut ja niiden käyttöolosuhteet on arvioitava ensin juuri siksi, että ne määräävät mekaanisten ja sähköisten järjestelmien energiantarpeen. Schneiderin analyysin mukaan vaiheittainen, kuormaan sidottu toteutus voi pienentää TCO:ta noin 30 prosenttia verrattuna ylikapasiteettia sisältävään malliin. ([The Department of Energy's Energy.gov][1])
 
