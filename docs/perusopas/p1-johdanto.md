@@ -72,6 +72,31 @@ Tässä perusoppaassa vihreän datakeskuksen suunnittelu etenee vaiheittain site
 #### 1. Tarve
 
 Ensin määritetään, miksi datakeskus rakennetaan. Tässä vaiheessa päätetään myös, onko kyse omasta datakeskuksesta, colocation-ratkaisusta, pilvestä vai hybridimallista. Tarve määrittää myöhemmät painotukset: viive, kapasiteetti, käytettävyys, energiatehokkuus, hukkalämpö ja kustannusrakenne.
+**** Miksi tarve määrittää myöhemmät painotukset***
+Datakeskuksen käyttötarkoitus määrittää sen, mitä siellä pidetään tärkeimpänä, koska eri valinnat rankaisevat eri tavalla vääristä valinnoista. 
+
+Jos datakeskus rakennetaan esimerkiksi reaaliaikaisiin palveluihin, kuten verkkopalveluihin, maksuliikenteeseen, teollisuuden ohjaukseen tai tekoälyn käyttöpalveluihin, viive ja käytettävyys nousevat keskiöön. Tällöin sijainti, verkkoyhteydet, redundantit järjestelmät ja nopea häiriönsiirto ovat tärkeämpiä kuin aivan alin energiakustannus. Jokainen millisekunti tai käyttökatko näkyy suoraan palvelun laadussa tai liiketoiminnassa. 
+
+Jos taas on tarkoitus ajaa raskasta laskentaa, varmistuksia tai muuta eräajoa, painotus siirtyy kapasiteettiin ja kustannustehokkuuteen. Tällöin pieni lisäviive ei yleensä haittaa, mutta suuri laskentateho, hyvä skaalautuvuus, sähkön hinta ja jäähdytyksen tehokkuus ratkaisevat paljon enemmän. Näissä ympäristöissä tärkeintä on usein, kuinka paljon laskentaa saadaan tuotettua per euro ja per kilowattitunti. Käytettävyyskin riippuu tarpeesta. 
+
+Kriittisissä palveluissa tavoitellaan erittäin korkeaa jatkuvuutta, jolloin rakennetaan enemmän varmistuksia sähköön, verkkoon, jäähdytykseen ja laitteisiin. Se nostaa investointi- ja ylläpitokustannuksia. 
+
+Vähemmän kriittisissä käyttökohteissa voidaan hyväksyä enemmän huoltoikkunoita tai pidempi palautumisaika, jolloin rakenne voi olla kevyempi ja halvempi. Energiatehokkuuden ja hukkalämmön hyödyntäminen korostuvat erityisesti silloin, kun kuorma on suuri ja tasainen. 
+
+Jos datakeskus käy jatkuvasti korkealla teholla, pienikin parannus hyötysuhteessa säästää  paljon rahaa. Samalla hukkalämmöstä voi tulla arvokas sivutuote, jos sen ympärillä on kaukolämpöverkko tai muu lämmön käyttäjä. 
+
+Jos kuorma on epäsäännöllinen tai pieni, hukkalämmön talteenotontoimintalogiikka voi olla paljon heikompi. 
+
+Kustannusrakenne riippuu tästä kaikesta. 
+
+Joissakin datakeskuksissa suurin kysymys on alkuinvestointi: varmistettu sähkö, varavoima, kahdennukset ja korkea turvallisuustaso. 
+
+Toisissa taas tärkein on käyttökustannus: sähkö, jäähdytys, tilatehokkuus ja automaatio. 
+
+Käyttötarkoitus siis ratkaisee, maksetaanko enemmän etupainotteisesti toimintavarmuudesta vai pitkässä juoksussa energiasta ja operoinnista. 
+
+Ydinajatus on tämä: datakeskusta ei voi optimoida yleisesti ”parhaaksi”, vaan tiettyä tehtävää varten parhaaksi. Siksi syy, miksi rakennetaan, määrää myös myöhemmät painotukset viiveen, kapasiteetin, käytettävyyden, energiatehokkuuden, hukkalämmön ja kustannusten välillä.            
+
 
 **Tuotos:** hankkeen perustelu, käyttötarkoitus, toteutusmalli ja palvelutasotavoite.
 
