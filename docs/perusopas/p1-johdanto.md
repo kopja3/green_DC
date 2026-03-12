@@ -64,17 +64,6 @@ minimoi vedenkulutuksen ja materiaalien ympäristökuorman sekä
 tukee kiertotaloutta laitteiden pitkäikäisyyden, päivitettävyyden ja kierrätettävyyden kautta.
 Seuraavissa luvuissa tätä määritelmää avataan käytännön ratkaisujen kautta: ensin sijainnin ja perusratkaisujen tasolla (P2–P3), sitten energiavirran ja hukkalämmön näkökulmasta (P5–P6) sekä lopuksi standardien, mittarien ja sääntelyn tasolla (P7).
 
-P1.5 Vihreän datakeskuksen pääelementit yhdellä kuvalla
-
-Alla oleva kuva kokoaa vihreän datakeskuksen keskeiset osa-alueet yhteen kokonaisuuteen. Se näyttää neljä päähaaraa, joihin oppaan myöhemmät luvut palaavat tarkemmin:
-ICT-laitteiden energiatehokkuus – miten palvelimet, tallennus ja verkkolaitteet suunnitellaan ja säädetään niin, että ne kuluttavat mahdollisimman vähän sähköä (dynaaminen suoritusnopeuden säätö, virrankatkaisumekanismit, hybridiratkaisut).
-Resurssienhallinta – miten laskenta, verkko ja sähkö jaetaan tehokkaasti (virtuaalikoneiden resurssien jako, verkkoliikenteen optimointi, sähkönjakelu ja uusiutuvan energian hyödyntäminen).
-Lämpötilanhallinta – miten jäähdytys, työkuormien jako ja lämpötilatasot pidetään sellaisina, että energiatehokkuus ja järjestelmän luotettavuus ovat tasapainossa.
-Vihreät suorituskykymittarit – miten datakeskuksen toimintaa mitataan ja seurataan (esimerkiksi PUE-, CUE- ja WUE-tyyppiset mittarit sekä vihreä monitorointi ja kokeelliset tekniikat).
-
-<p> <img src="./img/p1-kuvaX-vihrean-datakeskuksen-osa-alueet.png" alt="Kuva X. Vihreän datakeskuksen keskeiset osa-alueet: ICT-laitteiden energiatehokkuus, resurssienhallinta, lämpötilanhallinta ja vihreät suorituskykymittarit." style="width:100%;height:auto;"> </p>
-
-Kuva X. Vihreän datakeskuksen keskeiset osa-alueet. Kuva toimii karttana oppaan myöhempiin lukuihin, joissa kutakin haaraa käsitellään tarkemmin.
 
 ### P1.10 Etenemisjärjestys: tarpeesta suunnitteludokumentteihin
 
