@@ -178,3 +178,28 @@ Näitä ovat vähintään:
 
 Näin vihreä datakeskus etenee tarpeesta mitoitukseen ja edelleen toteutukseen ilman, että energianhankinta, hukkalämpö, jäähdytys ja mittaus jäävät irrallisiksi lisäosiksi.
 
+Etenemisjärjestys: tarpeesta suunnitteludokumentteihin
+
+### P1.10 Jos tätä etenemisjärjestystä ei noudateta, datakeskuksesta tulee helposti kalliimpi, raskaampi ja vähemmän ympäristökestävä kuin sen olisi tarpeen olla.** Kun tarvetta, kuormaa ja tyyppiä ei määritellä ensin, sähkö- ja jäähdytysjärjestelmät mitoitetaan väärien oletusten pohjalta. DOE korostaa, että IT-ratkaisut ja niiden käyttöolosuhteet on arvioitava ensin juuri siksi, että ne määräävät mekaanisten ja sähköisten järjestelmien energiantarpeen. Schneiderin analyysin mukaan vaiheittainen, kuormaan sidottu toteutus voi pienentää TCO:ta noin 30 prosenttia verrattuna ylikapasiteettia sisältävään malliin. ([The Department of Energy's Energy.gov][1])
+
+**Jos sijainti päätetään liian aikaisin, voidaan valita väärä paikka.** Tällöin seurauksena voi olla heikko sähköliittymä, pitkät liityntäajat, kallis sähkö, huono skaalautuvuus tai liian rajalliset mahdollisuudet uusiutuvan energian käyttöön. CBRE Finlandin mukaan sähkötehon saatavuus ja verkon ruuhkautuminen ovat tällä hetkellä keskeisiä datakeskusten kasvun esteitä Euroopassa. ([cbre.fi][2])
+
+**Jos hukkalämpöä ei oteta mukaan heti, sen arvo menetetään.** Tällöin datakeskus jää pelkäksi sähkönkuluttajaksi, vaikka siitä voisi tulla osa paikallista energiajärjestelmää. IEA:n mukaan datakeskusten hukkalämmöllä on merkittävä potentiaali erityisesti rakennuksissa noin viiden kilometrin säteellä, mutta hyödyntäminen edellyttää varhaisia päätöksiä liiketoimintamallista ja tariffirakenteesta. ([IEA][3])
+
+**Jos uusiutuvan energian hankintamalli jätetään myöhemmäksi, vihreys jää helposti pelkäksi väitteeksi ilman luotettavaa todentamista.** GHG Protocol edellyttää, että sähkön hankintaa koskevat instrumentit täyttävät laatukriteerit ja että raportointi on läpinäkyvää. Muussa tapauksessa datakeskus voi kyllä käyttää sähköä tehokkaasti, mutta sen päästöväitteet jäävät heikoiksi tai epäselviksi. ([ghgprotocol.org][4])
+
+**Jos free cooling arvioidaan vasta myöhäisessä vaiheessa, säästöpotentiaali menetetään.** ENERGY STARin mukaan air-side- ja water-side-economizer-ratkaisut voivat säästää erittäin paljon energiaa, koska ne vähentävät mekaanisen jäähdytyksen tarvetta tai ohittavat sen kokonaan. Water-side-economizer voi laskea jäähdytetyn veden tuotantokustannusta jopa 70 prosenttia, ja air-side-ratkaisuilla on raportoitu erittäin suuria energiakustannussäästöjä. Jos tämä havaitaan vasta myöhään, rakennus, putkitus ja laitesijoittelu voivat jo lukita hankkeen raskaampaan jäähdytysratkaisuun. ([ENERGY STAR][5])
+
+**Jos mitoitus tehdään liian aikaisin, seurauksena on joko ylikapasiteettia tai käyttövarmuusriski.** Uptime Instituten mukaan sähkö on edelleen yksi merkittävien datakeskuskatkojen yleisistä juurisyistä. Kun kuormaa, jäähdytystä, varmistusta ja kasvua ei ole määritelty riittävän tarkasti ennen mitoitusta, seurauksena on yleensä joko kallis ylimitoitus tai järjestelmä, joka toimii jatkuvasti väärällä käyttöalueella. ([The Department of Energy's Energy.gov][1])
+
+**Jos mittausrajat päätetään vasta lopussa, tunnusluvuista ei saada uskottavia.** The Green Gridin PUE-ohjeiden tarkoituksena on nimenomaan standardoida mittausta ja raportointia. Jos kokonaisenergiaa, IT-energiaa, jäähdytysenergiaa ja mahdollisesti uudelleenkäytettyä lämpöä ei erotella jo suunnitteluvaiheessa, PUE-, ERE-, CUE- ja muut tunnusluvut eivät ole aidosti vertailukelpoisia. ([ghgprotocol.org][6])
+
+Tiivistettynä: **jos tätä järjestystä ei noudateta, lopputuloksena on useimmiten enemmän sähköä kuluttava, heikommin todennettava ja huonommin integroitava datakeskus.** Green ICT -näkökulmasta suurin virhe ei ole yksittäinen tekninen valinta, vaan se, että datakeskusta ei käsitellä alusta alkaen yhtenä palvelu-, energia-, lämpö- ja mittausjärjestelmänä. ([The Department of Energy's Energy.gov][1])
+
+[1]: https://www.energy.gov/femp/articles/best-practices-guide-energy-efficient-data-center-design?utm_source=chatgpt.com "Best Practices Guide for Energy-Efficient Data Center Design | Department of Energy"
+[2]: https://www.cbre.fi/insights/articles/key-factors-to-consider-for-effective-data-centre-site-selection?utm_source=chatgpt.com "Business Insights | Key Factors to Consider for Effective Data Centre Site Selection | CBRE Finland"
+[3]: https://www.iea.org/commentaries/opportunities-for-district-heating-in-the-changing-energy-landscape?utm_source=chatgpt.com "Opportunities for district heating in the changing energy landscape - Analysis - IEA"
+[4]: https://ghgprotocol.org/scope_2_guidance?utm_source=chatgpt.com "Scope 2 Guidance | GHG Protocol"
+[5]: https://www.energystar.gov/products/data_center_equipment/16-more-ways-cut-energy-waste-data-center/use-air-side-economizer?utm_source=chatgpt.com "Use an Air-Side Economizer | ENERGY STAR"
+[6]: https://ghgprotocol.org/sites/default/files/standards/Scope%202%20Guidance_Final_Sept26.pdf?utm_source=chatgpt.com "GHG Protocol"
+
